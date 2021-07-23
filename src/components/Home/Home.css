@@ -1,0 +1,9 @@
+.homeArea .teamArea, .targetArea {
+    background: #C4C4C4;
+}
+.homeArea .teamArea .singleMember, .team, .targetArea .target, .singleTarget {
+    border-bottom: 2px solid #7A7A7A;
+}
+.homeArea .teamArea .singleMember:last-child, .singleTarget:last-child {
+    border-bottom: none;
+}
