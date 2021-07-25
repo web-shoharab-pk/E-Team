@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import './Topbar.css';
+import {Link} from 'react-router-dom';
 
 const Topbar = () => {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -9,8 +10,8 @@ const Topbar = () => {
         <div className="topbar ">
             <nav className="navbar hidden flex flex-row justify-between items-center px-4 text-lg  md:flex">
                 <div className="breadcrumb">
-                    <a href="#" className="font-medium">Home</a> /
-                    <a href="#" className="font-medium">Dashboard</a>
+                    <Link to="#" className="font-medium">Home</Link> /
+                    <Link to="#" className="font-medium">Dashboard</Link>
                 </div>
                 <p className="username">Piash</p>
             </nav>
