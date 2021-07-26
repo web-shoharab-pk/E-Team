@@ -1,11 +1,7 @@
 import React from 'react';
 import './Sidebar.css';
 import logo from '../../images/logo.svg';
-<<<<<<< HEAD
-import {Link} from 'react-router-dom';
-=======
 import { Link } from 'react-router-dom';
->>>>>>> f45039958b524e2b8653b3d42b3c8babdecbe5dd
 
 const Sidebar = () => {
     return (
