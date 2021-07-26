@@ -7,7 +7,7 @@ const Topbar = () => {
     showSidebar ? sidebar?.classList.add('show') : sidebar?.classList.remove('show')
     return (
         <div className="topbar ">
-            <nav className="navbar hidden flex flex-row justify-between items-center px-4 text-lg  md:flex">
+            <nav className="navbar hidden flex-row justify-between items-center px-4 text-lg  md:flex">
                 <div className="breadcrumb">
                     <a href="#" className="font-medium">Home</a> /
                     <a href="#" className="font-medium">Dashboard</a>
