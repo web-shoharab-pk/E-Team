@@ -10,6 +10,7 @@ import QuizArea from "./components/QuizArea/QuizArea";
 import SetMeeting from "./components/SetMeeting/SetMeeting";
 import InputApplication from "./components/InputApplication/InputApplication";
 import CourseVideo from "./components/CourseVideo/CourseVideo";
+import CreateUser from "./components/CreateUser/CreateUser";
 
 const App = () => {
   return (
@@ -30,6 +31,11 @@ const App = () => {
         </Route>
         <Route path="/quiz">
           <QuizArea />
+        </Route>
+        <Route path="/create-user">
+          <Dashboard>
+            <CreateUser />
+          </Dashboard>
         </Route>
         <Route path="/dashboard">
           <Dashboard />
