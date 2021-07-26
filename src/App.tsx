@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import ShareIdea from './components/ShareIdea/ShareIdea';
 import AllIdea from './components/AllIdea/AllIdea';
+import QuizArea from './components/QuizArea/QuizArea';
 
 const App = () => {
   return (
@@ -27,6 +28,9 @@ const App = () => {
           <Dashboard>
             <AllIdea />
           </Dashboard>
+        </Route>
+        <Route path="/quiz">
+          <QuizArea />
         </Route>
         <Route path="/dashboard">
           <Dashboard />
