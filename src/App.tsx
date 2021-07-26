@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import ShareIdea from './components/ShareIdea/ShareIdea';
+import AllIdea from './components/AllIdea/AllIdea';
 
 const App = () => {
   return (
@@ -20,6 +21,11 @@ const App = () => {
         <Route path="/shareIdea">
           <Dashboard>
             <ShareIdea />
+          </Dashboard>
+        </Route>
+        <Route path="/allIdea">
+          <Dashboard>
+            <AllIdea />
           </Dashboard>
         </Route>
         <Route path="/dashboard">
