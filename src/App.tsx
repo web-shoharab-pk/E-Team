@@ -10,14 +10,12 @@ import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import ShareIdea from './components/ShareIdea/ShareIdea';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/home">
-          <Dashboard>
-            <Home />
-          </Dashboard>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/shareIdea">
           <Dashboard>
@@ -27,12 +25,14 @@ function App() {
         <Route path="/dashboard">
           <Dashboard />
         </Route>
-        <Route path="/login">
-          <Login />
+        <Route path="/">
+          <Dashboard>
+          <Home />
+          </Dashboard>
         </Route>
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
