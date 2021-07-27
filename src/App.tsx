@@ -16,7 +16,8 @@ import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
 import FeedBacks from "./components/FeedBacks/FeedBacks";
 import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
 import AssignCourse from "./components/AssignCourse/AssignCourse";
-
+import MeetingList from "./components/MeetingList/MeetingList";
+import ApplicationList from "./components/ApplicationList/ApplicationList";
 const App = () => {
   return (
     <Router>
@@ -68,6 +69,16 @@ const App = () => {
         </Route>
         <Route path="/courseVideo">
           <CourseVideo />
+        </Route>
+        <Route path="/meetingList">
+          <Dashboard>
+            <MeetingList />
+          </Dashboard>
+        </Route>
+        <Route path="/applicationList">
+          <Dashboard>
+            <ApplicationList />
+          </Dashboard>
         </Route>
         <Route path="/assignment">
           <AssignmentArea />
