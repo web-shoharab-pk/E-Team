@@ -15,6 +15,7 @@ import AllCourses from "./components/AllCourses/AllCourses";
 import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
 import FeedBacks from "./components/FeedBacks/FeedBacks";
 import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
+import AssignCourse from "./components/AssignCourse/AssignCourse";
 
 const App = () => {
   return (
@@ -36,6 +37,11 @@ const App = () => {
         <Route path="/all-courses">
           <Dashboard>
             <AllCourses />
+          </Dashboard>
+        </Route>
+        <Route path="/assign-course">
+          <Dashboard>
+            <AssignCourse />
           </Dashboard>
         </Route>
         <Route path="/quiz">
