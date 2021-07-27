@@ -11,11 +11,15 @@ import SetMeeting from "./components/SetMeeting/SetMeeting";
 import InputApplication from "./components/InputApplication/InputApplication";
 import CourseVideo from "./components/CourseVideo/CourseVideo";
 import CreateUser from "./components/CreateUser/CreateUser";
+import AllCourses from "./components/AllCourses/AllCourses";
 import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
 import FeedBacks from "./components/FeedBacks/FeedBacks";
 import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
 import AllUserList from "./components/AllUserList/AllUserList";
 
+import AssignCourse from "./components/AssignCourse/AssignCourse";
+import MeetingList from "./components/MeetingList/MeetingList";
+import ApplicationList from "./components/ApplicationList/ApplicationList";
 const App = () => {
   return (
     <Router>
@@ -31,6 +35,16 @@ const App = () => {
         <Route path="/allIdea">
           <Dashboard>
             <AllIdea />
+          </Dashboard>
+        </Route>
+        <Route path="/all-courses">
+          <Dashboard>
+            <AllCourses />
+          </Dashboard>
+        </Route>
+        <Route path="/assign-course">
+          <Dashboard>
+            <AssignCourse />
           </Dashboard>
         </Route>
         <Route path="/quiz">
@@ -62,6 +76,16 @@ const App = () => {
         </Route>
         <Route path="/courseVideo">
           <CourseVideo />
+        </Route>
+        <Route path="/meetingList">
+          <Dashboard>
+            <MeetingList />
+          </Dashboard>
+        </Route>
+        <Route path="/applicationList">
+          <Dashboard>
+            <ApplicationList />
+          </Dashboard>
         </Route>
         <Route path="/assignment">
           <AssignmentArea />
