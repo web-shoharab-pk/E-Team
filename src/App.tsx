@@ -11,6 +11,7 @@ import SetMeeting from "./components/SetMeeting/SetMeeting";
 import InputApplication from "./components/InputApplication/InputApplication";
 import CourseVideo from "./components/CourseVideo/CourseVideo";
 import CreateUser from "./components/CreateUser/CreateUser";
+import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
 
 const App = () => {
   return (
@@ -48,6 +49,9 @@ const App = () => {
         </Route>
         <Route path="/courseVideo">
           <CourseVideo />
+        </Route>
+        <Route path="/assignment">
+          <AssignmentArea />
         </Route>
         <Route exact path="/">
           <Dashboard>
