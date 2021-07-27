@@ -13,6 +13,7 @@ import CourseVideo from "./components/CourseVideo/CourseVideo";
 import CreateUser from "./components/CreateUser/CreateUser";
 import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
 import FeedBacks from "./components/FeedBacks/FeedBacks";
+import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
 
 const App = () => {
   return (
@@ -37,6 +38,11 @@ const App = () => {
         <Route path="/create-user">
           <Dashboard>
             <CreateUser />
+          </Dashboard>
+        </Route>
+        <Route path="/leaderBoard">
+          <Dashboard>
+            <LeaderBoard />
           </Dashboard>
         </Route>
         <Route path="/dashboard">
