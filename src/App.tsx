@@ -11,6 +11,7 @@ import SetMeeting from "./components/SetMeeting/SetMeeting";
 import InputApplication from "./components/InputApplication/InputApplication";
 import CourseVideo from "./components/CourseVideo/CourseVideo";
 import CreateUser from "./components/CreateUser/CreateUser";
+import AllCourses from "./components/AllCourses/AllCourses";
 
 const App = () => {
   return (
@@ -27,6 +28,11 @@ const App = () => {
         <Route path="/allIdea">
           <Dashboard>
             <AllIdea />
+          </Dashboard>
+        </Route>
+        <Route path="/all-courses">
+          <Dashboard>
+            <AllCourses />
           </Dashboard>
         </Route>
         <Route path="/quiz">
