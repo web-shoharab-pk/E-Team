@@ -14,6 +14,7 @@ import CreateUser from "./components/CreateUser/CreateUser";
 import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
 import FeedBacks from "./components/FeedBacks/FeedBacks";
 import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
+import AllUserList from "./components/AllUserList/AllUserList";
 
 const App = () => {
   return (
@@ -38,6 +39,11 @@ const App = () => {
         <Route path="/create-user">
           <Dashboard>
             <CreateUser />
+          </Dashboard>
+        </Route>
+        <Route path="/allUser-list">
+          <Dashboard>
+            <AllUserList />
           </Dashboard>
         </Route>
         <Route path="/leaderBoard">
