@@ -8,7 +8,8 @@ interface UserDataType{
 }
 
 const PrivateRoute = ({children,...rest}:UserDataType) => {
-    var {userDetails}:UserDataType = useContext(UserContext);
+    var {userDetails}:UserDataType = useContext();
+    
     return (
         <Route
       {...rest}
