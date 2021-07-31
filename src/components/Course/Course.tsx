@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const Course = ({thumbnail}) => {
+interface CourseProps{
+    thumbnail:string
+}
+
+const Course = ({thumbnail}:CourseProps) => {
     return (
         <div className="w-full md:w-1/2  lg:w-1/2">
             <div className="m-2 p-2 rounded-md bg-white border shadow-md  lg:flex">

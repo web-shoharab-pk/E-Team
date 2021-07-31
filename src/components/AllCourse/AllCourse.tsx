@@ -1,9 +1,9 @@
 import React from 'react';
-import './AllCourses.css';
+import './AllCourse.css';
 import thumbnail from '../../images/course-thumbnail.png';
 import Course from '../Course/Course';
 
-const AllCourses = () => {
+const AllCourse = () => {
     return (
         <section className="all-courses">
             <div className="w-full">
@@ -19,4 +19,4 @@ const AllCourses = () => {
     );
 };
 
-export default AllCourses;
+export default AllCourse;

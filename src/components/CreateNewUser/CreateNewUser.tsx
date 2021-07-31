@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CreateUser = () => {
+const CreateNewUser = () => {
     return (
         <div className="flex mb-8 justify-center">
-            <div className="w-3/4">
+            <div className="w-3/4 md:w-4/6 lg:w-2/4 xl:w-2/5">
                 <div className="p-4 rounded-md shadow-lg border">
                     <h2 className="text-2xl font-bold text-center mb-6 mt-2">Create A New User</h2>
                     <div className="flex items-center mx-3 border h-10 rounded-full bg-gray-200 mb-4">
@@ -31,4 +31,4 @@ const CreateUser = () => {
     );
 };
 
-export default CreateUser;
+export default CreateNewUser;
