@@ -1,15 +1,15 @@
   
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { UserContext } from '../../UserContext';
+// import { UserContext } from '../../App';
 
 interface UserDataType{
     [key: string]: any  
 }
 
 const PrivateRoute = ({children,...rest}:UserDataType) => {
-    var {userDetails}:UserDataType = useContext();
-    
+    // var {userDetails}:UserDataType = useContext();
+    var {userDetails}:UserDataType = {};
     return (
         <Route
       {...rest}

@@ -43,11 +43,11 @@ const App = () => {
             <AllCourse />
           </Dashboard>
         </Route>
-        <Route path="/assign-course">
+        {/* <Route path="/assign-course">
           <Dashboard>
             <AssignCourse />
           </Dashboard>
-        </Route>
+        </Route> */}
         <Route path="/quiz">
           <QuizArea />
         </Route>
