@@ -9,6 +9,8 @@ if(!firebase.apps.length){
     firebase.initializeApp(firebaseConfig)
 }
 
+export const db = firebase.firestore();
+
 const signin = (email:string,password:string):any=>{
     return firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {

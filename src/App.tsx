@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -20,11 +20,20 @@ import MeetingList from "./components/MeetingList/MeetingList";
 import ApplicationList from "./components/ApplicationList/ApplicationList";
 import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { db } from "./components/Login/loginmanager";
+
 
 
 
 const App = () => {
+  useEffect(()=>{
+    db.collection('users').onSnapshot((snapshot:any)=>{
+      const snapshotArray =  snapshot.docs.map((doc:any)=>{
+        return doc?.data();
+      })
+      console.log(snapshotArray)
+    })
+  },[])
   return (
     <Router>
       <Switch>
@@ -54,6 +63,11 @@ const App = () => {
         <Route path="/create-user">
           <Dashboard>
             <CreateNewUser />
+          </Dashboard>
+        </Route>
+        <Route path="/all-user">
+          <Dashboard>
+            <AllUserList />
           </Dashboard>
         </Route>
         <Route path="/leaderBoard">
