@@ -61,11 +61,11 @@ const Login = () => {
             <div className="loginArea container mx-auto">
                 <div className="flex w-full justify-center my-12">
                     <div className="w-full xl:w-3/4 mt-14 lg:w-11/12 flex justify-between">
-                        <div className="w-2/4 h-auto hidden lg:block lg:w-1/2 bg-cover rounded-l-lg" >
+                        <div className="w-2/4 my-24 h-auto hidden lg:block lg:w-1/2 bg-cover rounded-l-lg" >
                             <img src={loginBG} alt="" />
                         </div>
 
-                        <div className="loginFrom w-2/4 lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+                        <div className="loginFrom md:w-1/2 max-w-lg mx-auto my-24 px-4 py-5 shadow-2xl rounded-lg lg:rounded-l-none">
                             <div className="mt-5">
                                 <h3 className="pt-4 text-3xl font-bold text-center">E - Team</h3>
                                 <h5 className="pt-1 text-2xl font-medium text-center">Login</h5>
