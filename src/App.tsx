@@ -21,28 +21,26 @@ import ApplicationList from "./components/ApplicationList/ApplicationList";
 import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import { db } from "./components/Login/loginmanager";
-
-
-
+import CreateCourse from "./components/CreateCourse/CreateCourse";
 
 const App = () => {
-  useEffect(()=>{
-    db.collection('users').onSnapshot((snapshot:any)=>{
-      const snapshotArray =  snapshot.docs.map((doc:any)=>{
+  useEffect(() => {
+    db.collection("users").onSnapshot((snapshot: any) => {
+      const snapshotArray = snapshot.docs.map((doc: any) => {
         return doc?.data();
-      })
-      console.log(snapshotArray)
-    })
-  },[])
+      });
+      // console.log(snapshotArray)
+    });
+  }, []);
   return (
     <Router>
       <Switch>
-        <Route path="/shareIdea">
+        <Route path="/share-idea">
           <Dashboard>
             <ShareIdea />
           </Dashboard>
         </Route>
-        <Route path="/allIdea">
+        <Route path="/all-idea">
           <Dashboard>
             <AllIdea />
           </Dashboard>
@@ -70,7 +68,7 @@ const App = () => {
             <AllUserList />
           </Dashboard>
         </Route>
-        <Route path="/leaderBoard">
+        <Route path="/leaderboard">
           <Dashboard>
             <LeaderBoard />
           </Dashboard>
@@ -78,23 +76,28 @@ const App = () => {
         <Route path="/dashboard">
           <Dashboard />
         </Route>
-        <Route path="/setMeeting">
+        <Route path="/set-meeting">
           <SetMeeting />
         </Route>
-        <Route path="/inputApplication">
+        <Route path="/input-application">
           <InputApplication />
         </Route>
-        <Route path="/courseVideo">
+        <Route path="/course-video">
           <CourseVideo />
         </Route>
-        <Route path="/meetingList">
+        <Route path="/meeting-list">
           <Dashboard>
             <MeetingList />
           </Dashboard>
         </Route>
-        <Route path="/applicationList">
+        <Route path="/application-list">
           <Dashboard>
             <ApplicationList />
+          </Dashboard>
+        </Route>
+        <Route path="/create-course">
+          <Dashboard>
+            <CreateCourse />
           </Dashboard>
         </Route>
         <Route path="/assignment">

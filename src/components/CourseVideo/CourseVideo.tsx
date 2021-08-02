@@ -42,7 +42,7 @@ const CourseVideo = () => {
               ></iframe>
             </div>
 
-            <div className="flex mt-8 justify-between">
+            <div className="flex mt-5 justify-between">
               <button className="app-button">Previous</button>
               <button className="app-button">Next</button>
             </div>
