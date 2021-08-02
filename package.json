@@ -18,8 +18,13 @@
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.11",
+<<<<<<< HEAD
     "dotenv": "^10.0.0",
     "firebase": "^8.8.1",
+=======
+    "firebase": "^8.8.1",
+    "radium": "^0.26.1",
+>>>>>>> e3034ea8790fbb0bec89abfd03ca57fdf55ebd18
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.0.4",
     "react-dom": "^17.0.2",
@@ -57,6 +62,7 @@
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@types/radium": "^0.24.4",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.36",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4"
