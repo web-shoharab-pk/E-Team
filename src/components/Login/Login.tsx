@@ -1,61 +1,65 @@
-import React, { useState, useContext } from "react";
-import "./Login.css";
-import { Link } from "react-router-dom";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import loginBG from "../../Assets/images/Partnership-rafiki.png";
-import signin from "./loginmanager";
-import { useHistory, useLocation } from "react-router";
+import React, { useState, useContext } from 'react';
+import './Login.css';
+import { Link } from 'react-router-dom';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import loginBG from '../../images/Partnership-rafiki.png';
+import signin from './loginmanager';
+import { useHistory, useLocation } from 'react-router';
+import { UserDataContext } from '../Contexts/UserDataContext';
 
 interface UserDataType {
-  [key: string]: any;
+    [key: string]: any;
 }
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const history = useHistory();
-  const location = useLocation();
-  let { from }: any = location.state || { from: { pathname: "/" } };
+    const { userData, setUserData } = useContext(UserDataContext)
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const history = useHistory();
+    const location = useLocation();
+    let { from }: any = location.state || { from: { pathname: "/" } };
 
-  const handleOnChange = (event: any) => {
-    const target = event.target;
-    const emailRegEx =
-      /^[a-zA-Z0-9._]{3,}[@]{1}[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/;
 
-    // For email state update
-    if (
-      target.name === "email" &&
-      target.value !== "" &&
-      emailRegEx.test(target.value)
-    ) {
-      setEmail(target.value);
-    }
+    const handleOnChange = (event: any) => {
+        const target = event.target;
+        const emailRegEx =
+            /^[a-zA-Z0-9._]{3,}[@]{1}[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/;
 
-    // For password state update
-    if (
-      target.name === "password" &&
-      target.value !== "" &&
-      target.value.length >= 8
-    ) {
-      setPassword(target.value);
-    }
-  };
-
-  const handleSignin = () => {
-    if (email && password) {
-      signin(email, password).then((data: UserDataType) => {
-        if (!data.message) {
-          console.log(data);
-        } else {
-          alert(data.message);
+        // For email state update
+        if (
+            target.name === "email" &&
+            target.value !== "" &&
+            emailRegEx.test(target.value)
+        ) {
+            setEmail(target.value);
         }
-      });
-    } else {
-      alert("Login failed");
-    }
-  };
+
+        // For password state update
+        if (
+            target.name === "password" &&
+            target.value !== "" &&
+            target.value.length >= 8
+        ) {
+            setPassword(target.value);
+        }
+    };
+
+    const handleSignin = () => {
+        if (email && password) {
+            signin(email, password)
+                .then((data: UserDataType) => {
+                    if (!data.message) {
+                        console.log(data);
+                    } else {
+                        alert(data.message)
+                    }
+                })
+        } else {
+            alert("Login failed");
+        }
+    };
 
     return (
         <div>
@@ -73,56 +77,56 @@ const Login = () => {
                                 <p className="pt-3 text-lg font-normal text-center">Use Your credential to login Into account</p>
                             </div>
 
-              <form className="px-8 pt-9 bg-white rounded">
-                <div className="relative mb-8">
-                  <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                    <span>
-                      <FontAwesomeIcon icon={faEnvelope} />
-                    </span>
-                  </div>
+                            <form className="px-8 pt-9 bg-white rounded">
+                                <div className="relative mb-8">
+                                    <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                        <span>
+                                            <FontAwesomeIcon icon={faEnvelope} />
+                                        </span>
+                                    </div>
 
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    onKeyUp={handleOnChange}
-                    className="text-sm sm:text-base placeholder-gray-500 pl-14 pr-4 w-full py-2 focus:outline-none focus:border-blue-400"
-                    placeholder="E-Mail Address"
-                  />
-                </div>
+                                    <input
+                                        id="email"
+                                        type="email"
+                                        name="email"
+                                        onKeyUp={handleOnChange}
+                                        className="text-sm sm:text-base placeholder-gray-500 pl-14 pr-4 w-full py-2 focus:outline-none focus:border-blue-400"
+                                        placeholder="E-Mail Address"
+                                    />
+                                </div>
 
-                <div className="relative mb-4">
-                  <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                    <span>
-                      <FontAwesomeIcon icon={faLock} />
-                    </span>
-                  </div>
+                                <div className="relative mb-4">
+                                    <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                        <span>
+                                            <FontAwesomeIcon icon={faLock} />
+                                        </span>
+                                    </div>
 
-                  <input
-                    id="password"
-                    type="password"
-                    name="password"
-                    onKeyUp={handleOnChange}
-                    className="text-sm sm:text-base placeholder-gray-500 pl-14 pr-4 w-full py-2 focus:outline-none focus:border-blue-400"
-                    placeholder="Password"
-                  />
-                </div>
+                                    <input
+                                        id="password"
+                                        type="password"
+                                        name="password"
+                                        onKeyUp={handleOnChange}
+                                        className="text-sm sm:text-base placeholder-gray-500 pl-14 pr-4 w-full py-2 focus:outline-none focus:border-blue-400"
+                                        placeholder="Password"
+                                    />
+                                </div>
 
-                <div className="mt-10 text-center">
-                  {/* <button
+                                <div className="mt-10 text-center">
+                                    {/* <button
                                         className="w-36 rounded px-4 py-2 font-bold text-white hover:text-white bg-blue-500 hover:bg-blue-500 focus:outline-none focus:shadow-outline" type="button"
                                         onClick={handleSignin} >
                                         LogIn
                                     </button> */}
-                  <Link to="/home">Login</Link>
+                                    <Link to="/home">Login</Link>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Login;
