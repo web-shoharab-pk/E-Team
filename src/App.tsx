@@ -21,6 +21,7 @@ import ApplicationList from "./components/ApplicationList/ApplicationList";
 import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import { db } from "./components/Login/loginmanager";
+import MainHome from "./components/MainHome/MainHome";
 
 
 
@@ -110,6 +111,9 @@ const App = () => {
           <Dashboard>
             <Home />
           </Dashboard>
+        </Route>
+        <Route path="/mainHome">
+          <MainHome />
         </Route>
         <Route exact path="/">
           <Login />
