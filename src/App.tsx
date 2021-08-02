@@ -14,12 +14,13 @@ import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
 import FeedBacks from "./components/FeedBacks/FeedBacks";
 import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
 import AllUserList from "./components/AllUserList/AllUserList";
-
 import AssignCourse from "./components/AssignCourse/AssignCourse";
 import MeetingList from "./components/MeetingList/MeetingList";
 import ApplicationList from "./components/ApplicationList/ApplicationList";
 import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
+import MainHome from "./components/MainHome/MainHome";
+import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db } from "./components/Login/loginmanager";
 import { UserDataContext } from "./components/Contexts/UserDataContext";
 
