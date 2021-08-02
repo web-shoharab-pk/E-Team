@@ -7,6 +7,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import loginBG from '../../images/Partnership-rafiki.png';
 import signin from './loginmanager';
 import { useHistory, useLocation } from 'react-router';
+import { UserDataContext } from '../Contexts/UserDataContext';
 
 interface UserDataType{
     [key: string]: any  
@@ -14,6 +15,7 @@ interface UserDataType{
 
 
 const Login = () => {
+    const {userData,setUserData} = useContext(UserDataContext)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
@@ -46,7 +48,6 @@ const Login = () => {
                 .then((data: UserDataType) => {
                     if(!data.message){
                         console.log(data);
-                        
                     }else{
                         alert(data.message)
                     }

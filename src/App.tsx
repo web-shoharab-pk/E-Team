@@ -21,101 +21,109 @@ import ApplicationList from "./components/ApplicationList/ApplicationList";
 import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import { db } from "./components/Login/loginmanager";
+import { UserDataContext } from "./components/Contexts/UserDataContext";
 
 
 
 
 const App = () => {
-  useEffect(()=>{
-    db.collection('users').onSnapshot((snapshot:any)=>{
-      const snapshotArray =  snapshot.docs.map((doc:any)=>{
+  const [userData, setUserData] = useState({
+    id: '',
+    age: 15
+  })
+  useEffect(() => {
+    db.collection('users').onSnapshot((snapshot: any) => {
+      const snapshotArray = snapshot.docs.map((doc: any) => {
         return doc?.data();
       })
-      console.log(snapshotArray)
+      console.log(snapshotArray);
+      
     })
-  },[])
+  }, [userData])
   return (
-    <Router>
-      <Switch>
-        <Route path="/shareIdea">
-          <Dashboard>
-            <ShareIdea />
-          </Dashboard>
-        </Route>
-        <Route path="/allIdea">
-          <Dashboard>
-            <AllIdea />
-          </Dashboard>
-        </Route>
-        <Route path="/all-courses">
-          <Dashboard>
-            <AllCourse />
-          </Dashboard>
-        </Route>
-        <Route path="/assign-course">
-          <Dashboard>
-            <AssignCourse />
-          </Dashboard>
-        </Route>
-        <Route path="/quiz">
-          <QuizArea />
-        </Route>
-        <Route path="/create-user">
-          <Dashboard>
-            <CreateNewUser />
-          </Dashboard>
-        </Route>
-        <Route path="/all-user">
-          <Dashboard>
-            <AllUserList />
-          </Dashboard>
-        </Route>
-        <Route path="/leaderBoard">
-          <Dashboard>
-            <LeaderBoard />
-          </Dashboard>
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route path="/setMeeting">
-          <SetMeeting />
-        </Route>
-        <Route path="/inputApplication">
-          <InputApplication />
-        </Route>
-        <Route path="/courseVideo">
-          <CourseVideo />
-        </Route>
-        <Route path="/meetingList">
-          <Dashboard>
-            <MeetingList />
-          </Dashboard>
-        </Route>
-        <Route path="/applicationList">
-          <Dashboard>
-            <ApplicationList />
-          </Dashboard>
-        </Route>
-        <Route path="/assignment">
-          <AssignmentArea />
-        </Route>
-        <Route path="/feedbacks">
-          <FeedBacks />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route path="/home">
-          <Dashboard>
-            <Home />
-          </Dashboard>
-        </Route>
-        <Route exact path="/">
-          <Login />
-        </Route>
-      </Switch>
-    </Router>
+    <UserDataContext.Provider value={{userData, setUserData}}>
+      <Router>
+        <Switch>
+          <Route path="/shareIdea">
+            <Dashboard>
+              <ShareIdea />
+            </Dashboard>
+          </Route>
+          <Route path="/allIdea">
+            <Dashboard>
+              <AllIdea />
+            </Dashboard>
+          </Route>
+          <Route path="/all-courses">
+            <Dashboard>
+              <AllCourse />
+            </Dashboard>
+          </Route>
+          <Route path="/assign-course">
+            <Dashboard>
+              <AssignCourse />
+            </Dashboard>
+          </Route>
+          <Route path="/quiz">
+            <QuizArea />
+          </Route>
+          <Route path="/create-user">
+            <Dashboard>
+              <CreateNewUser />
+            </Dashboard>
+          </Route>
+          <Route path="/all-user">
+            <Dashboard>
+              <AllUserList />
+            </Dashboard>
+          </Route>
+          <Route path="/leaderBoard">
+            <Dashboard>
+              <LeaderBoard />
+            </Dashboard>
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/setMeeting">
+            <SetMeeting />
+          </Route>
+          <Route path="/inputApplication">
+            <InputApplication />
+          </Route>
+          <Route path="/courseVideo">
+            <CourseVideo />
+          </Route>
+          <Route path="/meetingList">
+            <Dashboard>
+              <MeetingList />
+            </Dashboard>
+          </Route>
+          <Route path="/applicationList">
+            <Dashboard>
+              <ApplicationList />
+            </Dashboard>
+          </Route>
+          <Route path="/assignment">
+            <AssignmentArea />
+          </Route>
+          <Route path="/feedbacks">
+            <FeedBacks />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route path="/home">
+            <Dashboard>
+              <Home />
+            </Dashboard>
+          </Route>
+          <Route exact path="/">
+            <Login />
+          </Route>
+        </Switch>
+      </Router>
+    </UserDataContext.Provider>
   );
 };
 
