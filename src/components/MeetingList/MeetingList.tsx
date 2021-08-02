@@ -46,21 +46,31 @@ const MeetingList = () => {
           <table className="w-full">
             <thead>
               <tr className="text-left">
-                <th className="bg-blue-100 border px-10 py-4">Title</th>
-                <th className="bg-blue-100 border px-10 py-4">Team</th>
-                <th className="bg-blue-100 border px-10 py-4">Agenda</th>
-                <th className="bg-blue-100 border px-10 py-4">Time</th>
-                <th className="bg-blue-100 border px-10 py-4">Action</th>
+                <th className="bg-blue-100 border px-10 py-2">Title</th>
+                <th className="bg-blue-100 border px-10 py-2">Team</th>
+                <th className="bg-blue-100 border px-10 py-2">Agenda</th>
+                <th className="bg-blue-100 border px-10 py-2">Time</th>
+                <th className="bg-blue-100 border px-10 py-2">Action</th>
               </tr>
             </thead>
             <tbody>
               {meetingList.map((meeting) => (
                 <tr className="mb-3">
-                  <td className="border-b-2 border-gray-300 px-10 py-4">{meeting.Title}</td>
-                  <td className="border-b-2 border-gray-300 px-10 py-4">{meeting.Team}</td>
-                  <td className="border-b-2 border-gray-300 px-10 py-4">{meeting.Agenda}</td>
-                  <td className="border-b-2 border-gray-300 px-10 py-4">{meeting.Time}</td>
-                  <td className="border-b-2 border-gray-300 px-10 py-4">{meeting.Action}</td>
+                  <td className="border-b-2 border-gray-300 px-10 py-2">
+                    {meeting.Title}
+                  </td>
+                  <td className="border-b-2 border-gray-300 px-10 py-2">
+                    {meeting.Team}
+                  </td>
+                  <td className="border-b-2 border-gray-300 px-10 py-2">
+                    {meeting.Agenda}
+                  </td>
+                  <td className="border-b-2 border-gray-300 px-10 py-2">
+                    {meeting.Time}
+                  </td>
+                  <td className="border-b-2 border-gray-300 px-10 py-2">
+                    {meeting.Action}
+                  </td>
                 </tr>
               ))}
             </tbody>

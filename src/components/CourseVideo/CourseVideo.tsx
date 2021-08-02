@@ -28,6 +28,11 @@ const CourseVideo = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
+            <div className="flex mt-5 justify-between">
+              <button className="app-button">Previous</button>
+              <button className="app-button">Next</button>
+=======
         <div className="w-11/12 lg:w-1/3 mx-auto lg:mx-px">
           <div className="flex items-center justify-center mb-7">
             <span className="font-semibold lg:font-bold text-md lg:text-lg mr-3">Course Progress:</span>
@@ -38,6 +43,7 @@ const CourseVideo = () => {
               </div>
                                 
                 <h5 className="w-1/12 text-sm ml-2 lg:ml-3">30%</h5>
+>>>>>>> e3034ea8790fbb0bec89abfd03ca57fdf55ebd18
             </div>
           </div>
 

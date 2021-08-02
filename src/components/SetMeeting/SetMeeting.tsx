@@ -38,7 +38,7 @@ const SetMeeting = () => {
                 <textarea
                   className="rounded w-full border"
                   name=""
-                  id=""
+                  placeholder="Agenda"
                   cols={5}
                   rows={3}
                 ></textarea>
@@ -51,12 +51,25 @@ const SetMeeting = () => {
                   Meeting Title:
                 </label>{" "}
                 <br />
-                <input className="rounded border" type="text" name="" id="" />
+                <input
+                  className="rounded border w-full"
+                  type="text"
+                  name=""
+                  placeholder="Title"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="text-lg font-semibold" htmlFor="">
+                  Date:
+                </label>{" "}
+                <br />
+                <input className="rounded border w-full" type="date" name="" />
               </div>
 
               <div>
                 <label className="text-lg font-semibold" htmlFor="">
-                  Time:
+                  time:
                 </label>{" "}
                 <br />
                 <input
@@ -71,7 +84,7 @@ const SetMeeting = () => {
 
           <input
             type="submit"
-            className="bg-blue-500 cursor-pointer py-3 px-3 rounded-full text-white font-bold my-3"
+            className="app-button"
             value="Set meeting"
           />
         </form>
