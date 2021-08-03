@@ -12,133 +12,73 @@ const InputApplication = () => {
         <Topbar />
       </div>
 
-      {/* Card with input field */}
-      <div className="flex-none shadow-md rounded px-60 py-10 bg-gray-50 m-auto">
-        <p className="font-bold text-2xl text-center">Input Application</p>
-        <form action="" className="form mt-4">
-          <div className="grid gap-x-32 grid-cols-2">
-            <div>
-              <div className="mb-3">
-                <label className="text-lg font-semibold" htmlFor="">
-                  Team Name:
-                </label>{" "}
-                <br />
-                <select className="rounded w-full border" name="" id="">
-                  <option value="">One</option>
-                  <option value="">Two</option>
-                  <option value="">Three</option>
-                </select>
-              </div>
+          <form action="" className="w-full lg:w-2/4 px-2 mr-2.5 -ml-60 lg:mx-auto rounded-md form shadow lg:p-6 mt-20 mb-10 relative">
+              <p className="font-bold mb-8 text-2xl text-center">Input Application</p>
+               
+               <div className="lg:flex lg:space-x-5 mt-3">
+                    <div className="lg:w-1/2">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="hello">Team Name:</label><br />
+                      <select className="rounded w-full border mt-1 p-2" name="" id="">
+                        <option value="">One</option>
+                        <option value="">Two</option>
+                        <option value="">Three</option>
+                      </select>
+                    </div>
 
-              <div className="mb-3">
-                <div>
-                  <label className="text-lg font-semibold" htmlFor="">
-                    Designation:
-                  </label>{" "}
-                  <br />
-                  <input
-                    className="rounded w-full border"
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="Type Designation"
-                  />
-                </div>
-              </div>
+                    <div className="lg:w-1/2 mt-3 lg:mt-0">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="">Input Name:</label><br />
+                      <input type="tel" name="" id="" placeholder="Your Number" className="mt-1 border w-full rounded p-2 " />
+                    </div>
+               </div>
 
-              <div className="mb-3">
-                <div>
-                  <label className="text-lg font-semibold" htmlFor="">
-                    Starting Date:
-                  </label>{" "}
-                  <br />
-                  <input
-                    className="rounded w-full border"
-                    type="date"
-                    name=""
-                    id=""
-                  />
-                </div>
-              </div>
+               <div className="lg:flex lg:space-x-5 mt-3">
+                    <div className="lg:w-1/2">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="">Designation:</label><br />
+                      <input type="tel" name="" id="" placeholder="Type Designation" className="border mt-1 w-full rounded p-2 " />
+                    </div>
 
-              <div className="mb-3">
-                <div>
-                  <label className="text-lg font-semibold" htmlFor="">
-                    Observation Under:
-                  </label>{" "}
-                  <br />
-                  <input
-                    className="rounded w-full border"
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="Input Name"
-                  />
-                </div>
-              </div>
-            </div>
+                    <div className="lg:w-1/2 mt-3 lg:mt-0">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="hello">Select Application Type</label><br />
+                      <select className="rounded w-full border mt-1 p-2" name="" id="">
+                        <option value="">One</option>
+                        <option value="">Two</option>
+                        <option value="">Three</option>
+                      </select>
+                    </div>
+               </div>
 
-            <div>
-              <div className="mb-3">
-                <label className="text-lg font-semibold" htmlFor="">
-                  Input Name:
-                </label>{" "}
-                <br />
-                <input
-                  className="rounded border w-full"
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="Input Name"
-                />
-              </div>
+               <div className="lg:flex lg:space-x-5 mt-3">
+                    <div className="lg:w-1/2">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="">Starting Date</label><br />
+                      <input type="date" name="" id="" placeholder="Your Number" className="border w-full rounded p-2 mt-1" />
+                    </div>
 
-              <div className="mb-3">
-                <label className="text-lg font-semibold" htmlFor="">
-                  Select Application Type:
-                </label>{" "}
-                <br />
-                <select className="rounded w-full border" name="" id="">
-                  <option value="">One</option>
-                  <option value="">Two</option>
-                  <option value="">Three</option>
-                </select>
-              </div>
+                    <div className="lg:w-1/2  mt-3 lg:mt-0">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="">Ending Date</label><br />
+                      <input type="date" name="" id="" placeholder="Your Number" className="border w-full rounded p-2 mt-1 " />
+                    </div>
+               </div>
 
-              <div className="mb-3">
-                <label className="text-lg font-semibold" htmlFor="">
-                  Ending Date:
-                </label>{" "}
-                <br />
-                <input
-                  className="rounded border w-full"
-                  type="date"
-                  name=""
-                  id=""
-                />
-              </div>
+               <div className="lg:flex lg:space-x-5 mt-3">
+                    <div className="lg:w-1/2">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="">Observation Under</label><br />
+                      <input type="text" name="" id="" placeholder="Input Name" className="mt-1 border w-full rounded p-2 " />
+                    </div>
 
-              <div className="mb-3">
-                <label className="text-lg font-semibold" htmlFor="">
-                  Application Status:
-                </label>{" "}
-                <br />
-                <select className="rounded w-full border" name="" id="">
-                  <option value="">One</option>
-                  <option value="">Two</option>
-                  <option value="">Three</option>
-                </select>
+                    <div className="lg:w-1/2 mt-3 lg:mt-0">
+                      <label className="text-md lg:text-lg font-semibold" htmlFor="hello">Application Status</label><br />
+                      <select className="rounded w-full border p-2 mt-1" name="" id="">
+                        <option value="">One</option>
+                        <option value="">Two</option>
+                        <option value="">Three</option>
+                      </select>
+                    </div>
+               </div>
+               
+              <div className="mx-auto text-center ">
+                <input type="submit" value="Submit Application" className="mt-6 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-2.5 px-4" />
               </div>
-            </div>
-
-            <input
-              type="submit"
-              className="bg-blue-500 cursor-pointer py-3 px-3 rounded-full text-white font-bold my-3"
-              value="Submit Application"
-            />
-          </div>
-        </form>
-      </div>
+           </form>
     </div>
   );
 };
