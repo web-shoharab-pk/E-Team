@@ -23,6 +23,9 @@ import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db } from "./components/Login/loginmanager";
 import { UserDataContext } from "./components/Contexts/UserDataContext";
+import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
+import Navbar from "./components/MainHome/Navbar/Navbar";
+import Footer from "./components/MainHome/Footer/Footer";
 
 
 
@@ -122,8 +125,13 @@ const App = () => {
               <Home />
             </Dashboard>
           </Route>
+          <Route path="/company-registration">
+            <Navbar/>
+            <RegisterCompany />
+            <Footer/>
+          </Route>
           <Route exact path="/">
-            <Login />
+            <MainHome />
           </Route>
         </Switch>
       </Router>
