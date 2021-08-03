@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import loginBG from '../../images/Partnership-rafiki.png';
+import loginBG from '../../Assets/images/Partnership-rafiki.png';
 import signin from './loginmanager';
 import { useHistory, useLocation } from 'react-router';
 import { UserDataContext } from '../Contexts/UserDataContext';

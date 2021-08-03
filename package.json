@@ -22,7 +22,6 @@
     "@types/styled-components": "^5.1.11",
     "dotenv": "^10.0.0",
     "firebase": "^8.8.1",
-    "firebase": "^8.8.1",
     "radium": "^0.26.1",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.0.4",
