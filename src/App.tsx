@@ -114,6 +114,9 @@ const App = () => {
           <Route exact path="/login">
             <Login />
           </Route>
+          <Route path="/mainHome">
+              <MainHome />
+          </Route>
           <Route path="/home">
             <Dashboard>
               <Home />

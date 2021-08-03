@@ -60,7 +60,7 @@ const ApplicationList = () => {
                                     </div>
                                 </div>
 
-                                <table className="pt-2 rounded-t-lg m-5 w-11/12 mx-auto text-gray-800">
+                                <table className="pt-2 overflow-x-scroll rounded-t-lg m-5 w-11/12 mx-auto text-gray-800">
                                     <tr className="text-left border-t border-b-4 border-gray-300">
                                         <th className="px-4 py-3">Name</th>
                                         <th className="px-4 py-3">Team</th>
@@ -78,15 +78,6 @@ const ApplicationList = () => {
                                         <td className="px-4 py-3">Approved</td>
                                         <td className="px-4 py-3">Edit</td>
                                     </tr> 
- 
-                                    <tr className="border-b border-gray-200">
-                                        <td className="px-4 py-3">Jill</td>
-                                        <td className="px-4 py-3">Dm Team</td>
-                                        <td className="px-4 py-3">Piash</td>
-                                        <td className="px-4 py-3">20/05/21 tot 25//05/21</td>
-                                        <td className="px-4 py-3">Approved</td>
-                                        <td className="px-4 py-3">Edit</td>
-                                    </tr>
 
                                     <tr className="border-b border-gray-200">
                                         <td className="px-4 py-3">Jill</td>
@@ -95,7 +86,7 @@ const ApplicationList = () => {
                                         <td className="px-4 py-3">20/05/21 tot 25//05/21</td>
                                         <td className="px-4 py-3">Approved</td>
                                         <td className="px-4 py-3">Edit</td>
-                                    </tr>
+                                    </tr> 
 
                                     <tr className="border-b border-gray-200">
                                         <td className="px-4 py-3">Jill</td>
@@ -104,7 +95,7 @@ const ApplicationList = () => {
                                         <td className="px-4 py-3">20/05/21 tot 25//05/21</td>
                                         <td className="px-4 py-3">Approved</td>
                                         <td className="px-4 py-3">Edit</td>
-                                    </tr>
+                                    </tr> 
                                 </table>
                             </div>
                         </details>
