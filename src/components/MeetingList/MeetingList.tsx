@@ -28,8 +28,8 @@ const meetingList = [
 const MeetingList = () => {
   return (
     <div>
-      <div className="shadow-lg mx-5 mt-4 px-7 py-5 pt-2 rounded-lg">
-        <h2 className="text-3xl font-bold text-left">Meeting List</h2>
+      <div className="shadow-lg lg:mx-5 mt-4 lg:px-7 py-5 pt-2 rounded-lg">
+        <h2 className="text-lg mb-3 lg:mb-0 lg:text-3xl font-semibold lg:font-bold text-center lg:text-left">Meeting List</h2>
 
         <div className="flex mt-3">
           <div className="w-2/4">

@@ -1,3 +1,5 @@
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 //Temporary Data
@@ -39,80 +41,111 @@ const meetingList = [
 const ApplicationList = () => {
   return (
     <div>
-      <div className="shadow-lg mx-5 mt-4 px-7 py-5 pt-2 rounded-lg">
+      <div className="shadow-lg lg:mx-5 mt-4 lg:px-7 py-5 pt-2 rounded-lg">
         <h2 className="text-2xl font-bold text-center">Application List</h2>
 
-        <div className="pt-2">
-          <div className="flex border bg-gray-200 w-full rounded-t-lg">
-            <p className="text-lg font-semibold">Leave Application</p>
-          </div>
+        <section className="pt-6 text-gray-700">
+                    <div className="w-full px-2 lg:px-16 pt-2">
+                        <details className="mb-2 duration-500 rounded-md border">
+                            <summary className="text-md lg:text-lg duration-500 font-semibold bg-gray-100 py-2 px-4">
+                            Leave Application
+                            </summary>
 
-          <div className="flex px-5 py-2 flex-row-reverse">
-            <span className="inline-flex items-center bg-gray-200">
-              <i className="fas fa-search"></i>
-            </span>
-            <input
-              type="search"
-              className="border px-5 outline-none py-0.5 rounded-3xl"
-              name=""
-              id=""
-              placeholder="Search Here"
-            />
-          </div>
+                            <div className="px-8 mt-3 mb-10 py-2">
+                                <div className="relative mx-auto lg:mx-0 block text-right my-2">
+                                    <input type="search" className="shadow-sm overflow-x-hidden rounded-3xl border -mx-1 lg:-mx-0 px-1 py-1.5 lg:p-2" placeholder="Search here" />
+                                    
+                                    <div className="absolute bg-gray-300 -mr-1.5 lg:-mr-0 py-1.5 lg:py-2 px-4 top-px right-px rounded-r-3xl pin-r pin-t text-purple-lighter">
+                                        <FontAwesomeIcon className="" icon={faSearch} />
+                                    </div>
+                                </div>
 
-          <div className="mx-3 mb-3">
-            <div className="flex">
-              <table className="w-full">
-                <thead>
-                  <tr className="text-left">
-                    <th className="bg-blue-100 border px-10 py-0.5">Name</th>
-                    <th className="bg-blue-100 border px-10 py-0.5">Team</th>
-                    <th className="bg-blue-100 border px-10 py-0.5">
-                      Observation
-                    </th>
-                    <th className="bg-blue-100 border px-10 py-0.5">
-                      Starting-Ending Date
-                    </th>
-                    <th className="bg-blue-100 border px-10 py-0.5">Status</th>
-                    <th className="bg-blue-100 border px-10 py-0.5">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {meetingList.map((meeting) => (
-                    <tr className="mb-3">
-                      <td className="border-b-2 border-gray-300 px-10 py-0.5">
-                        {meeting.Name}
-                      </td>
-                      <td className="border-b-2 border-gray-300 px-10 py-0.5">
-                        {meeting.Team}
-                      </td>
-                      <td className="border-b-2 border-gray-300 px-10 py-0.5">
-                        {meeting.Observation}
-                      </td>
-                      <td className="border-b-2 border-gray-300 px-10 py-0.5">
-                        {meeting.StartEndDate}
-                      </td>
-                      <td className="border-b-2 border-gray-300 px-10 py-0.5">
-                        {meeting.Status}
-                      </td>
-                      <td className="border-b-2 border-gray-300 px-10 py-0.5">
-                        {meeting.Action}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                                <table className="pt-2 rounded-t-lg m-5 w-11/12 mx-auto text-gray-800">
+                                    <tr className="text-left border-t border-b-4 border-gray-300">
+                                        <th className="px-4 py-3">Name</th>
+                                        <th className="px-4 py-3">Team</th>
+                                        <th className="px-4 py-3">Obserbation</th>
+                                        <th className="px-4 py-3">Starting-Ending Date</th>
+                                        <th className="px-4 py-3">Status</th>
+                                        <th className="px-4 py-3">Action</th>
+                                    </tr>
+                                    
+                                    <tr className="border-b border-gray-200">
+                                        <td className="px-4 py-3">Jill</td>
+                                        <td className="px-4 py-3">Dm Team</td>
+                                        <td className="px-4 py-3">Piash</td>
+                                        <td className="px-4 py-3">20/05/21 tot 25//05/21</td>
+                                        <td className="px-4 py-3">Approved</td>
+                                        <td className="px-4 py-3">Edit</td>
+                                    </tr> 
+ 
+                                    <tr className="border-b border-gray-200">
+                                        <td className="px-4 py-3">Jill</td>
+                                        <td className="px-4 py-3">Dm Team</td>
+                                        <td className="px-4 py-3">Piash</td>
+                                        <td className="px-4 py-3">20/05/21 tot 25//05/21</td>
+                                        <td className="px-4 py-3">Approved</td>
+                                        <td className="px-4 py-3">Edit</td>
+                                    </tr>
 
-          <div className="flex border bg-gray-300 w-full">
-            <p className="text-lg font-semibold">Resignation Application</p>
-          </div>
+                                    <tr className="border-b border-gray-200">
+                                        <td className="px-4 py-3">Jill</td>
+                                        <td className="px-4 py-3">Dm Team</td>
+                                        <td className="px-4 py-3">Piash</td>
+                                        <td className="px-4 py-3">20/05/21 tot 25//05/21</td>
+                                        <td className="px-4 py-3">Approved</td>
+                                        <td className="px-4 py-3">Edit</td>
+                                    </tr>
 
-          <div className="flex border bg-gray-300 w-full rounded-b-lg">
-            <p className="text-lg font-semibold">Others Application</p>
-          </div>
-        </div>
+                                    <tr className="border-b border-gray-200">
+                                        <td className="px-4 py-3">Jill</td>
+                                        <td className="px-4 py-3">Dm Team</td>
+                                        <td className="px-4 py-3">Piash</td>
+                                        <td className="px-4 py-3">20/05/21 tot 25//05/21</td>
+                                        <td className="px-4 py-3">Approved</td>
+                                        <td className="px-4 py-3">Edit</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div className="w-full px-2 lg:px-16">
+                        <details className="mb-4 duration-500 rounded-md border">
+                            <summary className="text-md lg:text-lg duration-500 font-semibold bg-gray-100 py-2 px-4">
+                                Resignation Applications
+                            </summary>
+
+                            <div className="px-8 mt-3 mb-10 py-2">
+                                <div className="relative mx-auto lg:mx-0 block text-right my-2">
+                                    <input type="search" className="shadow-sm overflow-x-hidden rounded-3xl border -mx-1 lg:-mx-0 px-1 py-1.5 lg:p-2" placeholder="Search here" />
+                                    
+                                    <div className="absolute bg-gray-300 -mr-1.5 lg:-mr-0 py-1.5 lg:py-2 px-4 top-px right-px rounded-r-3xl pin-r pin-t text-purple-lighter">
+                                        <FontAwesomeIcon className="" icon={faSearch} />
+                                    </div>
+                                </div>
+                             </div>
+                        </details>
+                    </div>
+
+                    <div className="w-full px-2 lg:px-16">
+                        <details className="mb-4 duration-500 rounded-md border">
+                            <summary className="text-md lg:text-lg duration-500 font-semibold bg-gray-100 py-2 px-4">
+                                Other Applications
+                            </summary>
+
+                            <div className="px-8 mt-3 mb-10 py-2">
+                                <div className="relative mx-auto lg:mx-0 block text-right my-2">
+                                    <input type="search" className="shadow-sm overflow-x-hidden rounded-3xl border -mx-1 lg:-mx-0 px-1 py-1.5 lg:p-2" placeholder="Search here" />
+                                    
+                                    <div className="absolute bg-gray-300 -mr-1.5 lg:-mr-0 py-1.5 lg:py-2 px-4 top-px right-px rounded-r-3xl pin-r pin-t text-purple-lighter">
+                                        <FontAwesomeIcon className="" icon={faSearch} />
+                                    </div>
+                                </div>
+                             </div>
+                        </details>
+                    </div>
+            </section>
       </div>
     </div>
   );

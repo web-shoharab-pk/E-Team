@@ -15,7 +15,7 @@ const AssignCourse = () => {
         <form action="">
           <div className="flex flex-wrap">
             <div className="w-full md:w-1/2 p-2">
-              <h3 className="text-md font-medium">Team Name</h3>
+              <h3 className="text-md font-medium pb-2">Team Name</h3>
               <select
                 onChange={handleChange}
                 value={currentOption}
@@ -28,7 +28,7 @@ const AssignCourse = () => {
             </div>
 
             <div className="w-full md:w-1/2 p-2">
-              <h3 className="text-md font-medium">User Name</h3>
+              <h3 className="text-md font-medium pb-2">User Name</h3>
               <select className="w-40 border border-gray-200 rounded mb-2">
                 <option value="dm">Select User</option>
                 <option value="dm">Piash</option>
@@ -38,7 +38,7 @@ const AssignCourse = () => {
             </div>
 
             <div className="w-full md:w-1/2 p-2">
-              <h3 className="text-md font-medium">Course Name</h3>
+              <h3 className="text-md font-medium pb-2">Course Name</h3>
               <select className="w-40 border border-gray-200 rounded mb-2">
                 <option value="dm">Select Course</option>
                 <option value="dm">Web Design</option>
