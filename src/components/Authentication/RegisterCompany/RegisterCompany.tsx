@@ -27,7 +27,6 @@ const RegisterCompany = () => {
         if (event.target.value) {
             const newObj = { [event.target.name]: event.target.value };
             setCompanyDetails({ ...companyDetails, ...newObj })
-            console.log(companyDetails);
         }
     }
 

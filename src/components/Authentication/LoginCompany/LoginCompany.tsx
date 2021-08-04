@@ -11,11 +11,14 @@ const LoginCompany = () => {
 
     const history = useHistory();
     const location = useLocation();
-    let { from }:any = location.state || { from: { pathname: "/" } };
+    let { from }: any = { from: { pathname: "/home" } };
 
     const handleOnChange = (event: any) => {
         const target = event.target;
         const emailRegEx = /^[a-zA-Z0-9._]{3,}[@]{1}[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/;
+
+        // For removing error
+        setErrorMessage({ error: false, message: "" });
 
         // For email state update
         if (target.name === "email" &&
@@ -43,8 +46,10 @@ const LoginCompany = () => {
                 .then((data: any) => {
                     if (!data.message) {
                         // For getting data form database 
-                        db.collection('companies').where('co_id', '==', '97chQ47VSJRmSoBsWOvDdFxCoEm1').get().then((snapshot) => {
-                            snapshot.docs.forEach(doc => {
+                        const doc: any = db.collection('companies').doc(data?.co_id).get().then(companyData => {
+                            if (!companyData?.exists) {
+                                setErrorMessage({ error: true, message: 'No active company registered with this email address!' })
+                            } else {
                                 const companyData = doc.data();
                                 const newObj = {
                                     isSignedIn: true,
@@ -55,21 +60,24 @@ const LoginCompany = () => {
                                     created_at: companyData?.created_at,
                                     updated_at: companyData?.updated_at
                                 }
-    
+
                                 setUserData(newObj);
                                 setErrorMessage({ error: false, message: '' })
                                 history.replace(from);
-                            });
-                        })
-                        db.collection('companies').onSnapshot((snapshot: any) => {
-
-                        })
+                            }
+                        });
+                    }else{
+                        setErrorMessage({ error: true, message: data.message })
                     }
                 })
 
         } else {
             setErrorMessage({ error: true, message: "Email or password field must not be empty or invalid format!" })
         }
+    }
+
+    const testDB = () => {
+
     }
     return (
         <section className="text-gray-600 body-font relative">
