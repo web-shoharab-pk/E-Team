@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
+import UserLogin from "./components/Authentication/UserLogin/UserLogin";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ShareIdea from "./components/ShareIdea/ShareIdea";
 import AllIdea from "./components/AllIdea/AllIdea";
@@ -21,19 +21,26 @@ import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
-import { db } from "./components/Login/loginmanager";
+import { db } from "./components/Authentication/UserLogin/loginmanager";
 import { UserDataContext } from "./components/Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import Footer from "./components/MainHome/Footer/Footer";
-
+import NotFound from "./components/NotFound/NotFound";
+import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
+import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
 
 
 
 const App = () => {
   const [userData, setUserData] = useState({
-    id: '',
-    age: 15
+    isSignedIn: false,
+    co_id: '',
+    company_name: '',
+    email: '',
+    role: {role_name:'',role_id:0},
+    created_at: '',
+    updated_at: ''
   })
   useEffect(() => {
     db.collection('users').onSnapshot((snapshot: any) => {
@@ -41,94 +48,102 @@ const App = () => {
         return doc?.data();
       })
       console.log(snapshotArray);
-      
+
     })
   }, [userData])
   return (
-    <UserDataContext.Provider value={{userData, setUserData}}>
+    <UserDataContext.Provider value={{ userData, setUserData }}>
       <Router>
         <Switch>
-          <Route path="/shareIdea">
+          <PrivateRoute path="/shareIdea">
             <Dashboard>
               <ShareIdea />
             </Dashboard>
-          </Route>
-          <Route path="/allIdea">
+          </PrivateRoute>
+          <PrivateRoute path="/allIdea">
             <Dashboard>
               <AllIdea />
             </Dashboard>
-          </Route>
-          <Route path="/all-courses">
+          </PrivateRoute>
+          <PrivateRoute path="/all-courses">
             <Dashboard>
               <AllCourse />
             </Dashboard>
-          </Route>
-          <Route path="/assign-course">
+          </PrivateRoute>
+          <PrivateRoute path="/assign-course">
             <Dashboard>
               <AssignCourse />
             </Dashboard>
-          </Route>
-          <Route path="/quiz">
+          </PrivateRoute>
+          <PrivateRoute path="/quiz">
             <QuizArea />
-          </Route>
-          <Route path="/create-user">
+          </PrivateRoute>
+          <PrivateRoute path="/create-user">
             <Dashboard>
               <CreateNewUser />
             </Dashboard>
-          </Route>
-          <Route path="/all-user">
+          </PrivateRoute>
+          <PrivateRoute path="/all-user">
             <Dashboard>
               <AllUserList />
             </Dashboard>
-          </Route>
-          <Route path="/leaderBoard">
+          </PrivateRoute>
+          <PrivateRoute path="/leaderBoard">
             <Dashboard>
               <LeaderBoard />
             </Dashboard>
-          </Route>
-          <Route path="/dashboard">
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route path="/setMeeting">
+          </PrivateRoute>
+          <PrivateRoute path="/setMeeting">
             <SetMeeting />
-          </Route>
-          <Route path="/inputApplication">
+          </PrivateRoute>
+          <PrivateRoute path="/inputApplication">
             <InputApplication />
-          </Route>
-          <Route path="/courseVideo">
+          </PrivateRoute>
+          <PrivateRoute path="/courseVideo">
             <CourseVideo />
-          </Route>
-          <Route path="/meetingList">
+          </PrivateRoute>
+          <PrivateRoute path="/meetingList">
             <Dashboard>
               <MeetingList />
             </Dashboard>
-          </Route>
-          <Route path="/applicationList">
+          </PrivateRoute>
+          <PrivateRoute path="/applicationList">
             <Dashboard>
               <ApplicationList />
             </Dashboard>
-          </Route>
-          <Route path="/assignment">
+          </PrivateRoute>
+          <PrivateRoute path="/assignment">
             <AssignmentArea />
-          </Route>
-          <Route path="/feedbacks">
+          </PrivateRoute>
+          <PrivateRoute path="/feedbacks">
             <FeedBacks />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route path="/home">
+          </PrivateRoute>
+          <PrivateRoute path="/home">
             <Dashboard>
               <Home />
             </Dashboard>
-          </Route>
-          <Route path="/company-registration">
+          </PrivateRoute>
+          <Route path="/login">
             <Navbar/>
-            <RegisterCompany />
+            <LoginCompany />
             <Footer/>
+          </Route>
+          <Route path="/registration">
+            <Navbar />
+            <RegisterCompany />
+            <Footer />
+          </Route>
+          <Route exact path="/:companyUserName/user-login">
+            <UserLogin />
           </Route>
           <Route exact path="/">
             <MainHome />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </Router>
