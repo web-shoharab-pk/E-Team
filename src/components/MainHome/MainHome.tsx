@@ -11,7 +11,6 @@ const MainHome = () => {
             <Navbar/>
             <Hero/>
             <PricingArea />
-            <OurClients />
             <Footer />
         </div>
     );

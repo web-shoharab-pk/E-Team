@@ -5,23 +5,23 @@ import {Link} from 'react-router-dom';
 
 const PricingArea = () => {
     return (
-        <div className="container mx-auto px-16 my-12">
-            <div className="grid grid-cols-3 border-t border-b border-gray-400">
+        <div className="container mx-auto px-3 lg:px-16 my-6 lg:my-12">
+            <div className="lg:grid lg:grid-cols-3 lg:border-t border-b border-gray-400">
                 <div className="">
-                    <div className="p-8 text-center pb-8">
-                        <div className="pb-20">
+                    <div className="px-3 py-6 lg:p-8 text-center pb-8">
+                        <div className="pb-8 lg:pb-20">
                             <h2 className="text-5xl pb-3 font-light">Free</h2>
                             <p className="text-xl">For individuals and teams looking to be more productive.</p>
                         </div>
                         
-                        <div className="text-5xl py-12">
+                        <div className="text-5xl py-4 lg:py-12">
                             <span className="text-base">$</span>
                             0
                             <span className="text-base">USD</span>
                         </div>
 
                         <div className="pt-12">
-                            <Link to="" className="border text-md lg:text-lg border-blue-500 bg-none text-blue-500 font-md lg:font-semibold py-1.5 lg:py-2 px-4 lg:px-9 rounded-md"><span>Get started</span></Link>
+                            <Link to="" className="border text-md lg:text-lg border-blue-500 bg-none text-blue-500 font-semibold py-2 px-6 lg:px-9 rounded-md"><span>Get started</span></Link>
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@ const PricingArea = () => {
                     </div>
                 </div>
 
-                <div className="border-l bg-blue-100 border-r border-gray-400">
+                <div className="border-t lg:border-t-0 border-b lg:border-b-0 lg:border-l bg-blue-100 lg:border-r border-gray-400">
                     <div className="p-8 text-center">
                         <div className="pb-6">
                             <h2 className="text-5xl pb-3 font-light">Premium</h2>
@@ -98,7 +98,7 @@ const PricingArea = () => {
                         </div>
                         
                         <div className="pt-10">
-                            <Link to="" className="border text-md lg:text-lg border-blue-500 bg-none text-blue-500 font-md lg:font-semibold py-1.5 lg:py-2 px-4 lg:px-9 rounded-md"><span>Try to Free</span></Link>
+                            <Link to="" className="border text-md lg:text-lg border-blue-500 bg-none text-blue-500 font-semibold py-2 px-6 lg:px-9 rounded-md"><span>Try to Free</span></Link>
                         </div>
                     </div>
                 
@@ -246,7 +246,7 @@ const PricingArea = () => {
                         </div>
 
                         <div className="pt-10">
-                            <Link to="" className="border text-md lg:text-lg border-blue-500 bg-none text-blue-500 font-md lg:font-semibold py-1.5 lg:py-2 px-4 lg:px-9 rounded-md"><span>Contact sales</span></Link>
+                            <Link to="" className="border text-md lg:text-lg border-blue-500 bg-none text-blue-500 font-semibold py-2 px-6 lg:px-9 rounded-md"><span>Contact sales</span></Link>
                         </div>
                     </div>
                 
