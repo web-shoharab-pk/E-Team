@@ -46,11 +46,11 @@ const LoginCompany = () => {
                 .then((data: any) => {
                     if (!data.message) {
                         // For getting data form database 
-                        const doc: any = db.collection('companies').doc(data?.co_id).get().then(companyData => {
-                            if (!companyData?.exists) {
+                        const doc: any = db.collection('companies').doc(data?.co_id).get().then(company => {
+                            if (!company?.exists) {
                                 setErrorMessage({ error: true, message: 'No active company registered with this email address!' })
                             } else {
-                                const companyData = doc.data();
+                                const companyData = company.data();
                                 const newObj = {
                                     isSignedIn: true,
                                     co_id: data?.co_id,

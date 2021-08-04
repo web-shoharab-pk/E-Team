@@ -29,6 +29,7 @@ import Footer from "./components/MainHome/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
 import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
 import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
+import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
 
 
 
@@ -138,6 +139,9 @@ const App = () => {
           </Route>
           <Route exact path="/:companyUserName/user-login">
             <UserLogin />
+          </Route>
+          <Route exact path="/system-admin">
+            <SystemAdminLogin />
           </Route>
           <Route exact path="/">
             <MainHome />
