@@ -32,8 +32,8 @@ export const registerCompany = ({ company_name, email, phone, website, co_descri
       }
 
       // Sending to database 
-      return db.collection('companies').add(newObj).then(data => {
-        return { isError: false, message: "Your company registration completed. After approve your company account, we will a email. Please wait for confirmation email." }
+      return db.collection('companies').doc(user?.uid).set(newObj).then(data => {
+        return { isError: false, message: "Your company registration completed. After approval, we will send you a email. Please wait for confirmation email." }
       })
         .catch((error) => {
           var errorCode = error.code;
