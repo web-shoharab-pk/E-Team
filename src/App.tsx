@@ -139,6 +139,11 @@ const App = () => {
                <AllDepartment />
              </Dashboard>
            </PrivateRoute>
+           <PrivateRoute path="/create-department">
+             <Dashboard>
+               <CreateDepartment />
+             </Dashboard>
+           </PrivateRoute>
           <Route path="/login">
             <Navbar/>
             <LoginCompany />
