@@ -12,45 +12,81 @@ const Sidebar = () => {
       <aside>
         <ul className="sidebar-menu p-4 font-normal">
           <li>
-            <Link to="/overview">
-              <i className="fas fa-list-alt"></i> Overview
-            </Link>
-          </li>
-          <li>
             <Link to="#">
-              <i className="fas fa-users"></i> User Management
+               User Management
             </Link>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="#" className="active">
-                  <i className="fas fa-user-plus"></i> Create User
+                <Link to="/create-user" className="active">
+                  Create User
                 </Link>
               </li>
               <li>
-                <Link to="#">
-                  <i className="fas fa-list-ol"></i> User List
+                <Link to="/all-user">
+                   All User
                 </Link>
               </li>
             </ul>
           </li>
+
           <li>
             <Link to="#">
-              <i className="fas fa-list-alt"></i> Overview
-            </Link>
-          </li>
-          <li>
-            <Link to="#">
-              <i className="fas fa-users"></i> User Management
+              Departments Management
             </Link>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="#">
-                  <i className="fas fa-user-plus"></i> Create User
+                <Link to="/create-department" className="">
+                  Create Department
+                </Link>
+              </li>
+              <li>
+                <Link to="/all-department">All Department</Link>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <Link to="#">
+               All Team 
+            </Link>
+            <ul className="sidebar-sub-menu">
+              <li>
+                <Link to="/" className="">
+                   Core Team
                 </Link>
               </li>
               <li>
                 <Link to="#">
-                  <i className="fas fa-list-ol"></i> User List
+                   Digital Marketing
+                </Link>
+              </li>
+              <li>
+                <Link to="#">
+                   Content Team
+                </Link>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <Link to="/all-courses">
+              Courses
+            </Link>
+          </li>
+
+          <li>
+            <Link to="#">
+               Applications Management
+            </Link>
+            <ul className="sidebar-sub-menu">
+              <li>
+                <Link to="/inputApplication" className="">
+                   Input Application
+                </Link>
+              </li>
+              <li>
+                <Link to="/applicationList">
+                  All Application
                 </Link>
               </li>
             </ul>

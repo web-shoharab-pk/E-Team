@@ -29,6 +29,8 @@ import Footer from "./components/MainHome/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
 import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
 import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
+import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
+import AllDepartment from "./components/AllDepartment/AllDepartment";
 
 
 
@@ -52,80 +54,196 @@ const App = () => {
     })
   }, [userData])
   return (
+    // <UserDataContext.Provider value={{ userData, setUserData }}>
+    //   <Router>
+    //     <Switch>
+    //       <PrivateRoute path="/shareIdea">
+    //         <Dashboard>
+    //           <ShareIdea />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/allIdea">
+    //         <Dashboard>
+    //           <AllIdea />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/all-courses">
+    //         <Dashboard>
+    //           <AllCourse />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/assign-course">
+    //         <Dashboard>
+    //           <AssignCourse />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/quiz">
+    //         <QuizArea />
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/create-user">
+    //         <Dashboard>
+    //           <CreateNewUser />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/all-user">
+    //         <Dashboard>
+    //           <AllUserList />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/leaderBoard">
+    //         <Dashboard>
+    //           <LeaderBoard />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/dashboard">
+    //         <Dashboard />
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/setMeeting">
+    //         <SetMeeting />
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/inputApplication">
+    //         <InputApplication />
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/courseVideo">
+    //         <CourseVideo />
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/meetingList">
+    //         <Dashboard>
+    //           <MeetingList />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/applicationList">
+    //         <Dashboard>
+    //           <ApplicationList />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/assignment">
+    //         <AssignmentArea />
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/feedbacks">
+    //         <FeedBacks />
+    //       </PrivateRoute>
+    //       <PrivateRoute path="/home">
+    //         <Dashboard>
+    //           <Home />
+    //         </Dashboard>
+    //       </PrivateRoute>
+    //        <PrivateRoute path="/all-user">
+    //         <Dashboard>
+    //           <AllUserList />
+    //         </Dashboard>
+    //        </PrivateRoute>
+    //        <PrivateRoute path="/all-department">
+    //          <Dashboard>
+    //            <AllDepartment />
+    //          </Dashboard>
+    //        </PrivateRoute>
+    //       <Route path="/login">
+    //         <Navbar/>
+    //         <LoginCompany />
+    //         <Footer/>
+    //       </Route>
+    //       <Route path="/registration">
+    //         <Navbar />
+    //         <RegisterCompany />
+    //         <Footer />
+    //       </Route>
+    //       <Route exact path="/:companyUserName/user-login">
+    //         <UserLogin />
+    //       </Route>
+    //       <Route exact path="/">
+    //         <MainHome />
+    //       </Route>
+    //       <Route path="*">
+    //         <NotFound />
+    //       </Route>
+    //     </Switch>
+    //   </Router>
+    // </UserDataContext.Provider>
     <UserDataContext.Provider value={{ userData, setUserData }}>
       <Router>
         <Switch>
-          <PrivateRoute path="/shareIdea">
+          <Route path="/shareIdea">
             <Dashboard>
               <ShareIdea />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/allIdea">
+          </Route>
+          <Route path="/allIdea">
             <Dashboard>
               <AllIdea />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/all-courses">
+          </Route>
+          <Route path="/all-courses">
             <Dashboard>
               <AllCourse />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/assign-course">
+          </Route>
+          <Route path="/assign-course">
             <Dashboard>
               <AssignCourse />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/quiz">
+          </Route>
+          <Route path="/quiz">
             <QuizArea />
-          </PrivateRoute>
-          <PrivateRoute path="/create-user">
+          </Route>
+          <Route path="/create-user">
             <Dashboard>
               <CreateNewUser />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/all-user">
+          </Route>
+          <Route path="/all-user">
             <Dashboard>
               <AllUserList />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/leaderBoard">
+          </Route>
+          <Route path="/all-department">
+            <Dashboard>
+              <AllDepartment />
+            </Dashboard>
+          </Route>
+          <Route path="/create-department">
+            <Dashboard>
+              <CreateDepartment />
+            </Dashboard>
+          </Route>
+          <Route path="/leaderBoard">
             <Dashboard>
               <LeaderBoard />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard">
+          </Route>
+          <Route path="/dashboard">
             <Dashboard />
-          </PrivateRoute>
-          <PrivateRoute path="/setMeeting">
+          </Route>
+          <Route path="/setMeeting">
             <SetMeeting />
-          </PrivateRoute>
-          <PrivateRoute path="/inputApplication">
+          </Route>
+          <Route path="/inputApplication">
             <InputApplication />
-          </PrivateRoute>
-          <PrivateRoute path="/courseVideo">
+          </Route>
+          <Route path="/courseVideo">
             <CourseVideo />
-          </PrivateRoute>
-          <PrivateRoute path="/meetingList">
+          </Route>
+          <Route path="/meetingList">
             <Dashboard>
               <MeetingList />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/applicationList">
+          </Route>
+          <Route path="/applicationList">
             <Dashboard>
               <ApplicationList />
             </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/assignment">
+          </Route>
+          <Route path="/assignment">
             <AssignmentArea />
-          </PrivateRoute>
-          <PrivateRoute path="/feedbacks">
+          </Route>
+          <Route path="/feedbacks">
             <FeedBacks />
-          </PrivateRoute>
-          <PrivateRoute path="/home">
+          </Route>
+          <Route path="/home">
             <Dashboard>
               <Home />
             </Dashboard>
-          </PrivateRoute>
+          </Route>
           <Route path="/login">
             <Navbar/>
             <LoginCompany />
