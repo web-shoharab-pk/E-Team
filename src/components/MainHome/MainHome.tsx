@@ -1,4 +1,5 @@
 import React from 'react';
+import OurSerce from '../OurService/OurSerce';
 import Footer from './Footer/Footer';
 import Hero from './Hero/Hero';
 import Navbar from './Navbar/Navbar';
@@ -10,6 +11,7 @@ const MainHome = () => {
             <Navbar/>
             <Hero/>
             <PricingArea />
+            <OurSerce />
             <Footer />
         </div>
     );
