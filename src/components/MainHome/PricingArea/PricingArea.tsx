@@ -10,7 +10,7 @@ const PricingArea = () => {
         <div className="">
           <div className="px-3 py-6 lg:p-8 text-center pb-8">
             <div className="pb-8 lg:pb-20">
-              <h2 className="text-5xl pb-3 font-medium">Free</h2>
+              <h2 className="text-5xl pb-3 font-medium text-blue-500">Free</h2>
               <p className="text-xl">
                 For individuals and teams looking to be more productive.
               </p>
@@ -125,7 +125,9 @@ const PricingArea = () => {
         <div className="border-t lg:border-t-0 border-b lg:border-b-0 lg:border-l bg-blue-100 lg:border-r border-gray-400">
           <div className="p-8 text-center">
             <div className="pb-6">
-              <h2 className="text-5xl pb-3 font-medium">Premium</h2>
+              <h2 className="text-5xl pb-3 font-medium text-blue-500">
+                Premium
+              </h2>
               <p className="text-xl">
                 For teams that need to track multiple projects and visualize
                 work in a variety of ways. Best for teams up to 100.
@@ -356,7 +358,9 @@ const PricingArea = () => {
         <div className="">
           <div className="p-8 text-center pb-8">
             <div className="pb-5">
-              <h1 className="text-5xl pb-3 font-medium">Custom</h1>
+              <h1 className="text-5xl pb-3 font-medium text-blue-500">
+                Custom
+              </h1>
               <h4 className="text-xl">
                 For companies that need enhanced control, security, and support.
               </h4>
