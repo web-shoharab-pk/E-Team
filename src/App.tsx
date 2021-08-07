@@ -29,6 +29,8 @@ import Footer from "./components/MainHome/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
 import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
 import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
+import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
+import AllDepartment from "./components/AllDepartment/AllDepartment";
 import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
 
 
@@ -127,6 +129,21 @@ const App = () => {
               <Home />
             </Dashboard>
           </PrivateRoute>
+           <PrivateRoute path="/all-user">
+            <Dashboard>
+              <AllUserList />
+            </Dashboard>
+           </PrivateRoute>
+           <PrivateRoute path="/all-department">
+             <Dashboard>
+               <AllDepartment />
+             </Dashboard>
+           </PrivateRoute>
+           <PrivateRoute path="/create-department">
+             <Dashboard>
+               <CreateDepartment />
+             </Dashboard>
+           </PrivateRoute>
           <Route path="/login">
             <Navbar/>
             <LoginCompany />
