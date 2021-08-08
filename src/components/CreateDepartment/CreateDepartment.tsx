@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { useContext } from 'react';
 import { UserDataContext } from '../Contexts/UserDataContext';
 
 export const db = firebase.firestore();
@@ -29,8 +28,6 @@ const CreateDepartment = () => {
         e.preventDefault();
 
         const {name, type, description} = departmentData;
-        console.log(departmentData);
-        
 
         db.collection("departments").add({
             name: name,
@@ -54,6 +51,7 @@ const CreateDepartment = () => {
         <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded-lg">
             <h2 className="text-center text-2xl pb-4 lg:text-3xl font-medium">Create Department</h2>
 
+            <p className="text-center text-green-600 py-4 text-lg font-normal">{success && success}</p>
             <form action="" className="form mt-4">
                 <div className="lg:flex w-full mb-5 lg:space-x-16">
                     <div className="lg:w-5/6">
@@ -80,7 +78,6 @@ const CreateDepartment = () => {
                     <input onClick={handleSubmit} type="submit" className="cursor-pointer my-4 bg-blue-500 text-white font-semibold py-2 lg:py-3 px-5 lg:px-10 rounded-lg" value="Assign Department" />
                 </div>
             </form>
-            <p className="text-center text-green-600 pt-8 pb-4 text-lg font-normal">{success && success}</p>
         </div>
     );
 };
