@@ -1,6 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import moment from 'moment';
+import sha256 from 'crypto-js/sha256';
+
+interface addSysAdminInfoType {
+    name: string;
+    email: string;
+    phone: string;
+    requested_at: string;
+}
 
 const AddSystemAdmin = () => {
+    const [addSysAdminInfo, setAddSysAdminInfo] = useState({} as addSysAdminInfoType);
+    const handleOnChange = (event: any) => {
+        setAddSysAdminInfo({ ...addSysAdminInfo, [event.target.name]: event.target.value });
+    }
+
+    const handleInviteSysAdmin = () => {
+        const nameRegEx = /^[A-Za-z.]{3,}$/;
+        const emailRegEx = /^[a-zA-Z0-9._]{3,}[@]{1}[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/;
+        const bdMobileRegEx = /^(\+)?(88)?01[0-9]{9}$/;
+
+        const { name, email, phone } = addSysAdminInfo;
+
+        if (name && email && phone) {
+            if (nameRegEx.test(name) && emailRegEx.test(email) && bdMobileRegEx.test(phone)) {
+                const presentTime =  moment().format("YYYY-MM-DD HH:mm:ss");
+                const token = sha256(presentTime).toString();
+                console.log('https://eteammanage.web.app/activate-system-admin/?email='+email+'&token='+token);
+                setAddSysAdminInfo({...addSysAdminInfo,requested_at: presentTime})
+            } else {
+                console.log("Please input valid information.");
+            }
+        } else {
+            console.log("Any field must not be empty!");
+
+        }
+    }
     return (
         <div className=" flex flex-col justify-center items-center">
             <div className="w-full sm:w-1/2 md:w-2/3 lg:w-1/2 xl:1/4 mt-14">
@@ -20,8 +55,8 @@ const AddSystemAdmin = () => {
                             <input
                                 id="full-name"
                                 type="text"
-                                name="full_name"
-                                // onKeyUp={handleOnChange}
+                                name="name"
+                                onKeyUp={handleOnChange}
                                 className="block rounded-r-full text-sm sm:text-base placeholder-gray-500 pl-4 w-full py-2 focus:outline-none focus:border-blue-400"
                                 placeholder="Full Name"
                             />
@@ -36,7 +71,7 @@ const AddSystemAdmin = () => {
                                 id="email"
                                 type="email"
                                 name="email"
-                                // onKeyUp={handleOnChange}
+                                onKeyUp={handleOnChange}
                                 className="block rounded-r-full text-sm sm:text-base placeholder-gray-500 pl-4 w-full py-2 focus:outline-none focus:border-blue-400"
                                 placeholder="E-Mail Address"
                             />
@@ -51,7 +86,7 @@ const AddSystemAdmin = () => {
                             <input
                                 type="text"
                                 name="phone"
-                                // onKeyUp={handleOnChange}
+                                onKeyUp={handleOnChange}
                                 className="block rounded-r-full text-sm sm:text-base placeholder-gray-500 pl-4 w-full py-2 focus:outline-none focus:border-blue-400"
                                 placeholder="Phone Number"
                             />
@@ -60,7 +95,7 @@ const AddSystemAdmin = () => {
                         <div className="mt-5 text-center">
                             <button
                                 className="w-40 border border-blue-500 rounded-full px-4 py-2 font-bold text-white hover:text-blue-500 bg-blue-500 hover:bg-white focus:outline-none focus:shadow-outline" type="button"
-                            // onClick={handleSignin} 
+                                onClick={handleInviteSysAdmin}
                             >
                                 Send Login Link
                             </button>

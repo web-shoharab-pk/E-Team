@@ -21,20 +21,20 @@ const Hero = () => {
           <p className="mb-8 leading-relaxed">
             It’s a training and managing web app. Where users get different type
             of facilities to manage their work and employees in a disciplined
-            way. only authorized users can use this web app. Authorized users have
-            two categories one for the employer and another one for the
+            way. only authorized users can use this web app. Authorized users
+            have two categories one for the employer and another one for the
             employee.
           </p>
           <div className="flex justify-center">
             <Link
               to="/registration"
-              className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mr-2 mb-2"
+              className="inline-flex text-white bg-blue-400 border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded text-lg mr-2 mb-2"
             >
               Register your company
             </Link>
             <Link
               to="/login"
-              className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mr-2 mb-2"
+              className="inline-flex text-white bg-blue-400 border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded text-lg mr-2 mb-2"
             >
               Login As company
             </Link>

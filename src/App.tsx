@@ -29,30 +29,30 @@ import Footer from "./components/MainHome/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
 import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
 import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
+import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
+import AllDepartment from "./components/AllDepartment/AllDepartment";
 import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
 import AddSystemAdmin from "./components/SystemAdmin/AddSystemAdmin/AddSystemAdmin";
-
-
+import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
 
 const App = () => {
   const [userData, setUserData] = useState({
     isSignedIn: false,
-    co_id: '',
-    company_name: '',
-    email: '',
-    role: {role_name:'',role_id:0},
-    created_at: '',
-    updated_at: ''
-  })
+    co_id: "",
+    company_name: "",
+    email: "",
+    role: { role_name: "", role_id: 0 },
+    created_at: "",
+    updated_at: "",
+  });
   useEffect(() => {
-    db.collection('users').onSnapshot((snapshot: any) => {
+    db.collection("users").onSnapshot((snapshot: any) => {
       const snapshotArray = snapshot.docs.map((doc: any) => {
         return doc?.data();
-      })
+      });
       console.log(snapshotArray);
-
-    })
-  }, [userData])
+    });
+  }, [userData]);
   return (
     <UserDataContext.Provider value={{ userData, setUserData }}>
       <Router>
@@ -112,6 +112,11 @@ const App = () => {
               <MeetingList />
             </Dashboard>
           </PrivateRoute>
+          <Route path="/create-course-task">
+            <Dashboard>
+              <CreateCourseTask />
+            </Dashboard>
+          </Route>
           <PrivateRoute path="/applicationList">
             <Dashboard>
               <ApplicationList />
@@ -128,10 +133,25 @@ const App = () => {
               <Home />
             </Dashboard>
           </PrivateRoute>
+          <PrivateRoute path="/all-user">
+            <Dashboard>
+              <AllUserList />
+            </Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/all-department">
+            <Dashboard>
+              <AllDepartment />
+            </Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/create-department">
+            <Dashboard>
+              <CreateDepartment />
+            </Dashboard>
+          </PrivateRoute>
           <Route path="/login">
-            <Navbar/>
+            <Navbar />
             <LoginCompany />
-            <Footer/>
+            <Footer />
           </Route>
           <Route path="/registration">
             <Navbar />
