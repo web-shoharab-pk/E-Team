@@ -32,6 +32,7 @@ import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
 import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
 import AllDepartment from "./components/AllDepartment/AllDepartment";
 import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
+import AddSystemAdmin from "./components/SystemAdmin/AddSystemAdmin/AddSystemAdmin";
 import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
 
 const App = () => {
@@ -79,11 +80,11 @@ const App = () => {
           <PrivateRoute path="/quiz">
             <QuizArea />
           </PrivateRoute>
-          <PrivateRoute path="/create-user">
+          <Route path="/create-user">
             <Dashboard>
               <CreateNewUser />
             </Dashboard>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/all-user">
             <Dashboard>
               <AllUserList />
@@ -162,6 +163,11 @@ const App = () => {
           </Route>
           <Route exact path="/system-admin">
             <SystemAdminLogin />
+          </Route>
+          <Route exact path="/system-admin/add">
+            <Dashboard>
+            <AddSystemAdmin />
+            </Dashboard>
           </Route>
           <Route exact path="/">
             <MainHome />
