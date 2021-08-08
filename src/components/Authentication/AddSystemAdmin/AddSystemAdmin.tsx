@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import md5 from 'crypto-js/md5';
+import { db } from '../../AllDepartment/AllDepartment';
 
 interface addSysAdminInfoType {
     name: string;
     email: string;
     phone: string;
-    requested_at: string;
+    expired_at: string;
 }
 
 const AddSystemAdmin = () => {
     const [addSysAdminInfo, setAddSysAdminInfo] = useState({} as addSysAdminInfoType);
+    const [error, setError] = useState({ isError: false, message: "" });
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleOnChange = (event: any) => {
+        setError({ isError: false, message: "" })
+        setIsSuccess(false)
         setAddSysAdminInfo({ ...addSysAdminInfo, [event.target.name]: event.target.value });
     }
 
@@ -25,17 +30,66 @@ const AddSystemAdmin = () => {
 
         if (name && email && phone) {
             if (nameRegEx.test(name) && emailRegEx.test(email) && bdMobileRegEx.test(phone)) {
-                const presentTime =  moment().format("YYYY-MM-DD HH:mm:ss");
-                const token = md5(presentTime).toString();
-                console.log('https://eteammanage.web.app/activate-system-admin/?email='+email+'&token='+token);
-                setAddSysAdminInfo({...addSysAdminInfo,requested_at: presentTime})
+                const presentTime = new Date();
+                const expiredAt = moment(new Date(new Date().getTime() + 60 * 60 * 24 * 1000)).format("YYYY-MM-DD HH:mm:ss");
+                const token = md5(expiredAt).toString();
+                const activationURL = 'https://eteammanage.web.app/system-admin/activate-account/?email=' + email + '&key=' + token;
+                const newTokenData = { ...addSysAdminInfo, isActivated: false, token:token, attempt:1, expired_at: expiredAt };
+
+                // For checking is there any duplicate valid token
+                db.collection("tokens_sys_admin").doc(email).get().then((doc: any) => {
+                    if (!doc?.exists) {
+                        createToken(email, newTokenData)
+                    } else {
+                        const tokenData = doc.data();
+                        const isExpired = (presentTime > new Date(tokenData.expired_at));
+                        if (tokenData.isActivated) {
+                            setIsSuccess(false);
+                            setError({ isError: true, message: "User Already exist!" })
+                        } else if (!isExpired) {
+                            setIsSuccess(false);
+                            setError({ isError: true, message: "Already invited. Tell to check email inbox or spam box!" })
+                        } else if (isExpired){
+                            tokenData.attempt <= 4? 
+                            updateToken(email, {...newTokenData,attempt:tokenData.attempt + 1}) :
+                            setError({ isError: true, message: "You have invited "+tokenData.attempt+" times. You have not invite more by this email." })
+                        }
+                    }
+                })
             } else {
-                console.log("Please input valid information.");
+                setIsSuccess(false);
+                setError({ isError: true, message: "Please input valid information." })
             }
         } else {
-            console.log("Any field must not be empty!");
-
+            setIsSuccess(false);
+            setError({ isError: true, message: "Any field must not be empty!" })
         }
+    }
+
+    const createToken = (email: string, newTokenData: object) => {
+        // For sending data to database
+        db.collection('tokens_sys_admin').doc(email).set(newTokenData)
+            .then(data => {
+                setError({ isError: false, message: "Invitation has been sent. The invitation will expire in 24 hours." });
+                setIsSuccess(true);
+            })
+            .catch((error) => {
+                setIsSuccess(false);
+                setError({ isError: true, message: "Something occurs error. please try again!" });
+            });
+    }
+
+    const updateToken = (email: string, newTokenData: object) => {
+        // For sending data to database
+        db.collection('tokens_sys_admin').doc(email).update(newTokenData)
+            .then(data => {
+                setError({ isError: false, message: "Invitation has been sent again. The invitation will expire in 24 hours." });
+                setIsSuccess(true);
+            })
+            .catch((error) => {
+                setIsSuccess(false);
+                setError({ isError: true, message: "Something occurs error. please try again!" });
+            });
     }
     return (
         <div className=" flex flex-col justify-center items-center">
@@ -44,7 +98,13 @@ const AddSystemAdmin = () => {
                     <div className="my-5">
                         <h3 className="text-3xl font-bold text-center">Add system admin</h3>
                     </div>
+                    {
+                        error.isError && <div className="text-red-500 mx-5 text-center">{error.message}</div>
+                    }
 
+                    {
+                        !error.isError && isSuccess && <div className="text-green-500 mx-5 text-center">{error.message}</div>
+                    }
                     <form className="px-8 pt-5 bg-white rounded">
 
                         <div className="flex items-center mb-4 border border-blue-500 rounded-full">
