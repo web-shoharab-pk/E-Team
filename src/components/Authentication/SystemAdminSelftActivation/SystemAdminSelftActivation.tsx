@@ -58,6 +58,9 @@ const SystemAdminSelftActivation = () => {
                     if (!data?.isError) {
                         setIsActivated(true);
                         setError(data);
+                        db.collection('tokens_sys_admin').doc(email).update({...tokenData,isActivated:true}).then(() => {
+                            // token data updated in database
+                        })
                     } else {
                         setError(data);
                     }
