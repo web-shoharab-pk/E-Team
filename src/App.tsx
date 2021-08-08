@@ -30,6 +30,7 @@ import NotFound from "./components/NotFound/NotFound";
 import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
 import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
 import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
+import AddSystemAdmin from "./components/SystemAdmin/AddSystemAdmin/AddSystemAdmin";
 
 
 
@@ -79,11 +80,11 @@ const App = () => {
           <PrivateRoute path="/quiz">
             <QuizArea />
           </PrivateRoute>
-          <PrivateRoute path="/create-user">
+          <Route path="/create-user">
             <Dashboard>
               <CreateNewUser />
             </Dashboard>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/all-user">
             <Dashboard>
               <AllUserList />
@@ -142,6 +143,11 @@ const App = () => {
           </Route>
           <Route exact path="/system-admin">
             <SystemAdminLogin />
+          </Route>
+          <Route exact path="/system-admin/add">
+            <Dashboard>
+            <AddSystemAdmin />
+            </Dashboard>
           </Route>
           <Route exact path="/">
             <MainHome />
