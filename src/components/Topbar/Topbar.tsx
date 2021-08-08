@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Topbar.css';
+import {Link} from 'react-router-dom';
 
 const Topbar = () => {
     // For handling sidebar show or hide
@@ -23,8 +24,8 @@ const Topbar = () => {
                 screenWidth > 767 &&
                 <nav className="navbar flex flex-row justify-between items-center px-4 text-lg">
                     <div className="breadcrumb">
-                        <a href="#" className="font-medium">Home</a> /
-                        <a href="#" className="font-medium">Dashboard</a>
+                        <Link to="/" className="font-medium">Home</Link> /
+                        <Link to="/" className="font-medium">Dashboard</Link>
                     </div>
                     <p className="username">Piash</p>
                 </nav>
