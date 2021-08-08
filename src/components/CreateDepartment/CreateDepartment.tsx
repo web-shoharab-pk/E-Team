@@ -22,19 +22,15 @@ const CreateDepartment = () => {
     const { userData, setUserData } = useContext(UserDataContext);
 
     const handleOnChange = (e: any) => {
-        if(e.target.name === 'name') {
-            departmentData.name = e.target.value;
-        } else if(e.target.name === 'type') {
-            departmentData.type = e.target.value;
-        } else if(e.target.name === 'description') {
-            departmentData.description = e.target.value;
-        }
+        setDepartmentData({...departmentData, [e.target.id]:e.target.value})
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
         const {name, type, description} = departmentData;
+        console.log(departmentData);
+        
 
         db.collection("departments").add({
             name: name,
