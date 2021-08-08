@@ -1,8 +1,10 @@
+import { MD5 } from "crypto-js";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import moment from "moment";
 // Firebase Configaration
-import { firebaseConfig } from "./config.firebase";
+import { firebaseConfig } from "./UserLogin/config.firebase";
 
 // initializing if firebase app not initialized yat.
 if (!firebase.apps.length) {
@@ -51,7 +53,7 @@ export const loginComapny = (email: string, password: string) => {
       var user = userCredential.user;
 
 
-      return { message:'', co_id: user?.uid };
+      return { message: '', co_id: user?.uid };
     })
     .catch((error) => {
       var errorCode = error.code;
@@ -61,31 +63,36 @@ export const loginComapny = (email: string, password: string) => {
     });
 }
 
-const signin = (email: string, password: string): any => {
-  return firebase.auth().signInWithEmailAndPassword(email, password)
+// For Activate System Admin
+export const systemAdminRegistration = (email: any, password: string, userData: any) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in
       var user = userCredential.user;
 
       const newObj = {
-        isSignIn: true,
-        name: user?.displayName,
-        email: user?.email,
-        photo: user?.photoURL,
-        uid: user?.uid,
-        errMessage: ''
+        id: user?.uid,
+        role: "system-admin",
+        created_at: "",
+        updated_at: "",
+        ...userData
       }
 
-      return newObj;
+      // Sending to database 
+      return db.collection('system_admins').doc(user?.uid).set(newObj).then(data => {
+        return { isError: false, message: "Your account has been activated successfully. You can login now using your cridential." }
+      })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          return { isError: true, message: error.message }
+        });
     })
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
 
-      return { message: error.message };
+      return { isError: true, message: error.message }
     });
 }
-
-export default signin;
-
-

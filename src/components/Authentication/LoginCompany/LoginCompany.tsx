@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserDataContext, UserDataContextType, UserDataType } from '../../Contexts/UserDataContext';
-import { db, loginComapny } from '../UserLogin/loginmanager';
+import { db, loginComapny } from '../loginmanager';
 
 const LoginCompany = () => {
     const { userData, setUserData } = useContext(UserDataContext);
@@ -46,7 +46,7 @@ const LoginCompany = () => {
                 .then((data: any) => {
                     if (!data.message) {
                         // For getting data form database 
-                        const doc: any = db.collection('companies').doc(data?.co_id).get().then(company => {
+                        db.collection('companies').doc(data?.co_id).get().then(company => {
                             if (!company?.exists) {
                                 setErrorMessage({ error: true, message: 'No active company registered with this email address!' })
                             } else {

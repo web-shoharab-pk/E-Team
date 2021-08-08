@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { registerCompany } from '../UserLogin/loginmanager';
+import { registerCompany } from '../loginmanager';
 interface CompanyDataType {
     company_name: string;
     email: string;
