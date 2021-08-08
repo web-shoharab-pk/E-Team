@@ -31,8 +31,8 @@ import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany"
 import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
 import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
 import AllDepartment from "./components/AllDepartment/AllDepartment";
-import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
-import AddSystemAdmin from "./components/SystemAdmin/AddSystemAdmin/AddSystemAdmin";
+import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
+import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
 import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
 
 const App = () => {

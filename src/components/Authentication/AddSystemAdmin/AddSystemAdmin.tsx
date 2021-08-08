@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import md5 from 'crypto-js/md5';
+import { db } from '../../AllDepartment/AllDepartment';
 
 interface addSysAdminInfoType {
     name: string;
     email: string;
     phone: string;
+    role: string;
     requested_at: string;
 }
 
 const AddSystemAdmin = () => {
     const [addSysAdminInfo, setAddSysAdminInfo] = useState({} as addSysAdminInfoType);
+    const [error,setError] = useState({isError: false,message:""});
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleOnChange = (event: any) => {
+        setIsSuccess(false)
         setAddSysAdminInfo({ ...addSysAdminInfo, [event.target.name]: event.target.value });
     }
 
@@ -25,16 +30,25 @@ const AddSystemAdmin = () => {
 
         if (name && email && phone) {
             if (nameRegEx.test(name) && emailRegEx.test(email) && bdMobileRegEx.test(phone)) {
-                const presentTime =  moment().format("YYYY-MM-DD HH:mm:ss");
+                const presentTime = moment().format("YYYY-MM-DD HH:mm:ss");
                 const token = md5(presentTime).toString();
-                console.log('https://eteammanage.web.app/activate-system-admin/?email='+email+'&token='+token);
-                setAddSysAdminInfo({...addSysAdminInfo,requested_at: presentTime})
+                console.log('https://eteammanage.web.app/activate-system-admin/?email=' + email + '&token=' + token);
+
+                // For sending data to database
+                db.collection('tokens').doc(token).set({...addSysAdminInfo,role:"system-admin",requested_at: presentTime}).then(data => {
+                    setError({ isError: false, message: "Invitation has been sent. The invitation will expire in 24." })
+                    setIsSuccess(true);
+                })
+                    .catch((error) => {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        setError({ isError: true, message: "Something occurs error. please try again!" })
+                    });
             } else {
-                console.log("Please input valid information.");
+                setError({ isError: true, message: "Please input valid information." })
             }
         } else {
-            console.log("Any field must not be empty!");
-
+            setError({ isError: true, message: "Any field must not be empty!" })
         }
     }
     return (
@@ -44,7 +58,13 @@ const AddSystemAdmin = () => {
                     <div className="my-5">
                         <h3 className="text-3xl font-bold text-center">Add system admin</h3>
                     </div>
-
+                    {
+                        error.isError && <div className="text-red-500 mx-5">{error.message}</div>
+                    }
+                    
+                    {
+                        !error.isError && isSuccess && <div className="text-green-500 mx-5">{error.message}</div>
+                    }
                     <form className="px-8 pt-5 bg-white rounded">
 
                         <div className="flex items-center mb-4 border border-blue-500 rounded-full">
