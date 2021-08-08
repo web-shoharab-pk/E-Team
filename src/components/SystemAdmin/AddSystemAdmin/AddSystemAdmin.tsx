@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-import sha256 from 'crypto-js/sha256';
+import md5 from 'crypto-js/md5';
 
 interface addSysAdminInfoType {
     name: string;
@@ -11,6 +11,7 @@ interface addSysAdminInfoType {
 
 const AddSystemAdmin = () => {
     const [addSysAdminInfo, setAddSysAdminInfo] = useState({} as addSysAdminInfoType);
+
     const handleOnChange = (event: any) => {
         setAddSysAdminInfo({ ...addSysAdminInfo, [event.target.name]: event.target.value });
     }
@@ -25,7 +26,7 @@ const AddSystemAdmin = () => {
         if (name && email && phone) {
             if (nameRegEx.test(name) && emailRegEx.test(email) && bdMobileRegEx.test(phone)) {
                 const presentTime =  moment().format("YYYY-MM-DD HH:mm:ss");
-                const token = sha256(presentTime).toString();
+                const token = md5(presentTime).toString();
                 console.log('https://eteammanage.web.app/activate-system-admin/?email='+email+'&token='+token);
                 setAddSysAdminInfo({...addSysAdminInfo,requested_at: presentTime})
             } else {
