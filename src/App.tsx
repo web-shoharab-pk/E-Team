@@ -33,6 +33,8 @@ import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
 import AllDepartment from "./components/AllDepartment/AllDepartment";
 import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
 import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
+import PricingCard from "./components/PricingCard/PricingCard";
+import Contact from "./components/Contact/Contact"; 
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -162,6 +164,13 @@ const App = () => {
           </Route>
           <Route exact path="/system-admin">
             <SystemAdminLogin />
+          </Route>
+          <Route exact path="/pricing">
+            <PricingCard />
+          </Route>
+          <Route exact path="/contact">
+            <Navbar />
+             <Contact />
           </Route>
           <Route exact path="/">
             <MainHome />

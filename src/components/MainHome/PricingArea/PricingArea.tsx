@@ -383,7 +383,7 @@ const PricingArea = () => {
                 className="w-full bg-gray-200 appearance-none mt-7 h-2 rounded-lg"
                 type="range"
                 step="1"
-                value="25"
+                // value="25"
                 min="25"
                 max="5000"
               />
