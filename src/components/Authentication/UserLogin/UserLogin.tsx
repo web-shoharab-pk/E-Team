@@ -5,7 +5,6 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import loginBG from '../../../Assets/images/Partnership-rafiki.png';
-import signin from './loginmanager';
 import { useHistory, useLocation } from 'react-router';
 import { UserDataContext } from '../../Contexts/UserDataContext';
 
@@ -48,14 +47,14 @@ const UserLogin = () => {
 
     const handleSignin = () => {
         if (email && password) {
-            signin(email, password)
-                .then((data: UserDataType) => {
-                    if (!data.message) {
-                        console.log(data);
-                    } else {
-                        alert(data.message)
-                    }
-                })
+            // signin(email, password)
+            //     .then((data: UserDataType) => {
+            //         if (!data.message) {
+            //             console.log(data);
+            //         } else {
+            //             alert(data.message)
+            //         }
+            //     })
         } else {
             alert("Login failed");
         }

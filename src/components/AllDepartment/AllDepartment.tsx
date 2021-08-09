@@ -1,8 +1,9 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { UserDataContext } from '../Contexts/UserDataContext';
 
 export const db = firebase.firestore();
 
@@ -14,6 +15,7 @@ type AllDepartment = {
 
 const AllDepartment = () => {
     const [allDepartment, setAllDepartment] = useState([]);
+    const { userData, setUserData } = useContext(UserDataContext);
 
     useEffect(() => {
         db.collection("departments").get().then((docs: any) => {
@@ -31,9 +33,11 @@ const AllDepartment = () => {
 
     let departmentData: any = [];
     allDepartment.forEach((doc: any) => {
-        departmentData = [...departmentData, doc.data()];
+        if (userData.co_id === doc.data().co_id) {
+            departmentData = [...departmentData, doc.data()];
+        }
     });
-
+    
     return (
         <div className="shadow mt-9 rounded-md mx-16">
             <h2 className="text-center text-2xl py-3 font-semibold">All Department List</h2>

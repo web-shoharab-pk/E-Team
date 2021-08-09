@@ -21,7 +21,7 @@ import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
-import { db } from "./components/Authentication/UserLogin/loginmanager";
+import { db } from "./components/Authentication/loginmanager";
 import { UserDataContext } from "./components/Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
@@ -31,10 +31,12 @@ import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany"
 import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
 import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
 import AllDepartment from "./components/AllDepartment/AllDepartment";
-import SystemAdminLogin from "./components/SystemAdmin/SystemAdminLogin/SystemAdminLogin";
+import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
+import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
 import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
 import PricingCard from "./components/PricingCard/PricingCard";
-import Contact from "./components/Contact/Contact"; 
+import Contact from "./components/Contact/Contact";  
+import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -81,11 +83,11 @@ const App = () => {
           <PrivateRoute path="/quiz">
             <QuizArea />
           </PrivateRoute>
-          <PrivateRoute path="/create-user">
+          <Route path="/create-user">
             <Dashboard>
               <CreateNewUser />
             </Dashboard>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/all-user">
             <Dashboard>
               <AllUserList />
@@ -162,7 +164,7 @@ const App = () => {
           <Route exact path="/:companyUserName/user-login">
             <UserLogin />
           </Route>
-          <Route exact path="/system-admin">
+          <Route exact path="/system-admin/login">
             <SystemAdminLogin />
           </Route>
           <Route exact path="/pricing">
@@ -171,6 +173,15 @@ const App = () => {
           <Route exact path="/contact">
             <Navbar />
              <Contact />
+          <Route exact path="/system-admin/activate-account">
+            <Navbar/>
+            <SystemAdminSelftActivation />
+            <Footer/>
+          </Route>
+          <Route exact path="/system-admin/add">
+            <Dashboard>
+            <AddSystemAdmin />
+            </Dashboard>
           </Route>
           <Route exact path="/">
             <MainHome />
