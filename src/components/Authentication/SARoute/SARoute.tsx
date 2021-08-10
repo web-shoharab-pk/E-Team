@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { SystemAdminDataContext } from '../../../Contexts/UserDataContext';
 import { Redirect, Route } from 'react-router';
 
-const PrivateRoute = ({ children, ...rest }: any) => {
-    const {userData,setUserData} = useContext(ConpanyDataContext)
+const SARoute = ({ children, ...rest }: any) => {
+    const { systemAdminData, setSystemAdminData } = useContext(SystemAdminDataContext)
     return (
         <Route
             {...rest}
-            render={({location}:any)=> userData.isSignedIn ? (
+            render={({location}:any)=> systemAdminData.isSignedIn ? (
                 children
                 ):(
                     <Redirect
                     to={{
-                        pathname: "/login",
+                        pathname: "/system-admin/login",
                         state: {from:location}
                     }}
                     />
@@ -22,4 +22,4 @@ const PrivateRoute = ({ children, ...rest }: any) => {
     );
 };
 
-export default PrivateRoute;
+export default SARoute;
