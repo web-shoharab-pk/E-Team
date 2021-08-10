@@ -34,6 +34,8 @@ import AllDepartment from "./components/AllDepartment/AllDepartment";
 import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
 import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
 import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
+import PricingCard from "./components/PricingCard/PricingCard";
+import Contact from "./components/Contact/Contact";  
 import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
 
 const App = () => {
@@ -165,6 +167,12 @@ const App = () => {
           <Route exact path="/system-admin/login">
             <SystemAdminLogin />
           </Route>
+          <Route exact path="/pricing">
+            <PricingCard />
+          </Route>
+          <Route exact path="/contact">
+            <Navbar />
+             <Contact />
           <Route exact path="/system-admin/activate-account">
             <Navbar/>
             <SystemAdminSelftActivation />
