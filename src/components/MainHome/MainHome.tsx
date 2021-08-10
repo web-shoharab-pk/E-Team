@@ -6,6 +6,7 @@ import Hero from "./Hero/Hero";
 import Navbar from "./Navbar/Navbar"; 
 
 const MainHome = () => {
+  
   return (
     <>
       <Navbar />
