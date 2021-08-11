@@ -44,29 +44,6 @@ const Sidebar = () => {
               </li>
             </ul>
           </li>
-
-          <li>
-            <Link to="#">
-               All Team 
-            </Link>
-            <ul className="sidebar-sub-menu">
-              <li>
-                <Link to="/" className="">
-                   Core Team
-                </Link>
-              </li>
-              <li>
-                <Link to="#">
-                   Digital Marketing
-                </Link>
-              </li>
-              <li>
-                <Link to="#">
-                   Content Team
-                </Link>
-              </li>
-            </ul>
-          </li>
           
           <li>
             <Link to="/all-courses">
