@@ -22,7 +22,7 @@ import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db } from "./components/Authentication/loginmanager";
-import { UserDataContext } from "./components/Contexts/UserDataContext";
+import { ConpanyDataContext, SystemAdminDataContext } from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import Footer from "./components/MainHome/Footer/Footer";
@@ -38,6 +38,9 @@ import PricingCard from "./components/PricingCard/PricingCard";
 import Contact from "./components/Contact/Contact";
 import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
 import OurTeam from "./components/OurTeam/OurTeam";
+import SARoute from "./components/Authentication/SARoute/SARoute";
+import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
+import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -46,6 +49,15 @@ const App = () => {
     company_name: "",
     email: "",
     role: { role_name: "", role_id: 0 },
+    created_at: "",
+    updated_at: "",
+  });
+  const [systemAdminData, setSystemAdminData] = useState({
+    isSignedIn: false,
+    id: "",
+    name: "",
+    email: "",
+    role: "system-admin",
     created_at: "",
     updated_at: "",
   });
@@ -58,152 +70,158 @@ const App = () => {
     });
   }, [userData]);
   return (
-    <UserDataContext.Provider value={{ userData, setUserData }}>
-      <Router>
-        <Switch>
-          <PrivateRoute path="/shareIdea">
-            <Dashboard>
-              <ShareIdea />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/allIdea">
-            <Dashboard>
-              <AllIdea />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/all-courses">
-            <Dashboard>
-              <AllCourse />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/assign-course">
-            <Dashboard>
-              <AssignCourse />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/quiz">
-            <QuizArea />
-          </PrivateRoute>
-          <PrivateRoute path="/create-user">
-            <Dashboard>
-              <CreateNewUser />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/all-user">
-            <Dashboard>
-              <AllUserList />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/leaderBoard">
-            <Dashboard>
-              <LeaderBoard />
-            </Dashboard>
-          </PrivateRoute>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <PrivateRoute path="/setMeeting">
-            <SetMeeting />
-          </PrivateRoute>
-          <PrivateRoute path="/inputApplication">
-            <InputApplication />
-          </PrivateRoute>
-          <PrivateRoute path="/courseVideo">
-            <CourseVideo />
-          </PrivateRoute>
-          <PrivateRoute path="/meetingList">
-            <Dashboard>
-              <MeetingList />
-            </Dashboard>
-          </PrivateRoute>
-          <Route path="/create-course-task">
-            <Dashboard>
-              <CreateCourseTask />
-            </Dashboard>
-          </Route>
-          <PrivateRoute path="/applicationList">
-            <Dashboard>
-              <ApplicationList />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/assignment">
-            <AssignmentArea />
-          </PrivateRoute>
-          <PrivateRoute path="/feedbacks">
-            <FeedBacks />
-          </PrivateRoute>
-          <PrivateRoute path="/home">
-            <Dashboard>
-              <Home />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/all-user">
-            <Dashboard>
-              <AllUserList />
-            </Dashboard>
-          </PrivateRoute>
-          <PrivateRoute path="/all-department">
-            <Dashboard>
-              <AllDepartment />
-            </Dashboard>
-          </PrivateRoute>
-          <Route path="/create-department"> 
-          {/* private route */}
-            <Dashboard>
-              <CreateDepartment />
-            </Dashboard>
-          </Route>
-          <Route path="/login">
-            <Navbar />
-            <LoginCompany />
-            <Footer />
-          </Route>
-          <Route path="/registration">
-            <Navbar />
-            <RegisterCompany />
-            <Footer />
-          </Route>
-          <Route exact path="/:companyUserName/user-login">
-            <UserLogin />
-          </Route>
-          <Route exact path="/system-admin/login">
-            <SystemAdminLogin />
-          </Route>
 
-          <Route path="/pricing">
-            <PricingCard />
-            <Footer />
-          </Route>
-
-          <Route path="/contact">
-            <Navbar />
-            <Contact />
-            <Footer />
-          </Route>
-          <Route exact path="/system-admin/activate-account">
-            <Navbar />
-            <SystemAdminSelftActivation />
-            <Footer />
-          </Route>
-          <Route exact path="/system-admin/add">
-            <Dashboard>
-              <AddSystemAdmin />
-            </Dashboard>
-          </Route>
-          <Route path="/ourTeam">
-            <Navbar />
-            <OurTeam />
-            <Footer />
-          </Route>
-          <Route exact path="/">
-            <MainHome />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
-    </UserDataContext.Provider>
+    <ConpanyDataContext.Provider value={{ userData, setUserData }}>
+      <SystemAdminDataContext.Provider value={{ systemAdminData, setSystemAdminData }}>
+        <Router>
+          <Switch>
+            <PrivateRoute path="/shareIdea">
+              <Dashboard>
+                <ShareIdea />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/allIdea">
+              <Dashboard>
+                <AllIdea />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/all-courses">
+              <Dashboard>
+                <AllCourse />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/assign-course">
+              <Dashboard>
+                <AssignCourse />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/quiz">
+              <QuizArea />
+            </PrivateRoute>
+            <Route path="/create-user">
+              <Dashboard>
+                <CreateNewUser />
+              </Dashboard>
+            </Route>
+            <PrivateRoute path="/all-user">
+              <Dashboard>
+                <AllUserList />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/leaderBoard">
+              <Dashboard>
+                <LeaderBoard />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path="/setMeeting">
+              <SetMeeting />
+            </PrivateRoute>
+            <PrivateRoute path="/inputApplication">
+              <InputApplication />
+            </PrivateRoute>
+            <PrivateRoute path="/courseVideo">
+              <CourseVideo />
+            </PrivateRoute>
+            <PrivateRoute path="/meetingList">
+              <Dashboard>
+                <MeetingList />
+              </Dashboard>
+            </PrivateRoute>
+            <Route path="/create-course-task">
+              <Dashboard>
+                <CreateCourseTask />
+              </Dashboard>
+            </Route>
+            <PrivateRoute path="/applicationList">
+              <Dashboard>
+                <ApplicationList />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/assignment">
+              <AssignmentArea />
+            </PrivateRoute>
+            <PrivateRoute path="/feedbacks">
+              <FeedBacks />
+            </PrivateRoute>
+            <PrivateRoute path="/home">
+              <Dashboard>
+                <Home />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/all-user">
+              <Dashboard>
+                <AllUserList />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/all-department">
+              <Dashboard>
+                <AllDepartment />
+              </Dashboard>
+            </PrivateRoute>
+            <Route path="/create-department">
+              <Dashboard>
+                <CreateDepartment />
+              </Dashboard>
+            </Route>
+            <Route path="/login">
+              <Navbar />
+              <LoginCompany />
+              <Footer />
+            </Route>
+            <Route path="/registration">
+              <Navbar />
+              <RegisterCompany />
+              <Footer />
+            </Route>
+            <Route exact path="/:companyUserName/user-login">
+              <UserLogin />
+            </Route>
+            <Route path="/pricing">
+              <PricingCard />
+            </Route>
+            <Route path="/contact">
+              <Navbar />
+              <Contact />
+            </Route>
+            <Route path="/system-admin/login">
+              <SystemAdminLogin />
+            </Route>
+            <Route path="/system-admin/activate-account">
+              <Navbar />
+              <SystemAdminSelftActivation />
+              <Footer />
+            </Route>
+            <SARoute path="/system-admin/add">
+              <SADashboard>
+                <AddSystemAdmin />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/view-all">
+              <SADashboard>
+                <ViewAllAdmin />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/">
+              <SADashboard>
+                Hello
+              </SADashboard>
+            </SARoute>
+            <Route exact path="/ourTeam">
+              <OurTeam />
+            </Route>
+            <Route exact path="/">
+              <MainHome />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Router>
+      </SystemAdminDataContext.Provider>
+    </ConpanyDataContext.Provider>
   );
 };
 

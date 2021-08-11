@@ -96,3 +96,20 @@ export const systemAdminRegistration = (email: any, password: string, userData: 
       return { isError: true, message: error.message }
     });
 }
+
+export const systemAdminLogin = (email: string, password: string) => {
+  return firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
+
+
+      return { message: '', id: user?.uid };
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      return { message: error.message };
+    });
+}

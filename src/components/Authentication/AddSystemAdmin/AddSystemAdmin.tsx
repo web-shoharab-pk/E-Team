@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import moment from 'moment';
 import md5 from 'crypto-js/md5';
+import emailjs from 'emailjs-com';
 import { db } from '../../AllDepartment/AllDepartment';
+import { SystemAdminDataContext } from '../../../Contexts/UserDataContext';
 
 interface addSysAdminInfoType {
     name: string;
@@ -11,6 +13,7 @@ interface addSysAdminInfoType {
 }
 
 const AddSystemAdmin = () => {
+    const { systemAdminData, setSystemAdminData } = useContext(SystemAdminDataContext)
     const [addSysAdminInfo, setAddSysAdminInfo] = useState({} as addSysAdminInfoType);
     const [error, setError] = useState({ isError: false, message: "" });
     const [isSuccess, setIsSuccess] = useState(false);
@@ -21,25 +24,28 @@ const AddSystemAdmin = () => {
         setAddSysAdminInfo({ ...addSysAdminInfo, [event.target.name]: event.target.value });
     }
 
-    const handleInviteSysAdmin = () => {
-        const nameRegEx = /^[A-Za-z.]{3,}$/;
+    const handleInviteSysAdmin = (event: any) => {
+        event.preventDefault();
         const emailRegEx = /^[a-zA-Z0-9._]{3,}[@]{1}[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/;
         const bdMobileRegEx = /^(\+)?(88)?01[0-9]{9}$/;
 
         const { name, email, phone } = addSysAdminInfo;
 
         if (name && email && phone) {
-            if (nameRegEx.test(name) && emailRegEx.test(email) && bdMobileRegEx.test(phone)) {
+            if (name.length >= 3 && emailRegEx.test(email) && bdMobileRegEx.test(phone)) {
                 const presentTime = new Date();
                 const expiredAt = moment(new Date(new Date().getTime() + 60 * 60 * 24 * 1000)).format("YYYY-MM-DD HH:mm:ss");
                 const token = md5(expiredAt).toString();
                 const activationURL = 'https://eteammanage.web.app/system-admin/activate-account/?email=' + email + '&key=' + token;
-                const newTokenData = { ...addSysAdminInfo, isActivated: false, token:token, attempt:1, expired_at: expiredAt };
+                const newTokenData = { ...addSysAdminInfo, isActivated: false, token: token, attempt: 1, expired_at: expiredAt,created_by:systemAdminData.id };
 
                 // For checking is there any duplicate valid token
                 db.collection("tokens_sys_admin").doc(email).get().then((doc: any) => {
                     if (!doc?.exists) {
                         createToken(email, newTokenData)
+                        sendInvitation({user_email:email,user_name:name, activation_url:activationURL})
+                        console.log({user_email:email,user_name:name, activation_url:activationURL})
+                        event.target.reset();
                     } else {
                         const tokenData = doc.data();
                         const isExpired = (presentTime > new Date(tokenData.expired_at));
@@ -49,10 +55,15 @@ const AddSystemAdmin = () => {
                         } else if (!isExpired) {
                             setIsSuccess(false);
                             setError({ isError: true, message: "Already invited. Tell to check email inbox or spam box!" })
-                        } else if (isExpired){
-                            tokenData.attempt <= 4? 
-                            updateToken(email, {...newTokenData,attempt:tokenData.attempt + 1}) :
-                            setError({ isError: true, message: "You have invited "+tokenData.attempt+" times. You have not invite more by this email." })
+                        } else if (isExpired) {
+                            if (tokenData.attempt <= 4) {
+                                updateToken(email, { ...newTokenData, attempt: tokenData.attempt + 1 })
+                                sendInvitation({name,email, activationURL})
+                                event.target.reset();
+                                console.log({name,email, activationURL})
+                            } else {
+                                setError({ isError: true, message: "You have invited " + tokenData.attempt + " times. You have not invite more by this email." })
+                            }
                         }
                     }
                 })
@@ -91,6 +102,19 @@ const AddSystemAdmin = () => {
                 setError({ isError: true, message: "Something occurs error. please try again!" });
             });
     }
+
+
+    const sendInvitation = (obj: any) => {
+        emailjs.send('gmail', 'template_y9zukgk', obj, 'user_V7FLGg8OEpepueFuWRERN')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+
+    }
+
+
     return (
         <div className=" flex flex-col justify-center items-center">
             <div className="w-full sm:w-1/2 md:w-2/3 lg:w-1/2 xl:1/4 mt-14">
@@ -105,7 +129,7 @@ const AddSystemAdmin = () => {
                     {
                         !error.isError && isSuccess && <div className="text-green-500 mx-5 text-center">{error.message}</div>
                     }
-                    <form className="px-8 pt-5 bg-white rounded">
+                    <form className="px-8 pt-5 bg-white rounded" onSubmit={handleInviteSysAdmin}>
 
                         <div className="flex items-center mb-4 border border-blue-500 rounded-full">
                             <div className="w-12 rounded-l-full pl-4 py-2 bg-blue-500 text-white">
@@ -155,8 +179,8 @@ const AddSystemAdmin = () => {
 
                         <div className="mt-5 text-center">
                             <button
-                                className="w-40 border border-blue-500 rounded-full px-4 py-2 font-bold text-white hover:text-blue-500 bg-blue-500 hover:bg-white focus:outline-none focus:shadow-outline" type="button"
-                                onClick={handleInviteSysAdmin}
+                                type="submit"
+                                className="w-40 border border-blue-500 rounded-full px-4 py-2 font-bold text-white hover:text-blue-500 bg-blue-500 hover:bg-white focus:outline-none focus:shadow-outline"
                             >
                                 Send Login Link
                             </button>

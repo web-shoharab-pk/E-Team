@@ -4,9 +4,9 @@ import { useLocation } from "react-router-dom";
 import { systemAdminRegistration } from '../loginmanager';
 
 const SystemAdminSelftActivation = () => {
-    const [tokenData, setTokenData] = useState({ token: "", email: "", attempt: 0, name: "", expired_at: "", isActivated: false, phone: "", invited_by: "" });
+    const [tokenData, setTokenData] = useState({ token: "", email: "", attempt: 0, name: "", expired_at: "", isActivated: false, phone: "", created_by: "" });
     const [passwords, setPasswords] = useState({ password: "", re_password: "" });
-    const [error, setError] = useState({ isError: false, message: "" })
+    const [error, setError] = useState({ isError: false, message: "" });
     const [isValid, setIsValid] = useState(false);
     const [showSelfReg, setShowSelfReg] = useState(false);
     const [isActivated, setIsActivated] = useState(false);
@@ -52,7 +52,7 @@ const SystemAdminSelftActivation = () => {
     const handleActivate = () => {
         const { password, re_password } = passwords;
         if (password && password.length >= 8 && re_password && re_password.length >= 8 && password === re_password) {
-            const newUserData = { name: tokenData.name, phone: tokenData.phone, email, address: "", photoURL: "", created_by: tokenData.invited_by };
+            const newUserData = { name: tokenData.name, phone: tokenData.phone, email, address: "", photoURL: "", created_by: tokenData.created_by };
             systemAdminRegistration(email, password, newUserData)
                 .then((data: any) => {
                     if (!data?.isError) {

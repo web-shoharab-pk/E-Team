@@ -28,15 +28,15 @@ const Hero = () => {
           <div className="flex justify-center">
             <Link
               to="/registration"
-              className="inline-flex text-white bg-blue-400 border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded text-lg mr-2 mb-2"
+              className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
             >
               Register your company
             </Link>
             <Link
               to="/login"
-              className="inline-flex text-white bg-blue-400 border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded text-lg mr-2 mb-2"
+              className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
             >
-              Login As company
+              Login
             </Link>
           </div>
         </div>

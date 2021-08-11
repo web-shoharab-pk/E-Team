@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
-import './Topbar.css';
 import { Link } from 'react-router-dom';
 
-const Topbar = () => {
-    // For handling sidebar show or hide
+const SATopbar = () => {
     const [showSidebar, setShowSidebar] = useState(false);
-    const sidebar = document.getElementById('sidebar');
+    const sidebar = document.getElementById('sa-sidebar');
     showSidebar ? sidebar?.classList.add('show') : sidebar?.classList.remove('show')
-
-
     return (
         <div className="topbar-header ">
-
-            <nav className="topbar with-sidebar flex flex-row justify-between items-center px-4 text-lg">
+            <nav className="topbar with-sidebar px-4 text-lg">
                 <div className="breadcrumb">
                     <Link to="#" className="font-medium">Home</Link> /
                     <Link to="#" className="font-medium">Dashboard</Link>
                 </div>
                 <p className="username">Piash</p>
             </nav>
-            <nav className="topbar without-sidebar flex flex-row justify-between items-center px-4 text-2xl font-bold">
+            <nav className="topbar without-sidebar px-4 text-2xl font-bold">
                 <h2 className="">E-Team</h2>
                 <button onClick={() => setShowSidebar(!showSidebar)}><i className="fas fa-bars"></i></button>
             </nav>
@@ -27,4 +22,4 @@ const Topbar = () => {
     );
 };
 
-export default Topbar;
+export default SATopbar;
