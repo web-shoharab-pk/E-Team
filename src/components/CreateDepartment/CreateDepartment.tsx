@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { UserDataContext } from '../Contexts/UserDataContext';
+import { ConpanyDataContext } from '../../Contexts/UserDataContext';
 
 export const db = firebase.firestore();
 
@@ -19,7 +19,7 @@ const CreateDepartment = () => {
     });
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState({ isError: false, message: "" });
-    const { userData, setUserData } = useContext(UserDataContext);
+    const { userData, setUserData } = useContext(ConpanyDataContext);
 
     const handleOnChange = (e: any) => {
         setDepartmentData({...departmentData, [e.target.id]:e.target.value});

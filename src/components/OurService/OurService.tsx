@@ -2,10 +2,10 @@ import img1 from "./../../Assets/images/taskAssign.png";
 import img2 from "./../../Assets/images/meetingSet.png";
 import img3 from "./../../Assets/images/courseAssign.png";
 
-const OurSerce = () => {
+const OurService = () => {
   return (
-    <section className="text-gray-600 body-font text-center ">
-      <h1 className="title-font sm:text-4xl text-center text-3xl mb-4 mt-5 font-bold text-gray-900 border-b-4 border-indigo-600 inline-block">
+    <section className="text-gray-600 body-font text-center mt-8">
+      <h1 className="title-font sm:text-4xl text-center text-3xl  mt-8 mb-4 font-bold text-gray-900 border-b-4 border-indigo-600 inline-block">
         OUR SYSTEM SOME FEATURES!
       </h1>
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -75,4 +75,4 @@ const OurSerce = () => {
   );
 };
 
-export default OurSerce;
+export default OurService;

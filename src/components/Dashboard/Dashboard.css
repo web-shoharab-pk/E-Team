@@ -6,12 +6,16 @@
     width: 100%;
     top: 0;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
     .dashboard {
         display: grid;
         grid-template-columns: 250px 1fr;
     }
     .main-area{
-        position: relative;
+        position: absolute;
+        top: 0;
+        width: calc(100% - 250px);
+        margin-top: 50px;
+        margin-left: 250px;
     }
 }

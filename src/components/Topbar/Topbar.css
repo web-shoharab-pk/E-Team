@@ -1,6 +1,36 @@
+.topbar{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 50;
+}
 .topbar .navbar{
     background: #18A0FB;
     color: #fff;
     height: 50px;
     line-height: 50px;
+}
+@media only screen and (max-width:991px){
+    .fa-bars{
+        min-width: 25px;
+        min-height: 25px;
+    }
+    .without-sidebar{
+        display: flex;
+    }
+    .with-sidebar{
+        display: none;
+    }
+}
+@media only screen and (min-width:992px){
+    .topbar{
+        margin-left: 250px;
+    }
+    .without-sidebar{
+        display: none;
+    }
+    .with-sidebar{
+        display: flex;
+    }
 }

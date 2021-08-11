@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { UserDataContext, UserDataContextType, UserDataType } from '../../Contexts/UserDataContext';
+import { ConpanyDataContext, UserDataContextType, UserDataType } from '../../../Contexts/UserDataContext';
 import { db, loginComapny } from '../loginmanager';
 
 const LoginCompany = () => {
-    const { userData, setUserData } = useContext(UserDataContext);
+    const { userData, setUserData } = useContext(ConpanyDataContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState({ error: false, message: '' });
@@ -76,9 +76,6 @@ const LoginCompany = () => {
         }
     }
 
-    const testDB = () => {
-
-    }
     return (
         <section className="text-gray-600 body-font relative">
             <div className="container px-5 py-12 mx-auto">
@@ -98,10 +95,6 @@ const LoginCompany = () => {
                             errorMessage.error &&
                             <p className="text-red-600 p-3 bg-red-200 text-bold w-full ">{errorMessage.message}</p>
                         }
-                        {/* {
-                            isCreated &&
-                            <p className="text-green-600 p-3 bg-green-200 text-bold w-full ">{error.message}</p>
-                        } */}
                     </div>
                 </div>
                 <div className="lg:w-1/2 md:w-2/3 mx-auto">
