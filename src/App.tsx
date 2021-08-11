@@ -39,6 +39,7 @@ import Contact from "./components/Contact/Contact";
 import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
 import SARoute from "./components/Authentication/SARoute/SARoute";
 import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
+import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -194,6 +195,11 @@ const App = () => {
             <SARoute path="/system-admin/add">
               <SADashboard>
                 <AddSystemAdmin />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/view-all">
+              <SADashboard>
+                <ViewAllAdmin />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/">
