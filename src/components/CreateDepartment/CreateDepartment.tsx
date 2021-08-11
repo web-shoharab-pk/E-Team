@@ -17,41 +17,58 @@ const CreateDepartment = () => {
         type: '',
         description: '',
     });
-    const [success, setSuccess] = useState('');
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState({ isError: false, message: "" });
     const { userData, setUserData } = useContext(ConpanyDataContext);
 
     const handleOnChange = (e: any) => {
-        setDepartmentData({...departmentData, [e.target.id]:e.target.value})
+        setDepartmentData({...departmentData, [e.target.id]:e.target.value});
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
+        const nameRegEx = /^[A-Za-z0-9_]{3,}$/;
+        const descriptionRegEx = /^[A-Za-z0-9_.,-\?]{3,}$/;
 
         const {name, type, description} = departmentData;
 
-        db.collection("departments").add({
-            name: name,
-            type: type,
-            description: description,
-            co_id: userData.co_id,
-        })
-        .then(() => {
-            setSuccess("Document successfully written!");
-            (document.getElementById("name") as HTMLInputElement).value = '';
-            (document.getElementById("type") as HTMLInputElement).value = '';
-            (document.getElementById("description") as HTMLInputElement).value = '';
-        })
-        .catch((error) => {
-            console.error("Error writing document: ", error);
-        });
-
+        if (name && type && description) {
+            if (nameRegEx.test(name) && descriptionRegEx.test(description)) {
+                db.collection("departments").add({
+                    name: name,
+                    type: type,
+                    description: description,
+                    co_id: userData.co_id,
+                })
+                .then(() => {
+                    (document.getElementById("name") as HTMLInputElement).value = '';
+                    (document.getElementById("type") as HTMLInputElement).value = '';
+                    (document.getElementById("description") as HTMLInputElement).value = '';
+                })
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
+            } else {
+                setIsSuccess(false);
+                setError({ isError: true, message: "Any field must not be empty!" })
+            }
+        } else {
+            setIsSuccess(false);
+            setError({ isError: true, message: "Any field must not be empty!" })
+        }
     }
 
     return (
         <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded-lg">
             <h2 className="text-center text-2xl pb-4 lg:text-3xl font-medium">Create Department</h2>
+            {
+                error.isError && <div className="text-red-500 mx-5 text-center">{error.message}</div>
+            }
 
-            <p className="text-center text-green-600 py-4 text-lg font-normal">{success && success}</p>
+            {
+                !error.isError && isSuccess && <div className="text-green-500 mx-5 text-center">{error.message}</div>
+            }
+
             <form action="" className="form mt-4">
                 <div className="lg:flex w-full mb-5 lg:space-x-16">
                     <div className="lg:w-5/6">
@@ -64,7 +81,7 @@ const CreateDepartment = () => {
                         <select onChange={handleOnChange} id="type" className="border rounded mt-1 p-2 w-full" required /*name="department" id="department-select"*/>
                             <option value="select">select department</option>
                             <option value="two">two</option>
-                            <option value="three">three</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
