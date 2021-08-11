@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import moment from 'moment';
 import md5 from 'crypto-js/md5';
 import emailjs from 'emailjs-com';
-import { ConpanyDataContext } from '../../Contexts/UserDataContext';
-import db from '../Firebase/Firebase';
+import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import db from '../../Firebase/Firebase';
 
 interface addUserDataType {
     name: string;
@@ -14,7 +14,7 @@ interface addUserDataType {
 
 
 const CreateNewUser = () => {
-    const { userData, setUserData } = useContext(ConpanyDataContext)
+    const { companyData, setCompanyData } = useContext(ConpanyDataContext)
     const [addUserData, setAddUserData] = useState({} as addUserDataType);
     const [error, setError] = useState({ isError: false, message: "" });
     const [isSuccess, setIsSuccess] = useState(false);
@@ -40,7 +40,7 @@ const CreateNewUser = () => {
                 const expiredAt = moment(new Date(new Date().getTime() + 60 * 60 * 24 * 1000)).format("YYYY-MM-DD HH:mm:ss");
                 const token = md5(expiredAt).toString();
                 const activationURL = 'https://eteammanage.web.app/activate-account/?email=' + email + '&key=' + token;
-                const newTokenData = { ...addUserData, isActivated: false, token: token, attempt: 1, expired_at: expiredAt, created_by: userData.co_id };
+                const newTokenData = { ...addUserData, isActivated: false, token: token, attempt: 1, expired_at: expiredAt, created_by: companyData.id,co_id:companyData.co_id };
 
                 // For checking is there any duplicate valid token
                 db.collection("tokens_user").doc(email).get().then((doc: any) => {
@@ -123,7 +123,13 @@ const CreateNewUser = () => {
             <div className="w-11/12 md:w-4/6 lg:w-2/4 mt-14 xl:w-2/5">
                 <div className="p-4 rounded-md shadow-lg border">
                     <h2 className="text-2xl font-bold text-center mb-6 mt-2">Create A New User</h2>
+                    {
+                        error.isError && <div className="text-red-500 mx-5 text-center">{error.message}</div>
+                    }
 
+                    {
+                        !error.isError && isSuccess && <div className="text-green-500 mx-5 text-center">{error.message}</div>
+                    }
                     <form onSubmit={handleInviteUser}>
                         <div className="flex items-center mx-3 border h-10 rounded-full bg-gray-200 mb-4">
                             <i className="fas fa-user mx-3"></i>

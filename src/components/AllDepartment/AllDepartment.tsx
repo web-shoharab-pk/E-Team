@@ -15,7 +15,7 @@ type AllDepartment = {
 
 const AllDepartment = () => {
     const [allDepartment, setAllDepartment] = useState([]);
-    const { userData, setUserData } = useContext(ConpanyDataContext);
+    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
 
     useEffect(() => {
         db.collection("departments").get().then((docs: any) => {
@@ -33,7 +33,7 @@ const AllDepartment = () => {
 
     let departmentData: any = [];
     allDepartment.forEach((doc: any) => {
-        if (userData.co_id === doc.data().co_id) {
+        if (companyData.co_id === doc.data().co_id) {
             departmentData = [...departmentData, doc.data()];
         }
     });

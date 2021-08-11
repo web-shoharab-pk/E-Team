@@ -19,7 +19,7 @@ const CreateDepartment = () => {
     });
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState({ isError: false, message: "" });
-    const { userData, setUserData } = useContext(ConpanyDataContext);
+    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
 
     const handleOnChange = (e: any) => {
         setDepartmentData({...departmentData, [e.target.id]:e.target.value});
@@ -38,7 +38,7 @@ const CreateDepartment = () => {
                     name: name,
                     type: type,
                     description: description,
-                    co_id: userData.co_id,
+                    co_id: companyData.co_id,
                 })
                 .then(() => {
                     (document.getElementById("name") as HTMLInputElement).value = '';

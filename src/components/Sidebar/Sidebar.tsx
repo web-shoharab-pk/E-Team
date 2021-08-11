@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Sidebar.css";
 import logo from "../../Assets/images/logo.svg";
 import { Link } from "react-router-dom";
+import { ConpanyDataContext } from "../../Contexts/UserDataContext";
+import { removeDataFromLS } from "../Authentication/loginmanager";
 
 const Sidebar = () => {
+      const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+    const [isLogOut, setIsLogOut] = useState(false);
+    const logOut = () => {
+      localStorage.removeItem('token');
+        setCompanyData({
+            isSignedIn: false,
+            co_id: "",
+            id: "",
+            company_name: "",
+            email: "",
+            role: "",
+            created_at: "",
+            updated_at: "",
+        });
+        setIsLogOut(true);
+    }
   return (
     <div className="sidebar flex flex-col" id="sidebar">
       <div className="logo">
@@ -67,6 +85,9 @@ const Sidebar = () => {
                 </Link>
               </li>
             </ul>
+          </li>
+          <li className="text-center">
+            <button className="py-1 px-4 text-white bg-red-500"  onClick={logOut}>Logout</button>
           </li>
         </ul>
       </aside>
