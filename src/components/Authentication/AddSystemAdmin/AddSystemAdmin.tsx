@@ -22,7 +22,7 @@ const AddSystemAdmin = () => {
     }
 
     const handleInviteSysAdmin = () => {
-        const nameRegEx = /^[A-Za-z.]{3,}$/;
+        const nameRegEx = /^[A-Za-z0-9_]{3,}$/;
         const emailRegEx = /^[a-zA-Z0-9._]{3,}[@]{1}[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/;
         const bdMobileRegEx = /^(\+)?(88)?01[0-9]{9}$/;
 
@@ -91,6 +91,7 @@ const AddSystemAdmin = () => {
                 setError({ isError: true, message: "Something occurs error. please try again!" });
             });
     }
+
     return (
         <div className=" flex flex-col justify-center items-center">
             <div className="w-full sm:w-1/2 md:w-2/3 lg:w-1/2 xl:1/4 mt-14">

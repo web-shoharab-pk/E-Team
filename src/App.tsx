@@ -81,11 +81,11 @@ const App = () => {
           <PrivateRoute path="/quiz">
             <QuizArea />
           </PrivateRoute>
-          <Route path="/create-user">
+          <PrivateRoute path="/create-user">
             <Dashboard>
               <CreateNewUser />
             </Dashboard>
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path="/all-user">
             <Dashboard>
               <AllUserList />

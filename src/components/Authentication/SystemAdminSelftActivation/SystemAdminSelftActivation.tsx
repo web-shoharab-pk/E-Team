@@ -6,7 +6,7 @@ import { systemAdminRegistration } from '../loginmanager';
 const SystemAdminSelftActivation = () => {
     const [tokenData, setTokenData] = useState({ token: "", email: "", attempt: 0, name: "", expired_at: "", isActivated: false, phone: "", invited_by: "" });
     const [passwords, setPasswords] = useState({ password: "", re_password: "" });
-    const [error, setError] = useState({ isError: false, message: "" })
+    const [error, setError] = useState({ isError: false, message: "" });
     const [isValid, setIsValid] = useState(false);
     const [showSelfReg, setShowSelfReg] = useState(false);
     const [isActivated, setIsActivated] = useState(false);
