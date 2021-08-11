@@ -6,7 +6,7 @@ const PricingCard = () => {
     <div className="container mx-auto">
       <Navbar />
       <div className="text-center my-10">
-        <h1 className="font-bold text-3xl mb-2">Pricing</h1>
+        <h1 className="inline font-bold text-3xl mb-2 border-b-4 border-blue-600">Pricing</h1>
       </div>
 
       <div className="flex flex-col md:flex-row px-2 md:px-0">
