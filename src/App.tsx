@@ -22,7 +22,10 @@ import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db } from "./components/Authentication/loginmanager";
-import { ConpanyDataContext, SystemAdminDataContext } from "./Contexts/UserDataContext";
+import {
+  ConpanyDataContext,
+  SystemAdminDataContext,
+} from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import Footer from "./components/MainHome/Footer/Footer";
@@ -70,9 +73,10 @@ const App = () => {
     });
   }, [userData]);
   return (
-
     <ConpanyDataContext.Provider value={{ userData, setUserData }}>
-      <SystemAdminDataContext.Provider value={{ systemAdminData, setSystemAdminData }}>
+      <SystemAdminDataContext.Provider
+        value={{ systemAdminData, setSystemAdminData }}
+      >
         <Router>
           <Switch>
             <PrivateRoute path="/shareIdea">
@@ -103,11 +107,11 @@ const App = () => {
                 <CreateNewUser />
               </Dashboard>
             </Route>
-            <PrivateRoute path="/all-user">
+            <Route path="/all-user">
               <Dashboard>
                 <AllUserList />
               </Dashboard>
-            </PrivateRoute>
+            </Route>
             <PrivateRoute path="/leaderBoard">
               <Dashboard>
                 <LeaderBoard />
@@ -130,11 +134,11 @@ const App = () => {
                 <MeetingList />
               </Dashboard>
             </PrivateRoute>
-            <Route path="/create-course-task">
+            <PrivateRoute path="/create-course-task">
               <Dashboard>
                 <CreateCourseTask />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/applicationList">
               <Dashboard>
                 <ApplicationList />
@@ -161,11 +165,11 @@ const App = () => {
                 <AllDepartment />
               </Dashboard>
             </PrivateRoute>
-            <Route path="/create-department">
+            <PrivateRoute path="/create-department">
               <Dashboard>
                 <CreateDepartment />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <Navbar />
               <LoginCompany />
@@ -205,12 +209,12 @@ const App = () => {
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/">
-              <SADashboard>
-                Hello
-              </SADashboard>
+              <SADashboard>Hello</SADashboard>
             </SARoute>
             <Route exact path="/ourTeam">
+              <Navbar />
               <OurTeam />
+              <Footer />
             </Route>
             <Route exact path="/">
               <MainHome />

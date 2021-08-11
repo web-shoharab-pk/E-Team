@@ -18,7 +18,7 @@ const InputApplication = () => {
                <div className="lg:flex lg:space-x-5 mt-3">
                     <div className="lg:w-1/2">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="hello">Team Name:</label><br />
-                      <select className="rounded w-full border mt-1 p-2" name="" id="">
+                      <select className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent" name="" id="">
                         <option value="">One</option>
                         <option value="">Two</option>
                         <option value="">Three</option>
@@ -27,19 +27,19 @@ const InputApplication = () => {
 
                     <div className="lg:w-1/2 mt-3 lg:mt-0">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="">Input Name:</label><br />
-                      <input type="tel" name="" id="" placeholder="Your Number" className="mt-1 border w-full rounded p-2 " />
+                      <input type="tel" name="" id="" placeholder="Your Number" className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent" />
                     </div>
                </div>
 
                <div className="lg:flex lg:space-x-5 mt-3">
                     <div className="lg:w-1/2">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="">Designation:</label><br />
-                      <input type="tel" name="" id="" placeholder="Type Designation" className="border mt-1 w-full rounded p-2 " />
+                      <input type="tel" name="" id="" placeholder="Type Designation" className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent" />
                     </div>
 
                     <div className="lg:w-1/2 mt-3 lg:mt-0">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="hello">Select Application Type</label><br />
-                      <select className="rounded w-full border mt-1 p-2" name="" id="">
+                      <select className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent" name="" id="">
                         <option value="">One</option>
                         <option value="">Two</option>
                         <option value="">Three</option>
@@ -50,24 +50,24 @@ const InputApplication = () => {
                <div className="lg:flex lg:space-x-5 mt-3">
                     <div className="lg:w-1/2">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="">Starting Date</label><br />
-                      <input type="date" name="" id="" placeholder="Your Number" className="border w-full rounded p-2 mt-1" />
+                      <input type="date" name="" id="" placeholder="Your Number" className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent" />
                     </div>
 
                     <div className="lg:w-1/2  mt-3 lg:mt-0">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="">Ending Date</label><br />
-                      <input type="date" name="" id="" placeholder="Your Number" className="border w-full rounded p-2 mt-1 " />
+                      <input type="date" name="" id="" placeholder="Your Number" className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2" />
                     </div>
                </div>
 
                <div className="lg:flex lg:space-x-5 mt-3">
                     <div className="lg:w-1/2">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="">Observation Under</label><br />
-                      <input type="text" name="" id="" placeholder="Input Name" className="mt-1 border w-full rounded p-2 " />
+                      <input type="text" name="" id="" placeholder="Input Name" className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2" />
                     </div>
 
                     <div className="lg:w-1/2 mt-3 lg:mt-0">
                       <label className="text-md lg:text-lg font-semibold" htmlFor="hello">Application Status</label><br />
-                      <select className="rounded w-full border p-2 mt-1" name="" id="">
+                      <select className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent" name="" id="">
                         <option value="">One</option>
                         <option value="">Two</option>
                         <option value="">Three</option>
@@ -76,7 +76,7 @@ const InputApplication = () => {
                </div>
                
               <div className="mx-auto text-center ">
-                <input type="submit" value="Submit Application" className="mt-6 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-2.5 px-4" />
+                <input type="submit" value="Submit Application" className="mt-6 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6" />
               </div>
            </form>
     </div>
