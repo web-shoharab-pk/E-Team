@@ -52,7 +52,7 @@ const CreateDepartment = () => {
             <h2 className="text-center text-2xl pb-4 lg:text-3xl font-medium">Create Department</h2>
 
             <p className="text-center text-green-600 py-4 text-lg font-normal">{success && success}</p>
-            <form action="" className="form mt-4">
+            <form action="" className="form mt-4" >
                 <div className="lg:flex w-full mb-5 lg:space-x-16">
                     <div className="lg:w-5/6">
                         <label className="text-base lg:font-semibold" htmlFor="">Name</label><br />

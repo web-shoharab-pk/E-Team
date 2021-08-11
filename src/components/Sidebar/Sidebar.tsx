@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
 import logo from "../../Assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -12,83 +12,83 @@ const Sidebar = () => {
       <aside>
         <ul className="sidebar-menu p-4 font-normal">
           <li>
-            <Link to="#">
-               User Management
-            </Link>
+            <NavLink  activeClassName="active" to="#">
+            <i className="fas fa-users-cog"></i> User Management
+            </NavLink>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="/create-user" className="active">
-                  Create User
-                </Link>
+                <NavLink  activeClassName="active" to="/create-user" >
+                <i className="fas fa-user-plus"></i>  Create User
+                </NavLink>
               </li>
               <li>
-                <Link to="/all-user">
-                   All User
-                </Link>
+                <NavLink  activeClassName="active" to="/all-user">
+                <i className="fas fa-users"></i> All User
+                </NavLink>
               </li>
             </ul>
           </li>
 
           <li>
-            <Link to="#">
-              Departments Management
-            </Link>
+            <NavLink  activeClassName="active" to="#">
+            <i className="fas fa-tasks"></i>  Departments Management
+            </NavLink>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="/create-department" className="">
-                  Create Department
-                </Link>
+                <NavLink  activeClassName="active" to="/create-department" className="">
+                <i className="fas fa-plus-circle"></i>  Create Department
+                </NavLink>
               </li>
               <li>
-                <Link to="/all-department">All Department</Link>
+                <NavLink  activeClassName="active" to="/all-department">All Department</NavLink>
               </li>
             </ul>
           </li>
 
           <li>
-            <Link to="#">
+            <NavLink  activeClassName="active" to="#">
                All Team 
-            </Link>
+            </NavLink>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="/" className="">
+                <NavLink  activeClassName="active" to="#" className="">
                    Core Team
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="#">
-                   Digital Marketing
-                </Link>
+                <NavLink  activeClassName="active" to="/hello">
+                <i className="fas fa-poll"></i> Digital Marketing
+                </NavLink>
               </li>
               <li>
-                <Link to="#">
-                   Content Team
-                </Link>
+                <NavLink  activeClassName="active" to="/#">
+                <i className="fas fa-sitemap"></i> Content Team
+                </NavLink>
               </li>
             </ul>
           </li>
           
           <li>
-            <Link to="/all-courses">
-              Courses
-            </Link>
+            <NavLink  activeClassName="active" to="/all-courses">
+            <i className="fab fa-discourse"></i>  Courses
+            </NavLink>
           </li>
 
           <li>
-            <Link to="#">
-               Applications Management
-            </Link>
+            <NavLink  activeClassName="active" to="/#">
+            <i className="fas fa-tasks"></i> Applications Management
+            </NavLink>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="/inputApplication" className="">
+                <NavLink  activeClassName="active" to="/inputApplication">
                    Input Application
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/applicationList">
+                <NavLink  activeClassName="active" to="/applicationList">
                   All Application
-                </Link>
-              </li>
+                </NavLink>
+              </li> 
             </ul>
           </li>
         </ul>

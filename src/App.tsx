@@ -35,8 +35,9 @@ import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/Syste
 import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
 import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
 import PricingCard from "./components/PricingCard/PricingCard";
-import Contact from "./components/Contact/Contact";  
+import Contact from "./components/Contact/Contact";
 import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
+import OurTeam from "./components/OurTeam/OurTeam";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -83,11 +84,11 @@ const App = () => {
           <PrivateRoute path="/quiz">
             <QuizArea />
           </PrivateRoute>
-          <Route path="/create-user">
+          <PrivateRoute path="/create-user">
             <Dashboard>
               <CreateNewUser />
             </Dashboard>
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path="/all-user">
             <Dashboard>
               <AllUserList />
@@ -98,9 +99,9 @@ const App = () => {
               <LeaderBoard />
             </Dashboard>
           </PrivateRoute>
-          <PrivateRoute path="/dashboard">
+          <Route path="/dashboard">
             <Dashboard />
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/setMeeting">
             <SetMeeting />
           </PrivateRoute>
@@ -146,11 +147,12 @@ const App = () => {
               <AllDepartment />
             </Dashboard>
           </PrivateRoute>
-          <PrivateRoute path="/create-department">
+          <Route path="/create-department"> 
+          {/* private route */}
             <Dashboard>
               <CreateDepartment />
             </Dashboard>
-          </PrivateRoute>
+          </Route>
           <Route path="/login">
             <Navbar />
             <LoginCompany />
@@ -167,21 +169,31 @@ const App = () => {
           <Route exact path="/system-admin/login">
             <SystemAdminLogin />
           </Route>
-          <Route exact path="/pricing">
+
+          <Route path="/pricing">
             <PricingCard />
+            <Footer />
           </Route>
-          <Route exact path="/contact">
+
+          <Route path="/contact">
             <Navbar />
-             <Contact />
+            <Contact />
+            <Footer />
+          </Route>
           <Route exact path="/system-admin/activate-account">
-            <Navbar/>
+            <Navbar />
             <SystemAdminSelftActivation />
-            <Footer/>
+            <Footer />
           </Route>
           <Route exact path="/system-admin/add">
             <Dashboard>
-            <AddSystemAdmin />
+              <AddSystemAdmin />
             </Dashboard>
+          </Route>
+          <Route path="/ourTeam">
+            <Navbar />
+            <OurTeam />
+            <Footer />
           </Route>
           <Route exact path="/">
             <MainHome />

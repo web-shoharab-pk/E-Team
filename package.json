@@ -20,11 +20,8 @@
     "@types/react-router-dom": "^5.1.8",
     "@types/react-swipe": "^6.0.1",
     "@types/styled-components": "^5.1.11",
-<<<<<<< HEAD
     "@types/swiper": "^5.4.3",
-=======
     "crypto-js": "^4.1.1",
->>>>>>> f6cbde7cbee0a6edcbb87e6ea347d8c1b28315f0
     "dotenv": "^10.0.0",
     "emailjs-com": "^2.6.4",
     "firebase": "^8.8.1",
