@@ -21,16 +21,8 @@ import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUs
 import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
-<<<<<<< HEAD
 import { db, getDataFromLS } from "./components/Authentication/loginmanager";
 import { ConpanyDataContext, SystemAdminDataContext } from "./Contexts/UserDataContext";
-=======
-import { db } from "./components/Authentication/loginmanager";
-import {
-  ConpanyDataContext,
-  SystemAdminDataContext,
-} from "./Contexts/UserDataContext";
->>>>>>> b5961c6cf690cf163329569ca7111cd2e5e068cc
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import Footer from "./components/MainHome/Footer/Footer";
@@ -91,15 +83,8 @@ const App = () => {
   }
     ;
   return (
-<<<<<<< HEAD
     <ConpanyDataContext.Provider value={{ companyData, setCompanyData }}>
       <SystemAdminDataContext.Provider value={{ systemAdminData, setSystemAdminData }}>
-=======
-    <ConpanyDataContext.Provider value={{ userData, setUserData }}>
-      <SystemAdminDataContext.Provider
-        value={{ systemAdminData, setSystemAdminData }}
-      >
->>>>>>> b5961c6cf690cf163329569ca7111cd2e5e068cc
         <Router>
           <Switch>
             <Route path="/pricing">
@@ -141,13 +126,8 @@ const App = () => {
               <Dashboard>
                 <CreateNewUser />
               </Dashboard>
-<<<<<<< HEAD
             </PrivateRoute>
-            <PrivateRoute path="/all-user">
-=======
-            </Route>
             <Route path="/all-user">
->>>>>>> b5961c6cf690cf163329569ca7111cd2e5e068cc
               <Dashboard>
                 <AllUserList />
               </Dashboard>
