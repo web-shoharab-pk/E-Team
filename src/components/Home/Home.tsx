@@ -172,7 +172,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="text-center" style={{ width: '300px' }}>
+      {/* <div className="text-center" style={{ width: '300px' }}>
         <h2 className="text-xl capitalize text-center">Employee Progress</h2>
       </div>
 
@@ -210,7 +210,7 @@ const Home = () => {
             )
           }
         </div>
-      </div>
+      </div> */}
 
     </div>
   );

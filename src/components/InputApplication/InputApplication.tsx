@@ -140,7 +140,8 @@ const InputApplication = () => {
           <input
             type="submit"
             value="Submit Application"
-            className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white text-lg font-semibold py-3 px-6"
+            className="mt-6 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
+            onClick={(e) => { e.preventDefault();  alert('function not implement!')}}
           />
         </div>
       </form>
