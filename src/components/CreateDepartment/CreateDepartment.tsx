@@ -117,9 +117,9 @@ const CreateDepartment = () => {
               className="rounded mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               required /*name="department" id="department-select"*/
             >
-              <option value="selectDepartment">Select Department</option>
-              <option value="HR">HR</option>
-              <option value="digitalMartketing">Digital Marketing</option>
+              <option value="selectDepartment">Select Department Type</option>
+              <option value="HR">HR Department</option>
+              <option value="digitalMartketing">Others Department</option>
             </select>
           </div>
         </div>

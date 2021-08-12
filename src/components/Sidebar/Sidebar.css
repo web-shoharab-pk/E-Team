@@ -3,7 +3,7 @@
     height: 100vh;
     position: relative;
     right: 100%;
-    z-index: 999;
+    z-index: 55;
     background: #fff;
     box-shadow: 2px 0 10px -5px #afcbd4;
     transition: all .3s ease;
