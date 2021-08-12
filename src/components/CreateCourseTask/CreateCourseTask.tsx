@@ -16,7 +16,7 @@ const CreateCourseTask = () => {
               </label>
               <br />
               <input
-                className="border rounded mt-1 p-2 w-full"
+                className="border border-gray-100 rounded mt-1 p-2 w-full"
                 type="text"
                 placeholder="Name of task"
               />
@@ -27,7 +27,11 @@ const CreateCourseTask = () => {
                 Assigned Team Name
               </label>
               <br />
-              <select className="border rounded mt-1 p-2 w-full" name="" id="">
+              <select
+                className="border border-gray-100 rounded mt-1 p-2 w-full"
+                name=""
+                id=""
+              >
                 <option value="PH">Endgame</option>
                 <option value="PH">Endgame</option>
                 <option value="PH">Endgame</option>
@@ -42,7 +46,7 @@ const CreateCourseTask = () => {
               </label>
               <br />
               <input
-                className="border rounded mt-1 p-2 w-full"
+                className="border border-gray-100 rounded mt-1 p-2 w-full"
                 type="file"
                 placeholder="Write Title"
               />
@@ -56,7 +60,7 @@ const CreateCourseTask = () => {
           </label>
           <br />
           <textarea
-            className="border rounded p-2 mt-1 w-full"
+            className="border border-gray-100 rounded p-2 mt-1 w-full"
             name=""
             id=""
             cols={30}
