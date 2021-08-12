@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Sidebar.css";
 import logo from "../../Assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ConpanyDataContext } from "../../Contexts/UserDataContext";
 import { removeDataFromLS } from "../Authentication/loginmanager";
 
@@ -30,9 +30,9 @@ const Sidebar = () => {
       <aside className="text-base">
         <ul className="sidebar-menu p-4 font-normal">
           <li className="mx-auto">
-            <Link to="/home">
+            <NavLink activeClassName="active" to="/home">
               <i className="fas fa-home"></i> Overview
-            </Link>
+            </NavLink>
           </li>
 
           <li>
@@ -41,14 +41,14 @@ const Sidebar = () => {
             </Link>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="/create-user">
+                <NavLink activeClassName="active" to="/create-user">
                   <i className="fas fa-user-plus"></i> Create User
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/all-user">
+                <NavLink activeClassName="active" to="/all-user">
                   <i className="fas fa-users"></i> All User
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </li>
@@ -59,25 +59,26 @@ const Sidebar = () => {
             </Link>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link
+                <NavLink
+                 activeClassName="active"
                   to="/create-department"
                   className=""
                 >
                   <i className="fas fa-plus-circle"></i> Create Department
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/all-department">
+                <NavLink activeClassName="active" to="/all-department">
                   <i className="fas fa-th-large"></i> All Department
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </li>
 
           <li>
-            <Link to="/all-courses">
+            <NavLink activeClassName="active" to="/all-courses">
               <i className="fab fa-discourse"></i> Courses
-            </Link>
+            </NavLink>
           </li>
 
           <li>
@@ -86,14 +87,14 @@ const Sidebar = () => {
             </Link>
             <ul className="sidebar-sub-menu">
               <li>
-                <Link to="/inputApplication">
+                <NavLink activeClassName="active" to="/inputApplication">
                   <i className="fas fa-keyboard"></i> Input Application
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/applicationList">
+                <NavLink activeClassName="active" to="/applicationList">
                   <i className="fas fa-th-large"></i> All Application
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </li>
