@@ -22,7 +22,10 @@ import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db, getDataFromLS } from "./components/Authentication/loginmanager";
-import { ConpanyDataContext, SystemAdminDataContext } from "./Contexts/UserDataContext";
+import {
+  ConpanyDataContext,
+  SystemAdminDataContext,
+} from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import Footer from "./components/MainHome/Footer/Footer";
@@ -67,9 +70,8 @@ const App = () => {
 
   // for checking user
   useEffect(() => {
-    checkIsLoginUser('token')
+    checkIsLoginUser("token");
   }, []);
-
 
   // For checking that the user has already logged in or not
   const checkIsLoginUser = (token: string) => {
@@ -81,21 +83,23 @@ const App = () => {
     if (data?.admin) {
       setSystemAdminData(data.admin);
     }
-  }
+  };
   return (
     <ConpanyDataContext.Provider value={{ companyData, setCompanyData }}>
-      <SystemAdminDataContext.Provider value={{ systemAdminData, setSystemAdminData }}>
+      <SystemAdminDataContext.Provider
+        value={{ systemAdminData, setSystemAdminData }}
+      >
         <Router>
           <Switch>
             <Route path="/pricing">
-              <Navbar/>
+              <Navbar />
               <PricingCard />
-              <Footer/>
+              <Footer />
             </Route>
             <Route path="/contact">
               <Navbar />
               <Contact />
-              <Footer/>
+              <Footer />
             </Route>
             <PrivateRoute path="/shareIdea">
               <Dashboard>
@@ -152,7 +156,9 @@ const App = () => {
               <SetMeeting />
             </PrivateRoute>
             <PrivateRoute path="/inputApplication">
-              <InputApplication />
+              <Dashboard>
+                <InputApplication />
+              </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/courseVideo">
               <CourseVideo />
