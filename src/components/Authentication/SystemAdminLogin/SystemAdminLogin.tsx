@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { Redirect, useHistory, useLocation } from 'react-router';
 import { SystemAdminDataContext } from '../../../Contexts/UserDataContext';
 import { db } from '../../AllDepartment/AllDepartment';
-import { systemAdminLogin } from '../loginmanager';
+import { saveToLS, systemAdminLogin } from '../loginmanager';
 
 const SystemAdminLogin = () => {
     const { systemAdminData, setSystemAdminData } = useContext(SystemAdminDataContext)
@@ -63,6 +63,7 @@ const SystemAdminLogin = () => {
                                 }
 
                                 setSystemAdminData(newObj);
+                                saveToLS('token', {admin:newObj});
                                 setErrorMessage({ error: false, message: '' })
                                 history.replace(from);
                             }
@@ -78,6 +79,11 @@ const SystemAdminLogin = () => {
     }
     return (
         <div className="h-screen flex flex-col justify-center items-center">
+                                    {
+                // for redirect if the user already loggedin
+                systemAdminData?.isSignedIn &&
+                <Redirect to={from} />
+            }
             <div className="w-full sm:w-1/2 lg:w-1/3 xl:1/4 mt-14">
                 <div className="my-5 px-4 py-5 border border-gray-300 shadow-xl rounded-lg">
                     <div className="mt-5">

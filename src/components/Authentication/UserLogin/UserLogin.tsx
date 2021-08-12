@@ -13,7 +13,7 @@ interface UserDataType {
 }
 
 const UserLogin = () => {
-    const { userData, setUserData } = useContext(ConpanyDataContext)
+    // const { userData, setUserData } = useContext(ConpanyDataContext)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();

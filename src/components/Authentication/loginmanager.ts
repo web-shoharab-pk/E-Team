@@ -13,6 +13,23 @@ if (!firebase.apps.length) {
 
 export const db = firebase.firestore();
 
+// Local Storage management
+export const saveToLS = (tokenName: string, data: any) => {
+  localStorage.setItem(tokenName, JSON.stringify(data));
+}
+
+export const getDataFromLS = (tokenName: string) => {
+  let data = localStorage.getItem(tokenName);
+  if (data) {
+    let userData = JSON.parse(data);
+    return userData
+  }
+}
+
+export const removeDataFromLS = (tokenName: string) => {
+  localStorage.removeItem(tokenName);
+}
+
 
 // For company registration
 export const registerCompany = ({ company_name, email, phone, website, co_description, password, re_password }: any) => {
@@ -22,20 +39,35 @@ export const registerCompany = ({ company_name, email, phone, website, co_descri
       var user = userCredential.user;
 
       const newObj = {
-        co_id: user?.uid,
         company_name,
         email,
         phone,
         website,
         co_description,
-        role: { role_name: "New Company", role_id: 101 },
         created_at: "",
         updated_at: ""
       }
 
       // Sending to database 
-      return db.collection('companies').doc(user?.uid).set(newObj).then(data => {
-        return { isError: false, message: "Your company registration completed. After approval, we will send you a email. Please wait for confirmation email." }
+      return db.collection('companies').add(newObj).then((data: any) => {
+        console.log(data._delegate.id);
+        const userData = {
+          id: user?.uid,
+          address: "",
+          created_at: "",
+          created_by: "",
+          co_id: data._delegate.id,
+          email,
+          name: company_name,
+          phone,
+          photoURL: "",
+          role: "company-admin",
+          updated_at: ""
+        }
+        return db.collection('users').doc(user?.uid).set(userData).then(info => {
+          return { isError: false, message: "Your company registration completed. After approval, we will send you a email. Please wait for confirmation email." }
+        })
+
       })
         .catch((error) => {
           var errorCode = error.code;
@@ -53,7 +85,7 @@ export const loginComapny = (email: string, password: string) => {
       var user = userCredential.user;
 
 
-      return { message: '', co_id: user?.uid };
+      return { message: '', id: user?.uid };
     })
     .catch((error) => {
       var errorCode = error.code;
@@ -62,6 +94,41 @@ export const loginComapny = (email: string, password: string) => {
       return { message: error.message };
     });
 }
+
+// For activating user account
+export const userRegistration = (email: any, password: string, userData: any) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
+
+      const newObj = {
+        id: user?.uid,
+        role: "user",
+        created_at: "",
+        updated_at: "",
+        ...userData
+      }
+
+      // Sending to database 
+      return db.collection('users').doc(user?.uid).set(newObj).then(data => {
+        return { isError: false, message: "Your account has been activated successfully. You can login now using your cridential." }
+      })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          return { isError: true, message: error.message }
+        });
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      return { isError: true, message: error.message }
+    });
+}
+
 
 // For Activate System Admin
 export const systemAdminRegistration = (email: any, password: string, userData: any) => {
