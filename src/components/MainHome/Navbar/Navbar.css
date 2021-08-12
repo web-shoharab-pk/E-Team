@@ -1,8 +1,6 @@
 .navbar{
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-wrap: inherit;
     align-items: center;
     justify-content: space-between;
@@ -13,6 +11,8 @@
     .navbar-nav{
         position: absolute;
         top: -100%;
+        background: #fff;
+        z-index: 5;
     }
     .navbar-nav.active{
         display: block;
@@ -26,7 +26,7 @@
         display: block;
         text-align: center;
         padding: 10px 0;
-    
+
     }
 }
 @media only screen and (min-width:768px){
@@ -36,4 +36,4 @@
     .navbar-toggler{
         display: none;
     }
-}
+} 

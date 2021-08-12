@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import logo from "../../../Assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { SystemAdminDataContext } from '../../../Contexts/UserDataContext';
 
 const SASidebar = () => {
+    const { systemAdminData, setSystemAdminData } = useContext(SystemAdminDataContext);
+    const [isLogOut, setIsLogOut] = useState(false);
+    const logOut = () => {
+        localStorage.removeItem('token');
+        setSystemAdminData({
+            isSignedIn: false,
+            id: "",
+            name: "",
+            email: "",
+            role: "system-admin",
+            created_at: "",
+            updated_at: "",
+        });
+        setIsLogOut(true);
+    }
     return (
         <div className="sidebar flex flex-col" id="sa-sidebar">
             <div className="logo">
@@ -12,7 +28,7 @@ const SASidebar = () => {
                 <ul className="sidebar-menu p-4 font-normal">
                     <li>
                         <Link to="/system-admin/">
-                           Overview
+                            Overview
                         </Link>
                         <ul className="sidebar-sub-menu">
                             <li>
@@ -43,8 +59,15 @@ const SASidebar = () => {
                             </li>
                         </ul>
                     </li>
+                    <li className="text-center">
+                        <button className="py-1 px-4 text-white bg-red-500" onClick={logOut}>Logout</button>
+                    </li>
                 </ul>
             </aside>
+            {
+                isLogOut &&
+                <Redirect to="/system-admin/login" />
+            }
         </div>
     );
 };

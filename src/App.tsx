@@ -17,15 +17,12 @@ import AllUserList from "./components/AllUserList/AllUserList";
 import AssignCourse from "./components/AssignCourse/AssignCourse";
 import MeetingList from "./components/MeetingList/MeetingList";
 import ApplicationList from "./components/ApplicationList/ApplicationList";
-import CreateNewUser from "./components/CreateNewUser/CreateNewUser";
+import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
-import { db } from "./components/Authentication/loginmanager";
-import {
-  ConpanyDataContext,
-  SystemAdminDataContext,
-} from "./Contexts/UserDataContext";
+import { db, getDataFromLS } from "./components/Authentication/loginmanager";
+import { ConpanyDataContext, SystemAdminDataContext } from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import Footer from "./components/MainHome/Footer/Footer";
@@ -40,18 +37,21 @@ import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
 import PricingCard from "./components/PricingCard/PricingCard";
 import Contact from "./components/Contact/Contact";
 import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
+import OurTeam from "./components/OurTeam/OurTeam";
 import SARoute from "./components/Authentication/SARoute/SARoute";
 import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
 import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
+import UserSelftActivation from "./components/Authentication/UserSelftActivation/UserSelftActivation";
 import TaskBoard from "./components/TaskBoard/TaskBoard";
 
 const App = () => {
-  const [userData, setUserData] = useState({
+  const [companyData, setCompanyData] = useState({
     isSignedIn: false,
     co_id: "",
+    id: "",
     company_name: "",
     email: "",
-    role: { role_name: "", role_id: 0 },
+    role: "",
     created_at: "",
     updated_at: "",
   });
@@ -64,21 +64,37 @@ const App = () => {
     created_at: "",
     updated_at: "",
   });
+
+  // for checking user
   useEffect(() => {
-    db.collection("users").onSnapshot((snapshot: any) => {
-      const snapshotArray = snapshot.docs.map((doc: any) => {
-        return doc?.data();
-      });
-      console.log(snapshotArray);
-    });
-  }, [userData]);
+    checkIsLoginUser('token')
+  }, []);
+
+
+  // For checking that the user has already logged in or not
+  const checkIsLoginUser = (token: string) => {
+    const data = getDataFromLS(token);
+    console.log(token);
+    if (data?.user) {
+      setCompanyData(data.user);
+    }
+    if (data?.admin) {
+      setSystemAdminData(data.admin);
+    }
+  }
+    ;
   return (
-    <ConpanyDataContext.Provider value={{ userData, setUserData }}>
-      <SystemAdminDataContext.Provider
-        value={{ systemAdminData, setSystemAdminData }}
-      >
+    <ConpanyDataContext.Provider value={{ companyData, setCompanyData }}>
+      <SystemAdminDataContext.Provider value={{ systemAdminData, setSystemAdminData }}>
         <Router>
           <Switch>
+            <Route path="/pricing">
+              <PricingCard />
+            </Route>
+            <Route path="/contact">
+              <Navbar />
+              <Contact />
+            </Route>
             <PrivateRoute path="/shareIdea">
               <Dashboard>
                 <ShareIdea />
@@ -102,16 +118,21 @@ const App = () => {
             <PrivateRoute path="/quiz">
               <QuizArea />
             </PrivateRoute>
-            <Route path="/create-user">
+            <Route path="/activate-account">
+              <Navbar />
+              <UserSelftActivation />
+              <Footer />
+            </Route>
+            <PrivateRoute path="/create-user">
               <Dashboard>
                 <CreateNewUser />
               </Dashboard>
-            </Route>
-            <PrivateRoute path="/all-user">
+            </PrivateRoute>
+            <Route path="/all-user">
               <Dashboard>
                 <AllUserList />
               </Dashboard>
-            </PrivateRoute>
+            </Route>
             <PrivateRoute path="/leaderBoard">
               <Dashboard>
                 <LeaderBoard />
@@ -139,11 +160,11 @@ const App = () => {
                 <MeetingList />
               </Dashboard>
             </PrivateRoute>
-            <Route path="/create-course-task">
+            <PrivateRoute path="/create-course-task">
               <Dashboard>
                 <CreateCourseTask />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/applicationList">
               <Dashboard>
                 <ApplicationList />
@@ -160,6 +181,11 @@ const App = () => {
                 <Home />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/home">
+              <Dashboard>
+                <Home />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/all-user">
               <Dashboard>
                 <AllUserList />
@@ -170,11 +196,11 @@ const App = () => {
                 <AllDepartment />
               </Dashboard>
             </PrivateRoute>
-            <Route path="/create-department">
+            <PrivateRoute path="/create-department">
               <Dashboard>
                 <CreateDepartment />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <Navbar />
               <LoginCompany />
@@ -185,16 +211,12 @@ const App = () => {
               <RegisterCompany />
               <Footer />
             </Route>
-            <Route exact path="/:companyUserName/user-login">
+            <Route exact path="/user-login">
               <UserLogin />
             </Route>
-            <Route path="/pricing">
-              <PricingCard />
-            </Route>
-            <Route path="/contact">
-              <Navbar />
-              <Contact />
-            </Route>
+            <PrivateRoute exact path="/:companyUserName/user-login">
+              <UserLogin />
+            </PrivateRoute>
             <Route path="/system-admin/login">
               <SystemAdminLogin />
             </Route>
@@ -216,6 +238,11 @@ const App = () => {
             <SARoute path="/system-admin/">
               <SADashboard>Hello</SADashboard>
             </SARoute>
+            <Route exact path="/ourTeam">
+              <Navbar />
+              <OurTeam />
+              <Footer />
+            </Route>
             <Route exact path="/">
               <MainHome />
             </Route>
