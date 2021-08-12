@@ -22,7 +22,10 @@ import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db } from "./components/Authentication/loginmanager";
-import { ConpanyDataContext, SystemAdminDataContext } from "./Contexts/UserDataContext";
+import {
+  ConpanyDataContext,
+  SystemAdminDataContext,
+} from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import Footer from "./components/MainHome/Footer/Footer";
@@ -40,6 +43,7 @@ import SystemAdminSelftActivation from "./components/Authentication/SystemAdminS
 import SARoute from "./components/Authentication/SARoute/SARoute";
 import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
 import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
+import TaskBoard from "./components/TaskBoard/TaskBoard";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -70,7 +74,9 @@ const App = () => {
   }, [userData]);
   return (
     <ConpanyDataContext.Provider value={{ userData, setUserData }}>
-      <SystemAdminDataContext.Provider value={{ systemAdminData, setSystemAdminData }}>
+      <SystemAdminDataContext.Provider
+        value={{ systemAdminData, setSystemAdminData }}
+      >
         <Router>
           <Switch>
             <PrivateRoute path="/shareIdea">
@@ -114,6 +120,11 @@ const App = () => {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route path="/taskboard">
+              <Dashboard>
+                <TaskBoard />
+              </Dashboard>
+            </Route>
             <PrivateRoute path="/setMeeting">
               <SetMeeting />
             </PrivateRoute>
@@ -203,9 +214,7 @@ const App = () => {
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/">
-              <SADashboard>
-                Hello
-              </SADashboard>
+              <SADashboard>Hello</SADashboard>
             </SARoute>
             <Route exact path="/">
               <MainHome />
