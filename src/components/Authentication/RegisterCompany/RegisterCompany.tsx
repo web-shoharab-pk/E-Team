@@ -36,7 +36,7 @@ const RegisterCompany = () => {
         if (company_name && email && phone && website && co_description && password && re_password) {
             const emailRegEx = /^[a-zA-Z0-9._]{3,}[@]{1}[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/;
             if (emailRegEx.test(email)) {
-                if (password === re_password) {
+                if ((password === re_password) && (password.length === 8)) {
                     registerCompany(companyDetails)
                         .then((data: any) => {
                             if (!data?.isError) {
