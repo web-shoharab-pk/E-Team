@@ -81,18 +81,20 @@ const App = () => {
       setSystemAdminData(data.admin);
     }
   }
-    ;
   return (
     <ConpanyDataContext.Provider value={{ companyData, setCompanyData }}>
       <SystemAdminDataContext.Provider value={{ systemAdminData, setSystemAdminData }}>
         <Router>
           <Switch>
             <Route path="/pricing">
+              <Navbar/>
               <PricingCard />
+              <Footer/>
             </Route>
             <Route path="/contact">
               <Navbar />
               <Contact />
+              <Footer/>
             </Route>
             <PrivateRoute path="/shareIdea">
               <Dashboard>
