@@ -90,6 +90,7 @@ const App = () => {
           <Switch>
             <Route path="/pricing">
               <PricingCard />
+              <Footer />
             </Route>
             <Route path="/contact">
               <Navbar />

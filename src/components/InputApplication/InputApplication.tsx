@@ -151,6 +151,7 @@ const InputApplication = () => {
             type="submit"
             value="Submit Application"
             className="mt-6 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
+            onClick={(e) => { e.preventDefault();  alert('function not implement!')}}
           />
         </div>
       </form>

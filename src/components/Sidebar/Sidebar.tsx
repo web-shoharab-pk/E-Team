@@ -37,9 +37,9 @@ const Sidebar = () => {
           </li>
           
           <li>
-            <NavLink activeClassName="active" to="#">
+            <Link to="#">
               <i className="fas fa-users-cog"></i> User Management
-            </NavLink>
+            </Link>
             <ul className="sidebar-sub-menu">
               <li>
                 <NavLink activeClassName="active" to="/create-user">
@@ -55,9 +55,9 @@ const Sidebar = () => {
           </li>
 
           <li>
-            <NavLink activeClassName="active" to="#">
+            <Link to="#">
               <i className="fas fa-tasks"></i> Departments Management
-            </NavLink>
+            </Link>
             <ul className="sidebar-sub-menu">
               <li>
                 <NavLink
@@ -77,24 +77,24 @@ const Sidebar = () => {
           </li>
 
           <li>
-            <NavLink activeClassName="active" to="#">
+            <Link to="#">
               <i className="fas fa-th-large"></i> All Team
-            </NavLink>
+            </Link>
             <ul className="sidebar-sub-menu">
               <li>
-                <NavLink activeClassName="active" to="#" className="">
+                <Link to="#">
                   Core Team
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink activeClassName="active" to="/hello">
+                <Link to="#">
                   <i className="fas fa-poll"></i> Digital Marketing
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink activeClassName="active" to="/#">
+                <Link to="#">
                   <i className="fas fa-sitemap"></i> Content Team
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </li>
@@ -106,9 +106,9 @@ const Sidebar = () => {
           </li>
 
           <li>
-            <NavLink activeClassName="active" to="/#">
+            <Link to="#">
               <i className="fas fa-tasks"></i> Applications Management
-            </NavLink>
+            </Link>
             <ul className="sidebar-sub-menu">
               <li>
                 <NavLink activeClassName="active" to="/inputApplication">
