@@ -14,7 +14,7 @@ const InputApplication = () => {
 
       <form
         action=""
-        className="w-full lg:w-2/4 px-2 mr-2.5 -ml-60 lg:mx-auto rounded-md form shadow lg:p-6 mt-20 mb-10 relative bg-gray-100"
+        className="w-full lg:w-2/4 px-2 mr-2.5 -ml-60 lg:mx-auto rounded-md form shadow-xl lg:p-6 mt-20 mb-10 relative bg-gray-100"
       >
         <p className="font-bold mb-8 text-3xl text-center text-blue-400">
           Input Application
@@ -27,7 +27,7 @@ const InputApplication = () => {
             </label>
             <br />
             <select
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
               name=""
               id=""
             >
@@ -47,7 +47,7 @@ const InputApplication = () => {
               name=""
               id=""
               placeholder="Your Number"
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
             />
           </div>
         </div>
@@ -63,7 +63,7 @@ const InputApplication = () => {
               name=""
               id=""
               placeholder="Type Designation"
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
             />
           </div>
 
@@ -73,7 +73,7 @@ const InputApplication = () => {
             </label>
             <br />
             <select
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
               name=""
               id=""
             >
@@ -95,7 +95,7 @@ const InputApplication = () => {
               name=""
               id=""
               placeholder="Your Number"
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
             />
           </div>
 
@@ -109,7 +109,7 @@ const InputApplication = () => {
               name=""
               id=""
               placeholder="Your Number"
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2"
             />
           </div>
         </div>
@@ -125,7 +125,7 @@ const InputApplication = () => {
               name=""
               id=""
               placeholder="Input Name"
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2"
             />
           </div>
 
@@ -135,7 +135,7 @@ const InputApplication = () => {
             </label>
             <br />
             <select
-              className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
               name=""
               id=""
             >
