@@ -28,7 +28,7 @@ const Sidebar = () => {
       <div className="logo">
         <img src={logo} alt="E-Team" />
       </div>
-      <aside className="text-xl">
+      <aside className="text-base">
         <ul className="sidebar-menu p-4 font-normal">
           <li className="mx-auto">
           <NavLink exact to="/">

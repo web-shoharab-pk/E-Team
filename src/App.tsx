@@ -42,6 +42,7 @@ import SARoute from "./components/Authentication/SARoute/SARoute";
 import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
 import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
 import UserSelftActivation from "./components/Authentication/UserSelftActivation/UserSelftActivation";
+import TaskBoard from "./components/TaskBoard/TaskBoard";
 
 const App = () => {
   const [companyData, setCompanyData] = useState({
@@ -140,6 +141,11 @@ const App = () => {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route path="/taskboard">
+              <Dashboard>
+                <TaskBoard />
+              </Dashboard>
+            </Route>
             <PrivateRoute path="/setMeeting">
               <SetMeeting />
             </PrivateRoute>
