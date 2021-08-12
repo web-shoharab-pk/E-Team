@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { UserDataContext } from '../Contexts/UserDataContext';
+import { ConpanyDataContext } from '../../Contexts/UserDataContext';
 
 export const db = firebase.firestore();
 
@@ -15,7 +15,7 @@ type AllDepartment = {
 
 const AllDepartment = () => {
     const [allDepartment, setAllDepartment] = useState([]);
-    const { userData, setUserData } = useContext(UserDataContext);
+    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
 
     useEffect(() => {
         db.collection("departments").get().then((docs: any) => {
@@ -33,7 +33,7 @@ const AllDepartment = () => {
 
     let departmentData: any = [];
     allDepartment.forEach((doc: any) => {
-        if (userData.co_id === doc.data().co_id) {
+        if (companyData.co_id === doc.data().co_id) {
             departmentData = [...departmentData, doc.data()];
         }
     });
@@ -44,7 +44,7 @@ const AllDepartment = () => {
 
             <div className="px-8 mt-3 mb-10 py-2">
                 <div className="relative mx-auto lg:mx-0 block text-left my-2">
-                    <input type="search" className="shadow-sm overflow-x-hidden rounded-3xl border -mx-1 lg:-mx-0 px-1 py-1.5 lg:p-2" placeholder="Search here" />
+                    <input type="search" className="shadow-sm overflow-x-hidden rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-600 border -mx-1 lg:-mx-0 px-2 py-1.5 lg:p-3" placeholder="Search here" />
                                     
                     {/* <div className="absolute bg-gray-300 py-1.5 lg:py-2 px-4 top-px left-1.5 rounded-r-3xl pin-r pin-t text-purple-lighter">
                         <FontAwesomeIcon className="" icon={faSearch} />

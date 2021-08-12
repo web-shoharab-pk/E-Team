@@ -1,0 +1,39 @@
+.navbar{
+    position: relative;
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+@media only screen and (max-width:767px){
+    .navbar-nav{
+        position: absolute;
+        top: -100%;
+        background: #fff;
+        z-index: 5;
+    }
+    .navbar-nav.active{
+        display: block;
+        width: 100%;
+        top: 60px;
+        padding: 0 15px;
+        background: #fff;
+        box-shadow: 0 0 5px #ddd;
+    }
+    .navbar-nav.active .nav-item{
+        display: block;
+        text-align: center;
+        padding: 10px 0;
+
+    }
+}
+@media only screen and (min-width:768px){
+    .navbar-nav{
+        display: block;
+    }
+    .navbar-toggler{
+        display: none;
+    }
+} 

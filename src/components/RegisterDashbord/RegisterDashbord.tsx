@@ -18,7 +18,7 @@ const free = <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 inline
                 <div className="  flex justify-center ">
                     <img className="inline w-1/3" src="https://scontent.fdac129-1.fna.fbcdn.net/v/t39.30808-6/216435324_1184610025339251_8213238886098074006_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=825194&_nc_ohc=ayzmTEiqevYAX8J44YI&_nc_ht=scontent.fdac129-1.fna&oh=d3029064e9aa5f58050808e837f34c1a&oe=61101B05" alt="..."/>
                     <div className='w-1/3 pl-10'>
-                        <h1 className='text-center'>Manage Your Team <br /> In Flexiable Way</h1>
+                        <h1 className='text-center'>Manage Your Team <br /> In Flexible Way</h1>
                         <p className='text-center'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur, optio ut ex eum temporibus, rerum impedit sapiente perferendis maxime quae amet autem? Dolor illum quidem similique voluptate sit, facilis ipsam!</p>
                         <div className='flex justify-center pt-8'>
                             <button className='ring-4 ring-indigo-300 p-2 '>Regester Your Company</button>

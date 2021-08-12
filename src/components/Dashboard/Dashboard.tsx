@@ -1,10 +1,10 @@
-import React from 'react';
+
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
 import './Dashboard.css';
 
-const Dashboard = (props:any) => {
-    const children = props.children;
+const Dashboard = ({children}:any) => {
+
     return (
         <div className="dashboard">
             <Sidebar/>

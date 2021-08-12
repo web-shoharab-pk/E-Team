@@ -1,20 +1,21 @@
-import React from 'react';
-import OurSerce from '../OurService/OurSerce';
-import Footer from './Footer/Footer';
-import Hero from './Hero/Hero';
-import Navbar from './Navbar/Navbar';
-import PricingArea from './PricingArea/PricingArea';
+import React from "react";
+import OurService from "../OurService/OurService"; 
+import Reviews from "../Reviews/Reviews";
+import Footer from "./Footer/Footer";
+import Hero from "./Hero/Hero";
+import Navbar from "./Navbar/Navbar"; 
 
 const MainHome = () => {
-    return (
-        <div>
-            <Navbar/>
-            <Hero/>
-            <PricingArea />
-            <OurSerce />
-            <Footer />
-        </div>
-    );
+  
+  return (
+    <>
+      <Navbar />
+      <Hero /> 
+      <OurService />
+      <Reviews />
+      <Footer />
+    </>
+  );
 };
 
 export default MainHome;

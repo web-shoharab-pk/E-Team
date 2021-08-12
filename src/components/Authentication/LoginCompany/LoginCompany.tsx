@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { UserDataContext, UserDataContextType, UserDataType } from '../../Contexts/UserDataContext';
-import { db, loginComapny } from '../loginmanager';
+import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
+import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { db, loginComapny, saveToLS } from '../loginmanager';
 
 const LoginCompany = () => {
-    const { userData, setUserData } = useContext(UserDataContext);
+    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState({ error: false, message: '' });
@@ -37,6 +37,10 @@ const LoginCompany = () => {
             target.value !== '' &&
             target.value.length >= 8) {
             setPassword(target.value)
+        }else if(target.name === "password" &&
+        target.value.length <= 8){
+            setErrorMessage({ error: true, message: "Password must be at least 8 character!" });
+            setPassword("")
         }
     }
 
@@ -46,27 +50,30 @@ const LoginCompany = () => {
                 .then((data: any) => {
                     if (!data.message) {
                         // For getting data form database 
-                        db.collection('companies').doc(data?.co_id).get().then(company => {
-                            if (!company?.exists) {
-                                setErrorMessage({ error: true, message: 'No active company registered with this email address!' })
+                        db.collection('users').doc(data?.id).get().then(user => {
+                            if (!user?.exists) {
+                                setErrorMessage({ error: true, message: 'No active user registered with this email address!' })
                             } else {
-                                const companyData = company.data();
+                                const userInfo = user.data();
                                 const newObj = {
                                     isSignedIn: true,
-                                    co_id: data?.co_id,
-                                    company_name: companyData?.company_name,
-                                    email: companyData?.email,
-                                    role: companyData?.role,
-                                    created_at: companyData?.created_at,
-                                    updated_at: companyData?.updated_at
+                                    id: data?.id,
+                                    co_id: userInfo?.co_id,
+                                    company_name: userInfo?.name,
+                                    email: userInfo?.email,
+                                    role: userInfo?.role,
+                                    created_at: userInfo?.created_at,
+                                    updated_at: userInfo?.updated_at
                                 }
+console.log(newObj);
 
-                                setUserData(newObj);
+                                setCompanyData(newObj);
+                                saveToLS('token', { user: newObj });
                                 setErrorMessage({ error: false, message: '' })
                                 history.replace(from);
                             }
                         });
-                    }else{
+                    } else {
                         setErrorMessage({ error: true, message: data.message })
                     }
                 })
@@ -76,11 +83,13 @@ const LoginCompany = () => {
         }
     }
 
-    const testDB = () => {
-
-    }
     return (
         <section className="text-gray-600 body-font relative">
+            {
+                // for redirect if the user already loggedin
+                companyData?.isSignedIn &&
+                <Redirect to={from} />
+            }
             <div className="container px-5 py-12 mx-auto">
                 <div className="login-switch mb-8 text-center">
                     <div className="inline-block border border-blue-500 rounded-full">
@@ -98,10 +107,6 @@ const LoginCompany = () => {
                             errorMessage.error &&
                             <p className="text-red-600 p-3 bg-red-200 text-bold w-full ">{errorMessage.message}</p>
                         }
-                        {/* {
-                            isCreated &&
-                            <p className="text-green-600 p-3 bg-green-200 text-bold w-full ">{error.message}</p>
-                        } */}
                     </div>
                 </div>
                 <div className="lg:w-1/2 md:w-2/3 mx-auto">
