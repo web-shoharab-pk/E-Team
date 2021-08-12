@@ -6,16 +6,45 @@ import {
   Droppable,
   DropResult,
 } from "react-beautiful-dnd";
-import profile from "../../Assets/images/profile.jpg";
+import profile1 from "../../Assets/images/profile1.jpg";
+import profile2 from "../../Assets/images/profile2.jpg";
+import profile3 from "../../Assets/images/profile3.jpg";
+import profile4 from "../../Assets/images/profile4.jpg";
+import profile5 from "../../Assets/images/profile5.jpg";
 
 import { v4 as uuidv4 } from "uuid";
 
 const itemsFromBackend = [
-  { id: uuidv4(), content: "Implementing feature on dashboard", date: "Aug 11" },
-  { id: uuidv4(), content: "Implementing feature on dashboard", date: "Aug 11" },
-  { id: uuidv4(), content: "Implementing feature on dashboard", date: "Aug 11" },
-  // { id: uuidv4(), content: "Fourth task", date: "Aug 11" },
-  // { id: uuidv4(), content: "Fifth task", date: "Aug 11" },
+  {
+    id: uuidv4(),
+    content: "Add picture & write similar words for web app",
+    date: "Aug 11",
+    img: profile1,
+  },
+  {
+    id: uuidv4(),
+    content: "Implementing review feature on dashboard",
+    date: "Aug 11",
+    img: profile2,
+  },
+  {
+    id: uuidv4(),
+    content: "Connect web app with database",
+    date: "Aug 11",
+    img: profile3,
+  },
+  {
+    id: uuidv4(),
+    content: "Add unit testing on implemented features",
+    date: "Aug 11",
+    img: profile4,
+  },
+  {
+    id: uuidv4(),
+    content: "Add relevant footer section",
+    date: "Aug 11",
+    img: profile5,
+  },
 ];
 
 const columnsFromBackend = {
@@ -110,7 +139,7 @@ const TaskBoard = () => {
                           style={{
                             background: snapshot.isDraggingOver
                               ? "lightblue"
-                              : "lightgray",
+                              : "#f3f4f6",
                             padding: 7,
                             width: 250,
                             minHeight: 90,
@@ -126,7 +155,7 @@ const TaskBoard = () => {
                                 {(provided, snapshot) => {
                                   return (
                                     <div
-                                      className="rounded-md"
+                                      className="rounded-md shadow-sm"
                                       ref={provided.innerRef}
                                       {...provided.draggableProps}
                                       {...provided.dragHandleProps}
@@ -152,7 +181,7 @@ const TaskBoard = () => {
                                         </p>
                                         <span>
                                           <img
-                                            src={profile}
+                                            src={item.img}
                                             alt="profile-pic"
                                             className="h-6 w-6 rounded-full"
                                           />
