@@ -1,14 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getDataFromLS } from "../../Authentication/loginmanager";
 import "./Navbar.css";
 
+
+
 const Navbar = () => {
+  const [userType, setUserType] = useState('')
   const [showMenu, setShowMenu] = useState(false);
   if (showMenu) {
     document.getElementById("navbar-nav")?.classList.add("active");
   } else {
     document.getElementById("navbar-nav")?.classList.remove("active");
   }
+
+  // for checking user
+  useEffect(() => {
+    checkIsLoginUser('token')
+  }, []);
+
+
+  // For checking that the user has already logged in or not
+  const checkIsLoginUser = (token: string) => {
+    const data = getDataFromLS(token);
+    if (data?.user) {
+      setUserType("company-user");
+    }
+    if (data?.admin) {
+      setUserType("system-user");
+    }
+  }
+
+
   return (
     <header className="text-gray-600 body-font">
       <div className="navbar container mx-auto p-5 mt-5">
@@ -18,23 +41,23 @@ const Navbar = () => {
         >
           <span className="text-blue-500 mr-2">E-Team </span> Manage
         </Link>
-        
+
         <button
-            className="navbar-toggler"
-            onClick={() => setShowMenu(!showMenu)}
-          >
-            {!showMenu ? (
-              <i className="fas fa-bars fa-lg"></i>
-            ) : (
-              <i className="fas fa-times fa-lg"></i>
-            )}
-          </button>
+          className="navbar-toggler"
+          onClick={() => setShowMenu(!showMenu)}
+        >
+          {!showMenu ? (
+            <i className="fas fa-bars fa-lg"></i>
+          ) : (
+            <i className="fas fa-times fa-lg"></i>
+          )}
+        </button>
         <nav className="navbar-nav" id="navbar-nav">
           <Link to="/" className="md:mr-5 hover:text-gray-900 nav-item">
             Home
           </Link>
           <Link to="/ourTeam" className="md:mr-5 hover:text-gray-900 nav-item">
-            Our Team
+            About us
           </Link>
           <Link to="/pricing" className="md:mr-5 hover:text-gray-900 nav-item">
             Pricing
@@ -42,12 +65,27 @@ const Navbar = () => {
           <Link to="/contact" className="md:mr-5 hover:text-gray-900 nav-item">
             Contact
           </Link>
-          <Link
-            to="/login"
-            className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3"
-          >
-            Login <i className="fas fa-sign-in-alt"></i>
-          </Link>
+          {
+            userType === '' &&
+            <Link
+              to="/login"
+              className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3"
+            >
+              Login <i className="fas fa-sign-in-alt"></i>
+            </Link>
+          }
+          {
+            userType === 'company-user' &&
+            <Link to="/home" className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3">
+              Dashboard
+            </Link>
+          }
+          {
+            userType === 'system-user' &&
+            <Link to="/system-admin/" className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3">
+              Dashboard
+            </Link>
+          }
         </nav>
       </div>
     </header>

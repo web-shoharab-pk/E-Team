@@ -37,7 +37,7 @@ const SASidebar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/system-admin/view-all" className="active">
+                                <Link to="/system-admin/view-all" >
                                     All System Admins
                                 </Link>
                             </li>

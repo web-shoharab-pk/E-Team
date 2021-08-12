@@ -4,7 +4,6 @@ import Navbar from "../MainHome/Navbar/Navbar";
 const PricingCard = () => {
   return (
     <div className="container mx-auto">
-      <Navbar />
       <div className="text-center my-10">
         <h1 className="inline font-bold text-3xl mb-2 border-b-4 border-blue-600">Pricing</h1>
       </div>
