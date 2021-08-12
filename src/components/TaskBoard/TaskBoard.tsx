@@ -15,7 +15,7 @@ const itemsFromBackend = [
   { id: uuidv4(), content: "Implementing feature on dashboard", date: "Aug 11" },
   { id: uuidv4(), content: "Implementing feature on dashboard", date: "Aug 11" },
   // { id: uuidv4(), content: "Fourth task", date: "Aug 11" },
-  // { id: uuidv4(), content: "Fifth task", date: "Aug 11" },
+  // { id: uuidv4(), content: "Fifth task", date: "Aug 11" }, 
 ];
 
 const columnsFromBackend = {
