@@ -28,6 +28,7 @@ const RegisterCompany = () => {
             const newObj = { [event.target.name]: event.target.value };
             setCompanyDetails({ ...companyDetails, ...newObj })
         }
+        
     }
 
     const handleCompanyRegister = () => {

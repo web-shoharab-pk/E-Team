@@ -28,36 +28,30 @@ const SASidebar = () => {
                 <ul className="sidebar-menu p-4 font-normal">
                     <li>
                         <Link to="/system-admin/">
-                            Overview
+                            <i className="fas fa-home"></i> Overview
                         </Link>
-                        <ul className="sidebar-sub-menu">
-                            <li>
-                                <Link to="/system-admin/add">
-                                    Add System Admin
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/system-admin/view-all" >
-                                    All System Admins
-                                </Link>
-                            </li>
-                        </ul>
+                    </li>
+                    <li>
+                        <Link to="/system-admin/add">
+                            <i className="fas fa-user-plus"></i> Add System Admin
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/system-admin/view-all" >
+                            <i className="fas fa-users"></i> All System Admins
+                        </Link>
                     </li>
 
-                    <li>
-                        <Link to="#">
-                            Company Management
+
+                    {/* <li>
+                        <Link to="/system-admin/company-approval" className="">
+                            <i className="fas fa-check-circle"></i> Approve Company
                         </Link>
-                        <ul className="sidebar-sub-menu">
-                            <li>
-                                <Link to="/system-admin/company-approval" className="">
-                                    Approve Company
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/all-company">All Company</Link>
-                            </li>
-                        </ul>
+                    </li> */}
+                    <li>
+                        <Link to="/system-admin/all-company">
+                            <i className="fas fa-th-large"></i> All Company
+                        </Link>
                     </li>
                     <li className="text-center">
                         <button className="py-1 px-4 text-white bg-red-500" onClick={logOut}>Logout</button>

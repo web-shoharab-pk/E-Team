@@ -43,6 +43,8 @@ import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
 import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
 import UserSelftActivation from "./components/Authentication/UserSelftActivation/UserSelftActivation";
 import TaskBoard from "./components/TaskBoard/TaskBoard";
+import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
+import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 
 const App = () => {
   const [companyData, setCompanyData] = useState({
@@ -143,11 +145,11 @@ const App = () => {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
-            <Route path="/taskboard">
+            <PrivateRoute path="/taskboard">
               <Dashboard>
                 <TaskBoard />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/setMeeting">
               <SetMeeting />
             </PrivateRoute>
@@ -237,8 +239,15 @@ const App = () => {
                 <ViewAllAdmin />
               </SADashboard>
             </SARoute>
+            <SARoute path="/system-admin/all-company">
+              <SADashboard>
+                <AllCompany />
+              </SADashboard>
+            </SARoute>
             <SARoute path="/system-admin/">
-              <SADashboard>Hello</SADashboard>
+              <SADashboard>
+                <SAHome/>
+              </SADashboard>
             </SARoute>
             <Route exact path="/ourTeam">
               <Navbar />

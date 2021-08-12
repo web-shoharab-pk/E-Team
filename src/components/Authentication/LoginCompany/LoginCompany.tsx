@@ -37,6 +37,10 @@ const LoginCompany = () => {
             target.value !== '' &&
             target.value.length >= 8) {
             setPassword(target.value)
+        }else if(target.name === "password" &&
+        target.value.length <= 8){
+            setErrorMessage({ error: true, message: "Password must be at least 8 character!" });
+            setPassword("")
         }
     }
 
