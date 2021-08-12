@@ -125,7 +125,7 @@ const TaskBoard = () => {
                 }}
                 key={columnId}
               >
-                <h3 className="text-sm font-semibold text-blue-400">
+                <h3 className="text-sm font-semibold bg-gray-300 px-20 rounded text-blue-400">
                   {column.name}
                 </h3>
                 <div style={{ margin: 7 }}>
@@ -139,7 +139,7 @@ const TaskBoard = () => {
                           style={{
                             background: snapshot.isDraggingOver
                               ? "lightblue"
-                              : "#f3f4f6",
+                              : "#d1d5db",
                             padding: 7,
                             width: 250,
                             minHeight: 90,
