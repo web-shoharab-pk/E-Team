@@ -16,7 +16,7 @@ const Contact = () => {
           <div className="flex flex-wrap -m-2">
             <div className="p-2 w-full">
               <div className="relative">
-                <label className="leading-10 text-xl text-gray-600">Name</label>
+                <label className="leading-10  text-gray-600">Name</label>
                 <input
                   type="text"
                   name="name"
@@ -26,7 +26,7 @@ const Contact = () => {
             </div>
             <div className="p-2 w-full">
               <div className="relative">
-                <label className="leading-10 text-xl text-gray-600">
+                <label className="leading-10  text-gray-600">
                   Subject
                 </label>
                 <input
@@ -38,7 +38,7 @@ const Contact = () => {
             </div>
             <div className="p-2 w-full md:w-1/2">
               <div className="relative">
-                <label className="leading-8 text-xl text-gray-600">Email</label>
+                <label className="leading-8  text-gray-600">Email</label>
                 <input
                   required
                   type="email"
@@ -49,7 +49,7 @@ const Contact = () => {
             </div>
             <div className="p-2 w-full md:w-1/2">
               <div className="relative">
-                <label className="leading-8 text-xl text-gray-600">
+                <label className="leading-8  text-gray-600">
                   Phone
                 </label>
                 <input
@@ -63,7 +63,7 @@ const Contact = () => {
               <div className="relative">
                 <label
                   htmlFor="message"
-                  className="leading-10 text-xl text-gray-600"
+                  className="leading-10  text-gray-600"
                 >
                  Message
                 </label>

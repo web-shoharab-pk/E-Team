@@ -1,28 +1,27 @@
 import React, { useContext, useState } from "react";
 import "./Sidebar.css";
 import logo from "../../Assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ConpanyDataContext } from "../../Contexts/UserDataContext";
 import { removeDataFromLS } from "../Authentication/loginmanager";
-import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-      const { companyData, setCompanyData } = useContext(ConpanyDataContext);
-    const [isLogOut, setIsLogOut] = useState(false);
-    const logOut = () => {
-      localStorage.removeItem('token');
-        setCompanyData({
-            isSignedIn: false,
-            co_id: "",
-            id: "",
-            company_name: "",
-            email: "",
-            role: "",
-            created_at: "",
-            updated_at: "",
-        });
-        setIsLogOut(true);
-    }
+  const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+  const [isLogOut, setIsLogOut] = useState(false);
+  const logOut = () => {
+    localStorage.removeItem('token');
+    setCompanyData({
+      isSignedIn: false,
+      co_id: "",
+      id: "",
+      company_name: "",
+      email: "",
+      role: "",
+      created_at: "",
+      updated_at: "",
+    });
+    setIsLogOut(true);
+  }
   return (
     <div className="sidebar flex flex-col" id="sidebar">
       <div className="logo">
@@ -31,15 +30,15 @@ const Sidebar = () => {
       <aside className="text-base">
         <ul className="sidebar-menu p-4 font-normal">
           <li className="mx-auto">
-          <NavLink exact to="/">
-          <i className="fas fa-home"></i> Overview
-          </NavLink>
-          </li>
-          
-          <li>
-            <NavLink activeClassName="active" to="#">
-              <i className="fas fa-users-cog"></i> User Management
+            <NavLink activeClassName="active" to="/home">
+              <i className="fas fa-home"></i> Overview
             </NavLink>
+          </li>
+
+          <li>
+            <Link to="#">
+              <i className="fas fa-users-cog"></i> User Management
+            </Link>
             <ul className="sidebar-sub-menu">
               <li>
                 <NavLink activeClassName="active" to="/create-user">
@@ -55,13 +54,13 @@ const Sidebar = () => {
           </li>
 
           <li>
-            <NavLink activeClassName="active" to="#">
-              <i className="fas fa-tasks"></i> Departments Management
-            </NavLink>
+            <Link to="#">
+              <i className="fas fa-tasks"></i> Dept. Management
+            </Link>
             <ul className="sidebar-sub-menu">
               <li>
                 <NavLink
-                  activeClassName="active"
+                 activeClassName="active"
                   to="/create-department"
                   className=""
                 >
@@ -77,38 +76,15 @@ const Sidebar = () => {
           </li>
 
           <li>
-            <NavLink activeClassName="active" to="#">
-              <i className="fas fa-th-large"></i> All Team
-            </NavLink>
-            <ul className="sidebar-sub-menu">
-              <li>
-                <NavLink activeClassName="active" to="#" className="">
-                  Core Team
-                </NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="active" to="/hello">
-                  <i className="fas fa-poll"></i> Digital Marketing
-                </NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="active" to="/#">
-                  <i className="fas fa-sitemap"></i> Content Team
-                </NavLink>
-              </li>
-            </ul>
-          </li>
-
-          <li>
             <NavLink activeClassName="active" to="/all-courses">
               <i className="fab fa-discourse"></i> Courses
             </NavLink>
           </li>
 
           <li>
-            <NavLink activeClassName="active" to="/#">
-              <i className="fas fa-tasks"></i> Applications Management
-            </NavLink>
+            <Link to="#">
+              <i className="fas fa-tasks"></i> App. Management
+            </Link>
             <ul className="sidebar-sub-menu">
               <li>
                 <NavLink activeClassName="active" to="/inputApplication">
@@ -123,7 +99,7 @@ const Sidebar = () => {
             </ul>
           </li>
           <li className="text-center">
-            <button className="py-1 px-4 text-white bg-red-500"  onClick={logOut}>Logout</button>
+            <button className="py-1 px-4 text-white bg-red-500" onClick={logOut}>Logout</button>
           </li>
         </ul>
       </aside>
