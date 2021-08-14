@@ -7,7 +7,7 @@ const Review = () => {
         OUR SERVICE REVIEW!
       </h1>
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow mt-4 md:w-1/2 lg:w-1/3 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+        <div className="lg:flex-grow mt-4 md:w-1/2 lg:w-1/3 lg:pl-24 md:pl-16 flex-col md:items-start md:text-left items-center text-center">
           <figure className="bg-gray-100 rounded-xl p-8">
             <img
               className="w-32 h-32 rounded-full mx-auto"
