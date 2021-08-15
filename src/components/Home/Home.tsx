@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 import { faClipboard, faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-=======
->>>>>>> 145dd4ee0301bc28d4e8e82490646a2a1fdc28e8
 import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "./Home.css";
