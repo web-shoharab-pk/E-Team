@@ -65,7 +65,7 @@ export const registerCompany = ({ company_name, email, phone, website, co_descri
           updated_at: ""
         }
         return db.collection('users').doc(user?.uid).set(userData).then(info => {
-          return { isError: false, message: "Your company registration completed. After approval, we will send you a email. Please wait for confirmation email." }
+          return { isError: false, message: "Your company registration completed. You can login now" }
         })
 
       })

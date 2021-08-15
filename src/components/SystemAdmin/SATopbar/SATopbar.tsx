@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { SystemAdminDataContext } from '../../../Contexts/UserDataContext';
 
 const SATopbar = () => {
+    const { systemAdminData, setSystemAdminData } = useContext(SystemAdminDataContext);
     const [showSidebar, setShowSidebar] = useState(false);
     const sidebar = document.getElementById('sa-sidebar');
     showSidebar ? sidebar?.classList.add('show') : sidebar?.classList.remove('show')
@@ -12,7 +14,7 @@ const SATopbar = () => {
                     <Link to="#" className="font-medium">Home</Link> /
                     <Link to="#" className="font-medium">Dashboard</Link>
                 </div>
-                <p className="username">Piash</p>
+                <p className="username">{systemAdminData.name}</p>
             </nav>
             <nav className="topbar without-sidebar px-4 text-2xl font-bold">
                 <h2 className="">E-Team</h2>

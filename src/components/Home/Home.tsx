@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 import { faClipboard, faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+=======
+>>>>>>> 145dd4ee0301bc28d4e8e82490646a2a1fdc28e8
 import React from "react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "./Home.css";
 
 const percentage = 75;
@@ -62,9 +65,10 @@ const Home = () => {
       <div className="text-gray-600 body-font">
         <div className="container px-5 py-10 mx-auto">
           <div className="flex flex-wrap -m-4">
-
             <div className="w-full md:w-1/2 p-4">
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Target of this month</h2>
+              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                Target of this month
+              </h2>
               <div className="bg-gray-100 p-6 rounded-lg">
                 <div className="w-1/3 mx-auto mb-10">
                   <CircularProgressbar
@@ -76,10 +80,10 @@ const Home = () => {
                       rotation: 1,
 
                       // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                      strokeLinecap: 'butt',
+                      strokeLinecap: "butt",
 
                       // Text size
-                      textSize: '16px',
+                      textSize: "16px",
 
                       // How long animation takes to go from one percentage to another, in seconds
                       pathTransitionDuration: 0.5,
@@ -89,27 +93,37 @@ const Home = () => {
 
                       // Colors
                       pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-                      textColor: '#4A5ECF',
-                      trailColor: '#d6d6d6',
-                      backgroundColor: '#4A5ECF',
+                      textColor: "#4A5ECF",
+                      trailColor: "#d6d6d6",
+                      backgroundColor: "#4A5ECF",
                     })}
                   />
                 </div>
                 <div className="flex flex-wrap -m-4">
                   <div className="w-1/2 text-center">
-                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Target</h2>
-                    <p className="text-md text-gray-900 font-medium title-font mb-4">55,860</p>
+                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                      Target
+                    </h2>
+                    <p className="text-md text-gray-900 font-medium title-font mb-4">
+                      55,860
+                    </p>
                   </div>
                   <div className="w-1/2 text-center">
-                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Achieved </h2>
-                    <p className="text-md text-gray-900 font-medium title-font mb-4">55,860</p>
+                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                      Achieved{" "}
+                    </h2>
+                    <p className="text-md text-gray-900 font-medium title-font mb-4">
+                      55,860
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="w-full md:w-1/2 p-4">
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Training Progress</h2>
+              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                Training Progress
+              </h2>
               <div className="bg-gray-100 p-6 rounded-lg">
                 <div className="w-1/3 mx-auto mb-8">
                   <CircularProgressbar
@@ -121,10 +135,10 @@ const Home = () => {
                       rotation: 1,
 
                       // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                      strokeLinecap: 'butt',
+                      strokeLinecap: "butt",
 
                       // Text size
-                      textSize: '16px',
+                      textSize: "16px",
 
                       // How long animation takes to go from one percentage to another, in seconds
                       pathTransitionDuration: 0.5,
@@ -134,47 +148,74 @@ const Home = () => {
 
                       // Colors
                       pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-                      textColor: '#4A5ECF',
-                      trailColor: '#d6d6d6',
-                      backgroundColor: '#4A5ECF',
+                      textColor: "#4A5ECF",
+                      trailColor: "#d6d6d6",
+                      backgroundColor: "#4A5ECF",
                     })}
                   />
                 </div>
                 <div className="w-full">
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-1">Running training</h2>
-                  <h2 className="text-lg text-gray-900 font-bold title-font mb-1">Email Ettiquates</h2>
+                  <h2 className="text-lg text-gray-900 font-medium title-font mb-1">
+                    Running training
+                  </h2>
+                  <h2 className="text-lg text-gray-900 font-bold title-font mb-1">
+                    Email Ettiquates
+                  </h2>
                 </div>
               </div>
             </div>
 
             <div className="w-full md:w-1/2 p-4">
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Upcomming Meetings</h2>
+              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                Upcomming Meetings
+              </h2>
               <div className="bg-gray-100 p-6 rounded-lg">
                 <div className="w-full">
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-1">1. Digital Marketing team meeting</h2>
-                  <p className="ml-5"><b>Time:</b> 20-July-2021, 5:36 PM</p>
-                  <p className="ml-5"><b>Agenda:</b> Discussing on ‘how to increase audience to our platforms</p>
+                  <h2 className="text-lg text-gray-900 font-medium title-font mb-1">
+                    1. Digital Marketing team meeting
+                  </h2>
+                  <p className="ml-5">
+                    <b>Time:</b> 20-July-2021, 5:36 PM
+                  </p>
+                  <p className="ml-5">
+                    <b>Agenda:</b> Discussing on ‘how to increase audience to
+                    our platforms
+                  </p>
                 </div>
                 <div className="w-full">
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-1">1. Digital Marketing team meeting</h2>
+                  <h2 className="text-lg text-gray-900 font-medium title-font mb-1">
+                    1. Digital Marketing team meeting
+                  </h2>
                   <div className="text-center">
-                    <a href="#" className="text-center">View Details</a>
+                    <a href="#/" className="text-center">
+                      View Details
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="w-full md:w-1/2 p-4">
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Position in leader board</h2>
+              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                Position in leader board
+              </h2>
               <div className="bg-gray-100 p-6 rounded-lg">
                 <div className="flex flex-wrap -m-4">
                   <div className="w-1/2 text-center">
-                    <h2 className="text-2xl text-gray-900 font-medium title-font mb-4">Target</h2>
-                    <p className="text-4xl text-gray-900 font-medium title-font mb-4">03</p>
+                    <h2 className="text-2xl text-gray-900 font-medium title-font mb-4">
+                      Target
+                    </h2>
+                    <p className="text-4xl text-gray-900 font-medium title-font mb-4">
+                      03
+                    </p>
                   </div>
                   <div className="w-1/2 text-center">
-                    <h2 className="text-2xl text-gray-900 font-medium title-font mb-4">Achieved </h2>
-                    <p className="text-4xl text-gray-900 font-medium title-font mb-4">02</p>
+                    <h2 className="text-2xl text-gray-900 font-medium title-font mb-4">
+                      Achieved{" "}
+                    </h2>
+                    <p className="text-4xl text-gray-900 font-medium title-font mb-4">
+                      02
+                    </p>
                   </div>
                 </div>
               </div>
@@ -222,7 +263,6 @@ const Home = () => {
           }
         </div>
       </div> */}
-
     </div>
   );
 };

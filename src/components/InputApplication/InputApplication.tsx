@@ -4,153 +4,143 @@ import Topbar from "../Topbar/Topbar";
 
 const InputApplication = () => {
   return (
-    <div className="flex">
-      <div className="flex-none">
-        <Sidebar />
-      </div>
-      <div className="absolute w-full top-0 justify-between">
-        <Topbar />
-      </div>
+    <div className="shadow-lg lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded">
+      <h2 className="text-center text-2xl pb-4 lg:text-3xl font-bold text-blue-400">
+        Input Application
+      </h2>
 
-      <form
-        action=""
-        className="w-full lg:w-2/4 px-2 mr-2.5 -ml-60 lg:mx-auto rounded-md form shadow-xl lg:p-6 mt-20 mb-10 relative bg-gray-100"
-      >
-        <p className="font-bold mb-8 text-3xl text-center text-blue-400">
-          Input Application
-        </p>
-
-        <div className="lg:flex lg:space-x-5 mt-3">
-          <div className="lg:w-1/2">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="hello">
-              Team Name:
+      <form action="" className="form mt-4">
+        <div className="lg:flex w-full mb-5 lg:space-x-16">
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
+              Team Name
             </label>
             <br />
             <select
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
-              name=""
-              id=""
+              defaultValue="select department"
+              id="type"
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              required /*name="department" id="department-select"*/
             >
-              <option value="">One</option>
-              <option value="">Two</option>
-              <option value="">Three</option>
+              <option value="selectTeam">Team-80</option>
+              <option value="T3">Team-30</option>
+              <option value="T11">Team-11</option>
             </select>
           </div>
 
-          <div className="lg:w-1/2 mt-3 lg:mt-0">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="">
-              Input Name:
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
+              Input Name
             </label>
             <br />
             <input
-              type="tel"
-              name=""
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
-              placeholder="Your Number"
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              type="text"
+              required
+              placeholder="Your Name"
             />
           </div>
         </div>
 
-        <div className="lg:flex lg:space-x-5 mt-3">
-          <div className="lg:w-1/2">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="">
-              Designation:
+        <div className="lg:flex w-full mb-5 lg:space-x-16">
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
+              Designation
             </label>
             <br />
             <input
-              type="tel"
-              name=""
+              className="rounded bg-gray-100 bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
-              placeholder="Type Designation"
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              type="text"
+              required
+              placeholder="Your Designation"
             />
           </div>
 
-          <div className="lg:w-1/2 mt-3 lg:mt-0">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="hello">
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
               Select Application Type
             </label>
             <br />
             <select
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
-              name=""
-              id=""
+              defaultValue="select department"
+              id="type"
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              required /*name="department" id="department-select"*/
             >
-              <option value="">One</option>
-              <option value="">Two</option>
-              <option value="">Three</option>
+              <option value="selectApplication">Leave Application</option>
+              <option value="RA">Resignation Application</option>
+              <option value="OA">Other Application</option>
             </select>
           </div>
         </div>
 
-        <div className="lg:flex lg:space-x-5 mt-3">
-          <div className="lg:w-1/2">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="">
+        <div className="lg:flex w-full mb-5 lg:space-x-16">
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
               Starting Date
             </label>
             <br />
             <input
-              type="date"
-              name=""
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
-              placeholder="Your Number"
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
+              type="date"
             />
           </div>
 
-          <div className="lg:w-1/2  mt-3 lg:mt-0">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="">
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
               Ending Date
             </label>
             <br />
             <input
-              type="date"
-              name=""
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
-              placeholder="Your Number"
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2"
+              type="date"
             />
           </div>
         </div>
 
-        <div className="lg:flex lg:space-x-5 mt-3">
-          <div className="lg:w-1/2">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="">
+        <div className="lg:flex w-full mb-5 lg:space-x-16">
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
               Observation Under
             </label>
             <br />
             <input
-              type="text"
-              name=""
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
-              placeholder="Input Name"
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent mt-2"
+              type="text"
+              required
+              placeholder="Supervisor Name"
             />
           </div>
 
-          <div className="lg:w-1/2 mt-3 lg:mt-0">
-            <label className="text-md lg:text-lg font-semibold" htmlFor="hello">
+          <div className="lg:w-5/6">
+            <label className="text-base lg:font-semibold" htmlFor="">
               Application Status
             </label>
             <br />
             <select
-              className="border w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 focus:border-transparent"
-              name=""
-              id=""
+              defaultValue="select department"
+              id="type"
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              required /*name="department" id="department-select"*/
             >
-              <option value="">One</option>
-              <option value="">Two</option>
-              <option value="">Three</option>
+              <option value="selectStatus">High</option>
+              <option value="MD">Medium</option>
+              <option value="LW">Low</option>
             </select>
           </div>
         </div>
 
-        <div className="mx-auto text-center ">
+        <div className="text-center ">
+          {" "}
           <input
             type="submit"
             value="Submit Application"
-            className="mt-6 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
+            className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
             onClick={(e) => { e.preventDefault();  alert('function not implement!')}}
           />
         </div>

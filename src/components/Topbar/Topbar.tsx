@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Topbar.css';
 import { Link } from 'react-router-dom';
+import { ConpanyDataContext } from '../../Contexts/UserDataContext';
 
 const Topbar = () => {
+    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
     // For handling sidebar show or hide
     const [showSidebar, setShowSidebar] = useState(false);
     const sidebar = document.getElementById('sidebar');
@@ -17,7 +19,7 @@ const Topbar = () => {
                     <Link to="#" className="font-medium">Home</Link> /
                     <Link to="#" className="font-medium">Dashboard</Link>
                 </div>
-                <p className="username">Piash</p>
+                <p className="username">{companyData.company_name}</p>
             </nav>
             <nav className="topbar without-sidebar flex flex-row justify-between items-center px-4 text-2xl font-bold">
                 <h2 className="">E-Team</h2>
