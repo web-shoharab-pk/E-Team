@@ -1,3 +1,4 @@
+import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 import { faClipboard, faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -48,6 +49,16 @@ const Home = () => {
       <div className="text-center">
         <h2 className="text-2xl font-bold">Dashboard</h2>
       </div>
+
+      <div className="top-60">
+        <div className="relative">
+          <div className="w-52 fixed bottom-16 right-9 bg-white cursor-pointer flex items-center rounded-full py-1.5 justify-center shadow">
+            <FontAwesomeIcon className="text-5xl text-blue-500 mr-3" icon={faFacebookMessenger} />
+            <span className="text-xl font-bold">Start A Chat</span>
+          </div>
+        </div>
+      </div>
+
       <div className="text-gray-600 body-font">
         <div className="container px-5 py-10 mx-auto">
           <div className="flex flex-wrap -m-4">
