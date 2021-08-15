@@ -1,5 +1,5 @@
 import React from 'react';
-import Topbar from '../Topbar/Topbar';
+import Topbar from '../Dashboard/Topbar/Topbar';
 
 const AssignmentArea = () => {
     return (

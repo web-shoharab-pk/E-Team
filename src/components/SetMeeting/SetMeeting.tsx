@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import Topbar from "../Topbar/Topbar";
+import Sidebar from "../Dashboard/Sidebar/Sidebar";
+import Topbar from "../Dashboard/Topbar/Topbar";
 
 const SetMeeting = () => {
   return (

@@ -1,6 +1,4 @@
 import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import Topbar from "../Topbar/Topbar";
 
 const InputApplication = () => {
   return (
