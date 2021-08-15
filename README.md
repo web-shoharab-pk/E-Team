@@ -1,6 +1,7 @@
 # E- Team Management Web App
 
-![e-team](https://user-images.githubusercontent.com/76772620/129448336-aa06af3e-3b3d-4b6b-99cf-bfd6417bbca4.PNG)
+![e-team](https://user-images.githubusercontent.com/76772620/129468185-97457f7c-f252-4127-9a99-18e2ea3e49d2.PNG)
+
 
 ## Description:
 
