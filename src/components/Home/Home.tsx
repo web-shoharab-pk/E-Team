@@ -2,8 +2,10 @@ import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 import { faClipboard, faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useState } from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "./Home.css";
+import MessageBoard from "./MessageBoard/MessageBoard";
 
 const percentage = 75;
 
@@ -44,19 +46,33 @@ const recentTargets = [
 ];
 
 const Home = () => {
+  const [toggler, setToggler] = useState<any>(false);
+
+  const handleChatBoard = (toggle:any) => {
+    setToggler(toggle);
+    console.log(toggle)
+  }
+
   return (
     <div className="homeArea">
       <div className="text-center">
         <h2 className="text-2xl font-bold">Dashboard</h2>
       </div>
 
-      <div className="top-60">
-        <div className="relative">
-          <div className="w-52 fixed bottom-16 right-9 bg-white cursor-pointer flex items-center rounded-full py-1.5 justify-center shadow">
-            <FontAwesomeIcon className="text-5xl text-blue-500 mr-3" icon={faFacebookMessenger} />
-            <span className="text-xl font-bold">Start A Chat</span>
+      {/* messaging system */}
+      <div>
+        {
+          !toggler && <div className="relative">
+            <div onClick={() => handleChatBoard(true)} className="w-52 fixed bottom-16 right-9 bg-white cursor-pointer flex items-center rounded-full py-1.5 justify-center shadow">
+              <FontAwesomeIcon className="text-5xl text-blue-500 mr-3" icon={faFacebookMessenger} />
+              <span className="text-xl font-bold">Start A Chat</span>
+            </div>
           </div>
-        </div>
+        }
+
+        {
+          toggler && <MessageBoard handleChatBoard={handleChatBoard} />
+        }
       </div>
 
       <div className="text-gray-600 body-font">
