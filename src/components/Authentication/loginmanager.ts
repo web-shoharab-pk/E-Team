@@ -72,7 +72,6 @@ export const registerCompany = ({ company_name, email, phone, website, co_descri
 
       // Sending to database 
       return db.collection('companies').add(newObj).then((data: any) => {
-        console.log(data._delegate.id);
         const userData = {
           id: user?.uid,
           address: "",
