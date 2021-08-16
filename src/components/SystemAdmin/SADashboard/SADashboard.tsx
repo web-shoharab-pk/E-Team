@@ -14,6 +14,7 @@ const SADashboard = ({ children }: any) => {
             id: "",
             name: "",
             email: "",
+            phone:"",
             role: "system-admin",
             created_at: "",
             updated_at: "",
