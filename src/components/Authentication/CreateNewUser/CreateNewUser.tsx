@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import moment from 'moment';
 import md5 from 'crypto-js/md5';
 import emailjs from 'emailjs-com';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 import db from '../../Firebase/Firebase';
 
 interface addUserDataType {
@@ -14,7 +14,7 @@ interface addUserDataType {
 
 
 const CreateNewUser = () => {
-    const { companyData, setCompanyData } = useContext(ConpanyDataContext)
+    const { userData, setUserData } = useContext(UserDataContext)
     const [addUserData, setAddUserData] = useState({} as addUserDataType);
     const [error, setError] = useState({ isError: false, message: "" });
     const [isSuccess, setIsSuccess] = useState(false);
@@ -40,7 +40,7 @@ const CreateNewUser = () => {
                 const expiredAt = moment(new Date(new Date().getTime() + 60 * 60 * 24 * 1000)).format("YYYY-MM-DD HH:mm:ss");
                 const token = md5(expiredAt).toString();
                 const activationURL = 'https://eteammanage.web.app/activate-account/?email=' + email + '&key=' + token;
-                const newTokenData = { ...addUserData, isActivated: false, token: token, attempt: 1, expired_at: expiredAt, created_by: companyData.id,co_id:companyData.co_id };
+                const newTokenData = { ...addUserData, isActivated: false, token: token, attempt: 1, expired_at: expiredAt, created_by: userData.id,co_id:userData.co_id };
 
                 // For checking is there any duplicate valid token
                 db.collection("tokens_user").doc(email).get().then((doc: any) => {

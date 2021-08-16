@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 import { db, loginComapny, saveToLS } from '../loginmanager';
 
 const LoginCompany = () => {
-    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+    const { userData, setUserData } = useContext(UserDataContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState({ error: false, message: '' });
@@ -37,8 +37,8 @@ const LoginCompany = () => {
             target.value !== '' &&
             target.value.length >= 8) {
             setPassword(target.value)
-        }else if(target.name === "password" &&
-        target.value.length <= 8){
+        } else if (target.name === "password" &&
+            target.value.length <= 8) {
             setErrorMessage({ error: true, message: "Password must be at least 8 character!" });
             setPassword("")
         }
@@ -59,15 +59,14 @@ const LoginCompany = () => {
                                     isSignedIn: true,
                                     id: data?.id,
                                     co_id: userInfo?.co_id,
-                                    company_name: userInfo?.name,
+                                    name: userInfo?.name,
                                     email: userInfo?.email,
                                     role: userInfo?.role,
                                     created_at: userInfo?.created_at,
                                     updated_at: userInfo?.updated_at
                                 }
-console.log(newObj);
 
-                                setCompanyData(newObj);
+                                setUserData(newObj);
                                 saveToLS('token', { user: newObj });
                                 setErrorMessage({ error: false, message: '' })
                                 history.replace(from);
@@ -87,7 +86,7 @@ console.log(newObj);
         <section className="text-gray-600 body-font relative">
             {
                 // for redirect if the user already loggedin
-                companyData?.isSignedIn &&
+                userData?.isSignedIn &&
                 <Redirect to={from} />
             }
             <div className="container px-5 py-12 mx-auto">

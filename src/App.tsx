@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -20,10 +20,9 @@ import ApplicationList from "./components/ApplicationList/ApplicationList";
 import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
-import CreateCourse from "./components/CreateCourse/CreateCourse";
-import { db, getDataFromLS } from "./components/Authentication/loginmanager";
+import { getDataFromLS } from "./components/Authentication/loginmanager";
 import {
-  ConpanyDataContext,
+  UserDataContext,
   SystemAdminDataContext,
 } from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
@@ -48,13 +47,15 @@ import UserSelftActivation from "./components/Authentication/UserSelftActivation
 import TaskBoard from "./components/TaskBoard/TaskBoard";
 import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
 import SAHome from "./components/SystemAdmin/SAHome/SAHome";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 const App = () => {
-  const [companyData, setCompanyData] = useState({
+  const [userData, setUserData] = useState({
     isSignedIn: false,
     co_id: "",
     id: "",
-    company_name: "",
+    name: "",
     email: "",
     role: "",
     created_at: "",
@@ -80,14 +81,14 @@ const App = () => {
     const data = getDataFromLS(token);
     console.log(token);
     if (data?.user) {
-      setCompanyData(data.user);
+      setUserData(data.user);
     }
     if (data?.admin) {
       setSystemAdminData(data.admin);
     }
   };
   return (
-    <ConpanyDataContext.Provider value={{ companyData, setCompanyData }}>
+    <UserDataContext.Provider value={{ userData, setUserData }}>
       <SystemAdminDataContext.Provider
         value={{ systemAdminData, setSystemAdminData }}
       >
@@ -186,9 +187,14 @@ const App = () => {
             <PrivateRoute path="/feedbacks">
               <FeedBacks />
             </PrivateRoute>
-            <PrivateRoute path="/home">
+            <PrivateRoute path="/company-profile">
               <Dashboard>
-                <Home />
+                <CompanyProfile />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/view-profile">
+              <Dashboard>
+                <UserProfile />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/home">
@@ -252,7 +258,7 @@ const App = () => {
             </SARoute>
             <SARoute path="/system-admin/">
               <SADashboard>
-                <SAHome/>
+                <SAHome />
               </SADashboard>
             </SARoute>
             <Route exact path="/ourTeam">
@@ -269,7 +275,7 @@ const App = () => {
           </Switch>
         </Router>
       </SystemAdminDataContext.Provider>
-    </ConpanyDataContext.Provider>
+    </UserDataContext.Provider>
   );
 };
 

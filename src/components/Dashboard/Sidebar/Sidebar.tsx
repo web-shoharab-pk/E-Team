@@ -1,37 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
-import logo from "../../Assets/images/logo.svg";
+import logo from "../../../Assets/images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { ConpanyDataContext } from "../../Contexts/UserDataContext";
-import { getDataFromLS, removeDataFromLS } from "../Authentication/loginmanager";
+import { UserDataContext } from "../../../Contexts/UserDataContext";
 
-const Sidebar = () => {
-  const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+const Sidebar = ({logOut}:any) => {
+  const { userData } = useContext(UserDataContext);
   const [isCompanyAdmin, setIsCompanyAdmin] = useState(false)
-  const [isLogOut, setIsLogOut] = useState(false);
 
   // for checking user
   useEffect(() => {
-    if (companyData.role === 'company-admin') {
+
+    if (userData.role === 'company-admin') {
       setIsCompanyAdmin(true);
     }
   }, []);
 
-
-  const logOut = () => {
-    localStorage.removeItem('token');
-    setCompanyData({
-      isSignedIn: false,
-      co_id: "",
-      id: "",
-      company_name: "",
-      email: "",
-      role: "",
-      created_at: "",
-      updated_at: "",
-    });
-    setIsLogOut(true);
-  }
   return (
     <div className="sidebar flex flex-col" id="sidebar">
       <div className="logo">

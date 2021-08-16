@@ -6,14 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import loginBG from '../../../Assets/images/Partnership-rafiki.png';
 import { useHistory, useLocation } from 'react-router';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 
 interface UserDataType {
     [key: string]: any;
 }
 
 const UserLogin = () => {
-    // const { userData, setUserData } = useContext(ConpanyDataContext)
+    // const { userData, setUserData } = useContext(UserDataContext)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
