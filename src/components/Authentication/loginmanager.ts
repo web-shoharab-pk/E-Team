@@ -32,9 +32,8 @@ export const removeDataFromLS = (tokenName: string) => {
 
 // ! company data
 export const getCompanyInfo = (companyId: string) => {
-  db.collection('companies').doc(companyId).get().then((info) => {
-    console.log(info.data());
-
+  return db.collection('companies').doc(companyId).get().then((info) => {
+    return info.data()
   })
     .catch((error) => {
       console.log(error);
