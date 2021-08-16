@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import './Topbar.css';
 import { Link } from 'react-router-dom';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 
 const Topbar = ({logOut}:any) => {
-    const { companyData } = useContext(ConpanyDataContext);
+    const { userData } = useContext(UserDataContext);
 
     // For handling dropdown
     const [showDropdown, setShowDropdown] = useState(false);
@@ -35,10 +35,10 @@ const Topbar = ({logOut}:any) => {
                     onClick={() => setShowDropdown(!showDropdown)}
                     className="username relative">
                     {
-                        companyData.company_name && companyData.company_name
+                        userData.name && userData.name
                     }
                     {
-                        !companyData.company_name && <span>Profile</span>
+                        !userData.name && <span>Profile</span>
                     }
 
                     <div id="profile-dropdown" className="hidden absolute right-5 top-10 mt-2 py-2 w-48 bg-white rounded-md border shadow-xl z-20">

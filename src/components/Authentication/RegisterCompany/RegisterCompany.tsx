@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { registerCompany } from '../loginmanager';
-interface CompanyDataType {
+interface userDataType {
     company_name: string;
     email: string;
     website: string;
@@ -17,7 +17,7 @@ interface CompanyDataType {
 }
 
 const RegisterCompany = () => {
-    const [companyDetails, setCompanyDetails] = useState({} as CompanyDataType);
+    const [companyDetails, setCompanyDetails] = useState({} as userDataType);
     const [error, setError] = useState({ isError: false, message: '' });
     const [isCreated, setIsCreated] = useState(false);
 

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { ConpanyDataContext } from '../../Contexts/UserDataContext';
+import { UserDataContext } from '../../Contexts/UserDataContext';
 
 export const db = firebase.firestore();
 
@@ -15,7 +15,7 @@ type AllDepartment = {
 
 const AllDepartment = () => {
     const [allDepartment, setAllDepartment] = useState([]);
-    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+    const { userData, setUserData } = useContext(UserDataContext);
 
     useEffect(() => {
         db.collection("departments").get().then((docs: any) => {
@@ -33,7 +33,7 @@ const AllDepartment = () => {
 
     let departmentData: any = [];
     allDepartment.forEach((doc: any) => {
-        if (companyData.co_id === doc.data().co_id) {
+        if (userData.co_id === doc.data().co_id) {
             departmentData = [...departmentData, doc.data()];
         }
     });

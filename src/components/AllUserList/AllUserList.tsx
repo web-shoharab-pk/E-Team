@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ConpanyDataContext } from "../../Contexts/UserDataContext";
+import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
 import userImg from "./../../Assets/images/user.png";
 
 const AllUserList = () => {
-  const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+  const { userData, setUserData } = useContext(UserDataContext);
   const [allUsers, setAllUsers] = useState([] as object[]);
 
   useEffect(() => {
     db.collection("users")
-      .where("co_id", "==", companyData.co_id)
+      .where("co_id", "==", userData.co_id)
       .get()
       .then((users: any) => {
         let alluserData = users.docs.map((doc: any) => doc.data());
@@ -19,7 +19,7 @@ const AllUserList = () => {
       .catch((error) => {
         console.log("Error getting document:", error);
       });
-  }, [companyData.co_id]);
+  }, [userData.co_id]);
 
   console.log(allUsers);
 

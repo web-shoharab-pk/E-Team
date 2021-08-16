@@ -1,19 +1,19 @@
 import * as React from "react";
 
-export interface CompanyDataType{
+export interface userDataType{
     isSignedIn: boolean;
     co_id: any;
     id: any;
-    company_name: any;
+    name: any;
     email: any;
     role: any;
     created_at: any;
     updated_at:any;
 }
 
-export interface CompanyDataContextType{ 
-    companyData: CompanyDataType;
-    setCompanyData: React.Dispatch<React.SetStateAction<CompanyDataType>>
+export interface userDataContextType{ 
+    userData: userDataType;
+    setUserData: React.Dispatch<React.SetStateAction<userDataType>>
 }
 
 export interface SystemAdminDataType{
@@ -32,5 +32,5 @@ export interface SystemAdminDataContextType{
 }
 
 
-export const ConpanyDataContext = React.createContext<CompanyDataContextType>({} as CompanyDataContextType)
+export const UserDataContext = React.createContext<userDataContextType>({} as userDataContextType)
 export const SystemAdminDataContext = React.createContext<SystemAdminDataContextType>({} as SystemAdminDataContextType)

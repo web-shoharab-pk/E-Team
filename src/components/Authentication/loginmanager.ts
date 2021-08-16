@@ -30,6 +30,28 @@ export const removeDataFromLS = (tokenName: string) => {
   localStorage.removeItem(tokenName);
 }
 
+// ! company data
+export const getCompanyInfo = (companyId: string) => {
+  db.collection('companies').doc(companyId).get().then((info) => {
+    console.log(info.data());
+
+  })
+    .catch((error) => {
+      console.log(error);
+
+    })
+}
+
+// company data
+export const getUserInfo = (userId: string) => {
+  return db.collection('users').doc(userId).get().then((info) => {
+    return info.data()
+  })
+    .catch((error) => {
+      console.log(error);
+
+    })
+}
 
 // For company registration
 export const registerCompany = ({ company_name, email, phone, website, co_description, password, re_password }: any) => {

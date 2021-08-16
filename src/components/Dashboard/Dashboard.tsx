@@ -3,19 +3,19 @@ import Sidebar from './Sidebar/Sidebar';
 import Topbar from './Topbar/Topbar';
 import './Dashboard.css';
 import { useContext, useState } from 'react';
-import { ConpanyDataContext } from '../../Contexts/UserDataContext';
+import { UserDataContext } from '../../Contexts/UserDataContext';
 
 const Dashboard = ({children}:any) => {
-    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+    const { userData, setUserData } = useContext(UserDataContext);
     const [isLogOut, setIsLogOut] = useState(false);
 
     const logOut = () => {
         localStorage.removeItem('token');
-        setCompanyData({
+        setUserData({
           isSignedIn: false,
           co_id: "",
           id: "",
-          company_name: "",
+          name: "",
           email: "",
           role: "",
           created_at: "",

@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import logo from "../../../Assets/images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { ConpanyDataContext } from "../../../Contexts/UserDataContext";
+import { UserDataContext } from "../../../Contexts/UserDataContext";
 
 const Sidebar = ({logOut}:any) => {
-  const { companyData } = useContext(ConpanyDataContext);
+  const { userData } = useContext(UserDataContext);
   const [isCompanyAdmin, setIsCompanyAdmin] = useState(false)
 
   // for checking user
   useEffect(() => {
 
-    if (companyData.role === 'company-admin') {
+    if (userData.role === 'company-admin') {
       setIsCompanyAdmin(true);
     }
   }, []);
