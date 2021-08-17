@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
-import { UserDataContext } from "../../Contexts/UserDataContext";
+
 
 const EditUser = () => {
-
-    const {userData} = useContext(UserDataContext);
-    
-    console.log(userData);
+ 
 
   return (
     <div className="shadow-lg lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded">

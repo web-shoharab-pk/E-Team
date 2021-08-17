@@ -30,7 +30,7 @@ const SAProfile = () => {
                 <div className="w-2/3" >{systemAdminData?.address} </div>
             </div> */}
             <div className="flex justify-between mt-6">
-                <Link to="/edit-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Edit SA Profile</Link>
+                <Link to="/edit-sa-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Edit SA Profile</Link>
             </div>
         </div>
     );

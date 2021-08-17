@@ -1,56 +1,58 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
-import UserLogin from "./components/Authentication/UserLogin/UserLogin";
-import Dashboard from "./components/Dashboard/Dashboard";
-import ShareIdea from "./components/ShareIdea/ShareIdea";
+import AllCourse from "./components/AllCourse/AllCourse";
+import AllDepartment from "./components/AllDepartment/AllDepartment";
 import AllIdea from "./components/AllIdea/AllIdea";
+import AllUserList from "./components/AllUserList/AllUserList";
+import ApplicationList from "./components/ApplicationList/ApplicationList";
+import AssignCourse from "./components/AssignCourse/AssignCourse";
+import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
+import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
+import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUser";
+import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
+import { getDataFromLS } from "./components/Authentication/loginmanager";
+import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
+import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
+import SARoute from "./components/Authentication/SARoute/SARoute";
+import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
+import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
+import UserLogin from "./components/Authentication/UserLogin/UserLogin";
+import UserSelftActivation from "./components/Authentication/UserSelftActivation/UserSelftActivation";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import Contact from "./components/Contact/Contact";
+import CourseVideo from "./components/CourseVideo/CourseVideo";
+import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
+import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
+import Dashboard from "./components/Dashboard/Dashboard";
+import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
+import EditSaProfile from "./components/EditSaProfile/EditSaProfile";
+import EditUser from "./components/EditUser/EditUser";
+import FeedBacks from "./components/FeedBacks/FeedBacks";
+import Home from "./components/Home/Home";
+import InputApplication from "./components/InputApplication/InputApplication";
+import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
+import Footer from "./components/MainHome/Footer/Footer";
+import MainHome from "./components/MainHome/MainHome";
+import Navbar from "./components/MainHome/Navbar/Navbar";
+import MeetingList from "./components/MeetingList/MeetingList";
+import NotFound from "./components/NotFound/NotFound";
+import OurTeam from "./components/OurTeam/OurTeam";
+import PricingCard from "./components/PricingCard/PricingCard";
 import QuizArea from "./components/QuizArea/QuizArea";
 import SetMeeting from "./components/SetMeeting/SetMeeting";
-import InputApplication from "./components/InputApplication/InputApplication";
-import CourseVideo from "./components/CourseVideo/CourseVideo";
-import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
-import FeedBacks from "./components/FeedBacks/FeedBacks";
-import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
-import AllUserList from "./components/AllUserList/AllUserList";
-import AssignCourse from "./components/AssignCourse/AssignCourse";
-import MeetingList from "./components/MeetingList/MeetingList";
-import ApplicationList from "./components/ApplicationList/ApplicationList";
-import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUser";
-import AllCourse from "./components/AllCourse/AllCourse";
-import MainHome from "./components/MainHome/MainHome";
-import { getDataFromLS } from "./components/Authentication/loginmanager";
-import {
-  UserDataContext,
-  SystemAdminDataContext,
-} from "./Contexts/UserDataContext";
-import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
-import Navbar from "./components/MainHome/Navbar/Navbar";
-import Footer from "./components/MainHome/Footer/Footer";
-import NotFound from "./components/NotFound/NotFound";
-import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
-import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
-import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
-import AllDepartment from "./components/AllDepartment/AllDepartment";
-import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
-import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
-import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
-import PricingCard from "./components/PricingCard/PricingCard";
-import Contact from "./components/Contact/Contact";
-import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
-import OurTeam from "./components/OurTeam/OurTeam";
-import SARoute from "./components/Authentication/SARoute/SARoute";
-import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
-import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
-import UserSelftActivation from "./components/Authentication/UserSelftActivation/UserSelftActivation";
-import TaskBoard from "./components/TaskBoard/TaskBoard";
+import ShareIdea from "./components/ShareIdea/ShareIdea";
 import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
+import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
 import SAHome from "./components/SystemAdmin/SAHome/SAHome";
-import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
-import UserProfile from "./components/UserProfile/UserProfile";
-import EditUser from "./components/EditUser/EditUser";
 import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
+import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
+import TaskBoard from "./components/TaskBoard/TaskBoard";
+import UserProfile from "./components/UserProfile/UserProfile";
+import {
+  SystemAdminDataContext,
+  UserDataContext,
+} from "./Contexts/UserDataContext";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -68,7 +70,7 @@ const App = () => {
     id: "",
     name: "",
     email: "",
-    phone:"",
+    phone: "",
     role: "system-admin",
     created_at: "",
     updated_at: "",
@@ -90,7 +92,6 @@ const App = () => {
       setSystemAdminData(data.admin);
     }
   };
-
 
   return (
     <UserDataContext.Provider value={{ userData, setUserData }}>
@@ -197,6 +198,11 @@ const App = () => {
                 <CompanyProfile />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/edit-company-profile">
+              <Dashboard>
+                <EditCompanyProfile />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/view-profile">
               <Dashboard>
                 <UserProfile />
@@ -270,6 +276,11 @@ const App = () => {
             <SARoute path="/system-admin/view-sa-profile">
               <SADashboard>
                 <SAProfile />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/edit-sa-profile">
+              <SADashboard>
+                <EditSaProfile />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/">

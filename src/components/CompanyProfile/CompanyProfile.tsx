@@ -41,7 +41,7 @@ const CompanyProfile = () => {
                 <div className="w-2/3" >{companyInfo?.co_description} </div>
             </div>
             <div className="flex justify-between mt-6">
-                <Link to="/edit-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Edit Company Profile</Link>
+                <Link to="/edit-company-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Edit Company Profile</Link>
             </div>
         </div>
     );
