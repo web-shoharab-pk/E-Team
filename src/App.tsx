@@ -49,6 +49,7 @@ import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
 import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
+import EditUser from "./components/EditUser/EditUser";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -87,6 +88,8 @@ const App = () => {
       setSystemAdminData(data.admin);
     }
   };
+
+
   return (
     <UserDataContext.Provider value={{ userData, setUserData }}>
       <SystemAdminDataContext.Provider
@@ -197,6 +200,12 @@ const App = () => {
                 <UserProfile />
               </Dashboard>
             </PrivateRoute>
+
+            <PrivateRoute path="/edit-profile">
+              <Dashboard>
+                <EditUser />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/home">
               <Dashboard>
                 <Home />
@@ -233,7 +242,7 @@ const App = () => {
             <PrivateRoute exact path="/:companyUserName/user-login">
               <UserLogin />
             </PrivateRoute>
-            <Route path="/system-admin/login">
+            <Route exact path="/system-admin/login">
               <SystemAdminLogin />
             </Route>
             <Route path="/system-admin/activate-account">

@@ -13,7 +13,7 @@ const UserProfile = () => {
 
     useEffect(()=>{
         getUserInfo(userData?.id).then((info:any)=>setUserInfo({...userInfo,...info}))
-    },[])
+    },[userData?.id, userInfo])
 
     return (
         <div className="w-full md:w-1/2 my-5 mx-auto rounded border border-gray-100 shadow p-4">
@@ -44,10 +44,10 @@ const UserProfile = () => {
                 <div className="w-2/3" >{userInfo?.role} </div>
             </div>
             <div className="flex justify-between mt-6">
-                <Link to="/edit-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Change Password</Link>
+                <Link to="#" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Change Password</Link>
                 <Link to="/edit-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Edit</Link>
-                <Link to="/edit-profile" className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1 m-1">Block</Link>
-                <Link to="/edit-profile" className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1 m-1">Delete</Link>
+                <Link to="#" className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1 m-1">Block</Link>
+                <Link to="#" className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1 m-1">Delete</Link>
             </div>
         </div>
     );

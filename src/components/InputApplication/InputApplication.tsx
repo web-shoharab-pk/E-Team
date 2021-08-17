@@ -48,7 +48,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="rounded   bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
               type="text"
               required
