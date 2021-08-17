@@ -50,6 +50,7 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
 import EditUser from "./components/EditUser/EditUser";
+import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -67,6 +68,7 @@ const App = () => {
     id: "",
     name: "",
     email: "",
+    phone:"",
     role: "system-admin",
     created_at: "",
     updated_at: "",
@@ -263,6 +265,11 @@ const App = () => {
             <SARoute path="/system-admin/all-company">
               <SADashboard>
                 <AllCompany />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/view-sa-profile">
+              <SADashboard>
+                <SAProfile />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/">

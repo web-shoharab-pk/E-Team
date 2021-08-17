@@ -37,7 +37,7 @@ const SATopbar = ({logOut}:any) => {
                         <span>Profile</span>
                     }
                     <div id="profile-dropdown" className="hidden absolute right-5 top-10 mt-2 py-2 w-48 bg-white rounded-md border shadow-xl z-20">
-                        <Link to="/view-sa-profile" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-400 hover:text-white">
+                        <Link to="/system-admin/view-sa-profile" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-400 hover:text-white">
                             View Profile
                         </Link>
                         <Link to="/system-admin/login" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-400 hover:text-white" onClick={logOut}>Logout</Link>

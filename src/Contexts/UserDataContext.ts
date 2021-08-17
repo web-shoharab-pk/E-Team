@@ -21,6 +21,7 @@ export interface SystemAdminDataType{
     id: any;
     name: any;
     email: any;
+    phone: any;
     role: any;
     created_at: any;
     updated_at:any;

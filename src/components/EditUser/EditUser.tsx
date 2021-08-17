@@ -37,7 +37,7 @@ const EditUser = () => {
             className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
             id=""
             type="email"
-            defaultValue={userInfo?.email}
+         
             required
             placeholder="email"
           />
