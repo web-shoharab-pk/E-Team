@@ -1,6 +1,38 @@
-.topbar .navbar{
+.topbar-header{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 50;
+}
+.topbar-header .topbar{
+    justify-content: space-between;
     background: #18A0FB;
     color: #fff;
     height: 50px;
     line-height: 50px;
+}
+@media only screen and (max-width:991px){
+    .fa-bars{
+        min-width: 25px;
+        min-height: 25px;
+    }
+    .without-sidebar{
+        display: flex;
+    }
+    .with-sidebar{
+        display: none;
+    }
+}
+@media only screen and (min-width:992px){
+    .topbar-header{
+        margin-left: 250px;
+    }
+    .without-sidebar{
+        display: none;
+    }
+    .with-sidebar{
+        width: 100%;
+        display: flex;
+    }
 }
