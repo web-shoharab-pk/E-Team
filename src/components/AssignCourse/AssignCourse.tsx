@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import db from "../Firebase/Firebase";
 
-
 const AssignCourse = () => {
   const [currentOption, setCurrentOption] = useState("");
 
-  const handleChange = (event:any) => {
+  const handleChange = (event: any) => {
     setCurrentOption(event.target.value);
   };
   return (
