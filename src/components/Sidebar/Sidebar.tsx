@@ -51,6 +51,12 @@ const Sidebar = () => {
               <Link to="#">
                 <i className="fas fa-users-cog"></i> User Management
               </Link>
+              <Link to="/edit-user">
+                <i className="fas fa-users-cog"></i> Edit user
+              </Link>
+              <Link to="/edit-company">
+                <i className="fas fa-users-cog"></i> Edit Company
+              </Link>
               <ul className="sidebar-sub-menu">
                 <li>
                   <NavLink activeClassName="active" to="/create-user">

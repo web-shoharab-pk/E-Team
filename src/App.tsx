@@ -48,6 +48,9 @@ import UserSelftActivation from "./components/Authentication/UserSelftActivation
 import TaskBoard from "./components/TaskBoard/TaskBoard";
 import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
 import SAHome from "./components/SystemAdmin/SAHome/SAHome";
+import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
+import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
+import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -211,6 +214,16 @@ const App = () => {
                 <CreateDepartment />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/edit-user">
+              <Dashboard>
+                <EditUserProfile />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-company">
+              <Dashboard>
+                <EditCompanyProfile />
+              </Dashboard>
+            </PrivateRoute>
             <Route path="/login">
               <Navbar />
               <LoginCompany />
@@ -248,6 +261,11 @@ const App = () => {
             <SARoute path="/system-admin/all-company">
               <SADashboard>
                 <AllCompany />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/edit-sa-profile">
+              <SADashboard>
+                <EditSAProfile/>
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/">
