@@ -1,15 +1,15 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useContext, useEffect } from 'react';
-import { ConpanyDataContext } from '../../Contexts/UserDataContext';
+import { UserDataContext } from '../../Contexts/UserDataContext';
 import db from '../Firebase/Firebase';
 
 const AllUserList = () => {
-    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+    const { userData, setUserData } = useContext(UserDataContext);
     const [allUsers, setAllUsers] = useState([] as object[])
 
     useEffect(() => {
-        db.collection("users").where('co_id', '==', companyData.co_id).get().then((users: any) => {
+        db.collection("users").where('co_id', '==', userData.co_id).get().then((users: any) => {
             let alluserData = users.docs.map((doc: any) => doc.data());
             setAllUsers(alluserData);
         }).catch((error) => {

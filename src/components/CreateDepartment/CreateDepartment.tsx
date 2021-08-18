@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { ConpanyDataContext } from "../../Contexts/UserDataContext";
+import { UserDataContext } from "../../Contexts/UserDataContext";
 
 export const db = firebase.firestore();
 
@@ -17,7 +17,7 @@ const CreateDepartment = () => {
     type: "",
     description: "",
   });
-  const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+  const { userData, setUserData } = useContext(UserDataContext);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState({ isError: false, message: "" });
   const [successMessage, setSuccessMessage] = useState("");
@@ -45,7 +45,7 @@ const CreateDepartment = () => {
           name: name,
           type: type,
           description: description,
-          co_id: companyData.co_id,
+          co_id: userData.co_id,
         })
         .then(() => {
           (document.getElementById("name") as HTMLInputElement).value = "";
