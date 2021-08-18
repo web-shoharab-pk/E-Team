@@ -23,7 +23,7 @@ import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db, getDataFromLS } from "./components/Authentication/loginmanager";
 import {
-  ConpanyDataContext,
+  UserDataContext,
   SystemAdminDataContext,
 } from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
@@ -50,7 +50,7 @@ import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
 import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 
 const App = () => {
-  const [companyData, setCompanyData] = useState({
+  const [userData, setUserData] = useState({
     isSignedIn: false,
     co_id: "",
     id: "",
@@ -80,14 +80,14 @@ const App = () => {
     const data = getDataFromLS(token);
     console.log(token);
     if (data?.user) {
-      setCompanyData(data.user);
+      setUserData(data.user);
     }
     if (data?.admin) {
       setSystemAdminData(data.admin);
     }
   };
   return (
-    <ConpanyDataContext.Provider value={{ companyData, setCompanyData }}>
+    <UserDataContext.Provider value={{ userData, setUserData }}>
       <SystemAdminDataContext.Provider
         value={{ systemAdminData, setSystemAdminData }}
       >
@@ -269,7 +269,7 @@ const App = () => {
           </Switch>
         </Router>
       </SystemAdminDataContext.Provider>
-    </ConpanyDataContext.Provider>
+    </UserDataContext.Provider>
   );
 };
 
