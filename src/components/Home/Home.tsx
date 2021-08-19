@@ -48,7 +48,7 @@ const recentTargets = [
 const Home = () => {
   const [toggler, setToggler] = useState<any>(false);
 
-  const handleChatBoard = (toggle:any) => {
+  const handleChatList = (toggle:any) => {
     setToggler(toggle);
     console.log(toggle)
   }
@@ -63,7 +63,7 @@ const Home = () => {
       <div>
         {
           !toggler && <div className="relative">
-            <div onClick={() => handleChatBoard(true)} className="w-52 fixed bottom-16 right-9 bg-white cursor-pointer flex items-center rounded-full py-1.5 justify-center shadow">
+            <div onClick={() => handleChatList(true)} className="w-52 fixed bottom-16 right-9 bg-white cursor-pointer flex items-center rounded-full py-1.5 justify-center shadow">
               <FontAwesomeIcon className="text-5xl text-blue-500 mr-3" icon={faFacebookMessenger} />
               <span className="text-xl font-bold">Start A Chat</span>
             </div>
@@ -71,7 +71,7 @@ const Home = () => {
         }
 
         {
-          toggler && <MessageBoard handleChatBoard={handleChatBoard} />
+          toggler && <MessageBoard handleChatList={handleChatList} />
         }
       </div>
 
