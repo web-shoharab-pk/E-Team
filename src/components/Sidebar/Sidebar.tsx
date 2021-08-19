@@ -3,35 +3,19 @@ import "./Sidebar.css";
 import logo from "../../Assets/images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { UserDataContext } from "../../Contexts/UserDataContext";
-import { getDataFromLS, removeDataFromLS } from "../Authentication/loginmanager";
 
-const Sidebar = () => {
-  const { userData, setUserData } = useContext(UserDataContext);
+const Sidebar = ({logOut}:any) => {
+  const { userData } = useContext(UserDataContext);
   const [isCompanyAdmin, setIsCompanyAdmin] = useState(false)
-  const [isLogOut, setIsLogOut] = useState(false);
 
   // for checking user
   useEffect(() => {
+
     if (userData.role === 'company-admin') {
       setIsCompanyAdmin(true);
     }
   }, []);
 
-
-  const logOut = () => {
-    localStorage.removeItem('token');
-    setUserData({
-      isSignedIn: false,
-      co_id: "",
-      id: "",
-      company_name: "",
-      email: "",
-      role: "",
-      created_at: "",
-      updated_at: "",
-    });
-    setIsLogOut(true);
-  }
   return (
     <div className="sidebar flex flex-col" id="sidebar">
       <div className="logo">
@@ -50,12 +34,6 @@ const Sidebar = () => {
             <li>
               <Link to="#">
                 <i className="fas fa-users-cog"></i> User Management
-              </Link>
-              <Link to="/edit-user">
-                <i className="fas fa-users-cog"></i> Edit user
-              </Link>
-              <Link to="/edit-company">
-                <i className="fas fa-users-cog"></i> Edit Company
               </Link>
               <ul className="sidebar-sub-menu">
                 <li>

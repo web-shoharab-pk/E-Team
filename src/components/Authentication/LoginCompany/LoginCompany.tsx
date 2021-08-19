@@ -37,11 +37,22 @@ const LoginCompany = () => {
             target.value !== '' &&
             target.value.length >= 8) {
             setPassword(target.value)
-        }else if(target.name === "password" &&
-        target.value.length <= 8){
+        } else if (target.name === "password" &&
+            target.value.length <= 8) {
             setErrorMessage({ error: true, message: "Password must be at least 8 character!" });
             setPassword("")
         }
+    }
+
+    // company data
+    const getCompanyInfo = (companyId: string) => {
+        return db.collection('companies').doc(companyId).get().then((info) => {
+            return info.data()
+        })
+            .catch((error) => {
+                console.log(error);
+
+            })
     }
 
     const handleCompanyLogin = () => {
@@ -55,22 +66,26 @@ const LoginCompany = () => {
                                 setErrorMessage({ error: true, message: 'No active user registered with this email address!' })
                             } else {
                                 const userInfo = user.data();
-                                const newObj = {
-                                    isSignedIn: true,
-                                    id: data?.id,
-                                    co_id: userInfo?.co_id,
-                                    company_name: userInfo?.name,
-                                    email: userInfo?.email,
-                                    role: userInfo?.role,
-                                    created_at: userInfo?.created_at,
-                                    updated_at: userInfo?.updated_at
-                                }
-console.log(newObj);
-
-                                setUserData(newObj);
-                                saveToLS('token', { user: newObj });
-                                setErrorMessage({ error: false, message: '' })
-                                history.replace(from);
+                                getCompanyInfo(userInfo?.co_id).then((companyInfo) => {
+                                    const newObj = {
+                                        isSignedIn: true,
+                                        id: data?.id,
+                                        co_id: userInfo?.co_id,
+                                        name: userInfo?.name,
+                                        company_name: companyInfo?.company_name,
+                                        email: userInfo?.email,
+                                        role: userInfo?.role,
+                                        created_at: userInfo?.created_at,
+                                        updated_at: userInfo?.updated_at
+                                    }
+                                    console.log(companyInfo);
+                                    console.log(newObj);
+                                    
+                                    setUserData(newObj);
+                                    saveToLS('token', { user: newObj });
+                                    setErrorMessage({ error: false, message: '' })
+                                    history.replace(from);
+                                })
                             }
                         });
                     } else {

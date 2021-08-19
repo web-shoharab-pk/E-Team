@@ -51,12 +51,16 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
 import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
 import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 
 const App = () => {
   const [userData, setUserData] = useState({
     isSignedIn: false,
     co_id: "",
     id: "",
+    name:"",
     company_name: "",
     email: "",
     role: "",
@@ -68,6 +72,7 @@ const App = () => {
     id: "",
     name: "",
     email: "",
+    phone:"",
     role: "system-admin",
     created_at: "",
     updated_at: "",
@@ -214,6 +219,16 @@ const App = () => {
                 <CreateDepartment />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/company-profile">
+              <Dashboard>
+                <CompanyProfile />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/view-profile">
+              <Dashboard>
+                <UserProfile />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/edit-user">
               <Dashboard>
                 <EditUserProfile />
@@ -261,6 +276,11 @@ const App = () => {
             <SARoute path="/system-admin/all-company">
               <SADashboard>
                 <AllCompany />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/view-sa-profile">
+              <SADashboard>
+                <SAProfile/>
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/edit-sa-profile">

@@ -4,6 +4,7 @@ export interface UserDataType{
     isSignedIn: boolean;
     co_id: any;
     id: any;
+    name: any;
     company_name: any;
     email: any;
     role: any;
@@ -21,6 +22,7 @@ export interface SystemAdminDataType{
     id: any;
     name: any;
     email: any;
+    phone:any;
     role: any;
     created_at: any;
     updated_at:any;
