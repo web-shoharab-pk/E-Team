@@ -10,19 +10,21 @@ It’s a training and managing web app. Where users get different types of facil
 
 ### 3type pricing system
 
+![e-team-pricing](https://user-images.githubusercontent.com/76772620/130094988-621d9f67-f30c-496c-8eb8-55c43644e0e5.PNG)
+
 **Free**
-*That package has some limited features for usages. This is provided for customer testing purposes.
+* That package has some limited features for usages. This is provided for customer testing purposes.
 
 **Premium**
-*Premium package users get full access by taking membership. Customers can give their service charge monthly or daily but should advance.
+* Premium package users get full access by taking membership. Customers can give their service charge monthly or daily but should advance.
 
 **Enterprise**
-*These membership users get the highest facilities of this web app. Its package prices are higher than the premium package.
+* These membership users get the highest facilities of this web app. Its package prices are higher than the premium package.
 
 ### Dashboard
 
 **Company Admin Dashboard**
-*This is the main dashboard for a company. Using this dashboard company can monitor their employees, targets, goals
+* This is the main dashboard for a company. Using this dashboard company can monitor their employees, targets, goals
 
 ## Why we build it & what it can do?
 
