@@ -27,6 +27,7 @@
     "emailjs-com": "^2.6.4",
     "firebase": "^8.8.1",
     "moment": "^2.29.1",
+    "npm-snapshot": "^1.1.0",
     "radium": "^0.26.1",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
