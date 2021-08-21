@@ -2,11 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-} from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 // import profile1 from "../../Assets/images/profile1.jpg";
 // import profile2 from "../../Assets/images/profile2.jpg";
 // import profile3 from "../../Assets/images/profile3.jpg";
@@ -66,14 +62,14 @@ import {
 //     items: [],
 //   },
 // };
-import { UserDataContext } from '../../Contexts/UserDataContext';
+import { UserDataContext } from "../../Contexts/UserDataContext";
 
 export const db = firebase.firestore();
 
 type TaskBoard = {
-  taskName: string,
-  teamName: string,
-  taskDescription: string
+  taskName: string;
+  teamName: string;
+  taskDescription: string;
 };
 
 const TaskBoard = () => {
@@ -87,7 +83,6 @@ const TaskBoard = () => {
       .then((task_list: any) => {
         let allTaskCard = task_list.docs.map((doc: any) => doc.data());
         setTaskCard(allTaskCard);
-        console.log(allTaskCard)
       })
       .catch((error) => {
         console.log("Error getting document:", error);
@@ -97,11 +92,12 @@ const TaskBoard = () => {
   const onDragEnd = (result: any, taskCard: any, setTaskCard: any) => {
     if (!result.destination) return;
     const { source, destination } = result;
-
+    console.log(result);
     if (source.droppableId !== destination.droppableId) {
       const sourceColumn = taskCard[source.droppableId];
       const destColumn = taskCard[destination.droppableId];
       const sourceItems = [...sourceColumn.items];
+      console.log(sourceItems);
       const destItems = [...destColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, removed);

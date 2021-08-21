@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { useState } from "react";
-import { UserDataContext } from '../../Contexts/UserDataContext';
+import { UserDataContext } from "../../Contexts/UserDataContext";
 
 export const db = firebase.firestore();
 
