@@ -1,9 +1,21 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import SendMessages from '../SendMessages/SendMessages';
+import firebase from "firebase/app";
+import "firebase/firestore";
+import db from '../../Firebase/Firebase';
 
 const SingleChatBoard = () => {
+    const [messages, setMessages] = useState<any>([]);
+
+    useEffect(() => {
+        db.collection('messages').orderBy('createdAt').limit(50).onSnapshot(snapshot => {
+            // setMessages(snapshot.docs.map(doc=> doc.data()));
+            console.log(snapshot.docs)
+        })
+    }, [])
     return (
         <div className="relative">
             <div className="shadow fixed bg-white right-9 bottom-0 w-5/12 rounded-lg px-5 py-3">
@@ -72,6 +84,8 @@ const SingleChatBoard = () => {
                         </div>
                     </div>
                 </div>
+
+                <SendMessages />
             </div>
         </div>
     );
