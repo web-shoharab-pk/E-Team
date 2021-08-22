@@ -1,108 +1,82 @@
-import React, { useContext, useEffect } from "react";
-import { useState } from "react";
-import firebase from "firebase/app";
-import "firebase/firestore";
+import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-// import profile1 from "../../Assets/images/profile1.jpg";
-// import profile2 from "../../Assets/images/profile2.jpg";
-// import profile3 from "../../Assets/images/profile3.jpg";
-// import profile4 from "../../Assets/images/profile4.jpg";
-// import profile5 from "../../Assets/images/profile5.jpg";
+import { v4 as uuidv4 } from "uuid";
+import profile1 from "../../Assets/images/profile1.jpg";
+import profile2 from "../../Assets/images/profile2.jpg";
+import profile3 from "../../Assets/images/profile3.jpg";
+import profile4 from "../../Assets/images/profile4.jpg";
+import profile5 from "../../Assets/images/profile5.jpg";
 
-// import { v4 as uuidv4 } from "uuid";
 
-// const itemsFromBackend = [
-//   {
-//     id: uuidv4(),
-//     content: "Add picture & write similar words for web app",
-//     date: "Aug 11",
-//     img: profile1,
-//   },
-//   {
-//     id: uuidv4(),
-//     content: "Implementing review feature on dashboard",
-//     date: "Aug 11",
-//     img: profile2,
-//   },
-//   {
-//     id: uuidv4(),
-//     content: "Connect web app with database",
-//     date: "Aug 11",
-//     img: profile3,
-//   },
-//   {
-//     id: uuidv4(),
-//     content: "Add unit testing on implemented features",
-//     date: "Aug 11",
-//     img: profile4,
-//   },
-//   {
-//     id: uuidv4(),
-//     content: "Add relevant footer section",
-//     date: "Aug 11",
-//     img: profile5,
-//   },
-// ];
+const itemsFromBackend = [
+  {
+    id: uuidv4(),
+    content: "Add picture & write similar words for web app",
+    date: "Aug 11",
+    img: profile1,
+  },
+  {
+    id: uuidv4(),
+    content: "Implementing review feature on dashboard",
+    date: "Aug 11",
+    img: profile2,
+  },
+  {
+    id: uuidv4(),
+    content: "Connect web app with database",
+    date: "Aug 11",
+    img: profile3,
+  },
+  {
+    id: uuidv4(),
+    content: "Add unit testing on implemented features",
+    date: "Aug 11",
+    img: profile4,
+  },
+  {
+    id: uuidv4(),
+    content: "Add relevant footer section",
+    date: "Aug 11",
+    img: profile5,
+  },
+];
 
-// const columnsFromBackend = {
-//   [uuidv4()]: {
-//     name: "TO DO",
-//     items: itemsFromBackend,
-//   },
-//   [uuidv4()]: {
-//     name: "IN PROGRESS",
-//     items: [],
-//   },
-//   [uuidv4()]: {
-//     name: "DONE",
-//     items: [],
-//   },
-//   [uuidv4()]: {
-//     name: "DEPLOYED",
-//     items: [],
-//   },
-// };
-import { UserDataContext } from "../../Contexts/UserDataContext";
-
-export const db = firebase.firestore();
-
-type TaskBoard = {
-  taskName: string;
-  teamName: string;
-  taskDescription: string;
+const columnsFromBackend = {
+  [uuidv4()]: {
+    name: "TO DO",
+    items: itemsFromBackend,
+  },
+  [uuidv4()]: {
+    name: "IN PROGRESS",
+    items: [],
+  },
+  [uuidv4()]: {
+    name: "DONE",
+    items: [],
+  },
+  [uuidv4()]: {
+    name: "DEPLOYED",
+    items: [],
+  },
 };
 
 const TaskBoard = () => {
-  const [taskCard, setTaskCard] = useState([]);
-  const { userData, setUserData } = useContext(UserDataContext);
+  const [columns, setColumns] = useState(columnsFromBackend);
 
-  useEffect(() => {
-    db.collection("task_list")
-      .where("co_id", "==", userData.co_id)
-      .get()
-      .then((task_list: any) => {
-        let allTaskCard = task_list.docs.map((doc: any) => doc.data());
-        setTaskCard(allTaskCard);
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
-  }, [userData.co_id]);
-
-  const onDragEnd = (result: any, taskCard: any, setTaskCard: any) => {
+  const onDragEnd = (result: any, columns: any, setColumns: any) => {
     if (!result.destination) return;
     const { source, destination } = result;
     console.log(result);
     if (source.droppableId !== destination.droppableId) {
-      const sourceColumn = taskCard[source.droppableId];
-      const destColumn = taskCard[destination.droppableId];
+      const sourceColumn = columns[source.droppableId];
+      const destColumn = columns[destination.droppableId];
       const sourceItems = [...sourceColumn.items];
       console.log(sourceItems);
       const destItems = [...destColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, removed);
-      setTaskCard({
-        ...taskCard,
+      setColumns({
+        ...columns,
         [source.droppableId]: {
           ...sourceColumn,
           items: sourceItems,
@@ -113,12 +87,12 @@ const TaskBoard = () => {
         },
       });
     } else {
-      const column = taskCard[source.droppableId];
+      const column = columns[source.droppableId];
       const copiedItems = [...column.items];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
-      setTaskCard({
-        ...taskCard,
+      setColumns({
+        ...columns,
         [source.droppableId]: {
           ...column,
           items: copiedItems,
@@ -134,9 +108,9 @@ const TaskBoard = () => {
         style={{ display: "flex", justifyContent: "center", height: "auto" }}
       >
         <DragDropContext
-          onDragEnd={(result) => onDragEnd(result, taskCard, setTaskCard)}
+          onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
         >
-          {Object.entries(taskCard).map(([columnId, column]: any, index) => {
+          {Object.entries(columns).map(([columnId, column]: any, index) => {
             return (
               <div
                 style={{
@@ -166,11 +140,11 @@ const TaskBoard = () => {
                             minHeight: 90,
                           }}
                         >
-                          {taskCard.map((item: any, index: any) => {
+                          {column.items.map((item: any, index: any) => {
                             return (
                               <Draggable
-                                key={item.co_id}
-                                draggableId={item.co_id}
+                                key={item.id}
+                                draggableId={item.id}
                                 index={index}
                               >
                                 {(provided, snapshot) => {
@@ -193,12 +167,12 @@ const TaskBoard = () => {
                                     >
                                       <div>
                                         <p className="text-sm font-medium text-gray-900">
-                                          {item.taskName}
+                                          {item.content}
                                         </p>
                                       </div>
                                       <div className="flex justify-between pt-3">
                                         <p className="text-sm font-medium text-gray-500">
-                                          {item.teamName}
+                                          {item.date}
                                         </p>
                                         <span>
                                           <img
