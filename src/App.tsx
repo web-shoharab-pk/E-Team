@@ -136,11 +136,11 @@ const App = () => {
                 <CreateNewUser />
               </Dashboard>
             </PrivateRoute>
-            <Route path="/all-user">
+            <PrivateRoute path="/all-user">
               <Dashboard>
                 <AllUserList />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/leaderBoard">
               <Dashboard>
                 <LeaderBoard />
