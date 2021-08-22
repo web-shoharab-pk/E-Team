@@ -1,18 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-  DropResult,
-} from "react-beautiful-dnd";
+import React, { useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { v4 as uuidv4 } from "uuid";
 import profile1 from "../../Assets/images/profile1.jpg";
 import profile2 from "../../Assets/images/profile2.jpg";
 import profile3 from "../../Assets/images/profile3.jpg";
 import profile4 from "../../Assets/images/profile4.jpg";
 import profile5 from "../../Assets/images/profile5.jpg";
 
-import { v4 as uuidv4 } from "uuid";
 
 const itemsFromBackend = [
   {
@@ -67,16 +61,17 @@ const columnsFromBackend = {
 };
 
 const TaskBoard = () => {
-  const [columns, setColumns] = useState<any>(columnsFromBackend);
+  const [columns, setColumns] = useState(columnsFromBackend);
 
   const onDragEnd = (result: any, columns: any, setColumns: any) => {
     if (!result.destination) return;
     const { source, destination } = result;
-
+    console.log(result);
     if (source.droppableId !== destination.droppableId) {
       const sourceColumn = columns[source.droppableId];
       const destColumn = columns[destination.droppableId];
       const sourceItems = [...sourceColumn.items];
+      console.log(sourceItems);
       const destItems = [...destColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, removed);

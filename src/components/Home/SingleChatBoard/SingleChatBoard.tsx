@@ -1,11 +1,10 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useState, useEffect} from 'react';
-import SendMessages from '../SendMessages/SendMessages';
-import firebase from "firebase/app";
 import "firebase/firestore";
+import React, { useEffect, useState } from 'react';
 import db from '../../Firebase/Firebase';
+import SendMessages from '../SendMessages/SendMessages';
 
 const SingleChatBoard = () => {
     const [messages, setMessages] = useState<any>([]);
@@ -13,7 +12,7 @@ const SingleChatBoard = () => {
     useEffect(() => {
         db.collection('messages').orderBy('createdAt').limit(50).onSnapshot(snapshot => {
             // setMessages(snapshot.docs.map(doc=> doc.data()));
-            console.log(snapshot.docs)
+            console.log(snapshot)
         })
     }, [])
     return (
