@@ -61,6 +61,14 @@ const AllUserList = () => {
                     </div>
                   </figcaption>
                 </div>
+                <div className="text-center py-2">
+                  <Link
+                    className="text-md font-medium px-4 py-2 rounded bg-blue-500 hover:bg-white text-white hover:text-blue-500 border border-blue-500"
+                    to={"/assign-department/" + user.id}
+                  >
+                    Assign Department
+                  </Link>
+                </div>
               </figure>
             </div>
           );
