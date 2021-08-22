@@ -1,169 +1,94 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
+import userImg from "./../../Assets/images/user.png";
 
 const AllUserList = () => {
   const { userData, setUserData } = useContext(UserDataContext);
   const [allUsers, setAllUsers] = useState([] as object[]);
-  const [showModal, setShowModal] = useState(false);
-  const [allDepartment, setAllDepartment] = useState([]);
-
-  useEffect(() => {
-    db.collection("departments")
-      .get()
-      .then((docs: any) => {
-        setAllDepartment(docs);
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
-  }, []);
-
-  let departmentData: any = [];
-  allDepartment.forEach((doc: any) => {
-    if (userData.co_id === doc.data().co_id) {
-      departmentData = [...departmentData, doc.data()];
-    }
-  });
 
   useEffect(() => {
     db.collection("users")
       .where("co_id", "==", userData.co_id)
       .get()
       .then((users: any) => {
-        let allUserData = users.docs.map((doc: any) => doc.data());
-        setAllUsers(allUserData);
-        console.log(allUserData);
+        let alluserData = users.docs.map((doc: any) => doc.data());
+        setAllUsers(alluserData);
       })
       .catch((error) => {
         console.log("Error getting document:", error);
       });
-  }, []);
+  }, [userData.co_id]);
+
+  console.log(allUsers);
+
   return (
     <div className="shadow mx-0 lg:mx-8 mt-4 pt-4 pb-16 rounded-lg">
-      <h2 className="text-center text-2xl py-3 font-semibold">All User List</h2>
-      <table className="pt-2 rounded-t-lg m-5 w-11/12 mx-auto text-gray-800">
-        <tr className="text-left border-t border-b-4 border-gray-300">
-          <th className="px-4 py-3">Name</th>
-          <th className="px-4 py-3">Email</th>
-          <th className="px-4 py-3">Mobile</th>
-          <th className="px-4 py-3">Designation</th>
-          <th className="px-4 py-3">Action</th>
-        </tr>
+      <h2 className="text-center  text-2xl py-3 font-semibold">
+        All User List
+      </h2>
 
+      <div className="flex flex-col md:flex-row px-2 md:px-0">
         {allUsers.map((user: any) => {
           return (
-            <tr key={user.id} className="border-b border-gray-200">
-              <td className="px-4 py-3">{user.name}</td>
-              <td className="px-4 py-3">{user.email}</td>
-              <td className="px-4 py-3">{user.phone}</td>
-              <td className="px-4 py-3">{user.role}</td>
-              <td className="px-4 py-3">Edit</td>
-              <td>
-                {/* <button
-                  className="border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-1 px-2 rounded"
-                  onClick={() => setShowModal(true)}
-                >
-                  Assign Department
-                </button> */}
-                <Link to={"/add-to-departement/"+user.id}>Assign departement</Link>
-              </td>
-              <>
-                {/* <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        Open regular modal
-      </button> */}
-                {showModal ? (
-                  <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                      <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                        {/*content*/}
-                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                          {/*header*/}
-                          <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                            <h3 className="text-3xl font-semibold">
-                              Modal Title
-                            </h3>
-                            <button
-                              className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                              onClick={() => setShowModal(false)}
-                            >
-                              <span className="bg-transparent text-red opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                                ×
-                              </span>
-                            </button>
-                          </div>
-                          {/*body*/}
-                          <div className="relative p-6 flex-auto">
-                            <form action="">
-                              <label
-                                className="text-base lg:font-semibold"
-                                htmlFor=""
-                              >
-                                Select Type
-                              </label>
-                              <br />
-                              <select
-                                defaultValue="select department"
-                                id="type"
-                                className="rounded mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                required
-                              >
-                                {departmentData.map((department: any) => (
-                                  <option value="selectDepartment">
-                                    {department.name}
-                                  </option>
-                                ))}
-                              </select>
-
-                              <select
-                                defaultValue="select department"
-                                id="type"
-                                className="rounded mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                required
-                              >
-                                {allUsers.map((user: any) => (
-                                  <option value="selectDepartment">
-                                    {user.name}/{user.id}
-                                  </option>
-                                ))}
-                              </select>
-                            </form>
-                          </div>
-                          {/*footer*/}
-                          <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                            <button
-                              className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                              type="button"
-                              onClick={() => setShowModal(false)}
-                            >
-                              Close
-                            </button>
-                            <button
-                              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                              type="button"
-                              onClick={() => setShowModal(false)}
-                            >
-                              Save Changes
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+            <div className="w-full md:w-1/3 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+              <figure className="bg-gray-100 rounded-xl p-8">
+                <img
+                  className="w-32 h-32 rounded-full mx-auto"
+                  src={user.photoURL ? user.photoURL : userImg}
+                  alt=""
+                  width="384"
+                  height="512"
+                />
+                <div className="pt-6 text-center space-y-4">
+                  <blockquote>
+                    <p className="text-lg font-semibold">
+                      Name: {user.name ? user.name : "NA"}
+                    </p>
+                  </blockquote>
+                  <figcaption className="font-medium flex">
+                    <div className="text-cyan-600 flex-1">
+                      Role: {user.role ? user.role : "NA"}
                     </div>
-                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                  </>
-                ) : null}
-              </>
-            </tr>
+                    <div className="text-cyan-600 flex-1">
+                      <Link
+                        to="#"
+                        className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
+                      >
+                        Visit Profile
+                      </Link>
+                    </div>
+                  </figcaption>
+                </div>
+              </figure>
+            </div>
           );
         })}
-      </table>
+      </div>
+      {/* <table className="pt-2 rounded-t-lg m-5 w-11/12 mx-auto text-gray-800">
+                <tr className="text-left border-t border-b-4 border-gray-300">
+                    <th className="px-4 py-3">Name</th>
+                    <th className="px-4 py-3">Email</th>
+                    <th className="px-4 py-3">Mobile</th>
+                    <th className="px-4 py-3">Designation</th>
+                    <th className="px-4 py-3">Action</th>
+                </tr>
+
+                {
+                    allUsers.map((user:any) => {
+                        return (
+                            <tr key={user.id} className="border-b border-gray-200">
+                                <td className="px-4 py-3">{user.name}</td>
+                                <td className="px-4 py-3">{user.email}</td>
+                                <td className="px-4 py-3">{user.phone}</td>
+                                <td className="px-4 py-3">{user.role}</td>
+                                <td className="px-4 py-3">Edit</td>
+                            </tr>
+                        )
+                    })
+                }
+            </table> */}
 
       {/* <section className="text-gray-700">
                     <div className="w-full px-2 lg:px-16 pt-2">
