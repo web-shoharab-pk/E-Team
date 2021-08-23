@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 import { Redirect, Route } from 'react-router';
 
 const PrivateRoute = ({ children, ...rest }: any) => {
-    const {companyData,setCompanyData} = useContext(ConpanyDataContext)
+    const {userData,setUserData} = useContext(UserDataContext)
     return (
         <Route
             {...rest}
-            render={({location}:any)=> companyData.isSignedIn ? (
+            render={({location}:any)=> userData.isSignedIn ? (
                 children
                 ):(
                     <Redirect

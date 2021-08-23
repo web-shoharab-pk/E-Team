@@ -23,7 +23,7 @@ import MainHome from "./components/MainHome/MainHome";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db, getDataFromLS } from "./components/Authentication/loginmanager";
 import {
-  ConpanyDataContext,
+  UserDataContext,
   SystemAdminDataContext,
 } from "./Contexts/UserDataContext";
 import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
@@ -48,9 +48,13 @@ import UserSelftActivation from "./components/Authentication/UserSelftActivation
 import TaskBoard from "./components/TaskBoard/TaskBoard";
 import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
 import SAHome from "./components/SystemAdmin/SAHome/SAHome";
+import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
+import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
+import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
+import AddCourse from "./components/AddCourse/AddCourse";
 
 const App = () => {
-  const [companyData, setCompanyData] = useState({
+  const [userData, setUserData] = useState({
     isSignedIn: false,
     co_id: "",
     id: "",
@@ -80,14 +84,14 @@ const App = () => {
     const data = getDataFromLS(token);
     console.log(token);
     if (data?.user) {
-      setCompanyData(data.user);
+      setUserData(data.user);
     }
     if (data?.admin) {
       setSystemAdminData(data.admin);
     }
   };
   return (
-    <ConpanyDataContext.Provider value={{ companyData, setCompanyData }}>
+    <UserDataContext.Provider value={{ userData, setUserData }}>
       <SystemAdminDataContext.Provider
         value={{ systemAdminData, setSystemAdminData }}
       >
@@ -118,6 +122,12 @@ const App = () => {
                 <AllCourse />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/add-course">
+              <Dashboard>
+                 <AddCourse />
+              </Dashboard>
+            </PrivateRoute>
+
             <PrivateRoute path="/assign-course">
               <Dashboard>
                 <AssignCourse />
@@ -211,6 +221,16 @@ const App = () => {
                 <CreateDepartment />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/edit-user">
+              <Dashboard>
+                <EditUserProfile />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-company">
+              <Dashboard>
+                <EditCompanyProfile />
+              </Dashboard>
+            </PrivateRoute>
             <Route path="/login">
               <Navbar />
               <LoginCompany />
@@ -250,6 +270,11 @@ const App = () => {
                 <AllCompany />
               </SADashboard>
             </SARoute>
+            <SARoute path="/system-admin/edit-sa-profile">
+              <SADashboard>
+                <EditSAProfile/>
+              </SADashboard>
+            </SARoute>
             <SARoute path="/system-admin/">
               <SADashboard>
                 <SAHome/>
@@ -269,7 +294,7 @@ const App = () => {
           </Switch>
         </Router>
       </SystemAdminDataContext.Provider>
-    </ConpanyDataContext.Provider>
+    </UserDataContext.Provider>
   );
 };
 

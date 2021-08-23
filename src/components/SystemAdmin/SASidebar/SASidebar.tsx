@@ -32,6 +32,11 @@ const SASidebar = () => {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/system-admin/edit-sa-profile">
+                            <i className="fas fa-home"></i> Edit SA Profile
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="/system-admin/add">
                             <i className="fas fa-user-plus"></i> Add System Admin
                         </Link>
