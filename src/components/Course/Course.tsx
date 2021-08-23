@@ -2,10 +2,16 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 interface CourseProps{
-    thumbnail:string
+    thumbnail:string,
+    course: {
+        course_title: string, 
+        instructor: string,
+        thumbnail: string
+    }
 }
 
-const Course = ({thumbnail}:CourseProps) => {
+const Course = ({course, thumbnail}:CourseProps) => {
+    console.log(course);
     return (
         <div className="w-full md:w-1/2  lg:w-1/2">
             <div className="m-2 p-2 rounded-md bg-white border shadow-md  lg:flex">
@@ -13,8 +19,8 @@ const Course = ({thumbnail}:CourseProps) => {
                     <img src={thumbnail} alt="" className="w-full" />
                 </div>
                 <div className="p-1 lg:w-2/3">
-                    <h2 className="font-medium text-lg">Web Design and Development</h2>
-                    <p>Jhankar Mahbub</p>
+                    <h2 className="font-medium text-lg">{course?.course_title}</h2>
+                    <p>{course?.instructor}</p>
                     <Link to="/assign-course" className="m-1 px-5 py-1 rounded-full border border-blue-500 bg-blue-500 hover:bg-white text-white hover:text-blue-500 font-medium ">Assign</Link>
                     <button className="m-1 px-5 py-1 rounded-full border border-blue-500 bg-blue-500 hover:bg-white text-white hover:text-blue-500 font-medium ">Edit</button>
                     <button className="m-1 px-5 py-1 rounded-full border border-blue-500 bg-blue-500 hover:bg-white text-white hover:text-blue-500 font-medium ">Continue as user</button>

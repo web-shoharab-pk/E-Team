@@ -15,7 +15,7 @@ const AllUserList = () => {
         }).catch((error) => {
             console.log("Error getting document:", error);
         });
-    }, []);
+    }, [userData.co_id]);
     return (
         <div className="shadow mx-0 lg:mx-8 mt-4 pt-4 pb-16 rounded-lg">
             <h2 className="text-center text-2xl py-3 font-semibold">All User List</h2>
