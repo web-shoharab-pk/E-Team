@@ -4,12 +4,12 @@ import React, {useContext, useState} from 'react';
 import firebase from "firebase/app";
 import "firebase/firestore";
 import db from '../../Firebase/Firebase';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 
 
 const SendMessages = () => {
     const [msg, setMsg] = useState('');
-    const {companyData, setCompanyData} = useContext<any>(ConpanyDataContext);
+    const {companyData, setCompanyData} = useContext<any>(UserDataContext);
 
     async function sendMessage(e:any) {
         e.preventDefault();

@@ -6,7 +6,7 @@ import SendMessages from '../SendMessages/SendMessages';
 import firebase from "firebase/app";
 import "firebase/firestore";
 import db from '../../Firebase/Firebase';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 
 interface IProps {
     handleChatList: (toggle: boolean) => void
@@ -14,7 +14,7 @@ interface IProps {
 
 const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
     const [messages, setMessages] = useState<any>([]);
-    const {companyData, setCompanyData} = useContext<any>(ConpanyDataContext);
+    const {companyData, setCompanyData} = useContext<any>(UserDataContext);
 
     useEffect(() => {
         db.collection('messages').orderBy('createAt').limit(50).onSnapshot(snapshot => {
