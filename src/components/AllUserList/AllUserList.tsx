@@ -41,8 +41,9 @@ const AllUserList = () => {
                         )
                     })
                 }
-            </table>
-            {/* <section className="text-gray-700">
+            </table> 
+
+      {/* <section className="text-gray-700">
                     <div className="w-full px-2 lg:px-16 pt-2">
                         <details className="mb-2 duration-500 rounded-md border">
                             <summary className="text-md lg:text-lg duration-500 font-semibold bg-gray-100 py-2 px-4">
@@ -150,8 +151,8 @@ const AllUserList = () => {
                     </div>
                 </section>
          */}
-        </div>
-    );
+    </div>
+  );
 };
 
 export default AllUserList;

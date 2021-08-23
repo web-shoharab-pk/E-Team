@@ -51,6 +51,7 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
 import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
 import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
+import AddCourse from "./components/AddCourse/AddCourse";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -121,6 +122,12 @@ const App = () => {
                 <AllCourse />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/add-course">
+              <Dashboard>
+                 <AddCourse />
+              </Dashboard>
+            </PrivateRoute>
+
             <PrivateRoute path="/assign-course">
               <Dashboard>
                 <AssignCourse />

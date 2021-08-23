@@ -2,7 +2,10 @@ import Review from "../Review/Review";
 
 const Reviews = () => {
   
-  return <Review />;
+  return (
+    
+      <Review />
+  )
 };
 
 export default Reviews;

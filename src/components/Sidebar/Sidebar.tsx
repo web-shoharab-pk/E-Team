@@ -15,7 +15,7 @@ const Sidebar = () => {
     if (userData.role === 'company-admin') {
       setIsCompanyAdmin(true);
     }
-  }, []);
+  }, [userData.role]);
 
 
   const logOut = () => {
@@ -108,7 +108,11 @@ const Sidebar = () => {
                 <i className="fab fa-discourse"></i> Courses
               </NavLink>
             </li>
-
+            <li>
+              <NavLink activeClassName="active" to="/add-course">
+                <i className="fab fa-discourse"></i> Add Course
+              </NavLink>
+            </li>
             <li>
               <Link to="#">
                 <i className="fas fa-tasks"></i> App. Management
