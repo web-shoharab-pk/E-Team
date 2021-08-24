@@ -6,6 +6,7 @@ import { useState } from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "./Home.css";
 import MessageBoard from "./MessageBoard/MessageBoard";
+import SingleChatBoard from "./SingleChatBoard/SingleChatBoard";
 
 const percentage = 75;
 
@@ -71,7 +72,8 @@ const Home = () => {
         }
 
         {
-          toggler && <MessageBoard handleChatList={handleChatList} />
+          // toggler && <MessageBoard handleChatList={handleChatList} />
+          toggler && <SingleChatBoard handleChatList={handleChatList} />
         }
       </div>
 

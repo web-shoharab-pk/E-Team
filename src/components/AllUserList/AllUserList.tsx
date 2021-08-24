@@ -97,7 +97,7 @@ const AllUserList = () => {
                         )
                     })
                 }
-            </table> */}
+            </table> 
 
       {/* <section className="text-gray-700">
                     <div className="w-full px-2 lg:px-16 pt-2">

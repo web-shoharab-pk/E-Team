@@ -51,11 +51,13 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
 import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
 import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
-import UserProfile from "./components/UserProfile/UserProfile";
-import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
-import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
+import AddCourse from "./components/AddCourse/AddCourse";
+import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
 import AssignDepartment from "./components/AllUserList/AssignDepartment";
 import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
+import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -126,6 +128,16 @@ const App = () => {
             <PrivateRoute path="/all-courses">
               <Dashboard>
                 <AllCourse />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/:id">
+              <Dashboard>
+                <EditCourse />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/add-course">
+              <Dashboard>
+                 <AddCourse />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/assign-course">
