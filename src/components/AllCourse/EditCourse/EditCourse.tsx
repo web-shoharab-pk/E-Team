@@ -122,7 +122,7 @@ const EditCourse = () => {
                 }
             </div>
 
-            <AddModule />
+            <AddModule id={id} />
         </div>
     );
 };
