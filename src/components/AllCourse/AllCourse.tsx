@@ -7,16 +7,19 @@ import { UserDataContext } from "../../Contexts/UserDataContext";
 
 const AllCourse = () => {
   const { userData } = useContext(UserDataContext);
-  const [courses, setCourses] = useState([] as object[])
-console.log(courses);
+  const [courses, setCourses] = useState([] as object[]);
+
+
   useEffect(() => {
     db.collection("courses").where('co_id', '==', userData.co_id).get().then((users: any) => {
-        let alluserData = users.docs.map((doc: any) => doc.data());
-        setCourses(alluserData);
+        let allUserData = users.docs.map((doc: any) => doc);
+        setCourses(allUserData);
     }).catch((error) => {
         console.log("Error getting document:", error);
     });
 }, [userData.co_id]);
+
+
 
   return (
     <section className="all-courses">
