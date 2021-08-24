@@ -19,10 +19,9 @@ const AddModule = ({id}: any) : JSX.Element  => {
     
     useEffect(() => {
         db.collection('course_modules').orderBy('createAt').onSnapshot(snapshot => {
-            setModuleData(snapshot.docs.map(doc => doc.data()))
+            setModuleData(snapshot.docs.map(doc => doc.data()));
         })
     }, [])
-    console.log(moduleData)
 
     const handleVideo = (value:any) => {
         setVideoToggle(value);
@@ -66,8 +65,9 @@ const AddModule = ({id}: any) : JSX.Element  => {
             });
         }
     }
+
     const last:any =moduleData[moduleData.length - 1];
-    console.log(last)
+
     return (
         <div className="border text-center mt-6 pt-6 pb-10">
            { 
