@@ -55,6 +55,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 import AssignDepartment from "./components/AllUserList/AssignDepartment";
+import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -218,6 +219,9 @@ const App = () => {
                 <AllDepartment />
               </Dashboard>
             </PrivateRoute>
+            <Route path="/assigned-department-user/:departmentId">
+              <AssignedDepartmentUser />
+            </Route>
             <PrivateRoute path="/create-department">
               <Dashboard>
                 <CreateDepartment />

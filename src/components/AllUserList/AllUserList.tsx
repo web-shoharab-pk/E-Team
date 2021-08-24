@@ -15,13 +15,14 @@ const AllUserList = () => {
       .then((users: any) => {
         let alluserData = users.docs.map((doc: any) => doc.data());
         setAllUsers(alluserData);
+        console.log(alluserData);
       })
       .catch((error) => {
         console.log("Error getting document:", error);
       });
   }, [userData.co_id]);
 
-  console.log(allUsers);
+  
 
   return (
     <div className="shadow mx-0 lg:mx-8 mt-4 pt-4 pb-16 rounded-lg">
