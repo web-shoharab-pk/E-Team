@@ -22,7 +22,7 @@ const EditCourse = () => {
         }).catch((error) => {
             console.log("Error getting document:", error);
         });
-    }, [userData.co_id]);
+    }, [userData.co_id, id]);
 
     const handleOnChange = (e:any) => {
         setSingleUserData({ ...singleUserData, [e.target.id]: e.target.value });
@@ -123,6 +123,10 @@ const EditCourse = () => {
             </div>
 
             <AddModule id={id} />
+
+            <div>
+                
+            </div>
         </div>
     );
 };
