@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { UserDataContext } from '../../../Contexts/UserDataContext';
 import AddModule from '../AddModule/AddModule';
-import db from "../../Firebase/Firebase";
+import db from "../../Firebase/Firebase"; 
+import CourseVideos from '../CourseVideos/CourseVideos';
 
 const EditCourse = () => {
     const [collapse, setCollapse] = useState<boolean>(false);
@@ -24,6 +25,7 @@ const EditCourse = () => {
         });
     }, [userData.co_id, id]);
 
+    
     const handleOnChange = (e:any) => {
         setSingleUserData({ ...singleUserData, [e.target.id]: e.target.value });
 
@@ -124,9 +126,7 @@ const EditCourse = () => {
 
             <AddModule id={id} />
 
-            <div>
-                
-            </div>
+              <CourseVideos />
         </div>
     );
 };
