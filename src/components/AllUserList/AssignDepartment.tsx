@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import db from "../Firebase/Firebase";
 import { UserDataContext } from "../../Contexts/UserDataContext";
+import db from "../Firebase/Firebase";
 
 type Inputs = {
   name: string;
@@ -17,7 +17,7 @@ const AssignDepartment = () => {
   const [user, setUser] = useState<any>({});
   const [allDepartment, setAllDepartment] = useState([]);
 
-  
+
   const handleOnChange = (e: any) => {
     setUser({ ...user, [e.target.id]: e.target.value });
   };
@@ -25,15 +25,15 @@ const AssignDepartment = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    
+
 
     if (user.department) {
       // if (nameRegEx.test(name) && descriptionRegEx.test(description)) {
 
       db.collection("users").doc(userId)
         .set(user)
-        .then((data:any) => {
-            console.log(data())
+        .then((data: any) => {
+          console.log(data())
           setSuccessMessage("Successfully Department Assigned!");
           setError({ isError: false, message: "" });
         })
@@ -61,7 +61,7 @@ const AssignDepartment = () => {
       .get()
       .then((doc: any) => {
         if (doc.exists) {
-        //   console.log("Document data:", doc.data());
+          //   console.log("Document data:", doc.data());
           setUser(doc.data());
         } else {
           // doc.data() will be undefined in this case
@@ -78,10 +78,7 @@ const AssignDepartment = () => {
       .get()
       .then((docs: any) => {
         setAllDepartment(docs);
-        docs.docs.forEach((doc:any)=>{
-            console.log(doc)
-        })
-        
+
       })
       .catch((error) => {
         console.log("Error getting document:", error);

@@ -1,8 +1,6 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/firestore";
+import React, { useContext, useEffect, useState } from 'react';
 import { UserDataContext } from '../../Contexts/UserDataContext';
 
 export const db = firebase.firestore();
