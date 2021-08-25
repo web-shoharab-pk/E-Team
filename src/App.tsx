@@ -58,6 +58,9 @@ import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmen
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
 import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
+import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
+import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
+import AddTask from "./components/AllCourse/AddTask/AddTask";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -130,9 +133,24 @@ const App = () => {
                 <AllCourse />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-courses/:id">
+            <PrivateRoute exact path="/edit-courses/:id">
               <Dashboard>
                 <EditCourse />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/video/:id">
+              <Dashboard>
+                <AddVideo />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/task/:id">
+              <Dashboard>
+                <AddTask />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/quiz/:id">
+              <Dashboard>
+                <AddQuiz />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/add-course">
