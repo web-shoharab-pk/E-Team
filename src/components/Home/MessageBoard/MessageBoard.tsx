@@ -85,9 +85,9 @@ const MessageBoard = ({handleChatList}: IProps) : JSX.Element => {
                 </div>
             </div>
 
-            {
+            {/* {
                 <SingleChatBoard />
-            }
+            } */}
         </div>
     );
 };

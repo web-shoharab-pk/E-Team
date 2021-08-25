@@ -2,25 +2,25 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import logo from "../../Assets/images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { ConpanyDataContext } from "../../Contexts/UserDataContext";
+import { UserDataContext } from "../../Contexts/UserDataContext";
 import { getDataFromLS, removeDataFromLS } from "../Authentication/loginmanager";
 
 const Sidebar = () => {
-  const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+  const { userData, setUserData } = useContext(UserDataContext);
   const [isCompanyAdmin, setIsCompanyAdmin] = useState(false)
   const [isLogOut, setIsLogOut] = useState(false);
 
   // for checking user
   useEffect(() => {
-    if (companyData.role === 'company-admin') {
+    if (userData.role === 'company-admin') {
       setIsCompanyAdmin(true);
     }
-  }, []);
+  }, [userData.role]);
 
 
   const logOut = () => {
     localStorage.removeItem('token');
-    setCompanyData({
+    setUserData({
       isSignedIn: false,
       co_id: "",
       id: "",
@@ -50,6 +50,12 @@ const Sidebar = () => {
             <li>
               <Link to="#">
                 <i className="fas fa-users-cog"></i> User Management
+              </Link>
+              <Link to="/edit-user">
+                <i className="fas fa-users-cog"></i> Edit user
+              </Link>
+              <Link to="/edit-company">
+                <i className="fas fa-users-cog"></i> Edit Company
               </Link>
               <ul className="sidebar-sub-menu">
                 <li>
@@ -102,7 +108,11 @@ const Sidebar = () => {
                 <i className="fab fa-discourse"></i> Courses
               </NavLink>
             </li>
-
+            <li>
+              <NavLink activeClassName="active" to="/add-course">
+                <i className="fab fa-discourse"></i> Add Course
+              </NavLink>
+            </li>
             <li>
               <Link to="#">
                 <i className="fas fa-tasks"></i> App. Management

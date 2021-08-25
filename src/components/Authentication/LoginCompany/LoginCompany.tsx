@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
-import { ConpanyDataContext } from '../../../Contexts/UserDataContext';
+import { UserDataContext } from '../../../Contexts/UserDataContext';
 import { db, loginComapny, saveToLS } from '../loginmanager';
 
 const LoginCompany = () => {
-    const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+    const { userData, setUserData } = useContext(UserDataContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState({ error: false, message: '' });
@@ -67,7 +67,7 @@ const LoginCompany = () => {
                                 }
 console.log(newObj);
 
-                                setCompanyData(newObj);
+                                setUserData(newObj);
                                 saveToLS('token', { user: newObj });
                                 setErrorMessage({ error: false, message: '' })
                                 history.replace(from);
@@ -87,7 +87,7 @@ console.log(newObj);
         <section className="text-gray-600 body-font relative">
             {
                 // for redirect if the user already loggedin
-                companyData?.isSignedIn &&
+                userData?.isSignedIn &&
                 <Redirect to={from} />
             }
             <div className="container px-5 py-12 mx-auto">

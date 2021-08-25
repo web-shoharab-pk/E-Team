@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { ConpanyDataContext } from "../../Contexts/UserDataContext";
+import React, { useContext, useState } from "react";
+import { UserDataContext } from "../../Contexts/UserDataContext";
 
 export const db = firebase.firestore();
 
@@ -17,16 +17,14 @@ const CreateDepartment = () => {
     type: "",
     description: "",
   });
-  const { companyData, setCompanyData } = useContext(ConpanyDataContext);
+  const { userData, setUserData } = useContext(UserDataContext);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState({ isError: false, message: "" });
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleOnChange = (e: any) => {
     setDepartmentData({ ...departmentData, [e.target.id]: e.target.value });
-  }
-
-
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -45,7 +43,7 @@ const CreateDepartment = () => {
           name: name,
           type: type,
           description: description,
-          co_id: companyData.co_id,
+          co_id: userData.co_id,
         })
         .then(() => {
           (document.getElementById("name") as HTMLInputElement).value = "";
@@ -58,7 +56,10 @@ const CreateDepartment = () => {
         .catch((error) => {
           if (error) {
             setSuccessMessage("");
-            setError({ isError: true, message: "Any field must not be empty!" });
+            setError({
+              isError: true,
+              message: "Any field must not be empty!",
+            });
           } else {
             setSuccessMessage("Successfully Department Assigned!");
             setError({ isError: false, message: "" });
@@ -68,7 +69,7 @@ const CreateDepartment = () => {
       setIsSuccess(false);
       setError({ isError: true, message: "Any field must not be empty!" });
     }
-  }; 
+  };
 
   return (
     <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded-lg">
@@ -86,7 +87,6 @@ const CreateDepartment = () => {
       ) : (
         ""
       )}
-
 
       <form action="" className="form mt-4">
         <div className="lg:flex w-full mb-5 lg:space-x-16">
