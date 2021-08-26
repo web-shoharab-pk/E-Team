@@ -56,6 +56,7 @@ import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
 import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
 import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
 import AddTask from "./components/AllCourse/AddTask/AddTask";
+import EditModule from "./components/AllCourse/EditModule/EditModule";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -144,6 +145,11 @@ const App = () => {
             <PrivateRoute path="/edit-courses/quiz/:id">
               <Dashboard>
                 <AddQuiz />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-module/:id">
+              <Dashboard>
+                <EditModule />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/add-course">

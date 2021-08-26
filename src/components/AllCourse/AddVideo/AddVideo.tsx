@@ -6,7 +6,7 @@ import db from '../../Firebase/Firebase';
 const AddVideo = () => {
     const [videoDetails, setVideoDetails] = useState<any>({});
     const {id}:any = useParams();
-    const history = useHistory();
+    // const history = useHistory();
 
     const handleVideoDetails = (e:any) => {
         setVideoDetails({ ...videoDetails, [e.target.id]: e.target.value });
@@ -29,7 +29,7 @@ const AddVideo = () => {
                 (document.getElementById("title") as HTMLInputElement).value = "";
                 (document.getElementById("link") as HTMLInputElement).value = "";
                 console.log(data)
-
+                // history.goBack();
             })
             .catch((error:any) => {
             console.log(error);
