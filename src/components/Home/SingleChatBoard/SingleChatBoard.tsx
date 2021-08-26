@@ -60,9 +60,9 @@ const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
                     }
                 </div> */}
                 <div className="msgs h-80 overflow-y-scroll">
-                    {messages.map(({ id, text, co_id }:any) => (
+                    {messages.map(({ user_id, text, id }:any) => (
                         <div>
-                            <div key={id} className={`my-2 msg ${co_id === userData?.co_id ? '' : 'mr-auto text-right'}`}>
+                            <div key={id} className={`my-2 msg ${user_id === userData?.id ? 'text-right ml-auto' : 'mr-auto text-left'}`}>
                                 <div className="mr-5 mt-7 inline rounded-full h-8 px-1.5 border border-black text-lg">
                                         <FontAwesomeIcon icon={faUser} />
                                 </div>

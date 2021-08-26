@@ -13,11 +13,11 @@ const SendMessages = () => {
 
     async function sendMessage(e:any) {
         e.preventDefault();
-        const {co_id} = userData;
 
         await db.collection('messages').add({
             text: msg,
-            co_id,
+            co_id:userData.co_id,
+            user_id:userData.id,
             createAt: firebase.firestore.FieldValue.serverTimestamp()
         })
         setMsg('')
