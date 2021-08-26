@@ -12,6 +12,7 @@ if (!firebase.apps.length) {
 }
 
 export const db = firebase.firestore();
+export const departmentsCollection = db.collection('departments');
 
 // Local Storage management
 export const saveToLS = (tokenName: string, data: any) => {

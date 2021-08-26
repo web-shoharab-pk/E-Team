@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { Link } from "react-router-dom";
 import profile1 from "../../Assets/images/profile1.jpg";
 import profile2 from "../../Assets/images/profile2.jpg";
 import profile3 from "../../Assets/images/profile3.jpg";
@@ -114,6 +116,7 @@ const TaskBoard = () => {
   return (
     <>
       <h3 className="text-center text-3xl font-bold p-2">TaskBoard</h3>
+      <Link to="/assign-task" className="inline-block mb-7 ml-5 bg-blue-500 border text-white border-blue-500 hover:bg-white hover:text-blue-500  py-2 px-8 rounded-full"><i className="fas fa-edit"></i> Assign Task</Link>
       <div
         style={{ display: "flex", justifyContent: "center", height: "auto" }}
       >

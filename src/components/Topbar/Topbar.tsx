@@ -45,7 +45,7 @@ const Topbar = ({logOut}:any) => {
                         <Link to="/company-profile" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-400 hover:text-white">
                             Company Profile
                         </Link>
-                        <Link to="/view-profile" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-400 hover:text-white">
+                        <Link to={"/view-profile/"+userData.id} className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-400 hover:text-white">
                             View Profile
                         </Link>
                         <Link to="/login" 
