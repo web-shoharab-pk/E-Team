@@ -56,6 +56,9 @@ import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 import AssignDepartment from "./components/AllUserList/AssignDepartment";
 import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
+import UserManagement from "./components/UserManagement/UserManagement";
+import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
+import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -141,6 +144,11 @@ const App = () => {
               <UserSelftActivation />
               <Footer />
             </Route>
+            <PrivateRoute path="/user-management">
+              <Dashboard>
+                <UserManagement />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/create-user">
               <Dashboard>
                 <CreateNewUser />
@@ -151,11 +159,11 @@ const App = () => {
                 <AllUserList />
               </Dashboard>
             </PrivateRoute>
-            <Route path="/assign-department/:userId">
+            <PrivateRoute path="/assign-department/:userId">
               <Dashboard>
                 <AssignDepartment />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/leaderBoard">
               <Dashboard>
                 <LeaderBoard />
@@ -172,6 +180,11 @@ const App = () => {
             <PrivateRoute path="/setMeeting">
               <SetMeeting />
             </PrivateRoute>
+            <PrivateRoute path="/application-management">
+              <Dashboard>
+                <ApplicationManagement />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/inputApplication">
               <Dashboard>
                 <InputApplication />
@@ -185,7 +198,7 @@ const App = () => {
                 <MeetingList />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/create-course-task">
+            <PrivateRoute path="/assign-task">
               <Dashboard>
                 <CreateCourseTask />
               </Dashboard>
@@ -236,6 +249,11 @@ const App = () => {
               <AssignedDepartmentUser />
               </Dashboard>
             </Route>
+            <PrivateRoute path="/department-management">
+              <Dashboard>
+                <DepartmentManagement />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/create-department">
               <Dashboard>
                 <CreateDepartment />
@@ -246,7 +264,7 @@ const App = () => {
                 <CompanyProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/view-profile">
+            <PrivateRoute path="/view-profile/:userId">
               <Dashboard>
                 <UserProfile />
               </Dashboard>

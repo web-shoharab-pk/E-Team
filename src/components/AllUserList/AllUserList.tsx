@@ -33,7 +33,7 @@ const AllUserList = () => {
       <div className="flex flex-col md:flex-row px-2 md:px-0">
         {allUsers.map((user: any) => {
           return (
-            <div className="w-full md:w-1/3 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+            <div className="w-full md:w-1/3 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
               <figure className="bg-gray-100 rounded-xl p-8">
                 <img
                   className="w-32 h-32 rounded-full mx-auto"
@@ -52,17 +52,15 @@ const AllUserList = () => {
                     <div className="text-cyan-600 flex-1">
                       Role: {user.role ? user.role : "NA"}
                     </div>
-                    <div className="text-cyan-600 flex-1">
-                      <Link
-                        to="#"
-                        className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
-                      >
-                        Visit Profile
-                      </Link>
-                    </div>
                   </figcaption>
                 </div>
                 <div className="text-center py-2">
+                      <Link
+                        to={'/view-profile/'+user.id}
+                        className="mb-4 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
+                      >
+                        Visit Profile
+                      </Link>
                   <Link
                     className="text-md font-medium px-4 py-2 rounded bg-blue-500 hover:bg-white text-white hover:text-blue-500 border border-blue-500"
                     to={"/assign-department/" + user.id}

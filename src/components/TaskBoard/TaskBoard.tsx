@@ -8,6 +8,7 @@ import profile4 from "../../Assets/images/profile4.jpg";
 import profile5 from "../../Assets/images/profile5.jpg";
 
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 const itemsFromBackend = [
   {
@@ -105,6 +106,7 @@ const TaskBoard = () => {
   return (
     <>
       <h3 className="text-center text-3xl font-bold p-2">TaskBoard</h3>
+      <Link to="/assign-task" className="inline-block mb-7 ml-5 bg-blue-500 border text-white border-blue-500 hover:bg-white hover:text-blue-500  py-2 px-8 rounded-full"><i className="fas fa-edit"></i> Assign Task</Link>
       <div
         style={{ display: "flex", justifyContent: "center", height: "auto" }}
       >
