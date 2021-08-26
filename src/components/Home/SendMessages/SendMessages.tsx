@@ -9,11 +9,11 @@ import { UserDataContext } from '../../../Contexts/UserDataContext';
 
 const SendMessages = () => {
     const [msg, setMsg] = useState('');
-    const {companyData, setCompanyData} = useContext<any>(UserDataContext);
+    const {userData, setUserData} = useContext<any>(UserDataContext);
 
     async function sendMessage(e:any) {
         e.preventDefault();
-        const {co_id} = companyData;
+        const {co_id} = userData;
 
         await db.collection('messages').add({
             text: msg,
