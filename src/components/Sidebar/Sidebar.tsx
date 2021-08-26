@@ -82,6 +82,11 @@ const Sidebar = ({logOut}:any) => {
               </NavLink>
             </li>
             <li>
+              <NavLink activeClassName="active" to="/meetings">
+                <i className="fas fa-clipboard-list"></i> Meetings
+              </NavLink>
+            </li>
+            <li>
               <NavLink activeClassName="active" to="/all-courses">
                 <i className="fab fa-discourse"></i> Courses
               </NavLink>

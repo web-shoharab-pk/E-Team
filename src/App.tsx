@@ -55,13 +55,14 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 import AssignDepartment from "./components/AllUserList/AssignDepartment";
+import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
 
 const App = () => {
   const [userData, setUserData] = useState({
     isSignedIn: false,
     co_id: "",
     id: "",
-    name:"",
+    name: "",
     company_name: "",
     email: "",
     role: "",
@@ -73,7 +74,7 @@ const App = () => {
     id: "",
     name: "",
     email: "",
-    phone:"",
+    phone: "",
     role: "system-admin",
     created_at: "",
     updated_at: "",
@@ -151,7 +152,9 @@ const App = () => {
               </Dashboard>
             </PrivateRoute>
             <Route path="/assign-department/:userId">
-              <AssignDepartment />
+              <Dashboard>
+                <AssignDepartment />
+              </Dashboard>
             </Route>
             <PrivateRoute path="/leaderBoard">
               <Dashboard>
@@ -213,11 +216,26 @@ const App = () => {
                 <AllUserList />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/meetings">
+              <Dashboard>
+                <MeetingList />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/set-meeting">
+              <Dashboard>
+                <SetMeeting />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/all-department">
               <Dashboard>
                 <AllDepartment />
               </Dashboard>
             </PrivateRoute>
+            <Route path="/assigned-department-user/:departmentId">
+            <Dashboard>
+              <AssignedDepartmentUser />
+              </Dashboard>
+            </Route>
             <PrivateRoute path="/create-department">
               <Dashboard>
                 <CreateDepartment />
@@ -284,17 +302,17 @@ const App = () => {
             </SARoute>
             <SARoute path="/system-admin/view-sa-profile">
               <SADashboard>
-                <SAProfile/>
+                <SAProfile />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/edit-sa-profile">
               <SADashboard>
-                <EditSAProfile/>
+                <EditSAProfile />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/">
               <SADashboard>
-                <SAHome/>
+                <SAHome />
               </SADashboard>
             </SARoute>
             <Route exact path="/ourTeam">

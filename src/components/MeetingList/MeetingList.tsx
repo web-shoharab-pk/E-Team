@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 //Temporary Data
 const meetingList = [
@@ -34,10 +35,11 @@ const MeetingList = () => {
         <div className="flex mt-3">
           <div className="w-2/4">
             <div className="flex justify-between mb-3">
-              <button className="w-1/4 app-button">Upcoming</button>
+              <Link to="set-meeting" className="bg-blue-500 border text-white border-blue-500 hover:bg-white hover:text-blue-500  py-2 px-4 rounded-full">Scedule a meeting</Link>
+              {/* <button className="w-1/4 app-button">Upcoming</button>
               <button className="w-1/4 cursor-pointer border text-lg border-blue-500 font-semibold py-2 rounded-3xl">
                 Previous
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
