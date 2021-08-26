@@ -59,7 +59,7 @@ import AddTask from "./components/AllCourse/AddTask/AddTask";
 import EditModule from "./components/AllCourse/EditModule/EditModule";
 
 const App = () => {
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<any>({
     isSignedIn: false,
     co_id: "",
     id: "",
@@ -69,7 +69,7 @@ const App = () => {
     created_at: "",
     updated_at: "",
   });
-  const [systemAdminData, setSystemAdminData] = useState({
+  const [systemAdminData, setSystemAdminData] = useState<any>({
     isSignedIn: false,
     id: "",
     name: "",
