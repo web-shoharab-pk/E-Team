@@ -57,6 +57,7 @@ const SystemAdminLogin = () => {
                                     id: data?.id,
                                     name: sysAdminData?.name,
                                     email: sysAdminData?.email,
+                                    phone: sysAdminData?.phone,
                                     role: sysAdminData?.role,
                                     created_at: sysAdminData?.created_at,
                                     updated_at: sysAdminData?.updated_at

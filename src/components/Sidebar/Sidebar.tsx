@@ -3,35 +3,19 @@ import "./Sidebar.css";
 import logo from "../../Assets/images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { UserDataContext } from "../../Contexts/UserDataContext";
-import { getDataFromLS, removeDataFromLS } from "../Authentication/loginmanager";
 
-const Sidebar = () => {
-  const { userData, setUserData } = useContext(UserDataContext);
+const Sidebar = ({ logOut }: any) => {
+  const { userData } = useContext(UserDataContext);
   const [isCompanyAdmin, setIsCompanyAdmin] = useState(false)
-  const [isLogOut, setIsLogOut] = useState(false);
 
   // for checking user
   useEffect(() => {
+
     if (userData.role === 'company-admin') {
       setIsCompanyAdmin(true);
     }
   }, [userData.role]);
 
-
-  const logOut = () => {
-    localStorage.removeItem('token');
-    setUserData({
-      isSignedIn: false,
-      co_id: "",
-      id: "",
-      company_name: "",
-      email: "",
-      role: "",
-      created_at: "",
-      updated_at: "",
-    });
-    setIsLogOut(true);
-  }
   return (
     <div className="sidebar flex flex-col" id="sidebar">
       <div className="logo">
@@ -46,61 +30,28 @@ const Sidebar = () => {
                 <i className="fas fa-home"></i> Overview
               </NavLink>
             </li>
-
             <li>
-              <Link to="#">
+              <NavLink activeClassName="active" to="/user-management">
                 <i className="fas fa-users-cog"></i> User Management
-              </Link>
-              <Link to="/edit-user">
-                <i className="fas fa-users-cog"></i> Edit user
-              </Link>
-              <Link to="/edit-company">
-                <i className="fas fa-users-cog"></i> Edit Company
-              </Link>
-              <ul className="sidebar-sub-menu">
-                <li>
-                  <NavLink activeClassName="active" to="/create-user">
-                    <i className="fas fa-user-plus"></i> Create User
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="active" to="/all-user">
-                    <i className="fas fa-users"></i> All User
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <Link to="#">
-                <i className="fas fa-tasks"></i> Dept. Management
-              </Link>
-              <ul className="sidebar-sub-menu">
-                <li>
-                  <NavLink
-                    activeClassName="active"
-                    to="/create-department"
-                    className=""
-                  >
-                    <i className="fas fa-plus-circle"></i> Create Department
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="active" to="/all-department">
-                    <i className="fas fa-th-large"></i> All Department
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <NavLink activeClassName="active" to="/create-course-task">
-                <i className="fas fa-edit"></i> Assign Task
               </NavLink>
             </li>
             <li>
+              <NavLink
+                    activeClassName="active" 
+                    to="/department-management"
+                    >
+                <i className="fas fa-tasks"></i> Dept. Management
+              </NavLink> 
+            </li>
+
+            <li>
               <NavLink activeClassName="active" to="/taskboard">
                 <i className="fas fa-clipboard-list"></i> Task Management
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName="active" to="/meetings">
+                <i className="fas fa-clipboard-list"></i> Meetings
               </NavLink>
             </li>
             <li>
@@ -114,21 +65,9 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li>
-              <Link to="#">
+              <NavLink activeClassName="active" to="/application-management">
                 <i className="fas fa-tasks"></i> App. Management
-              </Link>
-              <ul className="sidebar-sub-menu">
-                <li>
-                  <NavLink activeClassName="active" to="/inputApplication">
-                    <i className="fas fa-keyboard"></i> Input Application
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="active" to="/applicationList">
-                    <i className="fas fa-th-large"></i> All Application
-                  </NavLink>
-                </li>
-              </ul>
+              </NavLink>
             </li>
             <li className="text-center">
               <button className="py-1 px-4 text-white bg-red-500" onClick={logOut}>Logout</button>
