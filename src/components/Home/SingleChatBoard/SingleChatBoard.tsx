@@ -24,7 +24,7 @@ const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
 
     return (
         <div className="relative">
-            <div className="shadow fixed bg-white right-9 bottom-0 w-5/12 rounded-lg px-5 py-3">
+            <div className="shadow border border-gray-100 fixed bg-white right-9 bottom-0 w-4/12 rounded-lg px-5 py-3">
                 <div className="flex border-b py-3">
                     <div className="mr-4 flex items-center cursor-pointer">
                         <FontAwesomeIcon onClick={() => handleChatList(false)} icon={faArrowLeft} className="" />

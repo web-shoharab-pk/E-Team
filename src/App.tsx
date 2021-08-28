@@ -158,7 +158,7 @@ const App = () => {
             </PrivateRoute>
             <PrivateRoute path="/add-course">
               <Dashboard>
-                 <AddCourse />
+                <AddCourse />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/assign-course">
@@ -275,8 +275,8 @@ const App = () => {
               </Dashboard>
             </PrivateRoute>
             <Route path="/assigned-department-user/:departmentId">
-            <Dashboard>
-              <AssignedDepartmentUser />
+              <Dashboard>
+                <AssignedDepartmentUser />
               </Dashboard>
             </Route>
             <PrivateRoute path="/department-management">
