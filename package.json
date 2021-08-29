@@ -24,6 +24,7 @@
     "@types/swiper": "^5.4.3",
     "crypto-js": "^4.1.1",
     "dotenv": "^10.0.0",
+    "draftjs-to-html": "^0.9.1",
     "emailjs-com": "^2.6.4",
     "firebase": "^8.8.1",
     "moment": "^2.29.1",

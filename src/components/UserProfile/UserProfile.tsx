@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
 import profilePic from '../../Assets/images/user.png';
 import { UserDataContext } from '../../Contexts/UserDataContext';
@@ -11,8 +12,11 @@ const UserProfile = () => {
     const {userData} = useContext(UserDataContext);
     const [userInfo, setUserInfo] = useState({name:"",email:"",phone:"",address:"",designation:"",role:""})
 
+    const {userId}:any = useParams();
+    
+
     useEffect(()=>{
-        getUserInfo(userData?.id).then((info:any)=>setUserInfo({...userInfo,...info}))
+        getUserInfo(userId || userData?.id).then((info:any)=>setUserInfo({...userInfo,...info}))
     },[userData?.id, userInfo])
 
 

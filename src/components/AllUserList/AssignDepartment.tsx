@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import db from "../Firebase/Firebase";
 import { UserDataContext } from "../../Contexts/UserDataContext";
+import db from "../Firebase/Firebase";
 
 const AssignDepartment = () => {
   const { userId } = useParams<{ userId: string }>();

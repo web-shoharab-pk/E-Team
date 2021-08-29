@@ -1,7 +1,7 @@
 import firebase from "firebase";
 import React, {  useState } from "react";
 import { useParams } from "react-router";
-import { db } from "../../AllDepartment/AssignedDepartmentUser";
+import db from "../../Firebase/Firebase";
 
 const AddTask = () => {
   const { id } = useParams<{ id: string }>();
@@ -31,7 +31,7 @@ const AddTask = () => {
           setSuccessMessage("Successfully Department Assigned!");
           setError({ isError: false, message: "" });
         })
-        .catch((error) => {
+        .catch((error:any) => {
           if (error) {
             setSuccessMessage("");
             setError({
