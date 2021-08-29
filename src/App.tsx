@@ -121,16 +121,16 @@ const App = () => {
               <Contact />
               <Footer />
             </Route>
-            <PrivateRoute path="/shareIdea">
+            <Route path="/shareIdea">
               <Dashboard>
                 <ShareIdea />
               </Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/allIdea">
+            </Route>
+            <Route path="/allIdea">
               <Dashboard>
                 <AllIdea />
               </Dashboard>
-            </PrivateRoute>
+            </Route>
             <PrivateRoute path="/all-courses">
               <Dashboard>
                 <AllCourse />
