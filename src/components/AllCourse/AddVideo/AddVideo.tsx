@@ -7,7 +7,6 @@ const AddVideo = () => {
     const [videoDetails, setVideoDetails] = useState<any>({});
     const [errorStatus, setErrorStatus] = useState({ error: false, msg: '' })
     const { id }: any = useParams();
-    const history = useHistory();
 
     const handleOnChange = (e: any) => {
         setErrorStatus({ error: false, msg: '' })
@@ -46,7 +45,7 @@ const AddVideo = () => {
                 .then((data: any) => {
                     (document.getElementById("title") as HTMLInputElement).value = "";
                     (document.getElementById("link") as HTMLInputElement).value = "";
-                    console.log(data)
+                    window.history.go(-1)
 
                 })
                 .catch((error: any) => {

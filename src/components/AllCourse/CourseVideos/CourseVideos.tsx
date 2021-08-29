@@ -3,7 +3,6 @@ import { db } from "../../Authentication/loginmanager";
 
 const CourseVideos = () => {
   const [videoDetails, setVideoDetails] = useState<any>({});
-  console.log(videoDetails);
   useEffect(() => {
     db.collection("course_videos")
       .get()
