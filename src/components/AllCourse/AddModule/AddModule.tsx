@@ -4,22 +4,24 @@ import firebase from 'firebase';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import db from '../../Firebase/Firebase';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+import './AddModule.css';
 
-const AddModule = ({id}: any) : JSX.Element  => {
+const AddModule = ({ id }: any): JSX.Element => {
     const [addModuleToggle, setAddModuleToggle] = useState<boolean>(false);
     const [moduleTitle, setModuleTitle] = useState<any>('');
     const [moduleData, setModuleData] = useState<any>([]);
     const [moduleVideo, setModuleVideo] = useState<any>([]);
     const [moduleTask, setModuleTask] = useState<any>([]);
     const [moduleQuiz, setModuleQuiz] = useState<any>([]);
-    
+    const [modifiedModules, setModifiedModules] = useState([] as object[]);
+
     useEffect(() => {
         db.collection('course_modules').orderBy('createAt').onSnapshot(snapshot => {
             const data = snapshot.docs.filter(doc => doc.data().course_id === id);
             setModuleData(data.map(module => {
-                return {...module.data(), id:module.id}
+                return { ...module.data(), id: module.id }
             }));
         })
     }, [])
@@ -30,7 +32,6 @@ const AddModule = ({id}: any) : JSX.Element  => {
             setModuleVideo(snapshot.docs.map(doc => doc.data()));
         })
     }, [])
-    console.log(moduleVideo)
 
     // get quiz data
     useEffect(() => {
@@ -46,27 +47,27 @@ const AddModule = ({id}: any) : JSX.Element  => {
         })
     }, [])
 
-    const handleModule = (e:any) => {
+    const handleModule = (e: any) => {
         setModuleTitle(e.target.value);
     }
 
-    const handleModuleSubmit = (e:any) => {
+    const handleModuleSubmit = (e: any) => {
         e.preventDefault();
 
-        if(moduleTitle) {
+        if (moduleTitle) {
             db.collection("course_modules").add({
                 title: moduleTitle,
                 course_id: id,
-                createAt: firebase.firestore.FieldValue.serverTimestamp(), 
+                createAt: firebase.firestore.FieldValue.serverTimestamp(),
             })
-            .then((data:any) => {
-                setModuleTitle('');
-                (document.getElementById("moduleTitle") as HTMLInputElement).value = "";
-                console.log(data);
-            })
-            .catch((error:any) => {
-            console.log(error)
-            });
+                .then((data: any) => {
+                    setModuleTitle('');
+                    (document.getElementById("moduleTitle") as HTMLInputElement).value = "";
+                    console.log(data);
+                })
+                .catch((error: any) => {
+                    console.log(error)
+                });
         }
     }
 
@@ -79,7 +80,7 @@ const AddModule = ({id}: any) : JSX.Element  => {
                 </button>
 
                 {
-                    addModuleToggle && 
+                    addModuleToggle &&
                     <div className="mx-8">
                         <form onSubmit={handleModuleSubmit} action="" className="form mt-4" >
                             <div className="lg:w-full text-left">
@@ -108,48 +109,78 @@ const AddModule = ({id}: any) : JSX.Element  => {
                 }
             </div>
 
-            { 
-                moduleData.map((module:any) => 
+            {
+                moduleData.map((module: any) =>
                     <div className="border relative bg-gray-100 shadow rounded-md mx-8 my-5 pt-4 pb-8">
                         <p className="text-lg font-bold">{module.title}</p>
 
                         <div className=" pt-6">
-                            {   
-                                moduleVideo.map((video:any) => {
-                                    if(video.module_id !== module.id) {
-                                        return (
-                                            <Link to={`/edit-courses/video/${module.id}`} className="px-5 py-2 mr-2 rounded-md border border-green-600 bg-green-600 text-white font-medium">
-                                                <FontAwesomeIcon className="mr-3" icon={faCamera} />
-                                                Add Video
-                                            </Link>
-                                        );
-                                    } else {
-                                        return null;
-                                    }
-                                })
+                            {
+                                !moduleVideo.find((video: any) => module.id === video.module_id) &&
+
+                                <Link to={`/edit-courses/video/${module.id}`} className="px-5 py-2 mr-2 rounded-md border border-green-600 bg-green-600 text-white font-medium">
+                                    <FontAwesomeIcon className="mr-3" icon={faCamera} />
+                                    Add Video
+                                </Link>
                             }
-                            {!moduleQuiz.length &&
+                            {
+                                !moduleQuiz.find((quiz: any) => module.id === quiz.module_id) &&
                                 <Link to={`/edit-courses/quiz/${module.id}`} className="px-5 mr-2 py-2 rounded-md border border-green-600 bg-green-600 text-white font-medium">
                                     <FontAwesomeIcon className="mr-3" icon={faTasks} />
                                     Add Quiz Set
                                 </Link>
                             }
-                            {!moduleTask.length &&
+                            {
+                                !moduleTask.find((task: any) => module.id === task.module_id) &&
                                 <Link to={`/edit-courses/task/${module.id}`} className="px-5 py-2 rounded-md border border-green-600 bg-green-600 text-white font-medium">
                                     <FontAwesomeIcon className="mr-3" icon={faPenSquare} />
                                     Add Task
                                 </Link>
                             }
                         </div>
-                        
-                        {(moduleQuiz.length || moduleTask.length || moduleVideo.length) &&
+                        {
+                            moduleVideo.find((video: any) => module.id === video.module_id) &&
+                            moduleVideo.map((video: any) => {
+                                if (video.module_id === module.id) {
+                                    let videoLink;
+                                    // Checking the link
+                                    if (video.link.includes('youtube.com/watch?v=')) {
+                                        const splitedText = video.link?.split('youtube.com/watch?v=')[1];
+                                        // Checking that there is any '&' sign or not
+                                        if(splitedText?.includes('&')){
+                                            videoLink = splitedText.split('&')[0]
+                                        }else{
+                                            videoLink = splitedText;
+                                        }
+                                    }else if (video.link.includes('youtu.be/')){
+                                        videoLink = video.link.split('youtu.be/')[1]
+                                    }
+                                    return (
+                                        <div className="block md:flex bg-white shadow py-3 mt-8 mx-8 rounded-md">
+                                            <div className="w-full md:w-2/3 lg:w-1/2 m-auto text-center text-left pt-2 font-bold pb-5 px-4">
+                                                <div className="yt-video-container">
+                                                    <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoLink}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                                </div>
+                                                <h1 className="yt-video-title"> {video.title}</h1>
+                                            </div>
+                                            <div className="w-full md:w-1/3 lg:w-1/2">
+                                                <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Video</button>
+                                            </div>
+                                        </div>
+                                    );
+                                } else {
+                                    return null
+                                }
+                            })
+
+                        }
+                        {/* {(moduleQuiz.length || moduleTask.length || moduleVideo.length) &&
                             <div className="bg-white shadow py-3 mt-8 mx-8 rounded-md">
-                                <p className="text-lg font-bold">Module Details</p>
-                                
+                                <p className="text-lg font-bold">Video Details Details</p>
                                 <div className="text-left py-5 px-4">
                                     <h1 className="my-1">
-                                        <strong>Video: </strong>{moduleVideo.length ? (moduleVideo.map((video:any) => {
-                                            if(video.module_id === module.id) {
+                                        <strong>Video: </strong>{moduleVideo.length ? (moduleVideo.map((video: any) => {
+                                            if (video.module_id === module.id) {
                                                 return (
                                                     video.link
                                                 );
@@ -159,16 +190,16 @@ const AddModule = ({id}: any) : JSX.Element  => {
                                         })) : 'N/A'}
                                     </h1>
                                     <h1 className="my-1">
-                                        <strong>Task: </strong>{moduleTask.length ? 'hello': 'N/A'}
+                                        <strong>Task: </strong>{moduleTask.length ? 'hello' : 'N/A'}
                                     </h1>
                                     <h1 className="my-1">
-                                        <strong>Quiz: </strong>{moduleQuiz.length ? 'hello': 'N/A'}
+                                        <strong>Quiz: </strong>{moduleQuiz.length ? 'hello' : 'N/A'}
                                     </h1>
                                 </div>
-                                
+
                                 <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Module</button>
                             </div>
-                        }
+                        } */}
                     </div>
                 )
             }
