@@ -143,11 +143,19 @@ const AddModule = ({id}: any) : JSX.Element  => {
                         <p className="text-lg font-bold">{module.title}</p>
 
                         <div className=" pt-6">
-                            {!moduleVideo.length &&
-                                <Link to={`/edit-courses/video/${module.id}`} className="px-5 py-2 mr-2 rounded-md border border-green-600 bg-green-600 text-white font-medium">
-                                    <FontAwesomeIcon className="mr-3" icon={faCamera} />
-                                    Add Video
-                                </Link>
+                            {   
+                                moduleVideo.map((video:any) => {
+                                    if(video.module_id !== module.id) {
+                                        return (
+                                            <Link to={`/edit-courses/video/${module.id}`} className="px-5 py-2 mr-2 rounded-md border border-green-600 bg-green-600 text-white font-medium">
+                                                <FontAwesomeIcon className="mr-3" icon={faCamera} />
+                                                Add Video
+                                            </Link>
+                                        );
+                                    } else {
+                                        return null;
+                                    }
+                                })
                             }
                             
                             {!moduleQuiz.length &&

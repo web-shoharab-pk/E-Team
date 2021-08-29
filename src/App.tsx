@@ -51,14 +51,12 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
 import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
 import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
-<<<<<<< HEAD
 import AddCourse from "./components/AddCourse/AddCourse";
 import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
 import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
 import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
 import AddTask from "./components/AllCourse/AddTask/AddTask";
 import EditModule from "./components/AllCourse/EditModule/EditModule";
-=======
 import UserProfile from "./components/UserProfile/UserProfile";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
@@ -67,7 +65,6 @@ import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmen
 import UserManagement from "./components/UserManagement/UserManagement";
 import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
->>>>>>> abu/naser
 
 const App = () => {
   const [userData, setUserData] = useState<any>({
@@ -256,16 +253,6 @@ const App = () => {
             <PrivateRoute path="/home">
               <Dashboard>
                 <Home />
-              </Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/home">
-              <Dashboard>
-                <Home />
-              </Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/all-user">
-              <Dashboard>
-                <AllUserList />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/meetings">
