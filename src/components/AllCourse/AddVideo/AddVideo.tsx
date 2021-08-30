@@ -5,10 +5,6 @@ import db from '../../Firebase/Firebase';
 
 const AddVideo = () => {
     const [videoDetails, setVideoDetails] = useState<any>({});
-<<<<<<< HEAD
-    const {id}:any = useParams();
-    // const history = useHistory();
-=======
     const [errorStatus, setErrorStatus] = useState({ error: false, msg: '' })
     const { id }: any = useParams();
 
@@ -30,7 +26,6 @@ const AddVideo = () => {
                 setErrorStatus({ error: true, msg: "This is not a youtube video" })
             }
         }
->>>>>>> b9d8a16377914f3298f020b4039e5f4d39229e37
 
     }
 
@@ -40,24 +35,6 @@ const AddVideo = () => {
 
         if (title && link) {
             db.collection("course_videos")
-<<<<<<< HEAD
-            .add({
-                title: title,
-                link: link,
-                module_id: id,
-                created_at: firebase.firestore.FieldValue.serverTimestamp(),
-                updated_at: ''
-            })
-            .then((data:any) => {
-                (document.getElementById("title") as HTMLInputElement).value = "";
-                (document.getElementById("link") as HTMLInputElement).value = "";
-                console.log(data)
-                // history.goBack();
-            })
-            .catch((error:any) => {
-            console.log(error);
-            });
-=======
                 .add({
                     title: title,
                     link: link,
@@ -77,7 +54,6 @@ const AddVideo = () => {
         }
         else {
             setErrorStatus({ error: true, msg: "All the field must not be empty or invalid input!" })
->>>>>>> b9d8a16377914f3298f020b4039e5f4d39229e37
         }
     }
 
