@@ -14,7 +14,7 @@ interface IProps {
 
 const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
     const [messages, setMessages] = useState<any>([]);
-    const {companyData, setCompanyData} = useContext<any>(UserDataContext);
+    const {userData, setUserData} = useContext<any>(UserDataContext);
 
     useEffect(() => {
         db.collection('messages').orderBy('createAt').limit(50).onSnapshot(snapshot => {
@@ -24,7 +24,7 @@ const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
 
     return (
         <div className="relative">
-            <div className="shadow fixed bg-white right-9 bottom-0 w-5/12 rounded-lg px-5 py-3">
+            <div className="shadow border border-gray-100 fixed bg-white right-9 bottom-0 w-4/12 rounded-lg px-5 py-3">
                 <div className="flex border-b py-3">
                     <div className="mr-4 flex items-center cursor-pointer">
                         <FontAwesomeIcon onClick={() => handleChatList(false)} icon={faArrowLeft} className="" />
@@ -44,7 +44,7 @@ const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
                 {/* <div className="mt-3 h-60 overflow-y-scroll">
                     {
                         messages.map(({id, text, co_id}:any) => (
-                            <div key={id} className={`msg ${co_id === companyData.co_id ? 'sent' : 'received'}`}>
+                            <div key={id} className={`msg ${co_id === userData.co_id ? 'sent' : 'received'}`}>
                                 <div className="flex justify-start mb-2">
                                     <div className="mr-5 mt-7 rounded-full h-8 px-1.5 border border-black text-lg">
                                         <img src="" alt="" />
@@ -60,9 +60,9 @@ const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
                     }
                 </div> */}
                 <div className="msgs h-80 overflow-y-scroll">
-                    {messages.map(({ id, text, co_id }:any) => (
+                    {messages.map(({ user_id, text, id }:any) => (
                         <div>
-                            <div key={id} className={`my-2 msg ${co_id === companyData.co_id ? '' : 'mr-auto text-right'}`}>
+                            <div key={id} className={`my-2 msg ${user_id === userData?.id ? 'text-right ml-auto' : 'mr-auto text-left'}`}>
                                 <div className="mr-5 mt-7 inline rounded-full h-8 px-1.5 border border-black text-lg">
                                         <FontAwesomeIcon icon={faUser} />
                                 </div>

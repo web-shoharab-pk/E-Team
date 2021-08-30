@@ -51,17 +51,25 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
 import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
 import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
+<<<<<<< HEAD
 import AddCourse from "./components/AddCourse/AddCourse";
 import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
 import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
 import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
 import AddTask from "./components/AllCourse/AddTask/AddTask";
 import EditModule from "./components/AllCourse/EditModule/EditModule";
+=======
+>>>>>>> b9d8a16377914f3298f020b4039e5f4d39229e37
 import UserProfile from "./components/UserProfile/UserProfile";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
+import AddCourse from "./components/AddCourse/AddCourse";
+import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
 import AssignDepartment from "./components/AllUserList/AssignDepartment";
 import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
+import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
+import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
+import AddTask from "./components/AllCourse/AddTask/AddTask";
 import UserManagement from "./components/UserManagement/UserManagement";
 import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
@@ -122,16 +130,16 @@ const App = () => {
               <Contact />
               <Footer />
             </Route>
-            <PrivateRoute path="/shareIdea">
+            <Route path="/shareIdea">
               <Dashboard>
                 <ShareIdea />
               </Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/allIdea">
+            </Route>
+            <Route path="/allIdea">
               <Dashboard>
                 <AllIdea />
               </Dashboard>
-            </PrivateRoute>
+            </Route>
             <PrivateRoute path="/all-courses">
               <Dashboard>
                 <AllCourse />
@@ -164,7 +172,7 @@ const App = () => {
             </PrivateRoute>
             <PrivateRoute path="/add-course">
               <Dashboard>
-                 <AddCourse />
+                <AddCourse />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/assign-course">
@@ -271,8 +279,8 @@ const App = () => {
               </Dashboard>
             </PrivateRoute>
             <Route path="/assigned-department-user/:departmentId">
-            <Dashboard>
-              <AssignedDepartmentUser />
+              <Dashboard>
+                <AssignedDepartmentUser />
               </Dashboard>
             </Route>
             <PrivateRoute path="/department-management">

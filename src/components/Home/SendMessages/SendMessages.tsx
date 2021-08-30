@@ -9,15 +9,15 @@ import { UserDataContext } from '../../../Contexts/UserDataContext';
 
 const SendMessages = () => {
     const [msg, setMsg] = useState('');
-    const {companyData, setCompanyData} = useContext<any>(UserDataContext);
+    const {userData, setUserData} = useContext<any>(UserDataContext);
 
     async function sendMessage(e:any) {
         e.preventDefault();
-        const {co_id} = companyData;
 
         await db.collection('messages').add({
             text: msg,
-            co_id,
+            co_id:userData.co_id,
+            user_id:userData.id,
             createAt: firebase.firestore.FieldValue.serverTimestamp()
         })
         setMsg('')

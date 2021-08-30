@@ -11,7 +11,7 @@ const LoginCompany = () => {
 
     const history = useHistory();
     const location = useLocation();
-    let { from }: any = { from: { pathname: "/home" } };
+    let { from }:any = location.state || { from: { pathname: "/" } };
 
     const handleOnChange = (event: any) => {
         const target = event.target;
