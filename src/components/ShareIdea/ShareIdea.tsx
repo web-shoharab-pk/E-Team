@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { isConstructorDeclaration } from "typescript";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
 
@@ -14,19 +15,19 @@ const ShareIdea = () => {
     category: "",
     details: "",
   });
-
+  console.log(userData);
   const handleOnChange = (e: any) => {
-    setIdeas({ ...ideas, [e.target.name]: [e.target.value] });
+    setIdeas({ ...ideas, [e.target.name]: e.target.value });
   };
-  console.log(ideas);
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    console.log(ideas);
     const { user_id, title, benefit, category, details } = ideas;
     if (user_id && title && benefit && category && details) {
       db.collection("creative_ideas")
         .add({
           co_id: userData.co_id,
-          user_id,
+          user_id: userData.id,
           title,
           benefit,
           category,
@@ -40,16 +41,6 @@ const ShareIdea = () => {
       alert("All filled must be filled up");
     }
   };
-
-  useEffect(() => {
-    db.collection("users")
-      .where("co_id", "==", userData.co_id)
-      .get()
-      .then((data) => {
-        const array = data.docs.map((doc) => ({ ...doc.data() }));
-        setUsers(array);
-      });
-  }, [userData.co_id]);
   return (
     <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded-lg">
       <h2 className="text-center text-2xl text-blue-400 lg:text-3xl font-medium">
@@ -64,16 +55,11 @@ const ShareIdea = () => {
                 Select Name
               </label>
               <br />
-              <select
+              <input
                 onChange={handleOnChange}
                 className="border bg-blue-100 rounded mt-1 p-2 w-full"
                 name="user_id"
-              >
-                <option value="">Select Your Name</option>
-                {users.map((user: any) => (
-                  <option value={user.id}>{user.name}</option>
-                ))}
-              </select>
+              />
             </div>
 
             <div className="mb-5 lg:mb-0">

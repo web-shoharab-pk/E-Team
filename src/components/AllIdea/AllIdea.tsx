@@ -5,16 +5,25 @@ import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
 
 const AllIdea = () => {
-  const { userData, setUserData } = useContext(UserDataContext);
-  const [ideaDetails, setIdeaDetails] = useState<any>([] as object[]);
-  const [users, setUsers] = useState<any>([] as object[]);
-
+  const { userData, setUserData } = useContext<any>(UserDataContext);
+  const [ideaDetails, setIdeaDetails] = useState<any>([]);
+  const [users, setUsers] = useState([] as object[]);
+  console.log(userData, ideaDetails);
   useEffect(() => {
+    // ideas
     db.collection("creative_ideas")
       .get()
-      .then((data) => {
-        const ideas = data.docs.map((doc) => ({ ...doc.data() }));
+      .then((data: any) => {
+        const ideas = data.docs.map((doc: any) => ({ ...doc.data() }));
         setIdeaDetails(ideas);
+      });
+    // user collection
+    db.collection("users")
+      .get()
+      .then((data: any) => {
+        const users = data.docs.map((doc: any) => ({ ...doc.data() }));
+        setUsers(users);
+        console.log(users);
       });
   }, []);
   return (
@@ -60,7 +69,16 @@ const AllIdea = () => {
         <div className="shadow rounded-md mb-4 px-1.5 py-3 lg:p-3">
           <h5 className="text-md text-center lg:text-left lg:text-lg border-b pb-2">
             <strong className="block lg:inline lg:mr-10">
-              {ideaDetail.name}
+              {users.find((user: any) => user.id === ideaDetails.user_id) &&
+                users.map((user: any) => {
+                  if (ideaDetails.user_id === user.id) {
+                    // let videoLink;
+                    // Checking the link
+                    return <span>{user.name}</span>;
+                  } else {
+                    return null;
+                  }
+                })}
             </strong>{" "}
           </h5>
 
