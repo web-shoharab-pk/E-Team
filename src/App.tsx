@@ -295,12 +295,12 @@ const App = () => {
                 <UserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-user">
+            <PrivateRoute path="/edit-user-profile">
               <Dashboard>
                 <EditUserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-company">
+            <PrivateRoute path="/edit-company-profile">
               <Dashboard>
                 <EditCompanyProfile />
               </Dashboard>
@@ -347,6 +347,11 @@ const App = () => {
             <SARoute path="/system-admin/view-sa-profile">
               <SADashboard>
                 <SAProfile />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/edit-sa-profile">
+              <SADashboard>
+                <EditSAProfile />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/edit-sa-profile">
