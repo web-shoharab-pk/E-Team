@@ -141,6 +141,11 @@ const App = () => {
                 <EditCourse />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-video/:id">
+              <Dashboard>
+                <AddVideo isEdit={true} />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/edit-courses/video/:id">
               <Dashboard>
                 <AddVideo />
