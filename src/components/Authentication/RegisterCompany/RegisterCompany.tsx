@@ -59,7 +59,7 @@ const RegisterCompany = () => {
     return (
         <section className="text-gray-600 body-font relative">
             <div className="container px-5 py-12 mx-auto">
-                <div className="shadow max-w-2xl mx-auto pt-4 hover:shadow-xl">
+                <div className="shadow max-w-2xl mx-auto pt-4 hover:shadow-xl" data-aos="fade-right">
                 <div className="login-switch mb-8 text-center">
                     <div className="inline-block border border-blue-500 rounded-full">
                         <span className="inline-block text-blue-500 text-xl py-2 px-3">Register</span>

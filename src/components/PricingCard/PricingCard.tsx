@@ -11,7 +11,7 @@ const PricingCard = () => {
         </h1>
       </div>
 
-      <div className="flex flex-col md:flex-row px-2 md:px-0">
+      <div className="flex flex-col md:flex-row px-2 md:px-0" data-aos="zoom-in">
         <div className="w-full md:w-1/3 transition delay-150 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
           <h2 className="text-4xl pb-3 font-medium text-blue-500 text-center">
             Free

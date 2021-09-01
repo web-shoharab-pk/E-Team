@@ -66,6 +66,10 @@ import DepartmentManagement from "./components/DepartmentManagement/DepartmentMa
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
 import CreateNotification from "./components/Notifications/CreateNotification";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init({duration: 2000});
+
 const App = () => {
   const [userData, setUserData] = useState({
     isSignedIn: false,

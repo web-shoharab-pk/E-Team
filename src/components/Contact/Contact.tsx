@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <section className="text-gray-600 body-font relative">
       <div className="container px-5 py-12 mx-auto">
-        <div className="shadow max-w-2xl mx-auto pt-4 hover:shadow-xl">
+        <div className="shadow max-w-2xl mx-auto pt-4 hover:shadow-xl" data-aos="fade-up">
           <div className="flex flex-col text-center w-full mb-3">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               Contact with us
