@@ -36,7 +36,7 @@ const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
                     </div>
 
                     <div>
-                        <h3 className="text-lg font-bold">Digital Marketing Teem Chat</h3>
+                        <h3 className="text-lg font-bold">Digital Marketing Team Chat</h3>
                         <p className="text-xs">Active Now</p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ const SingleChatBoard = ({handleChatList}: IProps) : JSX.Element => {
                     {messages.map(({ user_id, text, id }:any) => (
                         <div>
                             <div key={id} className={`my-2 msg ${user_id === userData?.id ? 'text-right ml-auto' : 'mr-auto text-left'}`}>
-                                <div className="mr-5 mt-7 inline rounded-full h-8 px-1.5 border border-black text-lg">
+                                <div className="mr-5 mt-7 inline rounded-full h-8 w-8 px-1.5 border border-black text-lg">
                                         <FontAwesomeIcon icon={faUser} />
                                 </div>
                                 <p className="inline-block bg-gray-300 py-2 px-4 rounded-sm">{text}</p>

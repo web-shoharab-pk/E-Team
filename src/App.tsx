@@ -64,6 +64,7 @@ import AddTask from "./components/AllCourse/AddTask/AddTask";
 import UserManagement from "./components/UserManagement/UserManagement";
 import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
+import CreateNotification from "./components/Notifications/CreateNotification";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -129,6 +130,11 @@ const App = () => {
             <Route path="/allIdea">
               <Dashboard>
                 <AllIdea />
+              </Dashboard>
+            </Route>
+            <Route path="/create-notification">
+              <Dashboard>
+                <CreateNotification />
               </Dashboard>
             </Route>
             <PrivateRoute path="/all-courses">

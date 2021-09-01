@@ -4,6 +4,7 @@ import { useState } from "react";
 import { isConstructorDeclaration } from "typescript";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
+import swal from "sweetalert";
 
 const ShareIdea = () => {
   const { userData, setUserData } = useContext(UserDataContext);
@@ -35,10 +36,10 @@ const ShareIdea = () => {
         })
         .then((data) => {
           //   e.target.reset();
-          alert("Idea successfully added");
+          swal("Good job!", "Idea Successfully added", "success");
         });
     } else {
-      alert("All filled must be filled up");
+      swal("Sorry!", "All filled must be filled up", "error");
     }
   };
   return (
