@@ -3,10 +3,21 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import db from '../../Firebase/Firebase';
 
-const AddVideo = () => {
+const AddVideo = ({isEdit}:any) => {
     const [videoDetails, setVideoDetails] = useState<any>({});
     const [errorStatus, setErrorStatus] = useState({ error: false, msg: '' })
     const { id }: any = useParams();
+
+    useEffect(() => {
+        isEdit && 
+            db.collection("course_videos").doc(id).get()
+            .then((docs: any) => {
+                setVideoDetails(docs.data());
+            })
+            .catch((error:any) => {
+                console.log("Error getting document:", error);
+            });
+    }, [])
 
     const handleOnChange = (e: any) => {
         setErrorStatus({ error: false, msg: '' })
@@ -33,7 +44,7 @@ const AddVideo = () => {
         e.preventDefault();
         const { title, link } = videoDetails;
 
-        if (title && link) {
+        if (title && link && !isEdit) {
             db.collection("course_videos")
                 .add({
                     title: title,
@@ -52,14 +63,23 @@ const AddVideo = () => {
                     console.log(error);
                 });
         }
+        else if (title && link && isEdit) {
+            db.collection("course_videos").doc(id).set(videoDetails)
+                .then((data:any) => {
+                    console.log(data)
+                })
+                .catch((error:any) => {
+                    console.log(error)
+                });
+        }
         else {
             setErrorStatus({ error: true, msg: "All the field must not be empty or invalid input!" })
-        }
+        } 
     }
 
     return (
         <div className="mt-6 shadow rounded-lg p-6 mx-6">
-            <h3 className="text-center text-2xl font-semibold mb-7">Add Video Area</h3>
+            <h3 className="text-center text-2xl font-semibold mb-7">{!isEdit ? "Add Video Area" : "Edit Video Details"}</h3>
             <form action="" onSubmit={handleVideoDetailsSubmit} className="text-center mx-6">
                 {
                     errorStatus.error &&
@@ -75,6 +95,7 @@ const AddVideo = () => {
                             type="text"
                             onChange={handleOnChange}
                             required
+                            defaultValue={videoDetails.title}
                             name="video_title"
                             placeholder="Write Title"
                         />
@@ -89,13 +110,14 @@ const AddVideo = () => {
                             type="text"
                             onChange={handleOnChange}
                             required
+                            defaultValue={videoDetails.link}
                             name="link"
                             placeholder="Write Link"
                         />
                     </div>
                 </div>
 
-                <input type="submit" value="Add Video" className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6" />
+                <input type="submit" value={!isEdit ? "Add Video" : "Update"} className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6" />
             </form>
         </div>
     );

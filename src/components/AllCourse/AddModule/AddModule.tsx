@@ -30,23 +30,21 @@ const AddModule = ({ id }: any): JSX.Element => {
     // get video data
     useEffect(() => {
         db.collection('course_videos').orderBy('created_at').onSnapshot(snapshot => {
-            setModuleVideo(snapshot.docs.map(doc => doc.data()));
+            setModuleVideo(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         })
     }, [])
 
     // get quiz data
     useEffect(() => {
         db.collection('course_quizzes').onSnapshot(snapshot => {
-            setModuleQuiz(snapshot.docs.map(doc => doc.data()));
-            console.log(snapshot.docs.map(doc => doc.data()));
-
+            setModuleQuiz(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         })
     }, [])
 
     // get task data
     useEffect(() => {
         db.collection('course_tasks').orderBy('created_at').onSnapshot(snapshot => {
-            setModuleTask(snapshot.docs.map(doc => doc.data()));
+            setModuleTask(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         })
     }, [])
 
@@ -181,8 +179,8 @@ const AddModule = ({ id }: any): JSX.Element => {
                                                 </div>
                                                 <h1 className="yt-video-title"> {video.title}</h1>
                                             </div>
-                                            <div className="w-full md:w-1/3 lg:w-1/2">
-                                                <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Video</button>
+                                            <div className="w-full md:w-1/3 mt-3 lg:w-1/2">
+                                                <Link to={`/edit-courses/edit-video/${video.id}`} className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Video</Link>
                                             </div>
                                         </div>
                                     );
@@ -216,8 +214,8 @@ const AddModule = ({ id }: any): JSX.Element => {
                                                     >{quiz.option4}</li>
                                                 </ul>
                                             </div>
-                                            <div className="w-full md:w-1/3">
-                                                <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Video</button>
+                                            <div className="w-full mt-3 md:w-1/3">
+                                                <Link to={`/edit-courses/edit-quiz/${quiz.id}`} className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Quiz</Link>
                                             </div>
                                         </div>
                                     );
@@ -238,8 +236,8 @@ const AddModule = ({ id }: any): JSX.Element => {
                                                 <h2 className="text-lg font-bold text-left">{task.title}</h2>
                                                 <p>{task.description}</p>
                                             </div>
-                                            <div className="w-full md:w-1/3">
-                                                <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Task</button>
+                                            <div className="w-full mt-3 md:w-1/3">
+                                                <Link to={`/edit-courses/edit-task/${task.id}`} className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Task</Link>
                                             </div>
                                         </div>
                                     );

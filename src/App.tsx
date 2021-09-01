@@ -144,17 +144,32 @@ const App = () => {
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/video/:id">
               <Dashboard>
-                <AddVideo />
+                <AddVideo isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-video/:id">
+              <Dashboard>
+                <AddVideo isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/task/:id">
               <Dashboard>
-                <AddTask />
+                <AddTask isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-task/:id">
+              <Dashboard>
+                <AddTask isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/quiz/:id">
               <Dashboard>
-                <AddQuiz />
+                <AddQuiz isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-quiz/:id">
+              <Dashboard>
+                <AddQuiz isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-module/:id">
