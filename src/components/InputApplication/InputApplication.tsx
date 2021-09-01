@@ -1,7 +1,4 @@
-import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import Topbar from "../Topbar/Topbar";
-
+ 
 const InputApplication = () => {
   return (
     <div className="shadow-lg lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded">
@@ -50,7 +47,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="rounded   bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
               type="text"
               required

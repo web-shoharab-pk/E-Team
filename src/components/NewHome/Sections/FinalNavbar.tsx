@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getDataFromLS } from "../../Authentication/loginmanager";
 import "./Navbar.css";
+import logo from "../../../Assets/images/E-Team-logo.png";
 
 
 
-const Navbar = () => {
+const FinalNavbar = () => {
   const [userType, setUserType] = useState('')
   const [showMenu, setShowMenu] = useState(false);
   if (showMenu) {
@@ -33,14 +34,15 @@ const Navbar = () => {
 
 
   return (
-    <header className="text-gray-600 body-font">
+    <header className="text-gray-600 body-font header_navbar ">
       <div className="navbar mx-auto p-5 mt-5">
-        <Link
+        <NavLink
           to="/"
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 pl-3 text-xl"
         >
-          <span className="text-blue-500 mr-2">E-Team </span> Manage
-        </Link>
+          {/* <span className="text-blue-500 mr-2">E-Team </span> Manage */}
+          <img className="w-32" src={logo} alt="" />
+        </NavLink>
 
         <button
           className="navbar-toggler"
@@ -53,18 +55,18 @@ const Navbar = () => {
           )}
         </button>
         <nav className="navbar-nav" id="navbar-nav">
-          <Link to="/" className="md:mr-5 hover:text-gray-900 nav-item">
+          <NavLink to="/" className="md:mr-5 hover:text-gray-900 nav-item">
             Home
-          </Link>
-          <Link to="/ourTeam" className="md:mr-5 hover:text-gray-900 nav-item">
+          </NavLink>
+          <NavLink to="/ourTeam" className="md:mr-5 hover:text-gray-900 nav-item">
             About us
-          </Link>
-          <Link to="/pricing" className="md:mr-5 hover:text-gray-900 nav-item">
+          </NavLink>
+          <NavLink to="/pricing" className="md:mr-5 hover:text-gray-900 nav-item">
             Pricing
-          </Link>
-          <Link to="/contact" className="md:mr-5 hover:text-gray-900 nav-item">
+          </NavLink>
+          <NavLink to="/contact" className="md:mr-5 hover:text-gray-900 nav-item">
             Contact
-          </Link>
+          </NavLink>
           {
             userType === '' &&
             <Link
@@ -92,4 +94,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default FinalNavbar;

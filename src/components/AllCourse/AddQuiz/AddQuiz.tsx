@@ -5,17 +5,20 @@ import db from "../../Firebase/Firebase";
 const AddQuiz = () => {
   const [quizData, setQuizData] = useState({});
   const [showField, setShowField] = useState(true);
-  const params = useParams();
+  const {id}:any = useParams();
+  // const {id} = params; 
+  let quizArray: any[] = []
 
   const handleOnChange = (e: any) => {
-    setQuizData({ ...quizData, [e.target.name]: e.target.value, ...params });
-  };
-console.log(quizData);
+    setQuizData({ ...quizData, [e.target.name]: e.target.value, module_id: id  });
+    // quizArray = [{...quizData}]
+  }; 
   const handleSubmit = (e: any) => {
-    console.log(quizData);
+    quizArray.push(quizData)
+console.log(quizArray);  
  
       db.collection("course_quizzes")
-        .add(quizData)
+        .add(quizArray)
         .then((data: any) => {
           console.log(data);
         })
@@ -23,7 +26,7 @@ console.log(quizData);
           console.log(error);
         });
     
-    setShowField(true);
+    // setShowField(true);
     e.preventDefault();
   };
 

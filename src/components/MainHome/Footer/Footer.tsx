@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import {
   faFacebook,
   faInstagram,
@@ -8,11 +6,13 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-gray-800 pt-10 sm:mt-10 pt-10">
+      <footer className="bg-gray-800  sm:mt-10 pt-10">
         <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left">
           <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
             <div className="text-base uppercase text-gray-400 font-medium mb-6">
@@ -114,51 +114,24 @@ const Footer = () => {
 
           <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
             <div className="text-base uppercase text-gray-400 font-medium mb-6">
-              Customization
+            Connect With US!
             </div>
-
-            <Link
-              to="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Configuration
-            </Link>
-            <Link
-              to="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Theme Configuration
-            </Link>
-            <Link
-              to="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Breakpoints
-            </Link>
-            <Link
-              to="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Customizing Colors
-            </Link>
-            <Link
-              to="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Customizing Spacing
-            </Link>
-            <Link
-              to="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Configuring Variants
-            </Link>
-            <Link
-              to="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Plugins
-            </Link>
+            <label className="text-base text-white lg:font-semibold" htmlFor="">
+              Inter your Email!
+            </label>
+            <br /> 
+            <input
+              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              id=""
+              type="text"
+              required
+              placeholder="Email"
+            />
+            <input
+                type="submit"
+                value="Subscribe"
+                className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"           
+              /> 
           </div>
 
           <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">

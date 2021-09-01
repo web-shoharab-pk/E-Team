@@ -56,6 +56,7 @@ import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
 import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
 import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
 import AddTask from "./components/AllCourse/AddTask/AddTask";
+import NewHome from "./components/NewHome/NewHome";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -309,8 +310,11 @@ const App = () => {
               <Footer />
             </Route>
             <Route exact path="/">
-              <MainHome />
+              <NewHome />
             </Route>
+            {/* <Route exact path="/newHome">
+               <NewHome />
+            </Route> */}
             <Route path="*">
               <NotFound />
             </Route>
