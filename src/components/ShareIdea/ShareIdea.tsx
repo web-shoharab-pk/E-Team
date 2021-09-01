@@ -36,15 +36,15 @@ const ShareIdea = () => {
         })
         .then((data) => {
           //   e.target.reset();
-          swal("Good job!", "Idea Successfully added", "success");
+          swal("Congratulations!", "Idea Successfully added", "success");
         });
     } else {
-      swal("Sorry!", "All filled must be filled up", "error");
+      swal("Sorry!", "All field must be filled up", "error");
     }
   };
   return (
-    <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded-lg">
-      <h2 className="text-center text-2xl text-blue-400 lg:text-3xl font-medium">
+    <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded-lg hover:shadow-xl">
+      <h2 className="text-center text-2xl text-blue-400 lg:text-2xl font-medium">
         Share Idea
       </h2>
 
@@ -58,8 +58,9 @@ const ShareIdea = () => {
               <br />
               <input
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 name="user_id"
+                placeholder="Your Name"
               />
             </div>
 
@@ -70,7 +71,7 @@ const ShareIdea = () => {
               <br />
               <input
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 type="text"
                 name="benefit"
                 placeholder="Write Benefit"
@@ -86,7 +87,7 @@ const ShareIdea = () => {
               <br />
               <input
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 type="text"
                 name="title"
                 placeholder="Write Title"
@@ -100,7 +101,7 @@ const ShareIdea = () => {
               <br />
               <select
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 name="category"
               >
                 <option value="">Select Your Category</option>
@@ -119,10 +120,8 @@ const ShareIdea = () => {
           <br />
           <textarea
             onChange={handleOnChange}
-            className="border bg-blue-100 rounded p-2 mt-1 w-full"
+            className="app-input"
             name="details"
-            cols={30}
-            rows={7}
             placeholder="Write Details"
           ></textarea>
         </div>

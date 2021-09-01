@@ -28,7 +28,7 @@ const AllCourse = () => {
       <div className="w-full">
         <h2 className="text-2xl text-center font-bold my-4">All Courses</h2>
       </div>
-      <div>
+      <div className="flex">
         {courses.length === 0 ? (
           <div className="mx-auto mb-5">
             <RingLoader color="#4A90E2" size={70} />

@@ -26,8 +26,12 @@ const CreateNotification = () => {
           details,
         })
         .then((data) => {
-            e.target.reset()
-          swal("Congratulations!", "Notification Successfully added", "success");
+          e.target.reset();
+          swal(
+            "Congratulations!",
+            "Notification Successfully added",
+            "success"
+          );
         });
     } else {
       swal("Sorry!", "All fields must be filled up", "error");
@@ -35,7 +39,7 @@ const CreateNotification = () => {
   };
   return (
     <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded-lg">
-      <h2 className="text-center text-2xl text-blue-400 lg:text-3xl font-medium">
+      <h2 className="text-center text-2xl text-blue-400 lg:text-2xl font-medium">
         Create Notification
       </h2>
 
@@ -48,7 +52,7 @@ const CreateNotification = () => {
             <br />
             <input
               onChange={handleOnChange}
-              className="border bg-blue-100 rounded mt-1 p-2 w-full"
+              className="app-input"
               name="title"
               placeholder="Title"
             />
@@ -63,10 +67,8 @@ const CreateNotification = () => {
             <br />
             <textarea
               onChange={handleOnChange}
-              className="border bg-blue-100 rounded p-2 mt-1 w-full"
+              className="app-input"
               name="details"
-              cols={30}
-              rows={5}
               placeholder="Details"
             ></textarea>
           </div>
