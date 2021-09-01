@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import { useState } from "react";
 import { UserDataContext } from "../../Contexts/UserDataContext";
+import swal from "sweetalert";
 
 export const db = firebase.firestore();
 
@@ -20,9 +21,9 @@ const CreateCourseTask = () => {
   });
 
   const { userData, setUserData } = useContext(UserDataContext);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState({ isError: false, message: "" });
-  const [successMessage, setSuccessMessage] = useState("");
+  // const [isSuccess, setIsSuccess] = useState(false);
+  // const [error, setError] = useState({ isError: false, message: "" });
+  // const [successMessage, setSuccessMessage] = useState("");
 
   const handleOnChange = (e: any) => {
     setCourseTaskData({ ...courseTaskData, [e.target.id]: e.target.value });
@@ -48,34 +49,31 @@ const CreateCourseTask = () => {
           (
             document.getElementById("taskDescription") as HTMLInputElement
           ).value = "";
-          setSuccessMessage("Successfully Course Task Assigned!");
-          setError({ isError: false, message: "" });
+          swal("Congratulations!", "Course task Successfully added", "success");
         })
         .catch((error) => {
           if (error) {
-            setSuccessMessage("");
-            setError({
-              isError: true,
-              message: "Any field must not be empty!",
-            });
+            swal("Sorry!", "All input fields must be filled up", "error");
           } else {
-            setSuccessMessage("Successfully Course Task Assigned!");
-            setError({ isError: false, message: "" });
+            swal(
+              "Congratulations!",
+              "Course task Successfully added",
+              "success"
+            );
           }
         });
     } else {
-      setIsSuccess(false);
-      setError({ isError: true, message: "Any field must not be empty!" });
+      swal("Sorry!", "All input fields must be filled up", "error");
     }
   };
 
   return (
-    <div className="shadow-lg  mx-7 mt-4 px-16 pt-2 rounded-lg">
-      <h2 className="text-center text-3xl font-bold text-blue-400">
+    <div className="shadow  mx-7 mt-4 px-16 pt-2 rounded-lg hover:shadow-lg">
+      <h2 className="text-center text-2xl font-bold text-blue-400">
         Create Course Task
       </h2>
 
-      {error.message ? (
+      {/* {error.message ? (
         <div className="text-red-500 mx-5 text-center">{error.message}</div>
       ) : (
         ""
@@ -85,7 +83,7 @@ const CreateCourseTask = () => {
         <div className="text-green-500 mx-5 text-center">{successMessage}</div>
       ) : (
         ""
-      )}
+      )} */}
 
       <form action="" className="form mt-4">
         <div className="flex w-full mb-5 space-x-16">
@@ -97,7 +95,7 @@ const CreateCourseTask = () => {
               <br />
               <input
                 onChange={handleOnChange}
-                className="border bg-gray-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 type="text"
                 id="taskName"
                 placeholder="Name of task"
@@ -113,7 +111,7 @@ const CreateCourseTask = () => {
               <select
                 defaultValue="Select Team"
                 onChange={handleOnChange}
-                className="border bg-gray-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 id="teamName"
                 required
               >
@@ -131,7 +129,7 @@ const CreateCourseTask = () => {
               </label>
               <br />
               <input
-                className="border bg-gray-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 type="file"
                 placeholder="Write Title"
               />
@@ -146,10 +144,8 @@ const CreateCourseTask = () => {
           <br />
           <textarea
             onChange={handleOnChange}
-            className="border bg-gray-100 rounded p-2 mt-1 w-full"
+            className="app-input"
             id="taskDescription"
-            cols={30}
-            rows={7}
             placeholder="Write task description"
             required
           ></textarea>
@@ -159,7 +155,7 @@ const CreateCourseTask = () => {
           <input
             onClick={handleSubmit}
             type="submit"
-            className="text-center cursor-pointer mx-auto my-4 bg-blue-500 text-white font-semibold py-3 px-10 rounded-lg"
+            className="text-center cursor-pointer mx-auto my-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-10 rounded-lg"
             value="Let's Cook It"
           />
         </div>

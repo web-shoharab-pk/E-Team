@@ -58,7 +58,7 @@ const AddVideo = () => {
     }
 
     return (
-        <div className="mt-6 shadow rounded-lg p-6 mx-6">
+        <div className="mt-6 shadow rounded-lg p-6 mx-6 hover:shadow-lg">
             <h3 className="text-center text-2xl font-semibold mb-7">Add Video Area</h3>
             <form action="" onSubmit={handleVideoDetailsSubmit} className="text-center mx-6">
                 {
@@ -70,7 +70,7 @@ const AddVideo = () => {
                         <label className="text-base text-left lg:font-semibold" htmlFor="">Video Title</label>
                         <br />
                         <input
-                            className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                            className="app-input"
                             id="title"
                             type="text"
                             onChange={handleOnChange}
@@ -84,7 +84,7 @@ const AddVideo = () => {
                         <label className="text-base text-left lg:font-semibold" htmlFor="">Video Link(Only youtube video)</label>
                         <br />
                         <input
-                            className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                            className="app-input"
                             id="link"
                             type="text"
                             onChange={handleOnChange}

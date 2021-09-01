@@ -93,7 +93,7 @@ const RegisterCompany = () => {
                                         type="text"
                                         name="company_name"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full">
@@ -103,7 +103,7 @@ const RegisterCompany = () => {
                                         type="text"
                                         name="email"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
@@ -113,7 +113,7 @@ const RegisterCompany = () => {
                                         type="text"
                                         name="phone"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
@@ -123,7 +123,7 @@ const RegisterCompany = () => {
                                         type="text"
                                         name="website"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full">
@@ -132,7 +132,7 @@ const RegisterCompany = () => {
                                     <textarea
                                         name="co_description"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-20 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                        className="app-input"></textarea>
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
@@ -142,7 +142,7 @@ const RegisterCompany = () => {
                                         type="password"
                                         name="password"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
@@ -152,11 +152,11 @@ const RegisterCompany = () => {
                                         type="password"
                                         name="re_password"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="w-full px-5 py-2">
-                                <input type="checkbox" name="agree-terms" className="mr-2"/> Agree with all terms & conditions
+                                <input type="checkbox" name="agree-terms" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"/> Agree with all terms & conditions
                             </div>
                             <div className="p-2 w-full">
                                 <button

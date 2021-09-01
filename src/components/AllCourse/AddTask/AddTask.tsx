@@ -38,16 +38,18 @@ const AddTask = () => {
     }
   };
   return (
-    <div className="mt-6">
-      <div className="lg:w-full text-left">
-        <label className="text-base text-left lg:font-semibold" htmlFor="">
+    <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded">
+      <h2 className="text-center  text-2xl py-3 font-semibold">Add Task</h2>
+      <div className="lg:w-full mb-5">
+        <label className="text-base lg:font-semibold" htmlFor="">
           Task Title
         </label>
         <br />
         <input
           onChange={handleOnChange}
+          required
           name="title"
-          className="border w-full py-3 px-4 focus:outline-none bg-gray-100 focus:ring-2 focus:ring-blue-600 focus:border-transparent rounded-md"
+          className="app-input"
           placeholder="Write Task Description"
         />
       </div>
@@ -58,20 +60,21 @@ const AddTask = () => {
         <br />
         <textarea
           name="description"
+          required
           onChange={handleOnChange}
-          className="border w-full py-3 px-4 focus:outline-none bg-gray-100 focus:ring-2 focus:ring-blue-600 focus:border-transparent rounded-md"
+          className="app-input"
           placeholder="Write Task Description"
-          cols={30}
-          rows={5}
         ></textarea>
       </div>
 
-      <input
-        onClick={handleSubmit}
-        type="submit"
-        value="Add Task"
-        className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
-      />
+      <div className="text-center">
+        <input
+          onClick={handleSubmit}
+          type="submit"
+          value="Add Task"
+          className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
+        />
+      </div>
     </div>
   );
 };

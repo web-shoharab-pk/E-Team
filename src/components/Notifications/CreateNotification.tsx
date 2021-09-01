@@ -27,10 +27,10 @@ const CreateNotification = () => {
         })
         .then((data) => {
             e.target.reset()
-          swal("Good job!", "Notification Successfully added", "success");
+          swal("Congratulations!", "Notification Successfully added", "success");
         });
     } else {
-      swal("Sorry!", "All filled must be filled up", "error");
+      swal("Sorry!", "All fields must be filled up", "error");
     }
   };
   return (

@@ -41,7 +41,8 @@ const AddQuiz = () => {
           className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
         />
       ) : (
-        <form action="" onSubmit={handleSubmit} className="form mt-4 p-5">
+        <div className="shadow rounded hover:shadow-lg">
+          <form action="" onSubmit={handleSubmit} className="form mt-4 p-5">
           <div className="lg:flex w-full mb-5 lg:space-x-16">
             <div className="w-full">
               <label className="text-base lg:font-semibold" htmlFor="">
@@ -49,7 +50,7 @@ const AddQuiz = () => {
               </label>
               <br />
               <input
-                className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                className="app-input"
                 onKeyUp={handleOnChange}
                 id="title"
                 type="text"
@@ -68,7 +69,7 @@ const AddQuiz = () => {
               </label>
               <br />
               <input
-                className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                className="app-input"
                 onKeyUp={handleOnChange}
                 name="option1"
                 type="text"
@@ -82,7 +83,7 @@ const AddQuiz = () => {
               </label>
               <br />
               <input
-                className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                className="app-input"
                 onKeyUp={handleOnChange}
                 name="option2"
                 type="text"
@@ -98,7 +99,7 @@ const AddQuiz = () => {
               </label>
               <br />
               <input
-                className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                className="app-input"
                 onKeyUp={handleOnChange}
                 name="option3"
                 type="text"
@@ -112,7 +113,7 @@ const AddQuiz = () => {
               </label>
               <br />
               <input
-                className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                className="app-input"
                 onKeyUp={handleOnChange}
                 name="option4"
                 type="text"
@@ -130,7 +131,7 @@ const AddQuiz = () => {
 
               <select
                 onChange={handleOnChange}
-                className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" name="right_answer" id="">
+                className="app-input" name="right_answer" id="">
                 <option value="">Select One</option>
                 <option value="option1">Option 1</option>
                 <option value="option2">Option 2</option>
@@ -148,6 +149,7 @@ const AddQuiz = () => {
             />
           </div>
         </form>
+        </div>
       )}
     </div>
   );

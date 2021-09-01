@@ -1,11 +1,12 @@
 import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Topbar from "../Topbar/Topbar";
+import swal from "sweetalert";
 
 const InputApplication = () => {
   return (
-    <div className="shadow-lg lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded">
-      <h2 className="text-center text-2xl pb-4 lg:text-3xl font-bold text-blue-400">
+    <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded hover:shadow-lg">
+      <h2 className="text-center text-2xl pb-4 lg:text-2xl font-bold text-blue-400">
         Input Application
       </h2>
 
@@ -19,7 +20,7 @@ const InputApplication = () => {
             <select
               defaultValue="select department"
               id="type"
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               required /*name="department" id="department-select"*/
             >
               <option value="selectTeam">Team-80</option>
@@ -34,7 +35,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               type="text"
               required
@@ -50,7 +51,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               type="text"
               required
@@ -66,7 +67,7 @@ const InputApplication = () => {
             <select
               defaultValue="select department"
               id="type"
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               required /*name="department" id="department-select"*/
             >
               <option value="selectApplication">Leave Application</option>
@@ -83,7 +84,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               type="date"
             />
@@ -95,8 +96,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              id=""
+              className="app-input"
               type="date"
             />
           </div>
@@ -109,8 +109,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              id=""
+              className="app-input"
               type="text"
               required
               placeholder="Supervisor Name"
@@ -124,8 +123,7 @@ const InputApplication = () => {
             <br />
             <select
               defaultValue="select department"
-              id="type"
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               required /*name="department" id="department-select"*/
             >
               <option value="selectStatus">High</option>
@@ -141,7 +139,7 @@ const InputApplication = () => {
             type="submit"
             value="Submit Application"
             className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
-            onClick={(e) => { e.preventDefault();  alert('function not implement!')}}
+            onClick={(e) => { e.preventDefault();  swal("Sorry!", "Function doesn't implement yet", "error");}}
           />
         </div>
       </form>
