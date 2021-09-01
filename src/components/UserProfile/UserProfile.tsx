@@ -49,17 +49,17 @@ const UserProfile = () => {
                 <div className="w-1/3 font-medium" >Address </div>
                 <div className="w-2/3" >{userInfo?.address} </div>
             </div>
-            <div className="flex border-b mt-10">
+            {/* <div className="flex border-b mt-10">
                 <div className="w-1/3 font-medium" >Designation </div>
                 <div className="w-2/3" >{userInfo?.designation} </div>
-            </div>
+            </div> */}
             <div className="flex border-b mt-3">
                 <div className="w-1/3 font-medium" >Dashbord Role </div>
                 <div className="w-2/3" >{userInfo?.role} </div>
             </div>
             <div className="flex justify-between mt-6">
                 <Link to="#" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Change Password</Link>
-                <Link to="/edit-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Edit</Link>
+                <Link to="/edit-user-profile" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-2 py-1 m-1">Edit</Link>
                 <Link to="#" className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1 m-1">Block</Link>
                 <Link to="#" className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1 m-1">Delete</Link>
             </div>

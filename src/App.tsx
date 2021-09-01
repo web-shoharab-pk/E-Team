@@ -51,14 +51,15 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
 import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
 import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
-import UserProfile from "./components/UserProfile/UserProfile";
-import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
-import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 import AddCourse from "./components/AddCourse/AddCourse";
 import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
 import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
 import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
 import AddTask from "./components/AllCourse/AddTask/AddTask";
+import EditModule from "./components/AllCourse/EditModule/EditModule";
+import UserProfile from "./components/UserProfile/UserProfile";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 import AssignDepartment from "./components/AllUserList/AssignDepartment";
 import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
 import UserManagement from "./components/UserManagement/UserManagement";
@@ -66,7 +67,7 @@ import DepartmentManagement from "./components/DepartmentManagement/DepartmentMa
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
 
 const App = () => {
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<any>({
     isSignedIn: false,
     co_id: "",
     id: "",
@@ -77,7 +78,7 @@ const App = () => {
     created_at: "",
     updated_at: "",
   });
-  const [systemAdminData, setSystemAdminData] = useState({
+  const [systemAdminData, setSystemAdminData] = useState<any>({
     isSignedIn: false,
     id: "",
     name: "",
@@ -148,17 +149,37 @@ const App = () => {
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/video/:id">
               <Dashboard>
-                <AddVideo />
+                <AddVideo isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-video/:id">
+              <Dashboard>
+                <AddVideo isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/task/:id">
               <Dashboard>
-                <AddTask />
+                <AddTask isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-task/:id">
+              <Dashboard>
+                <AddTask isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/quiz/:id">
               <Dashboard>
-                <AddQuiz />
+                <AddQuiz isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-quiz/:id">
+              <Dashboard>
+                <AddQuiz isEdit={true} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-module/:id">
+              <Dashboard>
+                <EditModule />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/add-course">
@@ -254,16 +275,6 @@ const App = () => {
                 <Home />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/home">
-              <Dashboard>
-                <Home />
-              </Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/all-user">
-              <Dashboard>
-                <AllUserList />
-              </Dashboard>
-            </PrivateRoute>
             <PrivateRoute path="/meetings">
               <Dashboard>
                 <MeetingList />
@@ -304,12 +315,12 @@ const App = () => {
                 <UserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-user">
+            <PrivateRoute path="/edit-user-profile">
               <Dashboard>
                 <EditUserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-company">
+            <PrivateRoute path="/edit-company-profile">
               <Dashboard>
                 <EditCompanyProfile />
               </Dashboard>
@@ -356,6 +367,11 @@ const App = () => {
             <SARoute path="/system-admin/view-sa-profile">
               <SADashboard>
                 <SAProfile />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/edit-sa-profile">
+              <SADashboard>
+                <EditSAProfile />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/edit-sa-profile">

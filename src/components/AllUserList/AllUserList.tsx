@@ -22,8 +22,6 @@ const AllUserList = () => {
       });
   }, [userData.co_id]);
 
-  
-
   return (
     <div className="shadow mx-0 lg:mx-8 mt-4 pt-4 pb-16 rounded-lg">
       <h2 className="text-center  text-2xl py-3 font-semibold">
@@ -55,12 +53,12 @@ const AllUserList = () => {
                   </figcaption>
                 </div>
                 <div className="text-center py-2">
-                      <Link
-                        to={'/view-profile/'+user.id}
-                        className="mb-4 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
-                      >
-                        Visit Profile
-                      </Link>
+                  <Link
+                    to={"/view-profile/" + user.id}
+                    className="mb-4 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
+                  >
+                    Visit Profile
+                  </Link>
                   <Link
                     className="text-md font-medium px-4 py-2 rounded bg-blue-500 hover:bg-white text-white hover:text-blue-500 border border-blue-500"
                     to={"/assign-department/" + user.id}

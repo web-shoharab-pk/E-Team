@@ -25,27 +25,26 @@ const AddModule = ({ id }: any): JSX.Element => {
             }));
         })
     }, [])
+    console.log(moduleData)
 
     // get video data
     useEffect(() => {
         db.collection('course_videos').orderBy('created_at').onSnapshot(snapshot => {
-            setModuleVideo(snapshot.docs.map(doc => doc.data()));
+            setModuleVideo(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         })
     }, [])
 
     // get quiz data
     useEffect(() => {
         db.collection('course_quizzes').onSnapshot(snapshot => {
-            setModuleQuiz(snapshot.docs.map(doc => doc.data()));
-            console.log(snapshot.docs.map(doc => doc.data()));
-
+            setModuleQuiz(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         })
     }, [])
 
     // get task data
     useEffect(() => {
         db.collection('course_tasks').orderBy('created_at').onSnapshot(snapshot => {
-            setModuleTask(snapshot.docs.map(doc => doc.data()));
+            setModuleTask(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         })
     }, [])
 
@@ -73,9 +72,26 @@ const AddModule = ({ id }: any): JSX.Element => {
         }
     }
 
+    // const handleSearchValue = (e:any) => {
+    //     setSearchValue(e.target.value);
+    // }
+
+    // const handleSearch = (e:any) => {
+    //     e.preventDefault();
+
+    //     db.collection('course_modules').orderBy('createAt').onSnapshot(snapshot => {
+    //         const data = snapshot.docs.filter(doc => doc.data().course_id === id);
+    //         const searchData = data.filter((search:any) => searchValue === search.data().title);
+    //         setModuleData(searchData.map((module:any) => {
+    //             return {...module.data(), id:module.id}
+    //         }));
+    //     })
+    //     setSearchValue('');
+    // }
+
     return (
-        <div className="border text-center mt-6 pt-6">
-            <div className="shadow mx-8 bg-gray-100 rounded-md py-5">
+        <div className="border text-center mt-6 py-6">
+            <div className="shadow mx-6 bg-gray-100 rounded-md py-5">
                 <button onClick={() => setAddModuleToggle(addModuleToggle ? false : true)} className="px-5 py-2 block mx-auto rounded-md border border-green-600 bg-green-600 text-white font-medium">
                     <FontAwesomeIcon className="mr-3" icon={faPlus} />
                     Add a Module
@@ -163,8 +179,8 @@ const AddModule = ({ id }: any): JSX.Element => {
                                                 </div>
                                                 <h1 className="yt-video-title"> {video.title}</h1>
                                             </div>
-                                            <div className="w-full md:w-1/3 lg:w-1/2">
-                                                <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Video</button>
+                                            <div className="w-full md:w-1/3 mt-3 lg:w-1/2">
+                                                <Link to={`/edit-courses/edit-video/${video.id}`} className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Video</Link>
                                             </div>
                                         </div>
                                     );
@@ -198,8 +214,8 @@ const AddModule = ({ id }: any): JSX.Element => {
                                                     >{quiz.option4}</li>
                                                 </ul>
                                             </div>
-                                            <div className="w-full md:w-1/3">
-                                                <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Video</button>
+                                            <div className="w-full mt-3 md:w-1/3">
+                                                <Link to={`/edit-courses/edit-quiz/${quiz.id}`} className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Quiz</Link>
                                             </div>
                                         </div>
                                     );
@@ -220,8 +236,8 @@ const AddModule = ({ id }: any): JSX.Element => {
                                                 <h2 className="text-lg font-bold text-left">{task.title}</h2>
                                                 <p>{task.description}</p>
                                             </div>
-                                            <div className="w-full md:w-1/3">
-                                                <button className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Task</button>
+                                            <div className="w-full mt-3 md:w-1/3">
+                                                <Link to={`/edit-courses/edit-task/${task.id}`} className="px-5 py-2 rounded-md border border-blue-500 bg-blue-500 text-white font-medium">Edit Task</Link>
                                             </div>
                                         </div>
                                     );

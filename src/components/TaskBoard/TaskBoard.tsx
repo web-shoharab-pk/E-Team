@@ -1,42 +1,41 @@
 import React from "react";
 import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { Link } from "react-router-dom";
 import profile1 from "../../Assets/images/profile1.jpg";
 import profile2 from "../../Assets/images/profile2.jpg";
 import profile3 from "../../Assets/images/profile3.jpg";
 import profile4 from "../../Assets/images/profile4.jpg";
 import profile5 from "../../Assets/images/profile5.jpg";
 
-import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
 
 const itemsFromBackend = [
   {
-    id: uuidv4(),
+    id: "user-id-01",
     content: "Add picture & write similar words for web app",
     date: "Aug 11",
     img: profile1,
   },
   {
-    id: uuidv4(),
+    id: "user-id-02",
     content: "Implementing review feature on dashboard",
     date: "Aug 11",
     img: profile2,
   },
   {
-    id: uuidv4(),
+    id: "user-id-03",
     content: "Connect web app with database",
     date: "Aug 11",
     img: profile3,
   },
   {
-    id: uuidv4(),
+    id: "user-id-04",
     content: "Add unit testing on implemented features",
     date: "Aug 11",
     img: profile4,
   },
   {
-    id: uuidv4(),
+    id: "user-id-05",
     content: "Add relevant footer section",
     date: "Aug 11",
     img: profile5,
@@ -44,19 +43,19 @@ const itemsFromBackend = [
 ];
 
 const columnsFromBackend = {
-  [uuidv4()]: {
+  todo: {
     name: "TO DO",
     items: itemsFromBackend,
   },
-  [uuidv4()]: {
+  in_progress: {
     name: "IN PROGRESS",
     items: [],
   },
-  [uuidv4()]: {
+  done: {
     name: "DONE",
     items: [],
   },
-  [uuidv4()]: {
+  deployed: {
     name: "DEPLOYED",
     items: [],
   },
@@ -68,12 +67,10 @@ const TaskBoard = () => {
   const onDragEnd = (result: any, columns: any, setColumns: any) => {
     if (!result.destination) return;
     const { source, destination } = result;
-    console.log(result);
     if (source.droppableId !== destination.droppableId) {
       const sourceColumn = columns[source.droppableId];
       const destColumn = columns[destination.droppableId];
       const sourceItems = [...sourceColumn.items];
-      console.log(sourceItems);
       const destItems = [...destColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, removed);
@@ -88,6 +85,19 @@ const TaskBoard = () => {
           items: destItems,
         },
       });
+      console.log('result',result);
+      console.log('columns',{
+        ...columns,
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: sourceItems,
+        },
+        [destination.droppableId]: {
+          ...destColumn,
+          items: destItems,
+        },
+      });
+      console.log('sourceItems',sourceItems);
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
