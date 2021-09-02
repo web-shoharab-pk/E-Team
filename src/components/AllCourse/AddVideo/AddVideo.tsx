@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import db from '../../Firebase/Firebase';
 
 const AddVideo = ({isEdit}:any) => {
@@ -90,7 +90,7 @@ const AddVideo = ({isEdit}:any) => {
                         <label className="text-base text-left lg:font-semibold" htmlFor="">Video Title</label>
                         <br />
                         <input
-                            className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                            className="app-input"
                             id="title"
                             type="text"
                             onChange={handleOnChange}
@@ -105,7 +105,7 @@ const AddVideo = ({isEdit}:any) => {
                         <label className="text-base text-left lg:font-semibold" htmlFor="">Video Link(Only youtube video)</label>
                         <br />
                         <input
-                            className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                            className="app-input"
                             id="link"
                             type="text"
                             onChange={handleOnChange}

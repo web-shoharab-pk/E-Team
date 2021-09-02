@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { isConstructorDeclaration } from "typescript";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
+import swal from "sweetalert";
 
 const ShareIdea = () => {
   const { userData, setUserData } = useContext(UserDataContext);
@@ -14,19 +16,19 @@ const ShareIdea = () => {
     category: "",
     details: "",
   });
-
+  console.log(userData);
   const handleOnChange = (e: any) => {
-    setIdeas({ ...ideas, [e.target.name]: [e.target.value] });
+    setIdeas({ ...ideas, [e.target.name]: e.target.value });
   };
-  console.log(ideas);
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    console.log(ideas);
     const { user_id, title, benefit, category, details } = ideas;
     if (user_id && title && benefit && category && details) {
       db.collection("creative_ideas")
         .add({
           co_id: userData.co_id,
-          user_id,
+          user_id: userData.id,
           title,
           benefit,
           category,
@@ -34,25 +36,15 @@ const ShareIdea = () => {
         })
         .then((data) => {
           //   e.target.reset();
-          alert("Idea successfully added");
+          swal("Congratulations!", "Idea Successfully added", "success");
         });
     } else {
-      alert("All filled must be filled up");
+      swal("Sorry!", "All field must be filled up", "error");
     }
   };
-
-  useEffect(() => {
-    db.collection("users")
-      .where("co_id", "==", userData.co_id)
-      .get()
-      .then((data) => {
-        const array = data.docs.map((doc) => ({ ...doc.data() }));
-        setUsers(array);
-      });
-  }, [userData.co_id]);
   return (
-    <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded-lg">
-      <h2 className="text-center text-2xl text-blue-400 lg:text-3xl font-medium">
+    <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded-lg hover:shadow-xl">
+      <h2 className="text-center text-2xl text-blue-400 lg:text-2xl font-medium">
         Share Idea
       </h2>
 
@@ -64,16 +56,12 @@ const ShareIdea = () => {
                 Select Name
               </label>
               <br />
-              <select
+              <input
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 name="user_id"
-              >
-                <option value="">Select Your Name</option>
-                {users.map((user: any) => (
-                  <option value={user.id}>{user.name}</option>
-                ))}
-              </select>
+                placeholder="Your Name"
+              />
             </div>
 
             <div className="mb-5 lg:mb-0">
@@ -83,7 +71,7 @@ const ShareIdea = () => {
               <br />
               <input
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 type="text"
                 name="benefit"
                 placeholder="Write Benefit"
@@ -99,7 +87,7 @@ const ShareIdea = () => {
               <br />
               <input
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 type="text"
                 name="title"
                 placeholder="Write Title"
@@ -113,7 +101,7 @@ const ShareIdea = () => {
               <br />
               <select
                 onChange={handleOnChange}
-                className="border bg-blue-100 rounded mt-1 p-2 w-full"
+                className="app-input"
                 name="category"
               >
                 <option value="">Select Your Category</option>
@@ -132,10 +120,8 @@ const ShareIdea = () => {
           <br />
           <textarea
             onChange={handleOnChange}
-            className="border bg-blue-100 rounded p-2 mt-1 w-full"
+            className="app-input"
             name="details"
-            cols={30}
-            rows={7}
             placeholder="Write Details"
           ></textarea>
         </div>

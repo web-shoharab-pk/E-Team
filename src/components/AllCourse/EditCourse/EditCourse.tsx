@@ -65,7 +65,7 @@ const EditCourse = () => {
                                     </label>
                                     <br />
                                     <input
-                                    className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                    className="app-input"
                                     onKeyUp={handleOnChange}
                                     id="title"
                                     type="text"
@@ -81,7 +81,7 @@ const EditCourse = () => {
                                     </label>
                                     <br />
                                     <input
-                                    className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                    className="app-input"
                                     id="instructor"
                                     type="text"
                                     onKeyUp={handleOnChange}
@@ -100,7 +100,7 @@ const EditCourse = () => {
                                     </label>
                                     <br />
                                     <input
-                                    className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                    className="app-input"
                                     id="thumbnail"
                                     onKeyUp={handleOnChange}
                                     name="thumbnail"

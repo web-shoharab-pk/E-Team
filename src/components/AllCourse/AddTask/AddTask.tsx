@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import firebase from "firebase";
-import db from "../../Firebase/Firebase";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import db from "../../Firebase/Firebase";
 
 const AddTask = ({isEdit}:any) => {
   const [taskData, setTaskData] = useState<any>({});

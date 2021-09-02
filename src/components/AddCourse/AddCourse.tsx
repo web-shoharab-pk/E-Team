@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
+import swal from "sweetalert";
 
 const AddCourse = () => {
   const [addCourseData, setAddCourseData] = useState({});
@@ -19,13 +20,14 @@ const AddCourse = () => {
     db.collection("courses")
       .add(addCourseData)
       .then((data: any) => {
-        console.log("success", data);
+        e.target.reset()
+        swal("Congratulations!", "Course added successfully", "success");
       });
   };
 
   return (
-    <div className="shadow-lg lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded">
-      <h2 className="text-center text-2xl pb-4 lg:text-3xl font-bold text-blue-400">
+    <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded hover:shadow-lg hover:shadow-lg">
+      <h2 className="text-center text-2xl pb-4 lg:text-2xl font-bold text-blue-400">
         Add Course
       </h2>
 
@@ -37,8 +39,7 @@ const AddCourse = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              id=""
+              className="app-input"
               type="text"
               required
               name="course_title"
@@ -52,8 +53,7 @@ const AddCourse = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              id=""
+              className="app-input"
               type="text"
               required
               name="instructor"
@@ -70,8 +70,7 @@ const AddCourse = () => {
             </label>
             <br />
             <input
-              className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              id=""
+              className="app-input"
               name="thumbnail"
               type="text"
               required
