@@ -12,15 +12,15 @@ const AllCourse = () => {
 
   useEffect(() => {
     db.collection("courses")
-    .where('co_id', '==', userData.co_id)
-    .get()
-    .then((data: any) => setCourses(data.docs.map((doc: any) => ({...doc.data(),id:doc.id}))))
-    .catch((error) => {
+      .where('co_id', '==', userData.co_id)
+      .get()
+      .then((data: any) => setCourses(data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))))
+      .catch((error) => {
         console.log("Error getting document:", error);
-    });
-}, [userData.co_id]);
+      });
+  }, [userData.co_id]);
 
-console.log(courses);
+  console.log(courses);
 
 
   return (
@@ -28,19 +28,19 @@ console.log(courses);
       <div className="w-full">
         <h2 className="text-2xl text-center font-bold my-4">All Courses</h2>
       </div>
-      <div className="flex">
-        {courses.length === 0 ? (
-          <div className="mx-auto mb-5">
+      {courses.length === 0 ? (
+        <div className="w-full">
+          <div className="w-1/5 text-center mx-auto my-24">
             <RingLoader color="#4A90E2" size={70} />
           </div>
-        ) : (
-          <div className="flex flex-wrap">
-            {courses.map((course: any) => (
-              <Course course={course} thumbnail={thumbnail} />
-            ))}
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="flex flex-wrap">
+          {courses.map((course: any) => (
+            <Course course={course} thumbnail={thumbnail} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

@@ -47,9 +47,9 @@ import Home from "./components/Home/Home";
 import InputApplication from "./components/InputApplication/InputApplication";
 import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
 import Footer from "./components/MainHome/Footer/Footer";
-import MainHome from "./components/MainHome/MainHome";
 import Navbar from "./components/MainHome/Navbar/Navbar";
 import MeetingList from "./components/MeetingList/MeetingList";
+import NewHome from "./components/NewHome/NewHome";
 import NotFound from "./components/NotFound/NotFound";
 import CreateNotification from "./components/Notifications/CreateNotification";
 import OurTeam from "./components/OurTeam/OurTeam";
@@ -101,7 +101,7 @@ useEffect(()=>{
   setLoading(true)
   setTimeout(()=>{
     setLoading(false)
-  },3000)
+  },1500)
 },[])
 
   // for checking user
@@ -423,8 +423,11 @@ useEffect(()=>{
               <Footer />
             </Route>
             <Route exact path="/">
-              <MainHome />
+              <NewHome />
             </Route>
+            {/* <Route exact path="/newHome">
+               <NewHome />
+            </Route> */}
             <Route path="*">
               <NotFound />
             </Route>

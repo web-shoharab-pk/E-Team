@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
-import { useState } from "react";
-import { UserDataContext } from "../../Contexts/UserDataContext";
-import { db } from "../CreateCourseTask/CreateCourseTask";
+import firebase from "firebase/app";
+import React, { useContext, useState } from "react";
 import swal from "sweetalert";
+import { UserDataContext } from "../../Contexts/UserDataContext";
+
+const db = firebase.firestore();
+
 
 const CreateNotification = () => {
   const { userData, setUserData } = useContext(UserDataContext);

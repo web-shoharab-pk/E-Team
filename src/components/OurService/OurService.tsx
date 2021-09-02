@@ -1,16 +1,17 @@
-import img1 from "./../../Assets/images/taskAssign.png";
-import img2 from "./../../Assets/images/meetingSet.png";
 import img3 from "./../../Assets/images/courseAssign.png";
+import img2 from "./../../Assets/images/meetingSet.png";
+import img1 from "./../../Assets/images/taskAssign.png";
 
 const OurService = () => {
   return (
-    <section className="text-gray-600 body-font text-center mt-8">
-      <h1 className="title-font p-3 sm:text-4xl text-center text-3xl  mt-8 mb-4 font-bold text-gray-900 border-b-4 border-blue-500 inline-block">
-        OUR SYSTEM SOME FEATURES!
+    <section className="text-gray-600 body-font text-center container mx-auto mt-8">
+      <h1 className="title-font p-3 sm:text-4xl text-center text-3xl  mt-8 mb-4 font-bold text-gray-900 border-b-4 border-indigo-600 inline-block">
+        OUR SYSTEM FEATURES!
       </h1>
-      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center mr-3">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-bold text-blue-500">
+      <div className="mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+
+          <h1 className="title-font p-3 sm:text-4xl text-center text-3xl  mt-8 mb-4 font-bold border-b-4 border-indigo-600 inline-block text-blue-500">
             Task Management
           </h1>
           <p className="mb-8 leading-relaxed text-xl">
@@ -25,26 +26,23 @@ const OurService = () => {
           data-aos="flip-left"
         >
           <img
-            className="object-cover object-center rounded shadow-2xl"
+            className="w-full rounded shadow-2xl"
             alt="hero"
             src={img1}
           />
         </div>
       </div>
 
-      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div
-          className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0"
-          data-aos="flip-right"
-        >
+      <div className=" mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
           <img
-            className="object-cover object-center rounded shadow-2xl"
+            className="object-cover object-center rounded shadow-xl"
             alt="hero"
             src={img2}
           />
         </div>
-        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center mr-3">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-bold text-blue-500">
+        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+          <h1 className="title-font p-3 sm:text-4xl text-center text-3xl  mt-8 mb-4 font-bold border-b-4 border-indigo-600 inline-block text-blue-500">
             Assign Meeting
           </h1>
           <p className="mb-8 leading-relaxed text-xl">
@@ -57,8 +55,8 @@ const OurService = () => {
       </div>
 
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center mr-3">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-bold text-blue-500">
+        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+          <h1 className="title-font p-3 sm:text-4xl text-center text-3xl  mt-8 mb-4 font-bold border-b-4 border-indigo-600 inline-block text-blue-500">
             Assign Course
           </h1>
           <p className="mb-8 leading-relaxed text-xl">
@@ -74,7 +72,7 @@ const OurService = () => {
           data-aos="flip-left"
         >
           <img
-            className="object-cover object-center rounded shadow-2xl"
+            className="w-full rounded shadow-xl"
             alt="hero"
             src={img3}
           />
