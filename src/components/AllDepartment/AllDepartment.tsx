@@ -6,7 +6,7 @@ import "firebase/firestore";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import { Link } from "react-router-dom";
 
-export const db = firebase.firestore();
+const db = firebase.firestore();
 
 type AllDepartment = {
   name: string;
@@ -76,7 +76,7 @@ const AllDepartment = () => {
 
           {departmentData.map((department: any) => (
             <tr className="border-b border-gray-200">
-              <Link to={"/assigned-department-user/"+department.id}><td className="px-4 py-3 hover:text-blue-500">{department.name}</td></Link>
+              <Link to={"/assigned-department-user/"+department.id}><td className="px-4 py-3 text-blue-500">{department.name}</td></Link>
               <td className="px-4 py-3">{department.type}</td>
               <td className="px-4 py-3">{department.description}</td>
               <td className="px-4 py-3">Edit</td>

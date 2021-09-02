@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Redirect, useHistory, useLocation } from 'react-router';
 import { SystemAdminDataContext } from '../../../Contexts/UserDataContext';
-import { db } from '../../AllDepartment/AllDepartment';
 import { saveToLS, systemAdminLogin } from '../loginmanager';
+import firebase from "firebase/app";
+
+const db = firebase.firestore();
 
 const SystemAdminLogin = () => {
     const { systemAdminData, setSystemAdminData } = useContext(SystemAdminDataContext)

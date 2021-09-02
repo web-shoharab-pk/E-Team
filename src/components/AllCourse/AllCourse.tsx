@@ -11,14 +11,16 @@ const AllCourse = () => {
 
 
   useEffect(() => {
-    db.collection("courses").where('co_id', '==', userData.co_id).get().then((users: any) => {
-        let allUserData = users.docs.map((doc: any) => doc);
-        setCourses(allUserData);
-    }).catch((error) => {
+    db.collection("courses")
+    .where('co_id', '==', userData.co_id)
+    .get()
+    .then((data: any) => setCourses(data.docs.map((doc: any) => ({...doc.data(),id:doc.id}))))
+    .catch((error) => {
         console.log("Error getting document:", error);
     });
 }, [userData.co_id]);
 
+console.log(courses);
 
 
   return (
@@ -28,7 +30,7 @@ const AllCourse = () => {
       </div>
       <div className="flex flex-wrap">
          {
-           courses.map((course: any) => (<Course course={course} thumbnail={thumbnail} />))
+           courses.map((course: any) => (<Course key={course.id} course={course} thumbnail={thumbnail} />))
          }  
       </div>
     </section>

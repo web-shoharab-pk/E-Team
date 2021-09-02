@@ -45,7 +45,7 @@ const Sidebar = ({ logOut }: any) => {
             </li>
 
             <li>
-              <NavLink activeClassName="active" to="/taskboard">
+              <NavLink activeClassName="active" to="/sprint-list">
                 <i className="fas fa-clipboard-list"></i> Task Management
               </NavLink>
             </li>

@@ -36,7 +36,7 @@ import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
 import AllDepartment from "./components/AllDepartment/AllDepartment";
 import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
 import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
-import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
+import CreateTask from "./components/CreateTask/CreateTask";
 import PricingCard from "./components/PricingCard/PricingCard";
 import Contact from "./components/Contact/Contact";
 import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
@@ -65,6 +65,8 @@ import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmen
 import UserManagement from "./components/UserManagement/UserManagement";
 import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
+import SprintBoardList from "./components/SprintBoardList/SprintBoardList";
+import CreateSprint from "./components/CreateSprint/CreateSprint";
 
 const App = () => {
   const [userData, setUserData] = useState<any>({
@@ -136,6 +138,9 @@ const App = () => {
               <Dashboard>
                 <AllCourse />
               </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/view-course/:course_id">
+                <CourseVideo />
             </PrivateRoute>
             <PrivateRoute exact path="/edit-courses/:id">
               <Dashboard>
@@ -228,7 +233,7 @@ const App = () => {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
-            <PrivateRoute path="/taskboard">
+            <PrivateRoute path="/sprint/:sprint_id">
               <Dashboard>
                 <TaskBoard />
               </Dashboard>
@@ -254,9 +259,19 @@ const App = () => {
                 <MeetingList />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/assign-task">
+            <PrivateRoute path="/create-sprint">
               <Dashboard>
-                <CreateCourseTask />
+                <CreateSprint />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/sprint-list">
+              <Dashboard>
+                <SprintBoardList />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/add-task/:sprint_id">
+              <Dashboard>
+                <CreateTask />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/applicationList">

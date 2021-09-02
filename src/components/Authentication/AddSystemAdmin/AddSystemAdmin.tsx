@@ -2,8 +2,10 @@ import React, { useState, useContext } from 'react';
 import moment from 'moment';
 import md5 from 'crypto-js/md5';
 import emailjs from 'emailjs-com';
-import { db } from '../../AllDepartment/AllDepartment';
 import { SystemAdminDataContext } from '../../../Contexts/UserDataContext';
+import firebase from "firebase/app";
+
+const db = firebase.firestore();
 
 interface addSysAdminInfoType {
     name: string;

@@ -1,68 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { Link } from "react-router-dom";
-import profile1 from "../../Assets/images/profile1.jpg";
-import profile2 from "../../Assets/images/profile2.jpg";
-import profile3 from "../../Assets/images/profile3.jpg";
-import profile4 from "../../Assets/images/profile4.jpg";
-import profile5 from "../../Assets/images/profile5.jpg";
+import { Link, useParams } from "react-router-dom";
+import firebase from "firebase/app";
+import { UserDataContext } from "../../Contexts/UserDataContext";
 
-
-const itemsFromBackend = [
-  {
-    id: "user-id-01",
-    content: "Add picture & write similar words for web app",
-    date: "Aug 11",
-    img: profile1,
-  },
-  {
-    id: "user-id-02",
-    content: "Implementing review feature on dashboard",
-    date: "Aug 11",
-    img: profile2,
-  },
-  {
-    id: "user-id-03",
-    content: "Connect web app with database",
-    date: "Aug 11",
-    img: profile3,
-  },
-  {
-    id: "user-id-04",
-    content: "Add unit testing on implemented features",
-    date: "Aug 11",
-    img: profile4,
-  },
-  {
-    id: "user-id-05",
-    content: "Add relevant footer section",
-    date: "Aug 11",
-    img: profile5,
-  },
-];
-
-const columnsFromBackend = {
-  todo: {
-    name: "TO DO",
-    items: itemsFromBackend,
-  },
-  in_progress: {
-    name: "IN PROGRESS",
-    items: [],
-  },
-  done: {
-    name: "DONE",
-    items: [],
-  },
-  deployed: {
-    name: "DEPLOYED",
-    items: [],
-  },
-};
+const db = firebase.firestore();
 
 const TaskBoard = () => {
-  const [columns, setColumns] = useState(columnsFromBackend);
+  const { userData, setUserData } = useContext(UserDataContext);
+  const [userList, setUserList] = useState([] as object[])
+  const [columns, setColumns] = useState({} as any);
+  const [tempData, setTempData] = useState([] as object[])
+  const [todoData, setTodoData] = useState({ name: "To Do", items: [] as object[] })
+  const [inProgressData, setInProgressData] = useState({ name: "In Progress", items: [] as object[] })
+  const [doneData, setDoneData] = useState({ name: "Done", items: [] as object[] })
+  const [deployedData, setDeployedData] = useState({ name: "Deployed", items: [] as object[] })
+
+  const {sprint_id}:any = useParams()
+// console.log(sprint_id,tempData);
+
+  useEffect(() => {
+    // For getting task list
+    db.collection('task_list')
+      .where('co_id', '==', userData.co_id)
+      .where('sprint_id', '==', sprint_id)
+      .get()
+      .then((data: any) =>setTempData(data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))))
+
+    // For getting user list
+    db.collection('users')
+      .where('co_id', '==', userData?.co_id)
+      .get()
+      .then((data: any) => {
+        setUserList(data.docs.map((doc: any) => doc.data()));
+      })
+  }, [])
+
+  useEffect(() => {
+    // For setting todo Data
+    setTodoData({ ...todoData, items: tempData?.filter((task: any) => task?.status === 'todo') })
+    setInProgressData({ ...inProgressData, items: tempData?.filter((task: any) => task?.status === 'in_progress') })
+    setDoneData({ ...doneData, items: tempData?.filter((task: any) => task?.status === 'done') })
+    setDeployedData({ ...deployedData, items: tempData?.filter((task: any) => task?.status === 'deployed') })
+  }, [tempData])
+
+  useEffect(() => {
+    setColumns({ todo: todoData, in_progress: inProgressData, done: doneData, deployed: deployedData })
+  }, [todoData, inProgressData, doneData, deployedData])
+
+  // update task details when onDragEnd event called
+  const handleOnDragEnd = (taskId: string, taskStatus: string) => {
+    db.collection('task_list')
+      .doc(taskId)
+      .update({ status: taskStatus })
+  }
 
   const onDragEnd = (result: any, columns: any, setColumns: any) => {
     if (!result.destination) return;
@@ -74,6 +67,11 @@ const TaskBoard = () => {
       const destItems = [...destColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, removed);
+
+      // For updating in database
+      handleOnDragEnd(removed.id, destination.droppableId);
+
+      // For updating in state
       setColumns({
         ...columns,
         [source.droppableId]: {
@@ -85,19 +83,6 @@ const TaskBoard = () => {
           items: destItems,
         },
       });
-      console.log('result',result);
-      console.log('columns',{
-        ...columns,
-        [source.droppableId]: {
-          ...sourceColumn,
-          items: sourceItems,
-        },
-        [destination.droppableId]: {
-          ...destColumn,
-          items: destItems,
-        },
-      });
-      console.log('sourceItems',sourceItems);
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
@@ -116,7 +101,12 @@ const TaskBoard = () => {
   return (
     <>
       <h3 className="text-center text-3xl font-bold p-2">TaskBoard</h3>
-      <Link to="/assign-task" className="inline-block mb-7 ml-5 bg-blue-500 border text-white border-blue-500 hover:bg-white hover:text-blue-500  py-2 px-8 rounded-full"><i className="fas fa-edit"></i> Assign Task</Link>
+      <Link to={"/add-task/" + sprint_id} className="inline-block mb-7 ml-5 bg-blue-500 border text-white border-blue-500 hover:bg-white hover:text-blue-500  py-2 px-8 rounded-full">
+        <i className="fas fa-plus"></i> Add Task
+      </Link>
+      <Link to="/sprint-list" className="inline-block mb-7 ml-5 bg-blue-500 border text-white border-blue-500 hover:bg-white hover:text-blue-500  py-2 px-8 rounded-full">
+        <i className="fas fa-list"></i> All Sprint Board
+      </Link>
       <div
         style={{ display: "flex", justifyContent: "center", height: "auto" }}
       >
@@ -180,20 +170,19 @@ const TaskBoard = () => {
                                     >
                                       <div>
                                         <p className="text-sm font-medium text-gray-900">
-                                          {item.content}
+                                          {item.taskName}
                                         </p>
+                                        {
+                                          userList.find((user: any) => item.userId === user.id) &&
+                                          userList.map((user: any) => (user.id === item.userId ?
+                                            <p className="text-xs font-medium text-gray-900">{user.name}</p> :
+                                            null))
+                                        }
                                       </div>
                                       <div className="flex justify-between pt-3">
                                         <p className="text-sm font-medium text-gray-500">
                                           {item.date}
                                         </p>
-                                        <span>
-                                          <img
-                                            src={item.img}
-                                            alt="profile-pic"
-                                            className="h-6 w-6 rounded-full"
-                                          />
-                                        </span>
                                       </div>
                                     </div>
                                   );
