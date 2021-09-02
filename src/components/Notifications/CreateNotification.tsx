@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { UserDataContext } from "../../Contexts/UserDataContext";
-import { db } from "../CreateCourseTask/CreateCourseTask";
 import swal from "sweetalert";
+import db from "../Firebase/Firebase";
 
 const CreateNotification = () => {
   const { userData, setUserData } = useContext(UserDataContext);

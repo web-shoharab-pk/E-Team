@@ -20,7 +20,7 @@ import ApplicationList from "./components/ApplicationList/ApplicationList";
 import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUser";
 import AllCourse from "./components/AllCourse/AllCourse";
 import MainHome from "./components/MainHome/MainHome";
-import CreateCourse from "./components/CreateCourse/CreateCourse";
+// import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { db, getDataFromLS } from "./components/Authentication/loginmanager";
 import {
   UserDataContext,
