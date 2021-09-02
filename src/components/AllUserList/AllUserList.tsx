@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
 import userImg from "./../../Assets/images/user.png";
+import RingLoader from"react-spinners/RingLoader"
 
 const AllUserList = () => {
   const { userData, setUserData } = useContext(UserDataContext);
@@ -22,15 +23,18 @@ const AllUserList = () => {
       });
   }, [userData.co_id]);
 
-  
-
   return (
-    <div className="shadow mx-0 lg:mx-8 mt-4 pt-4 pb-16 rounded-lg">
+    <div className="shadow mx-0 lg:mx-8 mt-4 pt-4 pb-16 rounded">
       <h2 className="text-center  text-2xl py-3 font-semibold">
         All User List
       </h2>
 
       <div className="flex flex-col md:flex-row px-2 md:px-0">
+        {allUsers.length === 0 && (
+          <div className="mx-auto mb-5">
+            <RingLoader  color="#4A90E2" size={70} />
+            </div>
+        )}
         {allUsers.map((user: any) => {
           return (
             <div className="w-full md:w-1/3 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
@@ -55,14 +59,14 @@ const AllUserList = () => {
                   </figcaption>
                 </div>
                 <div className="text-center py-2">
-                      <Link
-                        to={'/view-profile/'+user.id}
-                        className="mb-4 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
-                      >
-                        Visit Profile
-                      </Link>
                   <Link
-                    className="text-md font-medium px-4 py-2 rounded bg-blue-500 hover:bg-white text-white hover:text-blue-500 border border-blue-500"
+                    to={"/view-profile/" + user.id}
+                    className="mb-4 inline-flex text-white transition delay-150 bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mr-2 mb-2"
+                  >
+                    Visit Profile
+                  </Link>
+                  <Link
+                    className="text-md font-medium px-4 py-2 transition delay-150 rounded bg-blue-500 hover:bg-white text-white hover:text-blue-500 border border-blue-500"
                     to={"/assign-department/" + user.id}
                   >
                     Assign Department

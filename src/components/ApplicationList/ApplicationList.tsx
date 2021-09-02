@@ -1,44 +1,28 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserDataContext } from "../../Contexts/UserDataContext";
+import db from "../Firebase/Firebase";
 
-//Temporary Data
-const meetingList = [
-  {
-    Name: "Meeting Title",
-    Team: "PH Team",
-    Observation: "Piash",
-    StartEndDate: "27/07/2021 to 27/07/2021",
-    Status: "Approved",
-    Action: "Edit",
-  },
-  {
-    Name: "Meeting Title",
-    Team: "PH Team",
-    Observation: "Piash",
-    StartEndDate: "27/07/2021 to 27/07/2021",
-    Status: "Approved",
-    Action: "Edit",
-  },
-  {
-    Name: "Meeting Title",
-    Team: "PH Team",
-    Observation: "Piash",
-    StartEndDate: "27/07/2021 to 27/07/2021",
-    Status: "Approved",
-    Action: "Edit",
-  },
-  {
-    Name: "Meeting Title",
-    Team: "PH Team",
-    Observation: "Piash",
-    StartEndDate: "27/07/2021 to 27/07/2021",
-    Status: "Approved",
-    Action: "Edit",
-  },
-];
+
 
 const ApplicationList = () => {
+    const [applicationList, setApplicationList] = useState([]);
+    const { userData, setUserData } = useContext(UserDataContext);
+    console.log(applicationList)
+    
+
+    useEffect(() => {
+        db.collection("employe_applications").where("co_id", "==", userData.co_id).get()
+        .then((docs: any) => {
+            const applicationData = docs.docs.map((doc:any) => doc.data())
+            setApplicationList(applicationData);
+        })
+        .catch((error:any) => {
+            console.log("Error getting document:", error);
+        });
+    }, [])
+
   return (
     <div>
       <div className="shadow-lg lg:mx-5 mt-4 lg:px-7 py-5 pt-2 rounded-lg">
@@ -109,12 +93,36 @@ const ApplicationList = () => {
 
                             <div className="px-8 mt-3 mb-10 py-2">
                                 <div className="relative mx-auto lg:mx-0 block text-right my-2">
-                                    <input type="search" className="shadow-sm overflow-x-hidden rounded-3xl border -mx-1 lg:-mx-0 px-1 py-1.5 lg:p-2" placeholder="Search here" />
+                                    <input type="search" className="shadow-sm focus:border-none overflow-x-hidden rounded-3xl border -mx-1 lg:-mx-0 px-1 py-1.5 lg:p-2" placeholder="Search here" />
                                     
                                     <div className="absolute bg-gray-300 -mr-1.5 lg:-mr-0 py-1.5 lg:py-2 px-4 top-px right-px rounded-r-3xl pin-r pin-t text-purple-lighter">
                                         <FontAwesomeIcon className="" icon={faSearch} />
                                     </div>
                                 </div>
+
+                                <table className="pt-2 overflow-x-scroll rounded-t-lg m-5 w-11/12 mx-auto text-gray-800">
+                                    <tr className="text-left border-t border-b-4 border-gray-300">
+                                        <th className="px-4 py-3">Name</th>
+                                        <th className="px-4 py-3">Team</th>
+                                        <th className="px-4 py-3">Obserbation</th>
+                                        <th className="px-4 py-3">Starting-Ending Date</th>
+                                        <th className="px-4 py-3">Status</th>
+                                        <th className="px-4 py-3">Action</th>
+                                    </tr>
+                                    
+                                    {
+                                        applicationList.map((list:any) =>
+                                            <tr className="border-b border-gray-200">
+                                                <td className="px-4 py-3">{list.name}</td>
+                                                <td className="px-4 py-3">{list.department_name}</td>
+                                                <td className="px-4 py-3">{list.designation}</td>
+                                                <td className="px-4 py-3">{list.starting_date} to {list.ending_date}</td>
+                                                <td className="px-4 py-3">{list.status}</td>
+                                                <td className="px-4 py-3">Edit</td>
+                                            </tr>
+                                        ) 
+                                    }
+                                </table>
                              </div>
                         </details>
                     </div>

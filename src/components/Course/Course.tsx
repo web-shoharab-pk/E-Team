@@ -11,10 +11,10 @@ const Course = ({course, thumbnail}:any) => {
                 </div>
                 <div className="p-1 lg:w-2/3">
                     <h2 className="font-medium text-lg">{course?.course_title}</h2>
-                    <p>{course?.instructor}</p>
+                    <p className="mb-3">{course?.instructor}</p>
                     <Link to="/assign-course" className="m-1 px-5 py-1 rounded-full border border-blue-500 bg-blue-500 hover:bg-white text-white hover:text-blue-500 font-medium ">Assign</Link>
                     <Link to={`edit-courses/${course.id}`} className="m-1 px-5 py-1 rounded-full border border-blue-500 bg-blue-500 hover:bg-white text-white hover:text-blue-500 font-medium ">Edit</Link>
-                    <button className="m-1 px-5 py-1 rounded-full border border-blue-500 bg-blue-500 hover:bg-white text-white hover:text-blue-500 font-medium ">Continue as user</button>
+                    <Link to={"/view-course/"+course.id} className="block w-2/3 text-center m-1 mt-3 px-5 py-1 rounded-full border border-blue-500 bg-blue-500 hover:bg-white text-white hover:text-blue-500 font-medium ">Continue as user</Link>
                 </div>
             </div>
         </div>

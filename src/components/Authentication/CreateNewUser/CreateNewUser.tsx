@@ -121,7 +121,7 @@ const CreateNewUser = () => {
     return (
         <div className="flex mb-8 justify-center">
             <div className="w-11/12 md:w-4/6 lg:w-2/4 mt-14 xl:w-2/5">
-                <div className="p-4 rounded-md shadow-lg border">
+                <div className="p-4 rounded-md shadow border hover:shadow-lg">
                     <h2 className="text-2xl font-bold text-center mb-6 mt-2">Create A New User</h2>
                     {
                         error.isError && <div className="text-red-500 mx-5 text-center">{error.message}</div>
@@ -161,7 +161,7 @@ const CreateNewUser = () => {
                             className="w-full h-full rounded-r-full outline-none placeholder-gray-600 p-3" />
                         </div>
                         <div className="text-center mb-5">
-                            <button className="py-2 px-10 rounded-full bg-blue-500 text-white font-medium text-lg hover:bg-blue-600">Create User</button>
+                            <button className="py-2 px-10 rounded-full transition delay-150 bg-blue-500 text-white font-medium text-lg hover:bg-blue-600">Create User</button>
                         </div>
                     </form>
                 </div>

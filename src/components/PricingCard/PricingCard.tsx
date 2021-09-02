@@ -1,16 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../MainHome/Navbar/Navbar";
 
 const PricingCard = () => {
   return (
     <div className="container mx-auto">
       <div className="text-center my-10">
-        <h1 className="inline font-bold text-3xl mb-2 border-b-4 border-blue-600">Pricing</h1>
+        <h1 className="inline font-bold text-3xl mb-2 border-b-4 border-blue-600">
+          Pricing
+        </h1>
       </div>
 
-      <div className="flex flex-col md:flex-row px-2 md:px-0">
-        <div className="w-full md:w-1/3 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
-          <h2 className="text-4xl pb-3 font-medium text-blue-500 text-center">Free</h2>
+      <div className="flex flex-col md:flex-row px-2 md:px-0" data-aos="zoom-in">
+        <div className="w-full md:w-1/3 transition delay-150 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+          <h2 className="text-4xl pb-3 font-medium text-blue-500 text-center">
+            Free
+          </h2>
           <p className="text-gray-600 mt-1 text-2xl text-center">
             <span className="font-bold text-black">$00</span> /Month
           </p>
@@ -47,12 +52,14 @@ const PricingCard = () => {
           <br />
           <br />
           <button className="w-full text-purple-700 border border-blue-700 rounded hover:bg-blue-400 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
-            Choose Plan
+            <Link to="/registration">Choose Plan</Link>
           </button>
         </div>
 
         <div className="w-full lg:w-1/1 md:w-1/3 text-white  bg-blue-500 rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
-          <h2 className="text-4xl pb-3 font-medium text-white text-center">Popular</h2>
+          <h2 className="text-4xl pb-3 font-medium text-white text-center">
+            Popular
+          </h2>
           <p className="mt-1 text-2xl text-center">
             <span className="font-bold">$99</span> /Month
           </p>
@@ -85,7 +92,8 @@ const PricingCard = () => {
               10 course for training
             </p>
             <p className="my-2">
-              <span className="fa fa-check-circle mr-2 ml-1"></span> 10GB database limit
+              <span className="fa fa-check-circle mr-2 ml-1"></span> 10GB
+              database limit
             </p>
             <p className="my-2">
               <span className="fa fa-check-circle mr-2 ml-1"></span> We will
@@ -93,13 +101,13 @@ const PricingCard = () => {
             </p>
           </div>
           <button className="w-full text-purple-700 bg-white rounded opacity-75 hover:opacity-100 hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
-            Choose Plan
+            <Link to="/registration">Choose Plan</Link>
           </button>
         </div>
 
-        <div className="w-full lg:w-1/1 md:w-1/3 hover:bg-blue-200 hover:text-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 mb-10 md:mb-0">
+        <div className="w-full lg:w-1/1 md:w-1/3 transition delay-150 hover:bg-blue-200 hover:text-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 mb-10 md:mb-0">
           <h2 className="text-4xl pb-3 font-medium text-blue-500 text-center">
-            Enterprice
+            Enterprise
           </h2>
           <p className="text-gray-600 mt-1 text-2xl text-center">
             <span className="font-bold text-black">$299</span> /Month
@@ -121,7 +129,8 @@ const PricingCard = () => {
               manage 25 project
             </p>
             <p className="my-2">
-              <span className="fa fa-check-circle mr-2 ml-1"></span> 20GB database limit
+              <span className="fa fa-check-circle mr-2 ml-1"></span> 20GB
+              database limit
             </p>
             <p className="my-2">
               <span className="fa fa-check-circle mr-2 ml-1"></span> You can
@@ -141,7 +150,7 @@ const PricingCard = () => {
             </p>
           </div>
           <button className="w-full text-purple-700 border border-blue-700 rounded hover:bg-blue-500 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
-            Choose Plan
+            <Link to="/registration">Choose Plan</Link>
           </button>
         </div>
       </div>

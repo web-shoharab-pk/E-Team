@@ -3,7 +3,7 @@ import "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 
-export const db = firebase.firestore();
+const db = firebase.firestore();
 
 type Inputs = {
   name: string;
@@ -72,8 +72,8 @@ const CreateDepartment = () => {
   };
 
   return (
-    <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded-lg">
-      <h2 className="text-center text-2xl pb-4 lg:text-3xl font-medium">
+    <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded-lg hover:shadow-lg">
+      <h2 className="text-center text-2xl pb-4 lg:text-2xl font-medium">
         Create Department
       </h2>
       {error.message ? (
@@ -97,7 +97,7 @@ const CreateDepartment = () => {
             <br />
             <input
               onChange={handleOnChange}
-              className="rounded mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id="name"
               type="text"
               required
@@ -114,7 +114,7 @@ const CreateDepartment = () => {
               defaultValue="select department"
               onChange={handleOnChange}
               id="type"
-              className="rounded mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               required /*name="department" id="department-select"*/
             >
               <option value="selectDepartment">Select Department Type</option>
@@ -131,11 +131,8 @@ const CreateDepartment = () => {
           <br />
           <textarea
             onChange={handleOnChange}
-            className="rounded mt-1 p-3 border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full"
-            id="description"
+            className="app-input"
             required
-            cols={30}
-            rows={7}
             placeholder="Write Details"
           ></textarea>
         </div>

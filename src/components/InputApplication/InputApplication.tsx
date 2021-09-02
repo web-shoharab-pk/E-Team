@@ -1,15 +1,51 @@
-import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import Topbar from "../Topbar/Topbar";
+import React, { useContext, useState } from "react";
+import swal from "sweetalert";
+import { UserDataContext } from "../../Contexts/UserDataContext";
+import db from "../Firebase/Firebase";
 
 const InputApplication = () => {
+  const [applicationData, setApplicationData] = useState<any>({});
+  const { userData, setUserData } = useContext(UserDataContext);
+  const [success, setSuccess] = useState<string>('');
+
+  const handleOnChange = (e:any) => {
+    setApplicationData({...applicationData, [e.target.name]: e.target.value});
+  }
+
+  const handleInputSubmit = (e:any) => {
+    e.preventDefault();
+    const {applicationType, departmentName, designation, endingDate, name, startingDate, status} = applicationData;
+    
+    db.collection("employe_applications")
+        .add({
+          application_type: applicationType,
+          department_name: departmentName,
+          designation: designation,
+          ending_date: endingDate,
+          name: name,
+          starting_date: startingDate,
+          status: status,
+          co_id: userData.co_id,
+        })
+        .then((data:any) => {
+          setSuccess("Successfully Data Submit");
+        })
+        .catch((error:any) => {
+          console.log(error)
+        });
+
+    // (document.getElementById("inputForm") as HTMLInputElement).value = "";
+  }
+
   return (
-    <div className="shadow-lg lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded">
-      <h2 className="text-center text-2xl pb-4 lg:text-3xl font-bold text-blue-400">
+    <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded hover:shadow-lg">
+      <h2 className="text-center text-2xl pb-4 lg:text-2xl font-bold text-blue-400">
         Input Application
       </h2>
+    
+      {success && <p className="text-center text-lg text-green-500 font-normal">{success}</p>}
 
-      <form action="" className="form mt-4">
+      <form action="" onSubmit={handleInputSubmit} id="inputForm" className="form mt-4">
         <div className="lg:flex w-full mb-5 lg:space-x-16">
           <div className="lg:w-5/6">
             <label className="text-base lg:font-semibold" htmlFor="">
@@ -19,12 +55,14 @@ const InputApplication = () => {
             <select
               defaultValue="select department"
               id="type"
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              name="departmentName"
+              onChange={handleOnChange}
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               required /*name="department" id="department-select"*/
             >
-              <option value="selectTeam">Team-80</option>
-              <option value="T3">Team-30</option>
-              <option value="T11">Team-11</option>
+              <option value="Team-80">Team-80</option>
+              <option value="Team-30">Team-30</option>
+              <option value="Team-11">Team-11</option>
             </select>
           </div>
 
@@ -34,10 +72,12 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               type="text"
+              name="name"
               required
+              onChange={handleOnChange}
               placeholder="Your Name"
             />
           </div>
@@ -50,10 +90,12 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input rounded   bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
               type="text"
               required
+              name="designation"
+              onChange={handleOnChange}
               placeholder="Your Designation"
             />
           </div>
@@ -66,12 +108,14 @@ const InputApplication = () => {
             <select
               defaultValue="select department"
               id="type"
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              name="applicationType"
+              onChange={handleOnChange}
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               required /*name="department" id="department-select"*/
             >
-              <option value="selectApplication">Leave Application</option>
-              <option value="RA">Resignation Application</option>
-              <option value="OA">Other Application</option>
+              <option value="Leave Application">Leave Application</option>
+              <option value="Resignation Application">Resignation Application</option>
+              <option value="Other Application">Other Application</option>
             </select>
           </div>
         </div>
@@ -83,9 +127,11 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
+              name="startingDate"
               type="date"
+              onChange={handleOnChange}
             />
           </div>
 
@@ -95,9 +141,11 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
+              name="endingDate"
               type="date"
+              onChange={handleOnChange}
             />
           </div>
         </div>
@@ -109,10 +157,11 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              id=""
+              className="app-input"
               type="text"
+              name="observation"
               required
+              onChange={handleOnChange}
               placeholder="Supervisor Name"
             />
           </div>
@@ -125,23 +174,24 @@ const InputApplication = () => {
             <select
               defaultValue="select department"
               id="type"
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              name="status"
+              onChange={handleOnChange}
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               required /*name="department" id="department-select"*/
             >
-              <option value="selectStatus">High</option>
-              <option value="MD">Medium</option>
-              <option value="LW">Low</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
             </select>
           </div>
         </div>
 
         <div className="text-center ">
-          {" "}
           <input
             type="submit"
             value="Submit Application"
             className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
-            onClick={(e) => { e.preventDefault();  alert('function not implement!')}}
+            onClick={(e) => { e.preventDefault();  swal("Sorry!", "Function doesn't implement yet", "error");}}
           />
         </div>
       </form>

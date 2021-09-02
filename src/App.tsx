@@ -1,72 +1,80 @@
-import React, { useContext, useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { setTimeout } from "timers";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
-import UserLogin from "./components/Authentication/UserLogin/UserLogin";
-import Dashboard from "./components/Dashboard/Dashboard";
-import ShareIdea from "./components/ShareIdea/ShareIdea";
-import AllIdea from "./components/AllIdea/AllIdea";
-import QuizArea from "./components/QuizArea/QuizArea";
-import SetMeeting from "./components/SetMeeting/SetMeeting";
-import InputApplication from "./components/InputApplication/InputApplication";
-import CourseVideo from "./components/CourseVideo/CourseVideo";
-import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
-import FeedBacks from "./components/FeedBacks/FeedBacks";
-import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
-import AllUserList from "./components/AllUserList/AllUserList";
-import AssignCourse from "./components/AssignCourse/AssignCourse";
-import MeetingList from "./components/MeetingList/MeetingList";
-import ApplicationList from "./components/ApplicationList/ApplicationList";
-import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUser";
-import AllCourse from "./components/AllCourse/AllCourse";
-import MainHome from "./components/MainHome/MainHome";
-import CreateCourse from "./components/CreateCourse/CreateCourse";
-import { db, getDataFromLS } from "./components/Authentication/loginmanager";
-import {
-  UserDataContext,
-  SystemAdminDataContext,
-} from "./Contexts/UserDataContext";
-import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
-import Navbar from "./components/MainHome/Navbar/Navbar";
-import Footer from "./components/MainHome/Footer/Footer";
-import NotFound from "./components/NotFound/NotFound";
-import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
-import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
-import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
-import AllDepartment from "./components/AllDepartment/AllDepartment";
-import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
-import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
-import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
-import PricingCard from "./components/PricingCard/PricingCard";
-import Contact from "./components/Contact/Contact";
-import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
-import OurTeam from "./components/OurTeam/OurTeam";
-import SARoute from "./components/Authentication/SARoute/SARoute";
-import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
-import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
-import UserSelftActivation from "./components/Authentication/UserSelftActivation/UserSelftActivation";
-import TaskBoard from "./components/TaskBoard/TaskBoard";
-import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
-import SAHome from "./components/SystemAdmin/SAHome/SAHome";
-import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
-import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
-import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
-import UserProfile from "./components/UserProfile/UserProfile";
-import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
-import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 import AddCourse from "./components/AddCourse/AddCourse";
-import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
-import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
 import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
 import AddTask from "./components/AllCourse/AddTask/AddTask";
-import AssignDepartment from "./components/AllUserList/AssignDepartment";
+import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
+import AllCourse from "./components/AllCourse/AllCourse";
+import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
+import EditModule from "./components/AllCourse/EditModule/EditModule";
+import AllDepartment from "./components/AllDepartment/AllDepartment";
 import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
-import UserManagement from "./components/UserManagement/UserManagement";
-import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
+import AllIdea from "./components/AllIdea/AllIdea";
+import AllUserList from "./components/AllUserList/AllUserList";
+import AssignDepartment from "./components/AllUserList/AssignDepartment";
+import ApplicationList from "./components/ApplicationList/ApplicationList";
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
+import AssignCourse from "./components/AssignCourse/AssignCourse";
+import AssignmentArea from "./components/AssignmentArea/AssignmentArea";
+import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
+import CreateNewUser from "./components/Authentication/CreateNewUser/CreateNewUser";
+import LoginCompany from "./components/Authentication/LoginCompany/LoginCompany";
+import { getDataFromLS } from "./components/Authentication/loginmanager";
+import PrivateRoute from "./components/Authentication/PrivatRoute/PrivateRoute";
+import RegisterCompany from "./components/Authentication/RegisterCompany/RegisterCompany";
+import SARoute from "./components/Authentication/SARoute/SARoute";
+import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
+import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
+import UserLogin from "./components/Authentication/UserLogin/UserLogin";
+import UserSelftActivation from "./components/Authentication/UserSelftActivation/UserSelftActivation";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import Contact from "./components/Contact/Contact";
+import CourseVideo from "./components/CourseVideo/CourseVideo";
+import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
+import CreateSprint from "./components/CreateSprint/CreateSprint";
+import CreateTask from "./components/CreateTask/CreateTask";
+import Dashboard from "./components/Dashboard/Dashboard";
+import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
+import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
+import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
+import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
+import FeedBacks from "./components/FeedBacks/FeedBacks";
+import Home from "./components/Home/Home";
+import InputApplication from "./components/InputApplication/InputApplication";
+import LeaderBoard from "./components/LeaderBoard/LeaderBoard";
+import Footer from "./components/MainHome/Footer/Footer";
+import Navbar from "./components/MainHome/Navbar/Navbar";
+import MeetingList from "./components/MeetingList/MeetingList";
+import NewHome from "./components/NewHome/NewHome";
+import NotFound from "./components/NotFound/NotFound";
+import CreateNotification from "./components/Notifications/CreateNotification";
+import OurTeam from "./components/OurTeam/OurTeam";
+import PreLoader from "./components/PreLoader/PreLoader";
+import PricingCard from "./components/PricingCard/PricingCard";
+import QuizArea from "./components/QuizArea/QuizArea";
+import SetMeeting from "./components/SetMeeting/SetMeeting";
+import ShareIdea from "./components/ShareIdea/ShareIdea";
+import SprintBoardList from "./components/SprintBoardList/SprintBoardList";
+import AllCompany from "./components/SystemAdmin/AllCompany/AllCompany";
+import SADashboard from "./components/SystemAdmin/SADashboard/SADashboard";
+import SAHome from "./components/SystemAdmin/SAHome/SAHome";
+import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
+import ViewAllAdmin from "./components/SystemAdmin/ViewAllAdmin/ViewAllAdmin";
+import TaskBoard from "./components/TaskBoard/TaskBoard";
+import UserManagement from "./components/UserManagement/UserManagement";
+import UserProfile from "./components/UserProfile/UserProfile";
+import {
+  SystemAdminDataContext, UserDataContext
+} from "./Contexts/UserDataContext";
+
+AOS.init({duration: 2000});
 
 const App = () => {
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<any>({
     isSignedIn: false,
     co_id: "",
     id: "",
@@ -77,7 +85,7 @@ const App = () => {
     created_at: "",
     updated_at: "",
   });
-  const [systemAdminData, setSystemAdminData] = useState({
+  const [systemAdminData, setSystemAdminData] = useState<any>({
     isSignedIn: false,
     id: "",
     name: "",
@@ -87,6 +95,14 @@ const App = () => {
     created_at: "",
     updated_at: "",
   });
+const [loading,setLoading]=useState(false)
+
+useEffect(()=>{
+  setLoading(true)
+  setTimeout(()=>{
+    setLoading(false)
+  },1500)
+},[])
 
   // for checking user
   useEffect(() => {
@@ -109,7 +125,7 @@ const App = () => {
       <SystemAdminDataContext.Provider
         value={{ systemAdminData, setSystemAdminData }}
       >
-        <Router>
+        {loading?(<PreLoader/>):<Router>
           <Switch>
             <Route path="/pricing">
               <Navbar />
@@ -131,10 +147,18 @@ const App = () => {
                 <AllIdea />
               </Dashboard>
             </PrivateRoute>
+            <Route path="/create-notification">
+              <Dashboard>
+                <CreateNotification />
+              </Dashboard>
+            </Route>
             <PrivateRoute path="/all-courses">
               <Dashboard>
                 <AllCourse />
               </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/view-course/:course_id">
+                <CourseVideo />
             </PrivateRoute>
             <PrivateRoute exact path="/edit-courses/:id">
               <Dashboard>
@@ -148,22 +172,42 @@ const App = () => {
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/video/:id">
               <Dashboard>
-                <AddVideo />
+                <AddVideo isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-video/:id">
+              <Dashboard>
+                <AddVideo isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/task/:id">
               <Dashboard>
-                <AddTask />
+                <AddTask isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-task/:id">
+              <Dashboard>
+                <AddTask isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/quiz/:id">
               <Dashboard>
-                <AddQuiz />
+                <AddQuiz isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-quiz/:id">
+              <Dashboard>
+                <AddQuiz isEdit={true} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-module/:id">
+              <Dashboard>
+                <EditModule />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/add-course">
               <Dashboard>
-                <AddCourse />
+                 <AddCourse />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/assign-course">
@@ -207,7 +251,7 @@ const App = () => {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
-            <PrivateRoute path="/taskboard">
+            <PrivateRoute path="/sprint/:sprint_id">
               <Dashboard>
                 <TaskBoard />
               </Dashboard>
@@ -233,9 +277,19 @@ const App = () => {
                 <MeetingList />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/assign-task">
+            <PrivateRoute path="/create-sprint">
               <Dashboard>
-                <CreateCourseTask />
+                <CreateSprint />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/sprint-list">
+              <Dashboard>
+                <SprintBoardList />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/add-task/:sprint_id">
+              <Dashboard>
+                <CreateTask />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/applicationList">
@@ -254,16 +308,6 @@ const App = () => {
                 <Home />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/home">
-              <Dashboard>
-                <Home />
-              </Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/all-user">
-              <Dashboard>
-                <AllUserList />
-              </Dashboard>
-            </PrivateRoute>
             <PrivateRoute path="/meetings">
               <Dashboard>
                 <MeetingList />
@@ -280,8 +324,8 @@ const App = () => {
               </Dashboard>
             </PrivateRoute>
             <Route path="/assigned-department-user/:departmentId">
-              <Dashboard>
-                <AssignedDepartmentUser />
+            <Dashboard>
+              <AssignedDepartmentUser />
               </Dashboard>
             </Route>
             <PrivateRoute path="/department-management">
@@ -304,12 +348,12 @@ const App = () => {
                 <UserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-user">
+            <PrivateRoute path="/edit-user-profile">
               <Dashboard>
                 <EditUserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-company">
+            <PrivateRoute path="/edit-company-profile">
               <Dashboard>
                 <EditCompanyProfile />
               </Dashboard>
@@ -363,6 +407,11 @@ const App = () => {
                 <EditSAProfile />
               </SADashboard>
             </SARoute>
+            <SARoute path="/system-admin/edit-sa-profile">
+              <SADashboard>
+                <EditSAProfile />
+              </SADashboard>
+            </SARoute>
             <SARoute path="/system-admin/">
               <SADashboard>
                 <SAHome />
@@ -374,13 +423,17 @@ const App = () => {
               <Footer />
             </Route>
             <Route exact path="/">
-              <MainHome />
+              <NewHome />
             </Route>
+            {/* <Route exact path="/newHome">
+               <NewHome />
+            </Route> */}
             <Route path="*">
               <NotFound />
             </Route>
           </Switch>
-        </Router>
+        </Router>}
+        
       </SystemAdminDataContext.Provider>
     </UserDataContext.Provider>
   );

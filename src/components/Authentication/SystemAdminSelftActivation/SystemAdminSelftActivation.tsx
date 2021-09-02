@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../../AllDepartment/AllDepartment';
 import { useLocation } from "react-router-dom";
 import { systemAdminRegistration } from '../loginmanager';
+import firebase from "firebase/app";
+
+const db = firebase.firestore();
 
 const SystemAdminSelftActivation = () => {
     const [tokenData, setTokenData] = useState({ token: "", email: "", attempt: 0, name: "", expired_at: "", isActivated: false, phone: "", created_by: "" });

@@ -13,7 +13,20 @@ const OurTeam = () => {
         <br />
         <br />
         <p className="m-auto block text-lg md:w-4/5 text-justify">
-        Our project is a team management system. With our web app, you can easily manage any company team. Which will save them a lot of time. IF the company admin wants, the employee can add. The company admin will be able to assign courses for his company’s employees so that they can fill the gap in their learning. There will be a time set system for team meetings. All the courses assigned will be given on the course list page. When you finish the video of each course, there will be a system and if you give an assignment, there will be a system to submit the assignment. The progress bar will show how many courses each employee has completed. Employees can share different ideas if they want and all the ideas will show on the all ideas page. Each employee will be given points based on their work and how many points will be given to the car on the LeaderBoard. Employees can contact other employees if they want.
+          Our project is a team management system. With our web app, you can
+          easily manage any company team. Which will save them a lot of time. IF
+          the company admin wants, the employee can add. The company admin will
+          be able to assign courses for his company’s employees so that they can
+          fill the gap in their learning. There will be a time set system for
+          team meetings. All the courses assigned will be given on the course
+          list page. When you finish the video of each course, there will be a
+          system and if you give an assignment, there will be a system to submit
+          the assignment. The progress bar will show how many courses each
+          employee has completed. Employees can share different ideas if they
+          want and all the ideas will show on the all ideas page. Each employee
+          will be given points based on their work and how many points will be
+          given to the car on the LeaderBoard. Employees can contact other
+          employees if they want.
         </p>
       </div>
       <br />
@@ -22,7 +35,7 @@ const OurTeam = () => {
           Our Team
         </h1>
         <div className="flex justify-center flex-col md:flex-row px-2 mt-12 md:px-0">
-          <div className="w-full lg:w-1/5 md:w-1/2 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0 text-center">
+          <div className="w-full lg:w-1/5 md:w-1/2 transition delay-150 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0 text-center">
             <div className="text-center">
               <img
                 className="rounded-full mx-auto w-4/5 border-4 border-blue-600"
@@ -37,7 +50,7 @@ const OurTeam = () => {
               </h1>
             </div>
           </div>
-          <div className="w-full lg:w-1/5 md:w-1/2 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+          <div className="w-full lg:w-1/5 md:w-1/2 transition delay-150 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
             <div>
               <img
                 className="rounded-full  mx-auto w-4/5 border-4 border-blue-600"
@@ -52,7 +65,7 @@ const OurTeam = () => {
               </h1>
             </div>
           </div>
-          <div className="w-full lg:w-1/5 md:w-1/2 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+          <div className="w-full lg:w-1/5 md:w-1/2 transition delay-150 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
             <div>
               <img
                 className="rounded-full mx-auto w-4/5 border-4 border-blue-600"
@@ -67,7 +80,7 @@ const OurTeam = () => {
               </h1>
             </div>
           </div>
-          <div className="w-full lg:w-1/5 md:w-1/2 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+          <div className="w-full lg:w-1/5 md:w-1/2 transition delay-150 hover:bg-blue-200 bg-white rounded-lg shadow hover:shadow-xl transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
             <div>
               <img
                 className="rounded-full mx-auto w-4/5 border-4 border-blue-600"

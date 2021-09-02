@@ -59,6 +59,7 @@ const RegisterCompany = () => {
     return (
         <section className="text-gray-600 body-font relative">
             <div className="container px-5 py-12 mx-auto">
+                <div className="shadow rounded max-w-xl mx-auto pt-4 hover:shadow-xl" data-aos="fade-right">
                 <div className="login-switch mb-8 text-center">
                     <div className="inline-block border border-blue-500 rounded-full">
                         <span className="inline-block text-blue-500 text-xl py-2 px-3">Register</span>
@@ -92,7 +93,7 @@ const RegisterCompany = () => {
                                         type="text"
                                         name="company_name"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full">
@@ -102,17 +103,17 @@ const RegisterCompany = () => {
                                         type="text"
                                         name="email"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
                                 <div className="relative">
                                     <label className="leading-7 text-sm text-gray-600">Phone Number</label>
                                     <input
-                                        type="text"
+                                        type="tel"
                                         name="phone"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
@@ -122,7 +123,7 @@ const RegisterCompany = () => {
                                         type="text"
                                         name="website"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full">
@@ -131,7 +132,7 @@ const RegisterCompany = () => {
                                     <textarea
                                         name="co_description"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-20 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                        className="app-input"></textarea>
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
@@ -141,29 +142,30 @@ const RegisterCompany = () => {
                                         type="password"
                                         name="password"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="p-2 w-full md:w-1/2">
                                 <div className="relative">
-                                    <label className="leading-7 text-sm text-gray-600">Re-Type Password Password</label>
+                                    <label className="leading-7 text-sm text-gray-600">Re-Type Password</label>
                                     <input
                                         type="password"
                                         name="re_password"
                                         onChange={handleOnChange}
-                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                        className="app-input" />
                                 </div>
                             </div>
                             <div className="w-full px-5 py-2">
-                                <input type="checkbox" name="agree-terms" className="mr-2"/> Agree with all terms & conditions
+                                <input type="checkbox" name="agree-terms" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"/> Agree with all terms & conditions
                             </div>
                             <div className="p-2 w-full">
                                 <button
                                     onClick={handleCompanyRegister}
-                                    className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">Register</button>
+                                    className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none transition delay-150 hover:bg-blue-600 rounded text-lg">Register</button>
                             </div>
                         </div>
                     }
+                </div>
                 </div>
             </div>
         </section>
