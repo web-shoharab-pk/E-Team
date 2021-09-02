@@ -123,7 +123,7 @@ const LoginCompany = () => {
         userData?.isSignedIn && <Redirect to={from} />
       }
       <div className="container px-5 py-12 mx-auto">
-        <div className="shadow max-w-2xl mx-auto pt-4 hover:shadow-xl" data-aos="fade-left">
+        <div className="shadow rounded max-w-xl mx-auto pt-4 hover:shadow-xl" data-aos="fade-left">
           <div className="login-switch mb-8 text-center">
             <div className="inline-block border border-blue-500 rounded-full">
               <Link

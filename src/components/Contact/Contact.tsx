@@ -4,9 +4,12 @@ const Contact = () => {
   return (
     <section className="text-gray-600 body-font relative">
       <div className="container px-5 py-12 mx-auto">
-        <div className="shadow max-w-2xl mx-auto pt-4 hover:shadow-xl" data-aos="fade-up">
+        <div
+          className="shadow max-w-xl rounded mx-auto pt-4 hover:shadow-xl bg-blue-400"
+          data-aos="fade-up"
+        >
           <div className="flex flex-col text-center w-full mb-3">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 ">
               Contact with us
             </h1>
           </div>
@@ -17,45 +20,49 @@ const Contact = () => {
             <div className="flex flex-wrap -m-2">
               <div className="p-2 w-full">
                 <div className="relative">
-                  <label className="leading-10  text-gray-600">Name</label>
+                  <label className="leading-10  text-white">Name</label>
                   <input
-                  required
+                    required
                     type="text"
                     name="name"
-                    className=""
+                    className="app-input"
+                    placeholder="Your Name"
                   />
                 </div>
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
-                  <label className="leading-10  text-gray-600">Subject</label>
+                  <label className="leading-10  text-white">Subject</label>
                   <input
-                  required
+                    required
                     type="text"
                     name="subject"
-                    className=""
+                    className="app-input"
+                    placeholder="Email Subject"
                   />
                 </div>
               </div>
               <div className="p-2 w-full md:w-1/2">
                 <div className="relative">
-                  <label className="leading-8  text-gray-600">Email</label>
+                  <label className="leading-8  text-white">Email</label>
                   <input
                     required
                     type="email"
                     name="email"
-                    className=""
+                    className="app-input"
+                    placeholder="Your Email"
                   />
                 </div>
               </div>
               <div className="p-2 w-full md:w-1/2">
                 <div className="relative">
-                  <label className="leading-8  text-gray-600">Phone</label>
+                  <label className="leading-8  text-white">Phone</label>
                   <input
-                  required
+                    required
                     type="text"
                     name="phone"
-                    className=""
+                    className="app-input"
+                    placeholder="Your Phone Number"
                   />
                 </div>
               </div>
@@ -63,20 +70,21 @@ const Contact = () => {
                 <div className="relative">
                   <label
                     htmlFor="message"
-                    className="leading-10  text-gray-600"
+                    className="leading-10  text-white"
                   >
                     Message
                   </label>
                   <textarea
-                  required
+                    required
                     name="co_description"
-                    className="w-full bg-gray-100 shadow-sm h-28 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200  text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    className="app-input"
+                    placeholder="Your Message"
                   ></textarea>
                 </div>
               </div>
               <div className="p-2 w-full">
                 <button className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none transition delay-150 hover:bg-blue-600 rounded text-lg">
-                <i className="fas fa-paper-plane"> Send</i>
+                  <i className="fas fa-paper-plane"> Send</i>
                 </button>
               </div>
             </div>

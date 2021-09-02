@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <header className="text-gray-600 body-font">
-      <div className="navbar container mx-auto p-5 mt-5">
+      <div className="navbar container mx-auto p-3">
         <Link
           to="/"
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 pl-3 text-xl"

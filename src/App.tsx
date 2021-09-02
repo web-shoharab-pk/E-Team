@@ -68,6 +68,8 @@ import CreateNotification from "./components/Notifications/CreateNotification";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { setTimeout } from "timers";
+import PreLoader from "./components/PreLoader/PreLoader";
 AOS.init({duration: 2000});
 
 const App = () => {
@@ -92,6 +94,14 @@ const App = () => {
     created_at: "",
     updated_at: "",
   });
+const [loading,setLoading]=useState(false)
+
+useEffect(()=>{
+  setLoading(true)
+  setTimeout(()=>{
+    setLoading(false)
+  },3000)
+},[])
 
   // for checking user
   useEffect(() => {
@@ -114,7 +124,7 @@ const App = () => {
       <SystemAdminDataContext.Provider
         value={{ systemAdminData, setSystemAdminData }}
       >
-        <Router>
+        {loading?(<PreLoader/>):<Router>
           <Switch>
             <Route path="/pricing">
               <Navbar />
@@ -385,7 +395,8 @@ const App = () => {
               <NotFound />
             </Route>
           </Switch>
-        </Router>
+        </Router>}
+        
       </SystemAdminDataContext.Provider>
     </UserDataContext.Provider>
   );

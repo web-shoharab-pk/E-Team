@@ -3,7 +3,7 @@ import React from "react";
 const Review = () => {
   return (
     <div className="text-center">
-      <h1 className="title-font sm:text-4xl text-center text-3xl mb-4 mt-5 font-bold text-gray-900 border-b-4 border-indigo-600 inline-block">
+      <h1 className="title-font p-3 sm:text-4xl text-center text-3xl mb-4 mt-5 font-bold text-gray-900 border-b-4 border-blue-500 inline-block">
         OUR SERVICE REVIEW!
       </h1>
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
