@@ -1,30 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import firebase from "firebase";
 import db from "../../Firebase/Firebase";
 import { useParams } from "react-router";
 
-const AddTask = () => {
-  const [taskTitle, settaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
-
+const AddTask = ({isEdit}:any) => {
+  const [taskData, setTaskData] = useState<any>({});
   const { id }: any = useParams();
 
+  useEffect(() => {
+    isEdit && 
+        db.collection("course_tasks").doc(id).get()
+        .then((docs: any) => {
+            setTaskData(docs.data());
+        })
+        .catch((error:any) => {
+            console.log("Error getting document:", error);
+        });
+  }, [])
+
   const handleOnChange = (e: any) => {
-    if (e.target.name === "title") {
-      settaskTitle(e.target.value);
-    }
-    if (e.target.name === "description") {
-      setTaskDescription(e.target.value);
-    }
+    setTaskData({...taskData, [e.target.name]: e.target.value});
   };
 
-  const handleSubmit = () => {
-    if (taskTitle && taskDescription) {
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+
+    const {title, description} = taskData;
+
+    if (title && description && !isEdit) {
       db.collection("course_tasks")
         .add({
           module_id: id,
-          title: taskTitle,
-          description: taskDescription,
+          title: title,
+          description: description,
           created_at: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then((data: any) => {
@@ -33,48 +41,62 @@ const AddTask = () => {
         .catch((error: any) => {
           console.log(error);
         });
-    } else {
+    } 
+    else if (title && description && isEdit) {
+      db.collection("course_tasks").doc(id).set(taskData)
+      .then((data:any) => {
+          console.log(data)
+      })
+      .catch((error:any) => {
+          console.log(error)
+      });
+    } 
+    else {
       alert("All field must not be empty!");
     }
   };
-  return (
-    <div className="shadow lg:mx-7 mt-4 px-2 lg:px-16 pt-2 rounded">
-      <h2 className="text-center  text-2xl py-3 font-semibold">Add Task</h2>
-      <div className="lg:w-full mb-5">
-        <label className="text-base lg:font-semibold" htmlFor="">
-          Task Title
-        </label>
-        <br />
-        <input
-          onChange={handleOnChange}
-          required
-          name="title"
-          className="app-input"
-          placeholder="Write Task Description"
-        />
-      </div>
-      <div className="lg:w-full text-left">
-        <label className="text-base text-left lg:font-semibold" htmlFor="">
-          Task Description
-        </label>
-        <br />
-        <textarea
-          name="description"
-          required
-          onChange={handleOnChange}
-          className="app-input"
-          placeholder="Write Task Description"
-        ></textarea>
-      </div>
 
-      <div className="text-center">
+  return (
+    <div className="mt-6 shadow rounded-lg mx-6 p-5">
+      <h3 className="text-center text-2xl font-semibold mb-7">{!isEdit ? "Add Task Area" : "Edit Task Details"}</h3>
+      <form onSubmit={handleSubmit} className="text-center">
+        <div className="lg:w-full mb-3 text-left">
+          <label className="text-base text-left lg:font-semibold" htmlFor="">
+            Task Title
+          </label>
+          <br />
+          <input
+            onChange={handleOnChange}
+            name="title"
+            defaultValue={taskData.title}
+            className="border w-full py-3 px-4 focus:outline-none bg-gray-100 focus:ring-2 focus:ring-blue-600 focus:border-transparent rounded-md"
+            placeholder="Write Task Description"
+            required
+          />
+        </div>
+        <div className="lg:w-full text-left">
+          <label className="text-base text-left lg:font-semibold" htmlFor="">
+            Task Description
+          </label>
+          <br />
+          <textarea
+            name="description"
+            onChange={handleOnChange}
+            className="border w-full py-3 px-4 focus:outline-none bg-gray-100 focus:ring-2 focus:ring-blue-600 focus:border-transparent rounded-md"
+            placeholder="Write Task Description"
+            defaultValue={taskData.description}
+            cols={30}
+            rows={5}
+            required
+          ></textarea>
+        </div>
+
         <input
-          onClick={handleSubmit}
           type="submit"
-          value="Add Task"
+          value={!isEdit ? "Add Task" : "Update"}
           className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
         />
-      </div>
+      </form>
     </div>
   );
 };

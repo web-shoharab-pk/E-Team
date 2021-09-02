@@ -1,10 +1,10 @@
 import React from "react";
-import Topbar from "../Topbar/Topbar";
+import CourseTopbar from "../CourseTopbar/CourseTopbar";
 
 const CourseVideo = () => {
   return (
     <>
-      <Topbar />
+      <CourseTopbar />
 
       <div className="lg:flex mt-6 mb-6 lg:mb-px lg:mx-16 lg:space-x-10">
         <div className="w-11/12 lg:w-2/3 mx-auto lg:mx-px">

@@ -1,48 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import firebase from 'firebase';
 import { useParams } from "react-router";
 import db from "../../Firebase/Firebase";
 
-const AddQuiz = () => {
-  const [quizData, setQuizData] = useState({});
-  const [showField, setShowField] = useState(true);
+const AddQuiz = ({isEdit}:any) => {
+  const [quizData, setQuizData] = useState<any>({});
   const {id}:any = useParams();
+
+  useEffect(() => {
+    isEdit && 
+        db.collection("course_quizzes").doc(id).get()
+        .then((docs: any) => {
+            setQuizData(docs.data());
+        })
+        .catch((error:any) => {
+            console.log("Error getting document:", error);
+        });
+  }, [])
 
   const handleOnChange = (e: any) => {
     setQuizData({ ...quizData, [e.target.name]: e.target.value, module_id:id });
   };
-  console.log(quizData);
-  const handleSubmit = (e: any) => {
-    console.log(quizData);
 
-    db.collection("course_quizzes")
-      .add({...quizData,created_at: firebase.firestore.FieldValue.serverTimestamp()})
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+   if (quizData && !isEdit) { 
+     db.collection("course_quizzes")
+      .add({...quizData, created_at: firebase.firestore.FieldValue.serverTimestamp()})
       .then((data: any) => {
         window.history.go(-1)
       })
       .catch((error: any) => {
         console.log(error);
       });
-
-    setShowField(true);
-    e.preventDefault();
-  };
-
-  const handleShowField = () => {
-    setShowField((showField) => !showField);
+    } 
+    else if (quizData && isEdit) {
+      db.collection("course_quizzes").doc(id).set(quizData)
+        .then((data:any) => {
+            console.log(data)
+        })
+        .catch((error:any) => {
+            console.log(error)
+        });
+    }
+    else {
+      alert("All field must not be empty!");
+    }
   };
 
   return (
-    <div className="mt-6 p-5">
-      {showField ? (
-        <input
-          onClick={handleShowField}
-          value="Add Quiz"
-          className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
-        />
-      ) : (
-        <div className="shadow rounded hover:shadow-lg">
-          <form action="" onSubmit={handleSubmit} className="form mt-4 p-5">
+    <div className="mt-6 shadow rounded-lg mx-6 p-5">
+        <h3 className="text-center text-2xl font-semibold mb-7">{!isEdit ? "Add Quiz Area" : "Edit Quiz Details"}</h3>
+        <form action="" onSubmit={handleSubmit} className="form mt-4 p-5">
           <div className="lg:flex w-full mb-5 lg:space-x-16">
             <div className="w-full">
               <label className="text-base lg:font-semibold" htmlFor="">
@@ -54,6 +64,7 @@ const AddQuiz = () => {
                 onKeyUp={handleOnChange}
                 id="title"
                 type="text"
+                defaultValue={quizData.quiz_question}
                 required
                 name="quiz_question"
                 placeholder=" Quiz Question"
@@ -73,6 +84,7 @@ const AddQuiz = () => {
                 onKeyUp={handleOnChange}
                 name="option1"
                 type="text"
+                defaultValue={quizData.option1}
                 required
                 placeholder="Quiz Option"
               />
@@ -87,6 +99,7 @@ const AddQuiz = () => {
                 onKeyUp={handleOnChange}
                 name="option2"
                 type="text"
+                defaultValue={quizData.option2}
                 required
                 placeholder="Quiz Option"
               />
@@ -103,6 +116,7 @@ const AddQuiz = () => {
                 onKeyUp={handleOnChange}
                 name="option3"
                 type="text"
+                defaultValue={quizData.option3}
                 required
                 placeholder="Quiz Option"
               />
@@ -118,6 +132,7 @@ const AddQuiz = () => {
                 name="option4"
                 type="text"
                 required
+                defaultValue={quizData.option4}
                 placeholder="Quiz Option"
               />
             </div>
@@ -131,7 +146,8 @@ const AddQuiz = () => {
 
               <select
                 onChange={handleOnChange}
-                className="app-input" name="right_answer" id="">
+                defaultValue={quizData.right_answer}
+                className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" name="right_answer" id="">
                 <option value="">Select One</option>
                 <option value="option1">Option 1</option>
                 <option value="option2">Option 2</option>
@@ -144,13 +160,11 @@ const AddQuiz = () => {
           <div className="text-center ">
             <input
               type="submit"
-              value="Add Quiz"
+              value={!isEdit ? "Add Quiz" : "Update"}
               className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
             />
           </div>
         </form>
-        </div>
-      )}
     </div>
   );
 };

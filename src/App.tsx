@@ -36,7 +36,7 @@ import CreateDepartment from "./components/CreateDepartment/CreateDepartment";
 import AllDepartment from "./components/AllDepartment/AllDepartment";
 import SystemAdminLogin from "./components/Authentication/SystemAdminLogin/SystemAdminLogin";
 import AddSystemAdmin from "./components/Authentication/AddSystemAdmin/AddSystemAdmin";
-import CreateCourseTask from "./components/CreateCourseTask/CreateCourseTask";
+import CreateTask from "./components/CreateTask/CreateTask";
 import PricingCard from "./components/PricingCard/PricingCard";
 import Contact from "./components/Contact/Contact";
 import SystemAdminSelftActivation from "./components/Authentication/SystemAdminSelftActivation/SystemAdminSelftActivation";
@@ -51,20 +51,23 @@ import SAHome from "./components/SystemAdmin/SAHome/SAHome";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile";
 import EditCompanyProfile from "./components/EditCompanyProfile/EditCompanyProfile";
 import EditSAProfile from "./components/EditSAProfile/EditSAProfile";
-import UserProfile from "./components/UserProfile/UserProfile";
-import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
-import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
 import AddCourse from "./components/AddCourse/AddCourse";
 import EditCourse from "./components/AllCourse/EditCourse/EditCourse";
-import AssignDepartment from "./components/AllUserList/AssignDepartment";
-import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
 import AddVideo from "./components/AllCourse/AddVideo/AddVideo";
 import AddQuiz from "./components/AllCourse/AddQuiz/AddQuiz";
 import AddTask from "./components/AllCourse/AddTask/AddTask";
+import EditModule from "./components/AllCourse/EditModule/EditModule";
+import UserProfile from "./components/UserProfile/UserProfile";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import SAProfile from "./components/SystemAdmin/SAProfile/SAProfile";
+import AssignDepartment from "./components/AllUserList/AssignDepartment";
+import AssignedDepartmentUser from "./components/AllDepartment/AssignedDepartmentUser";
 import UserManagement from "./components/UserManagement/UserManagement";
 import DepartmentManagement from "./components/DepartmentManagement/DepartmentManagement";
 import ApplicationManagement from "./components/ApplicationManagement/ApplicationManagement";
 import CreateNotification from "./components/Notifications/CreateNotification";
+import SprintBoardList from "./components/SprintBoardList/SprintBoardList";
+import CreateSprint from "./components/CreateSprint/CreateSprint";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -72,8 +75,9 @@ import { setTimeout } from "timers";
 import PreLoader from "./components/PreLoader/PreLoader";
 AOS.init({duration: 2000});
 
+
 const App = () => {
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<any>({
     isSignedIn: false,
     co_id: "",
     id: "",
@@ -84,7 +88,7 @@ const App = () => {
     created_at: "",
     updated_at: "",
   });
-  const [systemAdminData, setSystemAdminData] = useState({
+  const [systemAdminData, setSystemAdminData] = useState<any>({
     isSignedIn: false,
     id: "",
     name: "",
@@ -141,11 +145,11 @@ useEffect(()=>{
                 <ShareIdea />
               </Dashboard>
             </Route>
-            <Route path="/allIdea">
+            <PrivateRoute path="/allIdea">
               <Dashboard>
                 <AllIdea />
               </Dashboard>
-            </Route>
+            </PrivateRoute>
             <Route path="/create-notification">
               <Dashboard>
                 <CreateNotification />
@@ -156,29 +160,57 @@ useEffect(()=>{
                 <AllCourse />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/view-course/:course_id">
+                <CourseVideo />
+            </PrivateRoute>
             <PrivateRoute exact path="/edit-courses/:id">
               <Dashboard>
                 <EditCourse />
               </Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-video/:id">
+              <Dashboard>
+                <AddVideo isEdit={true} />
+              </Dashboard>
+            </PrivateRoute>
             <PrivateRoute path="/edit-courses/video/:id">
               <Dashboard>
-                <AddVideo />
+                <AddVideo isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-video/:id">
+              <Dashboard>
+                <AddVideo isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/task/:id">
               <Dashboard>
-                <AddTask />
+                <AddTask isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-task/:id">
+              <Dashboard>
+                <AddTask isEdit={true} />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/edit-courses/quiz/:id">
               <Dashboard>
-                <AddQuiz />
+                <AddQuiz isEdit={false} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-courses/edit-quiz/:id">
+              <Dashboard>
+                <AddQuiz isEdit={true} />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/edit-module/:id">
+              <Dashboard>
+                <EditModule />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/add-course">
               <Dashboard>
-                <AddCourse />
+                 <AddCourse />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/assign-course">
@@ -222,7 +254,7 @@ useEffect(()=>{
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
-            <PrivateRoute path="/taskboard">
+            <PrivateRoute path="/sprint/:sprint_id">
               <Dashboard>
                 <TaskBoard />
               </Dashboard>
@@ -248,9 +280,19 @@ useEffect(()=>{
                 <MeetingList />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/assign-task">
+            <PrivateRoute path="/create-sprint">
               <Dashboard>
-                <CreateCourseTask />
+                <CreateSprint />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/sprint-list">
+              <Dashboard>
+                <SprintBoardList />
+              </Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/add-task/:sprint_id">
+              <Dashboard>
+                <CreateTask />
               </Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/applicationList">
@@ -269,16 +311,6 @@ useEffect(()=>{
                 <Home />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/home">
-              <Dashboard>
-                <Home />
-              </Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/all-user">
-              <Dashboard>
-                <AllUserList />
-              </Dashboard>
-            </PrivateRoute>
             <PrivateRoute path="/meetings">
               <Dashboard>
                 <MeetingList />
@@ -295,8 +327,8 @@ useEffect(()=>{
               </Dashboard>
             </PrivateRoute>
             <Route path="/assigned-department-user/:departmentId">
-              <Dashboard>
-                <AssignedDepartmentUser />
+            <Dashboard>
+              <AssignedDepartmentUser />
               </Dashboard>
             </Route>
             <PrivateRoute path="/department-management">
@@ -319,12 +351,12 @@ useEffect(()=>{
                 <UserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-user">
+            <PrivateRoute path="/edit-user-profile">
               <Dashboard>
                 <EditUserProfile />
               </Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/edit-company">
+            <PrivateRoute path="/edit-company-profile">
               <Dashboard>
                 <EditCompanyProfile />
               </Dashboard>
@@ -371,6 +403,11 @@ useEffect(()=>{
             <SARoute path="/system-admin/view-sa-profile">
               <SADashboard>
                 <SAProfile />
+              </SADashboard>
+            </SARoute>
+            <SARoute path="/system-admin/edit-sa-profile">
+              <SADashboard>
+                <EditSAProfile />
               </SADashboard>
             </SARoute>
             <SARoute path="/system-admin/edit-sa-profile">

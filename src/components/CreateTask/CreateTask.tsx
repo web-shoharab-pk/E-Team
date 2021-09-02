@@ -1,59 +1,68 @@
 import React, { useContext } from "react";
-import firebase from "firebase/app";
-import "firebase/firestore";
 import { useState } from "react";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import swal from "sweetalert";
+import { useEffect } from "react";
+import firebase from "firebase/app";
+import { useParams } from "react-router";
 
-export const db = firebase.firestore();
+const db = firebase.firestore();
 
 type TaskInputs = {
   taskName: string;
-  teamName: string;
+  userId: string,
   taskDescription: string;
 };
 
-const CreateCourseTask = () => {
-  const [courseTaskData, setCourseTaskData] = useState<TaskInputs>({
+const CreateTask = () => {
+  const { userData, setUserData } = useContext(UserDataContext);
+  const [userList, setUserList] = useState([] as object[])
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState({ isError: false, message: "" });
+  const [successMessage, setSuccessMessage] = useState("");
+  const [taskData, setTaskData] = useState<TaskInputs>({
     taskName: "",
-    teamName: "",
+    userId: "",
     taskDescription: "",
   });
 
-  const { userData, setUserData } = useContext(UserDataContext);
-  // const [isSuccess, setIsSuccess] = useState(false);
-  // const [error, setError] = useState({ isError: false, message: "" });
-  // const [successMessage, setSuccessMessage] = useState("");
+  const { sprint_id }: any = useParams()
+
+  useEffect(() => {
+    db.collection('users')
+      .where('co_id', '==', userData?.co_id)
+      .get()
+      .then((data: any) => {
+        setUserList(data.docs.map((doc: any) => doc.data()));
+      })
+  }, [])
 
   const handleOnChange = (e: any) => {
-    setCourseTaskData({ ...courseTaskData, [e.target.id]: e.target.value });
+    setError({ isError: false, message: "" });
+    setTaskData({ ...taskData, [e.target.id]: e.target.value });
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    const { taskName, teamName, taskDescription } = courseTaskData;
+    const { taskName, userId, taskDescription } = taskData;
 
-    if (taskName && teamName && taskDescription) {
-      // if (nameRegEx.test(name) && descriptionRegEx.test(description)) {
-
+    if (taskName && userId && taskDescription) {
       db.collection("task_list")
         .add({
-          taskName: taskName,
-          teamName: teamName,
-          taskDescription: taskDescription,
+          ...taskData,
+          status: "todo",
+          sprint_id,
           co_id: userData.co_id,
         })
         .then(() => {
-          (document.getElementById("taskName") as HTMLInputElement).value = "";
-          (document.getElementById("teamName") as HTMLInputElement).value = "";
-          (
-            document.getElementById("taskDescription") as HTMLInputElement
-          ).value = "";
-          swal("Congratulations!", "Course task Successfully added", "success");
+          setSuccessMessage("Successfully Course Task Assigned!");
+          setError({ isError: false, message: "" });
+          window.location.replace('/sprint/' + sprint_id)
         })
         .catch((error) => {
           if (error) {
-            swal("Sorry!", "All input fields must be filled up", "error");
+            setSuccessMessage("");
+            setError({ isError: true, message: "Any field must not be empty!" });
           } else {
             swal(
               "Congratulations!",
@@ -68,9 +77,9 @@ const CreateCourseTask = () => {
   };
 
   return (
-    <div className="shadow  mx-7 mt-4 px-16 pt-2 rounded-lg hover:shadow-lg">
-      <h2 className="text-center text-2xl font-bold text-blue-400">
-        Create Course Task
+    <div className="shadow-lg  mx-7 mt-4 px-16 pt-2 rounded-lg">
+      <h2 className="text-center text-3xl font-bold text-blue-400">
+        Create Task
       </h2>
 
       {/* {error.message ? (
@@ -87,7 +96,7 @@ const CreateCourseTask = () => {
 
       <form action="" className="form mt-4">
         <div className="flex w-full mb-5 space-x-16">
-          <div className="w-5/6">
+          <div className="w-1/2">
             <div className="mb-5">
               <label className="text-lg font-semibold" htmlFor="">
                 Task Name:
@@ -102,37 +111,25 @@ const CreateCourseTask = () => {
                 required
               />
             </div>
-
-            <div className="mb-5 text-center">
+          </div>
+          <div className="w-1/2">
+            <div className="mb-5">
               <label className="text-lg font-semibold" htmlFor="">
-                Assigned Team Name
+                User:
               </label>
               <br />
               <select
-                defaultValue="Select Team"
                 onChange={handleOnChange}
-                className="app-input"
-                id="teamName"
+                className="border bg-gray-100 rounded mt-1 p-2 w-full"
+                id="userId"
+                placeholder="Name of task"
                 required
               >
-                <option value="Select Team">Endgame</option>
-                <option value="PH">Endgame</option>
-                <option value="PH">Endgame</option>
+                <option value="" className="hidden">Select user</option>
+                {
+                  userList?.map((user: any) => <option value={user?.id}>{user?.name}</option>)
+                }
               </select>
-            </div>
-          </div>
-
-          <div className="w-5/6">
-            <div className="mb-5">
-              <label className="text-lg font-semibold" htmlFor="">
-                Task File:
-              </label>
-              <br />
-              <input
-                className="app-input"
-                type="file"
-                placeholder="Write Title"
-              />
             </div>
           </div>
         </div>
@@ -160,8 +157,8 @@ const CreateCourseTask = () => {
           />
         </div>
       </form>
-    </div>
+    </div >
   );
 };
 
-export default CreateCourseTask;
+export default CreateTask;

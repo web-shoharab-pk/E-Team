@@ -3,7 +3,7 @@ import "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 
-export const db = firebase.firestore();
+const db = firebase.firestore();
 
 type Inputs = {
   name: string;
