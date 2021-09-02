@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { UserDataContext } from "../../Contexts/UserDataContext";
+import swal from "sweetalert";
 
 const db = firebase.firestore();
 
@@ -18,9 +19,6 @@ const CreateDepartment = () => {
     description: "",
   });
   const { userData, setUserData } = useContext(UserDataContext);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState({ isError: false, message: "" });
-  const [successMessage, setSuccessMessage] = useState("");
 
   const handleOnChange = (e: any) => {
     setDepartmentData({ ...departmentData, [e.target.id]: e.target.value });
@@ -50,24 +48,21 @@ const CreateDepartment = () => {
           (document.getElementById("type") as HTMLInputElement).value = "";
           (document.getElementById("description") as HTMLInputElement).value =
             "";
-          setSuccessMessage("Successfully Department Assigned!");
-          setError({ isError: false, message: "" });
+          swal("Congratulations!", "Department Successfully added", "success");
         })
         .catch((error) => {
           if (error) {
-            setSuccessMessage("");
-            setError({
-              isError: true,
-              message: "Any field must not be empty!",
-            });
+            swal("Sorry!", "All fields must be filled up", "error");
           } else {
-            setSuccessMessage("Successfully Department Assigned!");
-            setError({ isError: false, message: "" });
+            swal(
+              "Congratulations!",
+              "Department Successfully added",
+              "success"
+            );
           }
         });
     } else {
-      setIsSuccess(false);
-      setError({ isError: true, message: "Any field must not be empty!" });
+      swal("Sorry!", "All fields must be filled up", "error");
     }
   };
 
@@ -76,17 +71,6 @@ const CreateDepartment = () => {
       <h2 className="text-center text-2xl pb-4 lg:text-2xl font-medium">
         Create Department
       </h2>
-      {error.message ? (
-        <div className="text-red-500 mx-5 text-center">{error.message}</div>
-      ) : (
-        ""
-      )}
-
-      {successMessage ? (
-        <div className="text-green-500 mx-5 text-center">{successMessage}</div>
-      ) : (
-        ""
-      )}
 
       <form action="" className="form mt-4">
         <div className="lg:flex w-full mb-5 lg:space-x-16">

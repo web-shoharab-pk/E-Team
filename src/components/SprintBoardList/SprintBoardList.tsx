@@ -18,11 +18,11 @@ const SprintBoardList = () => {
                 setSprintList(data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id })));
             })
     }, [])
-    console.log(sprintList);
+    // console.log(sprintList);
 
     return (
         <div className="shadow mt-9 rounded-md pb-4 mx-16">
-            <h2 className="text-center text-3xl text-blue-400 py-3 font-semibold">
+            <h2 className="text-center text-2xl text-blue-400 py-3 font-semibold">
                 All Sprint List
             </h2>
             <Link to="/create-sprint" className="inline-block mb-7 ml-5 bg-blue-500 border text-white border-blue-500 hover:bg-white hover:text-blue-500  py-2 px-8 rounded-full">

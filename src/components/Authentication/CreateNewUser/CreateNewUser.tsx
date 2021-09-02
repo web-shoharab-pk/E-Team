@@ -4,6 +4,7 @@ import md5 from 'crypto-js/md5';
 import emailjs from 'emailjs-com';
 import { UserDataContext } from '../../../Contexts/UserDataContext';
 import db from '../../Firebase/Firebase';
+import swal from "sweetalert";
 
 interface addUserDataType {
     name: string;
@@ -76,7 +77,7 @@ const CreateNewUser = () => {
             }
         } else {
             setIsSuccess(false);
-            setError({ isError: true, message: "Any field must not be empty!" })
+            swal("Sorry!", "All fields must be filled up", "error");
         }
     }
 

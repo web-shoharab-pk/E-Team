@@ -87,7 +87,7 @@ const AssignDepartment = () => {
 
   return (
     <div className="shadow lg:mx-7 mt-10 px-2 lg:px-16 pt-2 rounded-lg">
-      <h2 className="text-center text-3xl text-blue-400 pb-4 lg:text-3xl font-medium">
+      <h2 className="text-center text-2xl text-blue-400 pb-4 lg:text-3xl font-medium">
         Assign Department
       </h2>
 

@@ -15,7 +15,7 @@ const UserManagement = () => {
                 
                 <div className="w-1/2">
                     <Link className="block text-center m-4 rounded border border-gray-100 shadow p-4" to="/all-user">
-                        <i className="fas fa-user-plus fa-2x"></i>
+                        <i className="fas fa-users fa-2x"></i>
                         <div className="text-lg mt-2 font-bold">All User</div>
                     </Link>
                 </div>

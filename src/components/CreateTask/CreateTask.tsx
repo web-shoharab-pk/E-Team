@@ -8,14 +8,13 @@ const db = firebase.firestore();
 
 type TaskInputs = {
   taskName: string;
-  userId: string,
+  userId: string;
   taskDescription: string;
 };
 
 const CreateTask = () => {
   const { userData, setUserData } = useContext(UserDataContext);
-  const [userList, setUserList] = useState([] as object[])
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [userList, setUserList] = useState([] as object[]);
   const [error, setError] = useState({ isError: false, message: "" });
   const [successMessage, setSuccessMessage] = useState("");
   const [taskData, setTaskData] = useState<TaskInputs>({
@@ -24,16 +23,16 @@ const CreateTask = () => {
     taskDescription: "",
   });
 
-  const { sprint_id }: any = useParams()
+  const { sprint_id }: any = useParams();
 
   useEffect(() => {
-    db.collection('users')
-      .where('co_id', '==', userData?.co_id)
+    db.collection("users")
+      .where("co_id", "==", userData?.co_id)
       .get()
       .then((data: any) => {
         setUserList(data.docs.map((doc: any) => doc.data()));
-      })
-  }, [])
+      });
+  }, []);
 
   const handleOnChange = (e: any) => {
     setError({ isError: false, message: "" });
@@ -55,14 +54,13 @@ const CreateTask = () => {
         .then(() => {
           setSuccessMessage("Successfully Course Task Assigned!");
           setError({ isError: false, message: "" });
-          window.location.replace('/sprint/' + sprint_id)
+          window.location.replace("/sprint/" + sprint_id);
         })
         .catch((error) => {
           if (error) {
-            setSuccessMessage("");
-            setError({ isError: true, message: "Any field must not be empty!" });
-          swal("Congratulations!", "Course task Successfully added", "success");
-        }})
+            swal("Sorry!", "All input fields must be filled up", "error");
+          }
+        })
         .catch((error) => {
           if (error) {
             swal("Sorry!", "All input fields must be filled up", "error");
@@ -81,21 +79,9 @@ const CreateTask = () => {
 
   return (
     <div className="shadow-lg  mx-7 mt-4 px-16 pt-2 rounded-lg">
-      <h2 className="text-center text-3xl font-bold text-blue-400">
+      <h2 className="text-center text-2xl font-bold text-blue-400">
         Create Task
       </h2>
-
-      {/* {error.message ? (
-        <div className="text-red-500 mx-5 text-center">{error.message}</div>
-      ) : (
-        ""
-      )}
-
-      {successMessage ? (
-        <div className="text-green-500 mx-5 text-center">{successMessage}</div>
-      ) : (
-        ""
-      )} */}
 
       <form action="" className="form mt-4">
         <div className="flex w-full mb-5 space-x-16">
@@ -128,10 +114,12 @@ const CreateTask = () => {
                 placeholder="Name of task"
                 required
               >
-                <option value="" className="hidden">Select user</option>
-                {
-                  userList?.map((user: any) => <option value={user?.id}>{user?.name}</option>)
-                }
+                <option value="" className="hidden">
+                  Select user
+                </option>
+                {userList?.map((user: any) => (
+                  <option value={user?.id}>{user?.name}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -160,7 +148,7 @@ const CreateTask = () => {
           />
         </div>
       </form>
-    </div >
+    </div>
   );
 };
 

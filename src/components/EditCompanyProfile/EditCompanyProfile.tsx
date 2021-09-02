@@ -46,7 +46,7 @@ const EditCompanyProfile = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               defaultValue={company_name}
               type="text"
@@ -62,7 +62,7 @@ const EditCompanyProfile = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               type="email"
               defaultValue={email}
@@ -81,7 +81,7 @@ const EditCompanyProfile = () => {
             </label>
             <br />
             <input
-              className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               type="number"
               defaultValue={phone}
@@ -97,7 +97,7 @@ const EditCompanyProfile = () => {
             </label>
             <br />
             <input
-              className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               name="website"
               defaultValue={website}
@@ -115,7 +115,7 @@ const EditCompanyProfile = () => {
             </label>
             <br />
             <textarea
-              className="rounded  bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input"
               id=""
               defaultValue={co_description}
               name="co_description"

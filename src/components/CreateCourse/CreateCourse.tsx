@@ -8,18 +8,6 @@ const CreateCourse = () => {
       <form action="" className="form mt-4">
         <div className="flex w-full mb-5 space-x-16">
           <div className="w-5/6">
-            {/* <div className="mb-5">
-              <label className="text-base font-semibold" htmlFor="">
-                Select Category
-              </label>
-              <br />
-              <select className="border rounded mt-1 p-2 w-full" name="" id="">
-                <option value="">One</option>
-                <option value="">Two</option>
-                <option value="">Three</option>
-              </select>
-            </div> */}
-
             <div className="mb-5">
               <label className="text-lg font-semibold" htmlFor="">
                 Course Name:
@@ -45,18 +33,6 @@ const CreateCourse = () => {
                 placeholder="Write Title"
               />
             </div>
-
-            {/* <div className="">
-              <label className="text-base font-semibold" htmlFor="">
-                How to apply
-              </label>
-              <br />
-              <input
-                className="border rounded mt-1 p-2 w-full"
-                type="text"
-                placeholder="Apply"
-              />
-            </div> */}
           </div>
         </div>
 
