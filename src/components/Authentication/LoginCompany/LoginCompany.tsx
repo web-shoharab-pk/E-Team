@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Redirect, useHistory, useLocation } from "react-router-dom";
 import { UserDataContext } from "../../../Contexts/UserDataContext";
 import { db, loginComapny, saveToLS } from "../loginmanager";
@@ -14,7 +14,7 @@ const LoginCompany = () => {
 
   const history = useHistory();
   const location = useLocation();
-  let { from }: any = location.state || { from: { pathname: "/" } };
+  let { from }: any = location.state || { from: { pathname: "/home" } };
 
   const handleOnChange = (event: any) => {
     const target = event.target;

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import firebase from 'firebase';
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import db from "../../Firebase/Firebase";
 
@@ -147,7 +147,11 @@ const AddQuiz = ({isEdit}:any) => {
               <select
                 onChange={handleOnChange}
                 defaultValue={quizData.right_answer}
+<<<<<<< HEAD
                 className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" name="right_answer" id="">
+=======
+                className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" name="right_answer" id="">
+>>>>>>> main
                 <option value="">Select One</option>
                 <option value="option1">Option 1</option>
                 <option value="option2">Option 2</option>

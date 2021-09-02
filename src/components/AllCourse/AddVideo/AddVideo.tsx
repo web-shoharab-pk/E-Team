@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import db from '../../Firebase/Firebase';
 
 const AddVideo = ({isEdit}:any) => {

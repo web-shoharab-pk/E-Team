@@ -1,9 +1,7 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
+import swal from "sweetalert";
 import { UserDataContext } from "../../Contexts/UserDataContext";
 import db from "../Firebase/Firebase";
-import Sidebar from "../Sidebar/Sidebar";
-import Topbar from "../Topbar/Topbar";
-import swal from "sweetalert";
 
 const InputApplication = () => {
   const [applicationData, setApplicationData] = useState<any>({});
@@ -59,7 +57,7 @@ const InputApplication = () => {
               id="type"
               name="departmentName"
               onChange={handleOnChange}
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               required /*name="department" id="department-select"*/
             >
               <option value="Team-80">Team-80</option>
@@ -92,7 +90,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="app-input"
+              className="app-input rounded   bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
               type="text"
               required
@@ -112,7 +110,7 @@ const InputApplication = () => {
               id="type"
               name="applicationType"
               onChange={handleOnChange}
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               required /*name="department" id="department-select"*/
             >
               <option value="Leave Application">Leave Application</option>
@@ -143,7 +141,7 @@ const InputApplication = () => {
             </label>
             <br />
             <input
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               id=""
               name="endingDate"
               type="date"
@@ -178,7 +176,7 @@ const InputApplication = () => {
               id="type"
               name="status"
               onChange={handleOnChange}
-              className="rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="app-input rounded bg-gray-100 mt-1 p-3 w-full border focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               required /*name="department" id="department-select"*/
             >
               <option value="High">High</option>
@@ -193,6 +191,7 @@ const InputApplication = () => {
             type="submit"
             value="Submit Application"
             className="my-4 cursor-pointer bg-blue-500 rounded-3xl text-white font-semibold py-3 px-6"
+            onClick={(e) => { e.preventDefault();  swal("Sorry!", "Function doesn't implement yet", "error");}}
           />
         </div>
       </form>

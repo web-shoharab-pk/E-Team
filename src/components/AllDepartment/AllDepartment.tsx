@@ -1,11 +1,9 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { UserDataContext } from "../../Contexts/UserDataContext";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RingLoader from "react-spinners/RingLoader";
+import { UserDataContext } from "../../Contexts/UserDataContext";
 
 const db = firebase.firestore();
 
@@ -70,27 +68,27 @@ const AllDepartment = () => {
                       </div> */}
           </div>
 
-          {departmentData.map((department: any) => (
-            <tr className="border-b border-gray-200">
-              <Link to={"/assigned-department-user/"+department.id}><td className="px-4 py-3 text-blue-500">{department.name}</td></Link>
-              <td className="px-4 py-3">{department.type}</td>
-              <td className="px-4 py-3">{department.description}</td>
-              <td className="px-4 py-3">Edit</td>
+          <table className="pt-2 rounded-t-lg m-5 w-11/12 mx-auto text-gray-800">
+            <tr className="text-left border-t border-b-4 border-gray-300">
+              <th className="px-4 py-3">Name</th>
+              <th className="px-4 py-3">Type</th>
+              <th className="px-4 py-3">Description</th>
+              <th className="px-4 py-3">Action</th>
             </tr>
 
-            // {departmentData.map((department: any) => (
-            //   <tr className="border-b border-gray-200">
-            //     <Link to={"/assigned-department-user/" + department.id}>
-            //       <td className="px-4 py-3 hover:text-blue-500">
-            //         {department.name}
-            //       </td>
-            //     </Link>
-            //     <td className="px-4 py-3">{department.type}</td>
-            //     <td className="px-4 py-3">{department.description}</td>
-            //     <td className="px-4 py-3">Edit</td>
-            //   </tr>
+             {departmentData.map((department: any) => (
+              <tr className="border-b border-gray-200">
+                <Link to={"/assigned-department-user/" + department.id}>
+                  <td className="px-4 py-3 hover:text-blue-500">
+                    {department.name}
+                  </td>
+                </Link>
+                <td className="px-4 py-3">{department.type}</td>
+                <td className="px-4 py-3">{department.description}</td>
+                <td className="px-4 py-3">Edit</td>
+              </tr>
             ))}
-          {/* </table> */}
+          </table>
         </div>
       )}
     </div>

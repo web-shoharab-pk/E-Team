@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
-import { useState } from "react";
-import { UserDataContext } from "../../Contexts/UserDataContext";
-import swal from "sweetalert";
-import { useEffect } from "react";
 import firebase from "firebase/app";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import swal from "sweetalert";
+import { UserDataContext } from "../../Contexts/UserDataContext";
 
 const db = firebase.firestore();
 
@@ -63,6 +61,11 @@ const CreateTask = () => {
           if (error) {
             setSuccessMessage("");
             setError({ isError: true, message: "Any field must not be empty!" });
+          swal("Congratulations!", "Course task Successfully added", "success");
+        }})
+        .catch((error) => {
+          if (error) {
+            swal("Sorry!", "All input fields must be filled up", "error");
           } else {
             swal(
               "Congratulations!",
@@ -120,7 +123,7 @@ const CreateTask = () => {
               <br />
               <select
                 onChange={handleOnChange}
-                className="border bg-gray-100 rounded mt-1 p-2 w-full"
+                className="app-input border bg-gray-100 rounded mt-1 p-2 w-full"
                 id="userId"
                 placeholder="Name of task"
                 required

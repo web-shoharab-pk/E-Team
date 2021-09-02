@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../../Assets/images/E-Team-logo.png";
 import { getDataFromLS } from "../../Authentication/loginmanager";
 import "./Navbar.css";
 
-const Navbar = () => {
-  const [userType, setUserType] = useState("");
+
+
+const FinalNavbar = () => {
+  const [userType, setUserType] = useState('')
   const [showMenu, setShowMenu] = useState(false);
   if (showMenu) {
     document.getElementById("navbar-nav")?.classList.add("active");
@@ -14,8 +17,9 @@ const Navbar = () => {
 
   // for checking user
   useEffect(() => {
-    checkIsLoginUser("token");
+    checkIsLoginUser('token')
   }, []);
+
 
   // For checking that the user has already logged in or not
   const checkIsLoginUser = (token: string) => {
@@ -26,17 +30,19 @@ const Navbar = () => {
     if (data?.admin) {
       setUserType("system-user");
     }
-  };
+  }
+
 
   return (
-    <header className="text-gray-600 body-font">
+    <header className="text-gray-600 body-font header_navbar ">
       <div className="navbar mx-auto p-5 mt-5">
-        <Link
+        <NavLink
           to="/"
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 pl-3 text-xl"
         >
-          <span className="text-blue-500 mr-2">E-Team </span> Manage
-        </Link>
+          {/* <span className="text-blue-500 mr-2">E-Team </span> Manage */}
+          <img className="w-28" src={logo} alt="" />
+        </NavLink>
 
         <button
           className="navbar-toggler"
@@ -49,58 +55,43 @@ const Navbar = () => {
           )}
         </button>
         <nav className="navbar-nav" id="navbar-nav">
-          <Link
-            to="/"
-            className="md:mr-5 transition delay-150 hover:text-blue-400 nav-item"
-          >
+          <NavLink to="/" className="md:mr-5 hover:text-gray-900 nav-item">
             Home
-          </Link>
-          <Link
-            to="/ourTeam"
-            className="md:mr-5 transition delay-150 hover:text-blue-400 nav-item"
-          >
+          </NavLink>
+          <NavLink to="/ourTeam" className="md:mr-5 hover:text-gray-900 nav-item">
             About us
-          </Link>
-          <Link
-            to="/pricing"
-            className="md:mr-5 transition delay-150 hover:text-blue-400 nav-item"
-          >
+          </NavLink>
+          <NavLink to="/pricing" className="md:mr-5 hover:text-gray-900 nav-item">
             Pricing
-          </Link>
-          <Link
-            to="/contact"
-            className="md:mr-5 transition delay-150 hover:text-blue-400 nav-item"
-          >
+          </NavLink>
+          <NavLink to="/contact" className="md:mr-5 hover:text-gray-900 nav-item">
             Contact
-          </Link>
-          {userType === "" && (
+          </NavLink>
+          {
+            userType === '' &&
             <Link
               to="/login"
               className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3"
             >
               Login <i className="fas fa-sign-in-alt"></i>
             </Link>
-          )}
-          {userType === "company-user" && (
-            <Link
-              to="/home"
-              className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3"
-            >
+          }
+          {
+            userType === 'company-user' &&
+            <Link to="/home" className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3">
               Dashboard
             </Link>
-          )}
-          {userType === "system-user" && (
-            <Link
-              to="/system-admin/"
-              className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3"
-            >
+          }
+          {
+            userType === 'system-user' &&
+            <Link to="/system-admin/" className="md:mr-5 text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-700 rounded text-base mt-4 md:mt-0 nav-item mb-3">
               Dashboard
             </Link>
-          )}
+          }
         </nav>
       </div>
     </header>
   );
 };
 
-export default Navbar;
+export default FinalNavbar;
